@@ -2,9 +2,16 @@
   "name": "home-finance",
   "version": "1.0.0",
   "description": "Simple application to monitoring home finance",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "rimraf ./dist",
+    "lint": "eslint webpack.config.* src tools --color",
+    "lint:watch": "npm run lint -- --watch",
+    "prebuild": "npm run clean-dist && npm run lint && npm run test",
+    "build": "npm run prebuild && babel-node tools/build.js",
+    "test": "echo \"Error: no test specified\"",
+    "start": "npm-run-all webpack-dev-server --hot lint:watch"
   },
   "repository": {
     "type": "git",
@@ -20,5 +27,28 @@
   "bugs": {
     "url": "https://github.com/Dzuming/home-finance/issues"
   },
-  "homepage": "https://github.com/Dzuming/home-finance#readme"
+  "homepage": "https://github.com/Dzuming/home-finance#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "7",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "chalk": "^2.1.0",
+    "eslint": "3.x",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "^7.3.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^2.30.1",
+    "path": "^0.12.7",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-md5-hash": "^0.0.5"
+  }
 }
