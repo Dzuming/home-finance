@@ -1,0 +1,24 @@
+{
+  "name": "home-finance",
+  "version": "1.0.0",
+  "description": "Simple application to monitoring home finance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dzuming/home-finance.git"
+  },
+  "keywords": [
+    "react",
+    "react.js",
+    "finance"
+  ],
+  "author": "Dawid Poliszak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dzuming/home-finance/issues"
+  },
+  "homepage": "https://github.com/Dzuming/home-finance#readme"
+}
