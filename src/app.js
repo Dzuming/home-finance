@@ -3,6 +3,7 @@ import {Component} from 'react';
 import Grid from 'material-ui/Grid';
 import Nav from './containers/Navigation';
 import List from './containers/List';
+import Table from './containers/Table'
 import './index.scss';
 export default class App extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class App extends Component {
           </Grid>
           <Grid item xs={12} lg={10}>
             <Nav/>
+            <Table />
           </Grid>
         </Grid>
       </div>
