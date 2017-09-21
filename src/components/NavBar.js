@@ -4,10 +4,11 @@ import {withStyles} from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-
-const styles = theme => ({
+import IconButton from 'material-ui/IconButton';
+import Hidden from 'material-ui/Hidden';
+import MenuIcon from 'material-ui-icons/Menu';
+const styles = () => ({
     root: {
-        marginTop: theme.spacing.unit * 3,
         width: '100%'
     }
 });
@@ -18,6 +19,11 @@ function NavBar(props) {
         <div className={classes.root}>
             <AppBar position="static" color="primary">
                 <Toolbar>
+                    <Hidden lgUp>
+                    <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
+                        <MenuIcon/>
+                    </IconButton>
+                    </Hidden>
                     <Typography type="title" color="inherit">
                         Home finance
                     </Typography>
