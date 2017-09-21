@@ -25,7 +25,13 @@
         "react/jsx-wrap-multilines": 2,
         "react/no-string-refs": 0,
         "import/no-duplicates": 0,
-        "indent": 1,
+        "indent": [
+            1,
+            2,
+            {
+                "SwitchCase": 1
+            }
+        ],
         "semi": 1
     },
     "plugins": [
