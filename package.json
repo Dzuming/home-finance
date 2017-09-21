@@ -6,8 +6,9 @@
   "scripts": {
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "lint": "esw webpack.config.* src tools --color",
+    "lint": "esw webpack.config.* src tools --color && npm run sass-lint",
     "lint:watch": "npm run lint -- --watch",
+    "sass-lint": "sass-lint -c .sass-lint.yml -v -q",
     "prebuild": "run-p clean-dist lint test",
     "build": "babel-node tools/build.js",
     "test": "echo \"Error: no test specified\"",
@@ -52,6 +53,7 @@
     "npm-run-all": "^4.1.1",
     "path": "^0.12.7",
     "postcss-loader": "^2.0.6",
+    "sass-lint": "^1.11.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0",
