@@ -1,9 +1,9 @@
 import React from 'react';
 import {Component} from 'react';
 import Grid from 'material-ui/Grid';
-import Nav from './containers/Navigation'
-import List from './containers/List'
-import './index.scss'
+import Nav from './containers/Navigation';
+import List from './containers/List';
+import './index.scss';
 export default class App extends Component {
   render() {
     return (
