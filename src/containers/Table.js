@@ -1,8 +1,6 @@
 import React, {PureComponent} from 'react';
-import {
-  SortingState, LocalSorting
-} from '@devexpress/dx-react-grid';
-import {Grid, TableView, TableHeaderRow} from '@devexpress/dx-react-grid-material-ui';
+import {SortingState, LocalSorting, PagingState, LocalPaging} from '@devexpress/dx-react-grid';
+import {Grid, TableView, TableHeaderRow, PagingPanel} from '@devexpress/dx-react-grid-material-ui';
 
 class Table extends PureComponent {
   constructor(props) {
@@ -105,10 +103,13 @@ class Table extends PureComponent {
 
     return (
       <Grid rows={rows} columns={columns}>
-        <SortingState />
+        <PagingState defaultCurrentPage={0} pageSize={10}/>
+        <SortingState/>
+        <LocalPaging />
         <LocalSorting/>
         <TableView/>
         <TableHeaderRow allowSorting/>
+        <PagingPanel/>
       </Grid>
     );
   }
