@@ -1,6 +1,5 @@
-import webpack from 'webpack';
-import path from 'path';
-
+const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({hot: true, template: './src/index.html', filename: 'index.html', inject: 'body'})
 module.exports = {
@@ -16,7 +15,7 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 options :  {
-                    presets  :  [ 'es2017'] 
+                    presets  :  [ 'env'] 
                   } 
             }, {
                 test: /\.jsx$/,
@@ -35,9 +34,6 @@ module.exports = {
     
         historyApiFallback: true,
         // respond to 404s with index.html
-    
-        hot: true,
-        // enable HMR on the server
       },
     plugins : [
         HtmlWebpackPluginConfig,

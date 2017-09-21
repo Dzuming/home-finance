@@ -6,12 +6,13 @@
   "scripts": {
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "lint": "eslint webpack.config.* src tools --color",
+    "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "npm run lint -- --watch",
     "prebuild": "run-p clean-dist lint test",
     "build": "babel-node tools/build.js",
     "test": "echo \"Error: no test specified\"",
-    "start": "npm-run-all webpack-dev-server --hot lint:watch"
+    "serve": "webpack-dev-server --hot --inline",
+    "start": "run-p serve lint:watch"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "eslint": "3.x",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.3.0",
+    "eslint-watch": "^3.1.2",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
     "npm-run-all": "^4.1.1",
