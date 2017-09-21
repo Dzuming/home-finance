@@ -1,0 +1,1 @@
+export const OPEN_SIDENAV = 'OPEN_SIDENAV';

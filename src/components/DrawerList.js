@@ -8,39 +8,27 @@ const styles = {
   list: {
     width: 250,
     flex: 'initial',
-  },
-  listFull: {
-    width: 'auto',
-    flex: 'initial',
-  },
+  }
 };
 
-class DrawerList extends React.Component {
-  state = {
-    right: false,
-  };
-
-  toggleDrawer = (side, open) => () => {
-    this.setState({
-      [side]: open,
-    });
-  };
-
-  render() {
+function DrawerList(props) {
+    const classes = props.classes;
     return (
       <div>
-        <Drawer open={this.state.right} onRequestClose={this.toggleDrawer('right', false)}>
-          <div tabIndex={0} role="button" onClick={this.toggleDrawer('right', false)}>
+        <Drawer open={props.isOpen} onRequestClose={props.closeSideNav}>
+          <div className={classes.list} tabIndex={0} role="button" onClick={props.closeSideNav}>
           <ListAside />
           </div>
         </Drawer>
       </div>
     );
   }
-}
+
 
 DrawerList.propTypes = {
   classes: PropTypes.object.isRequired,
+  closeSideNav: PropTypes.func,
+  isOpen: PropTypes.bool
 };
 
 export default withStyles(styles)(DrawerList);

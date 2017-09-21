@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 import List, {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import Hidden from 'material-ui/Hidden';
 import InboxIcon from 'material-ui-icons/Inbox';
 import DraftsIcon from 'material-ui-icons/Drafts';
 
@@ -18,9 +17,7 @@ const styles = theme => ({
 function ListAside(props) {
   const classes = props.classes;
   return (
-    <Hidden mdDown>
       <div className={classes.root}>
-
         <List>
           <ListItem button>
             <ListItemIcon>
@@ -45,7 +42,6 @@ function ListAside(props) {
           </ListItem>
         </List>
       </div>
-    </Hidden>
   );
 }
 

@@ -20,7 +20,7 @@ function NavBar(props) {
             <AppBar position="static" color="primary">
                 <Toolbar>
                     <Hidden lgUp>
-                    <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
+                    <IconButton className={classes.menuButton} color="contrast" aria-label="Menu" onClick={props.openSideNav}>
                         <MenuIcon/>
                     </IconButton>
                     </Hidden>
@@ -34,7 +34,8 @@ function NavBar(props) {
 }
 
 NavBar.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    openSideNav: PropTypes.func
 };
 
 export default withStyles(styles)(NavBar);
