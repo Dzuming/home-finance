@@ -9,11 +9,7 @@ import {
   DialogContentText,
   DialogTitle
 } from 'material-ui';
-import {
-  Grid,
-  TableView,
-  TableHeaderRow
-} from '@devexpress/dx-react-grid-material-ui';
+import {Grid, TableView, TableHeaderRow} from '@devexpress/dx-react-grid-material-ui';
 const styles = theme => ({
   commandButton: {
     minWidth: '40px'
@@ -29,14 +25,21 @@ const styles = theme => ({
     width: 'calc(100% - 16px)'
   }
 });
-const DeleteDialog = ({rows, columns, deletingRows, classes, cancelDelete, deleteRows}) => {
+const DeleteDialog = ({
+  rows,
+  columns,
+  deletingRows,
+  classes,
+  cancelDelete,
+  deleteRows
+}) => {
   return (
     <Dialog
       open={!!deletingRows.length}
       onRequestClose={cancelDelete}
       classes={{
         paper: classes.dialog
-    }}>
+      }}>
       <DialogTitle>Delete Row</DialogTitle>
       <DialogContent>
         <DialogContentText>

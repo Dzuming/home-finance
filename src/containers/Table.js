@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TableGrid from '../components/TableGrid';
-import DeleteDialog from '../components/DeleteDialog'
+import DeleteDialog from '../components/DeleteDialog';
 class Table extends Component {
   constructor(props) {
     super(props);

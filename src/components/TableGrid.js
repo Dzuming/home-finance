@@ -45,18 +45,13 @@ const commandTemplates = {
     </IconButton>
   )
 };
-const TableGrid = ({
-  rows,
-  columns,
-  commitChanges
-}) => {
+const TableGrid = ({rows, columns, commitChanges}) => {
   return (
     <Grid rows={rows} columns={columns} getRowId={row => row.id}>
       <FilteringState defaultFilters={[]}/>
       <PagingState defaultCurrentPage={0} pageSize={10}/>
       <SortingState/>
-      <EditingState
-        onCommitChanges={commitChanges}/>
+      <EditingState onCommitChanges={commitChanges}/>
       <LocalFiltering/>
       <LocalPaging/>
       <LocalSorting/>
@@ -73,18 +68,18 @@ const TableGrid = ({
             const onClick = (e) => {
               executeCommand();
               e.stopPropagation();
-          };
+            };
             return template(onClick,);
-        }
+          }
           return undefined;
         }}/>
       <PagingPanel/>
     </Grid>
   );
-}
+};
 TableGrid.propTypes = {
   rows: PropTypes.array.isRequired,
   columns: PropTypes.array.isRequired,
-  commitChanges: PropTypes.func.isRequired,
+  commitChanges: PropTypes.func.isRequired
 };
 export default TableGrid;
