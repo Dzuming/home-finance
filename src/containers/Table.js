@@ -1,100 +1,7 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {withStyles} from 'material-ui/styles';
-import {
-  SortingState,
-  LocalSorting,
-  PagingState,
-  LocalPaging,
-  FilteringState,
-  LocalFiltering,
-  EditingState
-} from '@devexpress/dx-react-grid';
-import {
-  TableCell,
-  Button,
-  IconButton,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
-} from 'material-ui';
-import {
-  Grid,
-  TableView,
-  TableHeaderRow,
-  PagingPanel,
-  TableFilterRow,
-  TableEditRow,
-  TableEditColumn,
-  DropDownMenu
-} from '@devexpress/dx-react-grid-material-ui';
-import EditIcon from 'material-ui-icons/Edit';
-import SaveIcon from 'material-ui-icons/Save';
-import CancelIcon from 'material-ui-icons/Cancel';
-import DeleteIcon from 'material-ui-icons/Delete';
-const styles = theme => ({
-  commandButton: {
-    minWidth: '40px'
-  },
-  lookupEditCell: {
-    verticalAlign: 'middle',
-    paddingRight: theme.spacing.unit,
-    '& ~ $lookupEditCell': {
-      paddingLeft: theme.spacing.unit
-    }
-  },
-  dialog: {
-    width: 'calc(100% - 16px)'
-  }
-});
-const commandTemplates = {
-  edit: onClick => (
-    <IconButton onClick={onClick} title="Edit row">
-      <EditIcon/>
-    </IconButton>
-  ),
-  delete: onClick => (
-    <IconButton onClick={onClick} title="Delete row">
-      <DeleteIcon/>
-    </IconButton>
-  ),
-  commit: onClick => (
-    <IconButton onClick={onClick} title="Save changes">
-      <SaveIcon/>
-    </IconButton>
-  ),
-  cancel: onClick => (
-    <IconButton color="accent" onClick={onClick} title="Cancel changes">
-      <CancelIcon/>
-    </IconButton>
-  )
-};
-const LookupEditCellBase = (({value, onValueChange, availableValues, classes}) => (
-  <TableCell className={classes.lookupEditCell}>
-    <DropDownMenu
-      onItemClick={newValue => onValueChange(newValue)}
-      defaultTitle={value}
-      items={availableValues}/>
-  </TableCell>
-));
-LookupEditCellBase.propTypes = {
-  value: PropTypes.any,
-  onValueChange: PropTypes.func.isRequired,
-  availableValues: PropTypes.array.isRequired,
-  classes: PropTypes.object.isRequired
-};
-LookupEditCellBase.defaultProps = {
-  value: undefined
-};
-
-export const LookupEditCell = withStyles(styles, {name: 'ControlledModeDemo'})(LookupEditCellBase);
-const availableValues = {
-  // product: globalSalesValues.product, region: globalSalesValues.region,
-  // customer: globalSalesValues.customer,
-};
-class Table extends PureComponent {
+import React, {Component} from 'react';
+import TableGrid from '../components/TableGrid';
+import DeleteDialog from '../components/DeleteDialog'
+class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -200,31 +107,8 @@ class Table extends PureComponent {
           car: "Nissan Altima"
         }
       ],
-      editingRows: [],
-      deletingRows: [],
-      changedRows: {}
+      deletingRows: []
     };
-    this.changeSorting = sorting => this.setState({sorting});
-    this.changeEditingRows = editingRows => this.setState({editingRows});
-    this.changeAddedRows = addedRows => this.setState({
-      addedRows: addedRows.map(row => (Object.keys(row).length
-        ? row
-        : {
-          amount: 0,
-          discount: 0,
-          saleDate: new Date()
-            .toISOString()
-            .split('T')[0],
-          product: availableValues.product[0],
-          region: availableValues.region[0],
-          customer: availableValues.customer[0]
-        }))
-    });
-    this.changeChangedRows = changedRows => this.setState({changedRows});
-    this.changeFilters = filters => this.setState({filters});
-    this.changeCurrentPage = currentPage => this.setState({currentPage});
-    this.changePageSize = pageSize => this.setState({pageSize});
-
     this.commitChanges = ({added, changed, deleted}) => {
       let rows = this.state.rows;
       if (added) {
@@ -239,6 +123,7 @@ class Table extends PureComponent {
           }))
         ];
       }
+      this.cancelDelete = () => this.setState({deletingRows: []});
       if (changed) {
         rows = rows.map(row => (changed[row.id]
           ? {
@@ -252,7 +137,7 @@ class Table extends PureComponent {
         deletingRows: deleted || this.state.deletingRows
       });
     };
-    this.cancelDelete = () => this.setState({deletingRows: []});
+
     this.deleteRows = () => {
       const rows = this
         .state
@@ -269,95 +154,22 @@ class Table extends PureComponent {
         });
       this.setState({rows, deletingRows: []});
     };
-    this.changeColumnOrder = (order) => {
-      this.setState({columnOrder: order});
-    };
+    this.cancelDelete = () => this.setState({deletingRows: []});
   }
   render() {
-    const {classes} = this.props;
-    const {
-      rows,
-      columns,
-      editingRows,
-      addedRows,
-      changedRows,
-      deletingRows
-    } = this.state;
+    const {rows, columns, deletingRows} = this.state;
 
     return (
       <div>
-        <Grid rows={rows} columns={columns} getRowId={row => row.id}>
-          <FilteringState defaultFilters={[]}/>
-          <PagingState defaultCurrentPage={0} pageSize={10}/>
-          <SortingState/>
-          <EditingState
-            editingRows={editingRows}
-            onEditingRowsChange={this.changeEditingRows}
-            changedRows={changedRows}
-            onChangedRowsChange={this.changeChangedRows}
-            addedRows={addedRows}
-            onAddedRowsChange={this.changeAddedRows}
-            onCommitChanges={this.commitChanges}/>
-          <LocalFiltering/>
-          <LocalPaging/>
-          <LocalSorting/>
-          <TableView/>
-          <TableHeaderRow allowSorting/>
-          <TableFilterRow/>
-          <TableEditRow
-            editCellTemplate={(props) => {
-            const {column} = props;
-            const columnValues = availableValues[column.name];
-            if (columnValues) {
-              return <LookupEditCell {...props} availableValues={columnValues}/>;
-            }
-            return undefined;
-          }}/>
-          <TableEditColumn
-            allowEditing
-            allowDeleting
-            commandTemplate={({executeCommand, id}) => {
-            const template = commandTemplates[id];
-            if (template) {
-              const onClick = (e) => {
-                executeCommand();
-                e.stopPropagation();
-              };
-              return template(onClick,);
-            }
-            return undefined;
-          }}/>
-          <PagingPanel/>
-        </Grid>
-
-        <Dialog
-          open={!!deletingRows.length}
-          onRequestClose={this.cancelDelete}
-          classes={{
-          paper: classes.dialog
-        }}>
-          <DialogTitle>Delete Row</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Are you sure to delete the following row?
-            </DialogContentText>
-            <Grid
-              rows={rows.filter(row => deletingRows.indexOf(row.id) > -1)}
-              columns={columns}>
-              <TableView tableCellTemplate={this.tableCellTemplate}/>
-              <TableHeaderRow/>
-            </Grid>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.cancelDelete} color="primary">Cancel</Button>
-            <Button onClick={this.deleteRows} color="accent">Delete</Button>
-          </DialogActions>
-        </Dialog>
+        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges}/>
+        <DeleteDialog
+          rows={rows}
+          columns={columns}
+          deletingRows={deletingRows}
+          deleteRows={this.deleteRows}
+          cancelDelete={this.cancelDelete}/>
       </div>
     );
   }
 }
-Table.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-export default withStyles(styles, {name: 'ControlledModeDemo'})(Table);
+export default Table;
