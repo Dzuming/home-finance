@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
+import Hidden from 'material-ui/Hidden';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as navActions from '../actions/navActions';
 import ListAside from '../components/ListAside';
 import DrawerList from '../components/DrawerList';
-import Hidden from 'material-ui/Hidden';
 class List extends Component {
   state = {}
   closeSideNav = () => {

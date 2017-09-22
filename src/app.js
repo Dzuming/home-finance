@@ -3,7 +3,7 @@ import {Component} from 'react';
 import Grid from 'material-ui/Grid';
 import Nav from './containers/Navigation';
 import List from './containers/List';
-import Table from './containers/Table'
+import Table from './containers/Table';
 import './index.scss';
 export default class App extends Component {
   render() {
