@@ -23,7 +23,13 @@ import EditIcon from 'material-ui-icons/Edit';
 import SaveIcon from 'material-ui-icons/Save';
 import CancelIcon from 'material-ui-icons/Cancel';
 import DeleteIcon from 'material-ui-icons/Delete';
+import NoteAddIcon from 'material-ui-icons/NoteAdd';
 const commandTemplates = {
+  add: onClick => (
+    <IconButton onClick={onClick} title="Add row">
+      <NoteAddIcon/>
+    </IconButton>
+  ),
   edit: onClick => (
     <IconButton onClick={onClick} title="Edit row">
       <EditIcon/>
@@ -60,6 +66,7 @@ const TableGrid = ({rows, columns, commitChanges}) => {
       <TableFilterRow/>
       <TableEditRow/>
       <TableEditColumn
+        allowAdding
         allowEditing
         allowDeleting
         commandTemplate={({executeCommand, id}) => {
