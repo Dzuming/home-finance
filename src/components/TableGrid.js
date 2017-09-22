@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {IconButton} from 'material-ui';
 import {
   SortingState,
   LocalSorting,
@@ -19,38 +18,7 @@ import {
   TableEditRow,
   TableEditColumn
 } from '@devexpress/dx-react-grid-material-ui';
-import EditIcon from 'material-ui-icons/Edit';
-import SaveIcon from 'material-ui-icons/Save';
-import CancelIcon from 'material-ui-icons/Cancel';
-import DeleteIcon from 'material-ui-icons/Delete';
-import NoteAddIcon from 'material-ui-icons/NoteAdd';
-const commandTemplates = {
-  add: onClick => (
-    <IconButton onClick={onClick} title="Add row">
-      <NoteAddIcon/>
-    </IconButton>
-  ),
-  edit: onClick => (
-    <IconButton onClick={onClick} title="Edit row">
-      <EditIcon/>
-    </IconButton>
-  ),
-  delete: onClick => (
-    <IconButton onClick={onClick} title="Delete row">
-      <DeleteIcon/>
-    </IconButton>
-  ),
-  commit: onClick => (
-    <IconButton onClick={onClick} title="Save changes">
-      <SaveIcon/>
-    </IconButton>
-  ),
-  cancel: onClick => (
-    <IconButton color="accent" onClick={onClick} title="Cancel changes">
-      <CancelIcon/>
-    </IconButton>
-  )
-};
+import CommandTemplate from '../helpers/CommandTemplates';
 const TableGrid = ({rows, columns, commitChanges}) => {
   return (
     <Grid rows={rows} columns={columns} getRowId={row => row.id}>
@@ -70,7 +38,7 @@ const TableGrid = ({rows, columns, commitChanges}) => {
         allowEditing
         allowDeleting
         commandTemplate={({executeCommand, id}) => {
-          const template = commandTemplates[id];
+          const template = CommandTemplate[id];
           if (template) {
             const onClick = (e) => {
               executeCommand();
