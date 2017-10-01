@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
+import {Link} from 'react-router-dom';
 import List, {ListItem, ListItemIcon, ListItemText, ListSubheader} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import InboxIcon from 'material-ui-icons/Inbox';
@@ -21,27 +22,12 @@ function ListAside(props) {
       <List>
         <ListSubheader>
           <Logo/>
-          </ListSubheader>
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Inbox"/>
+        </ListSubheader>
+        <ListItem button component={Link} to="Profit">
+          <ListItemText primary="Profit"/>
         </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <DraftsIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Drafts"/>
-        </ListItem>
-      </List>
-      <Divider/>
-      <List>
-        <ListItem button>
-          <ListItemText primary="Trash"/>
-        </ListItem>
-        <ListItem button component="a" href="#simple-list">
-          <ListItemText primary="Spam"/>
+        <ListItem button component={Link} to="Spending">
+          <ListItemText primary="Spending"/>
         </ListItem>
       </List>
     </div>
