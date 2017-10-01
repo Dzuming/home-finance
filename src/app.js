@@ -8,6 +8,7 @@ import Nav from './containers/Navigation';
 import List from './containers/List';
 import Table from './containers/Table';
 import './index.scss';
+import 'normalize.css';
 export default class App extends Component {
   render() {
     return (

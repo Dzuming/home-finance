@@ -38,6 +38,7 @@
     "install": "^0.10.1",
     "material-ui": "^1.0.0-beta.11",
     "material-ui-icons": "^1.0.0-beta.10",
+    "normalize.css": "^7.0.0",
     "npm": "^5.4.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
