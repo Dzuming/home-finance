@@ -1,22 +1,24 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-const styles = theme => ({
-  h2: {
-    padding: '122px',
-  },
-  primary: {
-    color: theme.palette.primary[500],
-  },
-});
-const Logo = (classes) => {
+import PropTypes from 'prop-types';
+import {withStyles} from 'material-ui/styles';
+const styles = {
+  header: {
+    marginBottom: '0',
+    lineHeight: '0'
+  }
+};
+const Logo = (props) => {
+  const classes = props.classes;
   return (
     <div>
       <a>
-      <h2>Home Finance</h2>
+        <h2 className={classes.header}>Home Finance</h2>
       </a>
       <small>v 0.1.0</small>
     </div>
   );
 };
-
+Logo.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 export default withStyles(styles)(Logo);
