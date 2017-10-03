@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 import {Link} from 'react-router-dom';
-import List, {ListItem, ListItemIcon, ListItemText, ListSubheader} from 'material-ui/List';
-import Divider from 'material-ui/Divider';
-import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
+import List, {ListItem, ListItemText, ListSubheader} from 'material-ui/List';
 import Logo from './Logo';
 const styles = theme => ({
   root: {
