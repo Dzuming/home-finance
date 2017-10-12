@@ -3,6 +3,8 @@ import InputText from '../components/InputText';
 import Grid from 'material-ui/Grid';
 import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
+import RaisedButton from '../components/RaisedButton'
+
 const styles = () => ({
   container: {
     height: '100vh'
@@ -28,6 +30,7 @@ class Login extends Component {
           <div>
             <InputText label="Password"/>
           </div>
+          <RaisedButton text={"Login"} color={"contrast"}/>
         </form>
         </Grid>
       </div>
