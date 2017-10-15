@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import compose from 'recompose/compose';
 import InputText from '../components/InputText';
 import Grid from 'material-ui/Grid';
 import PropTypes from 'prop-types';
@@ -61,4 +62,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(loginActions, dispatch)
   };
 }
-export default  withStyles(styles),connect(mapStateToProps, mapDispatchToProps)(Login);
+export default  compose(withStyles(styles),connect(mapStateToProps, mapDispatchToProps))(Login);
