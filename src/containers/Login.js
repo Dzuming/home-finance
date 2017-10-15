@@ -15,36 +15,45 @@ const styles = () => ({
   }
 });
 class Login extends Component {
-  state = {}
-  getData() {
+  state = {
+    login: '',
+    password: ''
+  }
+  sendCredentials = () => {
     this
-    .props
-    .actions
-    .login({Email: 'test', Password: 'test'});
+      .props
+      .actions
+      .login({Email: this.state.login, Password: this.state.password});
   }
+  handleChange = name => event => {
+    this.setState({[name]: event.target.value});
+  };
   componentDidMount() {
-    this.getData();
+    //this.getData();
   }
-  render() {  
+  render() {
     const classes = this.props.classes;
+    const {login, password} = this.state;
     return (
       <div>
         <Grid
-            container
-            className={classes.container}
-            align='center'
-            direction='row'
-            justify='center'
-          >
-        <form noValidate autoComplete="off">
-          <div>
-            <InputText label="Login"/>
-          </div>
-          <div>
-            <InputText label="Password"/>
-          </div>
-          <RaisedButton text={"Login"} color={"contrast"}/>
-        </form>
+          container
+          className={classes.container}
+          align='center'
+          direction='row'
+          justify='center'>
+          <form noValidate autoComplete="off">
+            <div>
+              <InputText label="Login" value={login} changeMethod={this.handleChange('login')}/>
+            </div>
+            <div>
+              <InputText
+                label="Password"
+                value={password}
+                changeMethod={this.handleChange('password')}/>
+            </div>
+            <RaisedButton clickMethod={this.sendCredentials} text={"Login"} color={"contrast"}/>
+          </form>
         </Grid>
       </div>
     );
@@ -52,7 +61,7 @@ class Login extends Component {
 }
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
-  actions: PropTypes.object,
+  actions: PropTypes.object
 };
 function mapStateToProps() {
   return {};
@@ -62,4 +71,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(loginActions, dispatch)
   };
 }
-export default  compose(withStyles(styles),connect(mapStateToProps, mapDispatchToProps))(Login);
+export default compose(withStyles(styles), connect(mapStateToProps, mapDispatchToProps))(Login);

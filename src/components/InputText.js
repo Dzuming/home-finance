@@ -14,15 +14,17 @@ const styles = theme => ({
     width: 200
   }
 });
-const InputText = ({classes, label}) => {
+const InputText = ({classes, label, changeMethod}) => {
   return (<TextField
     label={label}
     id="margin-none"
+    onChange= {changeMethod}
     className={classes.textField}/>);
 }
 
 InputText.propTypes = {
   classes: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  changeMethod: PropTypes.func.isRequired
 };
 export default withStyles(styles)(InputText);

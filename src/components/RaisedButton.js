@@ -13,16 +13,17 @@ const styles = theme => ({
   }
 });
 
-const RaisedButton = ({classes, text, color}) => {
+const RaisedButton = ({classes, text, color, clickMethod}) => {
   return (
-    <Button raised color={color} className={classes.button}>{text}</Button>
+    <Button onClick={clickMethod} raised color={color} className={classes.button}>{text}</Button>
   );
 }
 
 RaisedButton.propTypes = {
   classes: PropTypes.object.isRequired,
   text: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
+  clickMethod: PropTypes.func
 };
 
 export default withStyles(styles)(RaisedButton)

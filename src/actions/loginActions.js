@@ -1,17 +1,10 @@
 import * as types from './actionTypes';
 
 function requestLogin() {
-  return {type: types.REQUEST_LOGIN}
+  return {type: types.REQUEST_LOGIN};
 }
-function successLogin(response) {
-  return {
-    type: types.SUCCESS_LOGIN,
-    posts: response
-      .data
-      .children
-      .map(child => child.data),
-    receivedAt: Date.now()
-  }
+function successLogin(data) {
+  return {type: types.SUCCESS_LOGIN, jwt: data};
 }
 function authenticateUser(data) {
   const url = 'http://localhost:80/authenticate';
@@ -24,9 +17,13 @@ function authenticateUser(data) {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: credentials
-    }).then(response => dispatch(successLogin(response)));
-  }
+        body: credentials
+      })
+      .then(response => response.json())
+      .then(data => dispatch(successLogin(data)))
+      .catch(error => console.log(error));
+
+  };
 }
 export function login(subreddit) {
   // Note that the function also receives getState() which lets you choose what to
