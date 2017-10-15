@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import InputText from '../components/InputText';
 import Grid from 'material-ui/Grid';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as loginActions from '../actions/loginActions';
 import {withStyles} from 'material-ui/styles';
-import RaisedButton from '../components/RaisedButton'
+import RaisedButton from '../components/RaisedButton';
 
 const styles = () => ({
   container: {
@@ -12,6 +15,15 @@ const styles = () => ({
 });
 class Login extends Component {
   state = {}
+  getData() {
+    this
+    .props
+    .actions
+    .login({Email: 'test', Password: 'test'});
+  }
+  componentDidMount() {
+    this.getData();
+  }
   render() {  
     const classes = this.props.classes;
     return (
@@ -39,6 +51,14 @@ class Login extends Component {
 }
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
-  openSideNav: PropTypes.func
+  actions: PropTypes.object,
 };
-export default withStyles(styles)(Login);
+function mapStateToProps() {
+  return {};
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(loginActions, dispatch)
+  };
+}
+export default  withStyles(styles),connect(mapStateToProps, mapDispatchToProps)(Login);
