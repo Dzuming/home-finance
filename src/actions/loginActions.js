@@ -4,7 +4,8 @@ function requestLogin() {
   return {type: types.REQUEST_LOGIN};
 }
 function successLogin(data) {
-  return {type: types.SUCCESS_LOGIN, jwt: data};
+  setStorageToken(data.token);
+  return {type: types.SUCCESS_LOGIN};
 }
 function loginError(message) {
   return {type: types.LOGIN_FAILURE,  message}
@@ -28,12 +29,15 @@ function authenticateUser(data) {
       if (!response.ok) {
         throw Error(response.statusText);
       }
-      response.json()
+      return response.json();
     }).then((data) => {
       dispatch(successLogin(data));
       dispatch(authUser());
     }).catch((error => dispatch(loginError(error))));
   };
+}
+function setStorageToken(token) {
+  localStorage.setItem('token', token)
 }
 export function login(data) {
   // Note that the function also receives getState() which lets you choose what to

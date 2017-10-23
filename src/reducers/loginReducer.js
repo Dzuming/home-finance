@@ -9,8 +9,7 @@ export default function logintReducer(state = [], action) {
     case types.SUCCESS_LOGIN:
       return Object.assign({}, state, {
         isFetching: false,
-        isAuthenticated: true,
-        jwt: action.jwt
+        isAuthenticated: true
       });
     case types.LOGIN_FAILURE:
       return Object.assign({}, state, {
