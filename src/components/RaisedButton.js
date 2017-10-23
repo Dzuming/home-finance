@@ -26,4 +26,4 @@ RaisedButton.propTypes = {
   clickMethod: PropTypes.func
 };
 
-export default withStyles(styles)(RaisedButton)
+export default withStyles(styles)(RaisedButton);

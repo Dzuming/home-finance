@@ -23,14 +23,20 @@ class Login extends Component {
     this
       .props
       .actions
-      .login({Email: this.state.login, Password: this.state.password});
+      .login({Email: this.state.login, Password: this.state.password})
+      .then(() => {
+        if (this.props.isAuthenticated) {
+          this
+            .props
+            .history
+            .push('/Spending');
+        }
+      });
   }
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
   };
-  componentDidMount() {
-    //this.getData();
-  }
+  componentDidMount() {}
   render() {
     const classes = this.props.classes;
     const {login, password} = this.state;
@@ -44,7 +50,10 @@ class Login extends Component {
           justify='center'>
           <form noValidate autoComplete="off">
             <div>
-              <InputText label="Login" value={login} changeMethod={this.handleChange('login')}/>
+              <InputText
+                label="Login"
+                value={login}
+                changeMethod={this.handleChange('login')}/>
             </div>
             <div>
               <InputText
@@ -52,7 +61,10 @@ class Login extends Component {
                 value={password}
                 changeMethod={this.handleChange('password')}/>
             </div>
-            <RaisedButton clickMethod={this.sendCredentials} text={"Login"} color={"contrast"}/>
+            <RaisedButton
+              clickMethod={this.sendCredentials}
+              text={"Login"}
+              color={"contrast"}/>
           </form>
         </Grid>
       </div>
@@ -63,8 +75,8 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired,
   actions: PropTypes.object
 };
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {isAuthenticated: state.login.isAuthenticated};
 }
 function mapDispatchToProps(dispatch) {
   return {
