@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import {Route} from 'react-router';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
@@ -17,7 +17,7 @@ class App extends Component {
     const {isAuthenticated} = this.props;
     return (
       <div>
-        <BrowserRouter>
+        <Router>
           <Grid container spacing={0}>
             <Grid item lg={12}>
               <Route path="/Login" component={Login}/>
@@ -27,17 +27,20 @@ class App extends Component {
             </Grid>
             <Grid item xs={12} lg={10}>
               {isAuthenticated &&< Nav />}
-              <PrivateRoute
-                isAuthenticated={isAuthenticated}
-                path="/Profit"
-                component={Table}/>
-              <PrivateRoute
-                isAuthenticated={isAuthenticated}
-                path="/Spending"
-                component={Table}/>
+              <Switch>
+                <PrivateRoute
+                  isAuthenticated={isAuthenticated}
+                  path="/Profit"
+                  component={Table}/>
+                <PrivateRoute
+                  isAuthenticated={isAuthenticated}
+                  path="/Spending"
+                  component={Table}/>
+                <Redirect exact from="/" to="/Login"/>
+              </Switch>
             </Grid>
           </Grid>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }
