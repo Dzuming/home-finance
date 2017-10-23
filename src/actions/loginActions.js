@@ -6,6 +6,9 @@ function requestLogin() {
 function successLogin(data) {
   return {type: types.SUCCESS_LOGIN, jwt: data};
 }
+function loginError(message) {
+  return {type: types.LOGIN_FAILURE,  message}
+}
 function authUser() {
   return {type: types.AUTH_USER};
 }
@@ -29,7 +32,7 @@ function authenticateUser(data) {
     }).then((data) => {
       dispatch(successLogin(data));
       dispatch(authUser());
-    }).catch((error => console.log(error)))
+    }).catch((error => dispatch(loginError(error))));
   };
 }
 export function login(data) {

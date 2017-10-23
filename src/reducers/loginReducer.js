@@ -12,10 +12,14 @@ export default function logintReducer(state = [], action) {
         isAuthenticated: true,
         jwt: action.jwt
       });
-    case types.AUTH_USER:
+    case types.LOGIN_FAILURE:
       return Object.assign({}, state, {
-        isAuthenticated: true,
+        isFetching: false,
+        isAuthenticated: false,
+        message: action.message
       });
+    case types.AUTH_USER:
+      return Object.assign({}, state, {isAuthenticated: true});
     default:
       return state;
   }
