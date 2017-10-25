@@ -1,5 +1,5 @@
 import * as types from '../actions/actionTypes';
-export default function logintReducer(state = [], action) {
+export default function loginReducer(state = [], action) {
   switch (action.type) {
     case types.REQUEST_LOGIN:
       return Object.assign({}, state, {

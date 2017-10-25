@@ -37,7 +37,7 @@ function authenticateUser(data) {
   };
 }
 function setStorageToken(token) {
-  localStorage.setItem('token', token)
+  localStorage.setItem('token', token);
 }
 export function login(data) {
   // Note that the function also receives getState() which lets you choose what to
