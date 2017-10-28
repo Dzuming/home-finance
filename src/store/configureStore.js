@@ -1,11 +1,20 @@
-import {createStore, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import rootReducer from '../reducers';
 import thunkMiddleware from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
-const initialState = { 
-  login: {isAuthenticated:  localStorage.getItem('token') ? true : false}
+const initialState = {
+  login: {
+    isAuthenticated: localStorage.getItem('token')
+      ? true
+      : false
+  },
+  user: {
+    user: localStorage.getItem('user')
+      ? JSON.parse(localStorage.getItem('user'))
+      : {}
+  }
 };
 export default function configureStore() {
-  return createStore(rootReducer, initialState,  composeWithDevTools(applyMiddleware(thunkMiddleware)));
+  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 }

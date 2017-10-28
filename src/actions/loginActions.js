@@ -1,10 +1,11 @@
 import * as types from './actionTypes';
-
+import { setUser } from './userActions'
 function requestLogin() {
   return {type: types.REQUEST_LOGIN};
 }
 function successLogin(data) {
   setStorageToken(data.token);
+  
   return {type: types.SUCCESS_LOGIN};
 }
 function loginError(message) {
@@ -33,6 +34,7 @@ function authenticateUser(data) {
     }).then((data) => {
       dispatch(successLogin(data));
       dispatch(authUser());
+      dispatch(setUser(data.user));
     }).catch((error => dispatch(loginError(error))));
   };
 }
