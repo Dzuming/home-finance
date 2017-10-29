@@ -8,7 +8,7 @@ function receiveLogout() {
 }
 export function logout() {
   return (dispatch, getState) => {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
       dispatch(requestLogout());
       localStorage.removeItem('token');
       dispatch(receiveLogout());

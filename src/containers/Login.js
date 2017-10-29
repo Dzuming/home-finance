@@ -73,7 +73,9 @@ class Login extends Component {
 }
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
-  actions: PropTypes.object
+  actions: PropTypes.object,
+  history: PropTypes.object,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 function mapStateToProps(state) {
   return {isAuthenticated: state.login.isAuthenticated};

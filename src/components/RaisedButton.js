@@ -17,7 +17,7 @@ const RaisedButton = ({classes, text, color, clickMethod}) => {
   return (
     <Button onClick={clickMethod} raised color={color} className={classes.button}>{text}</Button>
   );
-}
+};
 
 RaisedButton.propTypes = {
   classes: PropTypes.object.isRequired,

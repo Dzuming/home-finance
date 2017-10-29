@@ -4,11 +4,11 @@ import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 const currentYearAndMonth = () => {
-  const Today = new Date()
+  const Today = new Date();
   const currentYear = Today.getFullYear();
   const currentMonth = Today.getMonth() + 1;
   return `${currentYear}-${currentMonth}`;
-}
+};
 const initialState = {
   login: {
     isAuthenticated: localStorage.getItem('token')

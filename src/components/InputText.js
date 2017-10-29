@@ -20,7 +20,7 @@ const InputText = ({classes, label, changeMethod}) => {
     id="margin-none"
     onChange= {changeMethod}
     className={classes.textField}/>);
-}
+};
 
 InputText.propTypes = {
   classes: PropTypes.object.isRequired,
