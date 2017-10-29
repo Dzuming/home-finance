@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({hot: true, template: './src/index.html', filename: 'index.html', inject: 'body'});
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({hot: true, template: './src/index.html', filename: 'index.html', inject: 'false'});
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -42,7 +42,13 @@ module.exports = {
     // respond to 404s with index.html
   },
   plugins: [
-    HtmlWebpackPluginConfig, new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      }
+    }),
+    HtmlWebpackPluginConfig,
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: false, debug: true, noInfo: true, // set to false to see a list of every file being bundled.
       options: {
