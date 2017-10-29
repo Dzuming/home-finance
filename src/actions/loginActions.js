@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { setUser } from './userActions'
+import { setUser } from './userActions';
 function requestLogin() {
   return {type: types.REQUEST_LOGIN};
 }

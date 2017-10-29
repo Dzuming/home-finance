@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import TableGrid from '../components/TableGrid';
 import DeleteDialog from '../components/DeleteDialog';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as financeFlowActions from '../actions/financeFlowActions';
 
 class Table extends Component {
   constructor(props) {
@@ -159,7 +163,7 @@ class Table extends Component {
   }
   render() {
     const {rows, columns, deletingRows} = this.state;
-
+    this.props.actions.getFinanceFlow();
     return (
       <div>
         <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges}/>
@@ -173,4 +177,15 @@ class Table extends Component {
     );
   }
 }
-export default Table;
+Table.propTypes = {
+  actions: PropTypes.object,
+};
+function mapStateToProps() {
+  return {};
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(financeFlowActions, dispatch)
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
