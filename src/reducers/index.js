@@ -1,10 +1,9 @@
 import {combineReducers} from 'redux';
 import nav from './navReducer';
-import login from './loginReducer';
-import logout from './logoutReducer';
 import user from './userReducer';
+import auth from './authReducer';
 import financeFlow from './financeFlowReducer';
 
-const rootReducer = combineReducers({nav, login, logout, user, financeFlow});
+const rootReducer = combineReducers({nav, auth, user, financeFlow});
 
 export default rootReducer;

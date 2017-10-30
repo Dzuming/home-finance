@@ -49,6 +49,6 @@ App.propTypes = {
   isAuthenticated: PropTypes.bool
 };
 function mapStateToProps(state) {
-  return {isAuthenticated: state.login.isAuthenticated};
+  return {isAuthenticated: state.auth.isAuthenticated};
 }
 export default connect(mapStateToProps, null)(App);

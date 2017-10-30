@@ -12,7 +12,7 @@ export function logout() {
       dispatch(requestLogout());
       localStorage.removeItem('token');
       dispatch(receiveLogout());
-      resolve(getState())
+      resolve(getState());
     })
   }
 }

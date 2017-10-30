@@ -30,7 +30,7 @@ class ListAside extends Component {
       .actions
       .logout()
       .then((data) => {
-        if (!data.logout.isAuthenticated) {
+        if (!data.auth.isAuthenticated) {
           this
             .props
             .history
@@ -73,7 +73,7 @@ ListAside.propTypes = {
   actions: PropTypes.object
 };
 function mapStateToProps(state) {
-  return {isAuthenticated: state.login.isAuthenticated};
+  return {isAuthenticated: state.auth.isAuthenticated};
 }
 function mapDispatchToProps(dispatch) {
   return {

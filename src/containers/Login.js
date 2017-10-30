@@ -36,7 +36,6 @@ class Login extends Component {
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
   };
-  componentDidMount() {}
   render() {
     const classes = this.props.classes;
     const {login, password} = this.state;
@@ -78,7 +77,7 @@ Login.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired
 };
 function mapStateToProps(state) {
-  return {isAuthenticated: state.login.isAuthenticated};
+  return {isAuthenticated: state.auth.isAuthenticated};
 }
 function mapDispatchToProps(dispatch) {
   return {
