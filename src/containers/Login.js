@@ -11,6 +11,7 @@ import RaisedButton from '../components/RaisedButton';
 
 const styles = () => ({
   container: {
+    width: '100vw',
     height: '100vh'
   }
 });
@@ -43,8 +44,9 @@ class Login extends Component {
       <div>
         <Grid
           container
+          xs="12"
           className={classes.container}
-          align='center'
+          alignItems='center'
           direction='row'
           justify='center'>
           <form noValidate autoComplete="off">
