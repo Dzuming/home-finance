@@ -16,7 +16,7 @@ class Table extends Component {
           title: 'Description'
         }, {
           name: 'spending',
-          title: 'SPending'
+          title: 'Spending'
         }, {
           name: 'dataCreated',
           title: 'Data created'
