@@ -44,7 +44,6 @@ class Login extends Component {
       <div>
         <Grid
           container
-          xs="12"
           className={classes.container}
           alignItems='center'
           direction='row'
