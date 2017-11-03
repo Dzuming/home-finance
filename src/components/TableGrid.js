@@ -21,7 +21,7 @@ import {
 import CommandTemplate from '../helpers/CommandTemplates';
 const TableGrid = ({rows, columns, commitChanges}) => {
   return (
-    <Grid rows={rows} columns={columns} getRowId={row => row.id}>
+    <Grid rows={rows} columns={columns} getRowId={row => row._id}>
       <FilteringState defaultFilters={[]}/>
       <PagingState defaultCurrentPage={0} pageSize={10}/>
       <SortingState/>

@@ -12,18 +12,17 @@ class Table extends Component {
     this.state = {
       columns: [
         {
-          name: 'description',
+          name: 'Description',
           title: 'Description'
         }, {
-          name: 'spending',
+          name: 'Spending',
           title: 'Spending'
         }, {
-          name: 'dataCreated',
+          name: 'DateCreated',
           title: 'Data created'
         },
       ],
-      rows: [
-      ],
+      rows: [],
       deletingRows: []
     };
     this.commitChanges = ({ added, changed, deleted }) => {
@@ -73,9 +72,15 @@ class Table extends Component {
     };
     this.cancelDelete = () => this.setState({ deletingRows: [] });
   }
+  componentDidMount() {
+    this.props.actions.getFinanceFlow().then((rows) => {
+      this.setState({
+        rows: this.props.spending
+      });
+    });
+  }
   render() {
     const { rows, columns, deletingRows } = this.state;
-    this.props.actions.getFinanceFlow();
     return (
       <div>
         <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} />
@@ -92,8 +97,8 @@ class Table extends Component {
 Table.propTypes = {
   actions: PropTypes.object,
 };
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return { spending: state.financeFlow.spending };
 }
 function mapDispatchToProps(dispatch) {
   return {
