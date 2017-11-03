@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import TableGrid from '../components/TableGrid';
 import DeleteDialog from '../components/DeleteDialog';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
 
 class Table extends Component {
@@ -12,109 +12,21 @@ class Table extends Component {
     this.state = {
       columns: [
         {
-          name: 'name',
-          title: 'Name'
+          name: 'description',
+          title: 'Description'
         }, {
-          name: 'sex',
-          title: 'Sex'
+          name: 'spending',
+          title: 'SPending'
         }, {
-          name: 'city',
-          title: 'City'
-        }, {
-          name: 'car',
-          title: 'Car'
-        }
+          name: 'dataCreated',
+          title: 'Data created'
+        },
       ],
       rows: [
-        {
-          id: 1,
-          sex: "Female",
-          name: "Sandra",
-          city: "Las Vegas",
-          car: "Audi A4"
-        }, {
-          id: 2,
-          sex: "Male",
-          name: "Paul",
-          city: "Paris",
-          car: "Nissan Altima"
-        }, {
-          id: 3,
-          sex: "Male",
-          name: "Mark",
-          city: "Paris",
-          car: "Honda Accord"
-        }, {
-          id: 4,
-          sex: "Male",
-          name: "Paul",
-          city: "Paris",
-          car: "Nissan Altima"
-        }, {
-          id: 5,
-          sex: "Female",
-          name: "Linda",
-          city: "Austin",
-          car: "Toyota Corolla"
-        }, {
-          id: 6,
-          sex: "Male",
-          name: "Robert",
-          city: "Las Vegas",
-          car: "Chevrolet Cruze"
-        }, {
-          id: 7,
-          sex: "Female",
-          name: "Lisa",
-          city: "London",
-          car: "BMW 750"
-        }, {
-          id: 8,
-          sex: "Male",
-          name: "Mark",
-          city: "Chicago",
-          car: "Toyota Corolla"
-        }, {
-          id: 9,
-          sex: "Male",
-          name: "Thomas",
-          city: "Rio de Janeiro",
-          car: "Honda Accord"
-        }, {
-          id: 10,
-          sex: "Male",
-          name: "Robert",
-          city: "Las Vegas",
-          car: "Honda Civic"
-        }, {
-          id: 11,
-          sex: "Female",
-          name: "Betty",
-          city: "Paris",
-          car: "Honda Civic"
-        }, {
-          id: 12,
-          sex: "Male",
-          name: "Robert",
-          city: "Los Angeles",
-          car: "Honda Accord"
-        }, {
-          id: 13,
-          sex: "Male",
-          name: "William",
-          city: "Los Angeles",
-          car: "Honda Civic"
-        }, {
-          id: 14,
-          sex: "Male",
-          name: "Mark",
-          city: "Austin",
-          car: "Nissan Altima"
-        }
       ],
       deletingRows: []
     };
-    this.commitChanges = ({added, changed, deleted}) => {
+    this.commitChanges = ({ added, changed, deleted }) => {
       let rows = this.state.rows;
       if (added) {
         const startingAddedId = (rows.length - 1) > 0
@@ -128,7 +40,7 @@ class Table extends Component {
           }))
         ];
       }
-      this.cancelDelete = () => this.setState({deletingRows: []});
+      this.cancelDelete = () => this.setState({ deletingRows: [] });
       if (changed) {
         rows = rows.map(row => (changed[row.id]
           ? {
@@ -157,22 +69,22 @@ class Table extends Component {
             rows.splice(index, 1);
           }
         });
-      this.setState({rows, deletingRows: []});
+      this.setState({ rows, deletingRows: [] });
     };
-    this.cancelDelete = () => this.setState({deletingRows: []});
+    this.cancelDelete = () => this.setState({ deletingRows: [] });
   }
   render() {
-    const {rows, columns, deletingRows} = this.state;
+    const { rows, columns, deletingRows } = this.state;
     this.props.actions.getFinanceFlow();
     return (
       <div>
-        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges}/>
+        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} />
         <DeleteDialog
           rows={rows}
           columns={columns}
           deletingRows={deletingRows}
           deleteRows={this.deleteRows}
-          cancelDelete={this.cancelDelete}/>
+          cancelDelete={this.cancelDelete} />
       </div>
     );
   }
