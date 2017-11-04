@@ -41,10 +41,10 @@ class Table extends Component {
       }
       this.cancelDelete = () => this.setState({ deletingRows: [] });
       if (changed) {
-        rows = rows.map(row => (changed[row.id]
+        rows = rows.map(row => (changed[row._id]
           ? {
             ...row,
-            ...changed[row.id]
+            ...changed[row._id]
           }
           : row));
       }
