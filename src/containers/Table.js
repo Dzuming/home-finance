@@ -12,13 +12,13 @@ class Table extends Component {
     this.state = {
       columns: [
         {
-          name: 'Description',
+          name: 'description',
           title: 'Description'
         }, {
-          name: 'Spending',
+          name: 'spending',
           title: 'Spending'
         }, {
-          name: 'DateCreated',
+          name: 'dateCreated',
           title: 'Data created'
         },
       ],
@@ -41,10 +41,10 @@ class Table extends Component {
       }
       this.cancelDelete = () => this.setState({ deletingRows: [] });
       if (changed) {
-        rows = rows.map(row => (changed[row._id]
+        rows = rows.map(row => (changed[row.id]
           ? {
             ...row,
-            ...changed[row._id]
+            ...changed[row.id]
           }
           : row));
       }

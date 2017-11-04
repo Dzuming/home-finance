@@ -4,9 +4,17 @@ export default function financeFlowReducer(state = [], action) {
     case types.REQUEST_FINANCE_FLOW:
       return Object.assign({}, state, {isFetching: true});
     case types.SUCCESS_FINANCE_FLOW:
+    
       return Object.assign({}, state, {
         isFetching: false,
-        spending: action.data
+        spending: action.data.map((value)=> {
+          return {
+            id: value._id,
+            description: value.Description, 
+            spending: value.Spending,
+            dateCreated: value.DateCreated 
+          }
+        })
       });
     case types.AUTH_USER:
       return Object.assign({}, state, {isAuthenticated: true});
