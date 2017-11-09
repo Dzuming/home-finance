@@ -16,10 +16,11 @@ class Table extends Component {
           title: 'Description'
         }, {
           name: 'spending',
-          title: 'Spending'
+          title: 'Spending',
         }, {
           name: 'dateCreated',
-          title: 'Data created'
+          title: 'Data created',
+          dataType: 'date'
         },
       ],
       rows: [],
@@ -38,6 +39,7 @@ class Table extends Component {
             ...row
           }))
         ];
+        this.props.actions.setFinanceFlow(added);
       }
       this.cancelDelete = () => this.setState({ deletingRows: [] });
       if (changed) {
@@ -73,7 +75,7 @@ class Table extends Component {
     this.cancelDelete = () => this.setState({ deletingRows: [] });
   }
   componentDidMount() {
-    this.props.actions.getFinanceFlow().then((rows) => {
+    this.props.actions.getFinanceFlow().then(() => {
       this.setState({
         rows: this.props.spending
       });
@@ -96,6 +98,7 @@ class Table extends Component {
 }
 Table.propTypes = {
   actions: PropTypes.object,
+  spending: PropTypes.array
 };
 function mapStateToProps(state) {
   return { spending: state.financeFlow.spending };

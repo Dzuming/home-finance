@@ -7,7 +7,8 @@ import {
   LocalPaging,
   FilteringState,
   LocalFiltering,
-  EditingState
+  EditingState,
+  DataTypeProvider
 } from '@devexpress/dx-react-grid';
 import {
   Grid,
@@ -19,36 +20,51 @@ import {
   TableEditColumn
 } from '@devexpress/dx-react-grid-material-ui';
 import CommandTemplate from '../helpers/CommandTemplates';
-const TableGrid = ({rows, columns, commitChanges}) => {
+import TextField from 'material-ui/TextField';
+const TableGrid = ({ rows, columns, commitChanges }) => {
   return (
     <Grid rows={rows} columns={columns} getRowId={row => row.id}>
-      <FilteringState defaultFilters={[]}/>
-      <PagingState defaultCurrentPage={0} pageSize={10}/>
-      <SortingState/>
-      <EditingState onCommitChanges={commitChanges}/>
-      <LocalFiltering/>
-      <LocalPaging/>
-      <LocalSorting/>
-      <TableView/>
-      <TableHeaderRow allowSorting/>
-      <TableFilterRow/>
-      <TableEditRow/>
+      <FilteringState defaultFilters={[]} />
+      <PagingState defaultCurrentPage={0} pageSize={10} />
+      <SortingState />
+      <EditingState onCommitChanges={commitChanges} />
+      <LocalFiltering />
+      <LocalPaging />
+      <LocalSorting />
+      <TableView />
+      <TableHeaderRow allowSorting />
+      <TableFilterRow />
+      <TableEditRow />
       <TableEditColumn
         allowAdding
         allowEditing
         allowDeleting
-        commandTemplate={({executeCommand, id}) => {
+        commandTemplate={({ executeCommand, id }) => {
           const template = CommandTemplate[id];
           if (template) {
             const onClick = (e) => {
               executeCommand();
               e.stopPropagation();
             };
-            return template(onClick,);
+            return template(onClick, );
           }
           return undefined;
-        }}/>
-      <PagingPanel/>
+        }} />
+      <PagingPanel />
+      <DataTypeProvider
+        type="date"
+        editorTemplate={({ onValueChange }) => (
+          <TextField
+            id="date"
+            label="Birthday"
+            type="date"
+            onChange={e => onValueChange(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        )}
+      />
     </Grid>
   );
 };
