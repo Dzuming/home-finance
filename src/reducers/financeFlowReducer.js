@@ -13,7 +13,7 @@ export default function financeFlowReducer(state = [], action) {
             description: value.Description, 
             spending: value.Spending,
             dateCreated: value.DateCreated.split('T')[0] 
-          }
+          };
         })
       });
     case types.AUTH_USER:

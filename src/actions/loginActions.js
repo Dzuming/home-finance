@@ -9,7 +9,7 @@ function successLogin(data) {
   return {type: types.SUCCESS_LOGIN};
 }
 function loginError(message) {
-  return {type: types.LOGIN_FAILURE,  message}
+  return {type: types.LOGIN_FAILURE,  message};
 }
 function authUser() {
   return {type: types.AUTH_USER};

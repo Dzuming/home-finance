@@ -13,6 +13,6 @@ export function logout() {
       localStorage.removeItem('token');
       dispatch(receiveLogout());
       resolve(getState());
-    })
-  }
+    });
+  };
 }
