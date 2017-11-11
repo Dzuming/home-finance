@@ -21,19 +21,11 @@ function fetchFinanceFlow(userId, selectedDate) {
 
 function postFinanceFlow(data) {
   const url = `${env.api_url}/Spending`;
-  const currentUser = JSON.parse(localStorage.getItem('user'));
-  const financeFlowToSend = {
-    categoryId: '59f0efc7407b78332878b47a',
-    userId: currentUser.id,
-    spending: data.spending,
-    description: data.description,
-    dateCreated: data.dateCreated
-  }
   return dispatch => {
     return fetch(url, {
       method: 'POST', headers: {
         'Content-Type': 'application/json',
-      }, body: JSON.stringify(financeFlowToSend)
+      }, body: JSON.stringify(getFinanceFlowToSend(data))
     }).then(response => {
       if (!response.ok) {
         throw Error(response.statusText);
@@ -44,6 +36,18 @@ function postFinanceFlow(data) {
     }).catch((error => error));
   };
 }
+
+const getFinanceFlowToSend = (data) => {
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  return {
+    categoryId: '59f0efc7407b78332878b47a',
+    userId: currentUser.id,
+    spending: data.spending,
+    description: data.description,
+    dateCreated: data.dateCreated
+  }
+}
+
 export function getFinanceFlow() {
   return (dispatch, getState) => {
 
@@ -52,6 +56,7 @@ export function getFinanceFlow() {
     return dispatch(fetchFinanceFlow(userId, selectedDate));
   };
 }
+
 export function setFinanceFlow(data) {
   return (dispatch) => {
     return dispatch(postFinanceFlow(data));
