@@ -21,11 +21,19 @@ function fetchFinanceFlow(userId, selectedDate) {
 
 function postFinanceFlow(data) {
   const url = `${env.api_url}/Spending`;
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  const financeFlowToSend = {
+    categoryId: '59f0efc7407b78332878b47a',
+    userId: currentUser.id,
+    spending: data.spending,
+    description: data.description,
+    dateCreated: data.dateCreated
+  }
   return dispatch => {
     return fetch(url, {
       method: 'POST', headers: {
         'Content-Type': 'application/json',
-      }, body: JSON.stringify(...data)
+      }, body: JSON.stringify(financeFlowToSend)
     }).then(response => {
       if (!response.ok) {
         throw Error(response.statusText);

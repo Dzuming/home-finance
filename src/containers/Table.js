@@ -39,7 +39,7 @@ class Table extends Component {
             ...row
           }))
         ];
-        this.props.actions.setFinanceFlow(added);
+        this.props.actions.setFinanceFlow(...added);
       }
       this.cancelDelete = () => this.setState({ deletingRows: [] });
       if (changed) {
