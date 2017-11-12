@@ -21,12 +21,12 @@ import {
 } from '@devexpress/dx-react-grid-material-ui';
 import CommandTemplate from '../helpers/CommandTemplates';
 import TextField from 'material-ui/TextField';
-const TableGrid = ({ rows, columns, commitChanges }) => {
+const TableGrid = ({ rows, columns, sorting, commitChanges }) => {
   return (
     <Grid rows={rows} columns={columns} getRowId={row => row.id}>
       <FilteringState defaultFilters={[]} />
       <PagingState defaultCurrentPage={0} pageSize={10} />
-      <SortingState />
+      <SortingState sorting={sorting}/>
       <EditingState onCommitChanges={commitChanges} />
       <LocalFiltering />
       <LocalPaging />

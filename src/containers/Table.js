@@ -25,7 +25,8 @@ class Table extends Component {
         },
       ],
       rows: [],
-      deletingRows: []
+      deletingRows: [],
+      sorting: [{ columnName: 'dateCreated', direction: 'desc' }],
     };
     this.commitChanges = ({ added, changed, deleted }) => {
       let rows = this.state.rows;
@@ -83,10 +84,10 @@ class Table extends Component {
     });
   }
   render() {
-    const { rows, columns, deletingRows } = this.state;
+    const { rows, columns, sorting, deletingRows } = this.state;
     return (
       <div>
-        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} />
+        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} sorting={sorting} />
         <DeleteDialog
           rows={rows}
           columns={columns}
