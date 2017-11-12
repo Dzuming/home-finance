@@ -17,6 +17,7 @@ class Table extends Component {
         }, {
           name: 'spending',
           title: 'Spending',
+          dataType: 'number'
         }, {
           name: 'dateCreated',
           title: 'Data created',

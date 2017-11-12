@@ -56,8 +56,22 @@ const TableGrid = ({ rows, columns, commitChanges }) => {
         editorTemplate={({ onValueChange }) => (
           <TextField
             id="date"
-            label="Birthday"
+            label="data created"
             type="date"
+            onChange={e => onValueChange(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        )}
+      />
+      <DataTypeProvider
+        type="number"
+        editorTemplate={({ onValueChange }) => (
+          <TextField
+            id="date"
+            label="spending"
+            type="number"
             onChange={e => onValueChange(e.target.value)}
             InputLabelProps={{
               shrink: true,
