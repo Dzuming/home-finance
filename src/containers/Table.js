@@ -11,6 +11,7 @@ class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      availableValues: ['Jedzenie', 'Ubrania'],
       columns: [
         {
           name: 'description',
@@ -65,43 +66,51 @@ class Table extends Component {
         deletingRows: deleted || this.state.deletingRows
       });
     };
-
-    this.editCellTemplate = ({ column, value, onValueChange }) => {
-
-      if (column.name !== 'category') {
+    this.baseCellTemplate = (column, typeOfOperation) => {
+      if (!this.columnToAddSelect(column.name)) {
         return;
       }
-      const columnValues = ['jedzenie', 'ubrania'];
-      if (columnValues) {
+      if (typeOfOperation) {
+        return typeOfOperation();
+      }
+      return undefined;
+    };
+    this.editCellTemplate = ({ column, value, onValueChange }) => {
+      const editMethod = () => {
         return (
           <LookupEditCell
             column={column}
             value={value ? value : ''}
             onValueChange={onValueChange}
-            availableValues={columnValues}
+            availableValues={this.state.availableValues}
           />
         );
-      }
-      return undefined;
+      };
+      return this.baseCellTemplate(column, editMethod);
+
     };
     this.filterCellTemplate = ({ column, filter, setFilter }) => {
-      if (column.name !== 'category') {
-        return;
-      }
-      const columnValues = ['Jedzenie', 'Ubrania'];
-
-      if (columnValues) {
-        this.value = this.state.value ? this.value : columnValues[0];
+      const filterMethod = () => {
         return (
           <LookupEditCell
             column={column}
             value={filter ? filter.value : ''}
             onValueChange={e => setFilter(e ? { value: e } : null)}
-            availableValues={columnValues}
+            availableValues={this.state.availableValues}
           />
         );
-      }
-      return undefined;
+      };
+      return this.baseCellTemplate(column, filterMethod);
+    };
+    this.columnToAddSelect = (columnName) => {
+      const columnToAddSelectList = ['category'];
+      let addSelectToColumn = false;
+      columnToAddSelectList.map((columnWithSelectName) => {
+        if (columnName === columnWithSelectName) {
+          addSelectToColumn = true;
+        }
+      });
+      return addSelectToColumn;
     };
     this.deleteRows = () => {
       const rows = this
