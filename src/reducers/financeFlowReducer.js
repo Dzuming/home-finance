@@ -12,6 +12,7 @@ export default function financeFlowReducer(state = [], action) {
             id: value._id,
             description: value.Description, 
             spending: value.Spending,
+            category: value.Category ? value.Category.name : '',
             dateCreated: value.DateCreated.split('T')[0] 
           };
         })

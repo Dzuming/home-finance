@@ -21,20 +21,20 @@ import {
 } from '@devexpress/dx-react-grid-material-ui';
 import CommandTemplate from '../helpers/CommandTemplates';
 import TextField from 'material-ui/TextField';
-const TableGrid = ({ rows, columns, sorting, commitChanges }) => {
+const TableGrid = ({ rows, columns, sorting, commitChanges, editCellTemplate, filterCellTemplate }) => {
   return (
     <Grid rows={rows} columns={columns} getRowId={row => row.id}>
       <FilteringState defaultFilters={[]} />
       <PagingState defaultCurrentPage={0} pageSize={10} />
-      <SortingState sorting={sorting}/>
+      <SortingState sorting={sorting} />
       <EditingState onCommitChanges={commitChanges} />
       <LocalFiltering />
       <LocalPaging />
       <LocalSorting />
       <TableView />
       <TableHeaderRow allowSorting />
-      <TableFilterRow />
-      <TableEditRow />
+      <TableFilterRow filterCellTemplate={filterCellTemplate} />
+      <TableEditRow editCellTemplate={editCellTemplate} />
       <TableEditColumn
         allowAdding
         allowEditing
@@ -69,7 +69,7 @@ const TableGrid = ({ rows, columns, sorting, commitChanges }) => {
         type="number"
         editorTemplate={({ onValueChange }) => (
           <TextField
-            id="date"
+            id="number"
             label="spending"
             type="number"
             onChange={e => onValueChange(e.target.value)}
@@ -85,6 +85,9 @@ const TableGrid = ({ rows, columns, sorting, commitChanges }) => {
 TableGrid.propTypes = {
   rows: PropTypes.array.isRequired,
   columns: PropTypes.array.isRequired,
-  commitChanges: PropTypes.func.isRequired
+  commitChanges: PropTypes.func.isRequired,
+  editCellTemplate: PropTypes.func.isRequired,
+  filterCellTemplate: PropTypes.func.isRequired,
+  sorting: PropTypes.array.isRequired
 };
 export default TableGrid;

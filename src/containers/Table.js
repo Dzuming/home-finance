@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TableGrid from '../components/TableGrid';
 import DeleteDialog from '../components/DeleteDialog';
+import LookupEditCell from '../components/LookupEditCell';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -19,6 +20,10 @@ class Table extends Component {
           title: 'Spending',
           dataType: 'number'
         }, {
+          name: 'category',
+          title: 'Category'
+        },
+        {
           name: 'dateCreated',
           title: 'Data created',
           dataType: 'date'
@@ -28,6 +33,7 @@ class Table extends Component {
       deletingRows: [],
       sorting: [{ columnName: 'dateCreated', direction: 'desc' }],
     };
+
     this.commitChanges = ({ added, changed, deleted }) => {
       let rows = this.state.rows;
       if (added) {
@@ -43,6 +49,7 @@ class Table extends Component {
         ];
         this.props.actions.setFinanceFlow(...added);
       }
+
       this.cancelDelete = () => this.setState({ deletingRows: [] });
       if (changed) {
         rows = rows.map(row => (changed[row.id]
@@ -52,12 +59,50 @@ class Table extends Component {
           }
           : row));
       }
+
       this.setState({
         rows,
         deletingRows: deleted || this.state.deletingRows
       });
     };
 
+    this.editCellTemplate = ({ column, value, onValueChange }) => {
+
+      if (column.name !== 'category') {
+        return;
+      }
+      const columnValues = ['jedzenie', 'ubrania'];
+      if (columnValues) {
+        return (
+          <LookupEditCell
+            column={column}
+            value={value ? value : ''}
+            onValueChange={onValueChange}
+            availableValues={columnValues}
+          />
+        );
+      }
+      return undefined;
+    };
+    this.filterCellTemplate = ({ column, filter, setFilter }) => {
+      if (column.name !== 'category') {
+        return;
+      }
+      const columnValues = ['Jedzenie', 'Ubrania'];
+
+      if (columnValues) {
+        this.value = this.state.value ? this.value : columnValues[0];
+        return (
+          <LookupEditCell
+            column={column}
+            value={filter ? filter.value : ''}
+            onValueChange={e => setFilter(e ? { value: e } : null)}
+            availableValues={columnValues}
+          />
+        );
+      }
+      return undefined;
+    };
     this.deleteRows = () => {
       const rows = this
         .state
@@ -76,6 +121,7 @@ class Table extends Component {
     };
     this.cancelDelete = () => this.setState({ deletingRows: [] });
   }
+
   componentDidMount() {
     this.props.actions.getFinanceFlow().then(() => {
       this.setState({
@@ -83,11 +129,12 @@ class Table extends Component {
       });
     });
   }
+
   render() {
     const { rows, columns, sorting, deletingRows } = this.state;
     return (
       <div>
-        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} sorting={sorting} />
+        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} sorting={sorting} editCellTemplate={this.editCellTemplate} filterCellTemplate={this.filterCellTemplate} />
         <DeleteDialog
           rows={rows}
           columns={columns}
