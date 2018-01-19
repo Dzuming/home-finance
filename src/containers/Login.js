@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import compose from 'recompose/compose';
 import InputText from '../components/InputText';
 import Grid from 'material-ui/Grid';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/loginActions';
-import {withStyles} from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import RaisedButton from '../components/RaisedButton';
 
 const styles = () => ({
@@ -15,16 +15,17 @@ const styles = () => ({
     height: '100vh'
   }
 });
+
 class Login extends Component {
   state = {
     login: '',
     password: ''
-  }
+  };
   sendCredentials = () => {
     this
       .props
       .actions
-      .login({Email: this.state.login, Password: this.state.password})
+      .login({email: this.state.login, password: this.state.password})
       .then(() => {
         if (this.props.isAuthenticated) {
           this
@@ -33,11 +34,12 @@ class Login extends Component {
             .push('/Spending');
         }
       });
-  }
+  };
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
   };
-  render() {
+
+  render () {
     const classes = this.props.classes;
     const {login, password} = this.state;
     return (
@@ -63,26 +65,30 @@ class Login extends Component {
             </div>
             <RaisedButton
               clickMethod={this.sendCredentials}
-              text={"Login"}
-              color={"contrast"}/>
+              text={'Login'}
+              color={'contrast'}/>
           </form>
         </Grid>
       </div>
     );
   }
 }
+
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
   actions: PropTypes.object,
   history: PropTypes.object,
   isAuthenticated: PropTypes.bool.isRequired
 };
-function mapStateToProps(state) {
+
+function mapStateToProps (state) {
   return {isAuthenticated: state.auth.isAuthenticated};
 }
-function mapDispatchToProps(dispatch) {
+
+function mapDispatchToProps (dispatch) {
   return {
     actions: bindActionCreators(loginActions, dispatch)
   };
 }
+
 export default compose(withStyles(styles), connect(mapStateToProps, mapDispatchToProps))(Login);

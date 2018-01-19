@@ -1,31 +1,48 @@
 import * as types from './actionTypes';
 import { setUser } from './userActions';
-function requestLogin() {
+import env from '../../environments/config';
+
+function requestLogin () {
   return {type: types.REQUEST_LOGIN};
 }
-function successLogin(data) {
+
+function successLogin (data) {
   setStorageToken(data.token);
-  
+
   return {type: types.SUCCESS_LOGIN};
 }
-function loginError(message) {
-  return {type: types.LOGIN_FAILURE,  message};
+
+function loginError (message) {
+  return {type: types.LOGIN_FAILURE, message};
 }
-function authUser() {
+
+function authUser () {
   return {type: types.AUTH_USER};
 }
-function authenticateUser(data) {
-  const url = 'http://localhost:80/authenticate';
+
+function authenticateUser (data) {
+  debugger;
   const credentials = JSON.stringify(data);
   return dispatch => {
     dispatch(requestLogin());
-    return fetch(url, {
+    return fetch(`${env.api_url}/oauth/token`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: credentials
+      body: {
+        form_params: {
+          grant_type: 'password',
+          client_id: 'client-id',
+          client_secret: 'client-secret',
+          username: credentials.email,
+          password: credentials.password,
+          scope: '*',
+        }
+
+        ,
+      }
     }).then(response => {
       if (!response.ok) {
         throw Error(response.statusText);
@@ -38,10 +55,12 @@ function authenticateUser(data) {
     }).catch((error => dispatch(loginError(error))));
   };
 }
-function setStorageToken(token) {
+
+function setStorageToken (token) {
   localStorage.setItem('token', token);
 }
-export function login(data) {
+
+export function login (data) {
   // Note that the function also receives getState() which lets you choose what to
   // dispatch next. This is useful for avoiding a network request if a cached
   // value is already available.
