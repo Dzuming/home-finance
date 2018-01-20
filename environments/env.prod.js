@@ -1,3 +1,3 @@
 export default {
-  api_url : 'http://localhost:80'
+  api_url : 'http://localhost/api.home-finance/public/'
 };

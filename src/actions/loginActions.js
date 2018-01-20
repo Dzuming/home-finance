@@ -21,28 +21,19 @@ function authUser () {
 }
 
 function authenticateUser (data) {
-  debugger;
-  const credentials = JSON.stringify(data);
+  let formData = new URLSearchParams();
+  formData.append('grant_type', 'password');
+  formData.append('client_id', '2');
+  formData.append('client_secret', 'tbvtGeM45Jnk8IFRTVXFiBJrySgtU7pgDehuZoKG');
+  formData.append('username', data.email);
+  formData.append('password', data.password);
+  formData.append('scope', '*');
   return dispatch => {
     dispatch(requestLogin());
     return fetch(`${env.api_url}/oauth/token`, {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: {
-        form_params: {
-          grant_type: 'password',
-          client_id: 'client-id',
-          client_secret: 'client-secret',
-          username: credentials.email,
-          password: credentials.password,
-          scope: '*',
-        }
+      body: formData
 
-        ,
-      }
     }).then(response => {
       if (!response.ok) {
         throw Error(response.statusText);
