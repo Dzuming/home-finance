@@ -8,7 +8,6 @@ function requestLogin () {
 
 function successLogin (data) {
   setStorageToken(data.token);
-
   return {type: types.SUCCESS_LOGIN};
 }
 
@@ -21,7 +20,7 @@ function authUser () {
 }
 
 function authenticateUser (data) {
-  let formData = new URLSearchParams();
+  let formData = new FormData();
   formData.append('grant_type', 'password');
   formData.append('client_id', '2');
   formData.append('client_secret', 'tbvtGeM45Jnk8IFRTVXFiBJrySgtU7pgDehuZoKG');
@@ -33,7 +32,6 @@ function authenticateUser (data) {
     return fetch(`${env.api_url}/oauth/token`, {
       method: 'POST',
       body: formData
-
     }).then(response => {
       if (!response.ok) {
         throw Error(response.statusText);
