@@ -5,7 +5,8 @@ module.exports = {
   },
   'setupFiles': [
     'raf/polyfill',
-    './tools/enzymeTestAdapterSetup.js'
+    './tools/enzymeTestAdapterSetup.js',
+    './tools/jestLocalStorageMock.js'
   ]
 };
 
