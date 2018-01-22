@@ -53,12 +53,14 @@ class Login extends Component {
           <form noValidate autoComplete="off">
             <div>
               <InputText
+                type="email"
                 label="Login"
                 value={login}
                 changeMethod={this.handleChange('login')}/>
             </div>
             <div>
               <InputText
+                type="password"
                 label="Password"
                 value={password}
                 changeMethod={this.handleChange('password')}/>
