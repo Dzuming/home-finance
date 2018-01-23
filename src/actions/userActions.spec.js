@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as actions from './loginActions';
+import * as actions from './userActions';
 import * as types from './actionTypes';
 import fetchMock from 'fetch-mock';
 import expect from 'expect';
@@ -9,30 +9,24 @@ import env from '../../environments/config';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('login actions', () => {
+describe('user actions', () => {
   afterEach(() => {
     fetchMock.reset();
     fetchMock.restore();
   });
 
-  it('creates SUCCESS_LOGIN when authentication has been done', () => {
+  it('creates GET_USER when get user has been done', () => {
+    const email = 'test@test.com';
     fetchMock
-      .postOnce(`${env.api_url}/oauth/token`, {
-        body: {token: '12345', user: 'John Doe'},
+      .getOnce(`${env.api_url}/user/${email}`, {
+        body: {user: 'John Doe'},
         headers: {'content-type': 'application/json'}
       });
     const expectedActions = [
-      {type: types.REQUEST_LOGIN},
-      {type: types.SUCCESS_LOGIN},
-      {type: types.AUTH_USER},
-      {type: types.SET_USER, user: 'John Doe'},
+      {type: types.GET_USER, user: 'John Doe'},
     ];
-    const store = mockStore({token: '', user: []});
-    const credentials = {
-      email: 'test@test.com',
-      password: 'secret'
-    };
-    return store.dispatch(actions.login(credentials)).then(() => {
+    const store = mockStore({user: '[]'});
+    return store.dispatch(actions.getUser(email)).then(() => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);
     });

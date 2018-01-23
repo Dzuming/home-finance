@@ -12,6 +12,7 @@
     "prebuild": "run-p clean-dist lint test",
     "build": "babel-node tools/build.js",
     "test": "jest",
+    "update-snapshot": "jest --updateSnapshot",
     "serve": "webpack-dev-server --hot --inline",
     "start": "run-p serve lint:watch"
   },

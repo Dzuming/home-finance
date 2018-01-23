@@ -7,7 +7,7 @@ function requestLogin () {
 }
 
 function successLogin (data) {
-  setStorageToken(data.token);
+  setStorageToken(data.access_token);
   return {type: types.SUCCESS_LOGIN};
 }
 
