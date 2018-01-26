@@ -8,6 +8,6 @@ const env = () => {
     default:
       return development;
   }
-}
+};
 
 export default env();
