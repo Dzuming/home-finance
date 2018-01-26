@@ -1,13 +1,13 @@
 import * as types from './actionTypes';
-import { setUser } from './userActions';
+import { getUser } from './userActions';
 import env from '../../environments/config';
 
 function requestLogin () {
   return {type: types.REQUEST_LOGIN};
 }
 
-function successLogin (data) {
-  setStorageToken(data.access_token);
+function successLogin (accessToken) {
+  setStorageToken(accessToken);
   return {type: types.SUCCESS_LOGIN};
 }
 
@@ -19,13 +19,14 @@ function authUser () {
   return {type: types.AUTH_USER};
 }
 
-function authenticateUser (data) {
+function authenticateUser (credentials) {
+  const user = credentials;
   let formData = new FormData();
   formData.append('grant_type', 'password');
   formData.append('client_id', '2');
   formData.append('client_secret', 'tbvtGeM45Jnk8IFRTVXFiBJrySgtU7pgDehuZoKG');
-  formData.append('username', data.email);
-  formData.append('password', data.password);
+  formData.append('username', user.email);
+  formData.append('password', user.password);
   formData.append('scope', '*');
   return dispatch => {
     dispatch(requestLogin());
@@ -38,9 +39,10 @@ function authenticateUser (data) {
       }
       return response.json();
     }).then((data) => {
-      dispatch(successLogin(data));
+      const accessToken = data.access_token;
+      dispatch(successLogin(accessToken));
       dispatch(authUser());
-      dispatch(setUser(data.user));
+      dispatch(getUser(user.email, accessToken));
     }).catch((error => dispatch(loginError(error))));
   };
 }

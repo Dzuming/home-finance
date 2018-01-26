@@ -18,7 +18,7 @@ describe('user actions', () => {
   it('creates GET_USER when get user has been done', () => {
     const email = 'test@test.com';
     fetchMock
-      .getOnce(`${env.api_url}/user/${email}`, {
+      .getOnce(`${env.api_url}/api/user/${email}`, {
         body: {user: 'John Doe'},
         headers: {'content-type': 'application/json'}
       });

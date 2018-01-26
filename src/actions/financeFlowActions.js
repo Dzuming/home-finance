@@ -6,7 +6,7 @@ function successFinanceFlow(data) {
 }
 
 function fetchFinanceFlow(userId, selectedDate) {
-  const url = `${env.api_url}/Spending/${userId}/${selectedDate}`;
+  const url = `${env.api_url}/api/spending/${userId}/${selectedDate}`;
   return dispatch => {
     return fetch(url, { method: 'GET' }).then(response => {
       if (!response.ok) {
@@ -20,7 +20,7 @@ function fetchFinanceFlow(userId, selectedDate) {
 }
 
 function postFinanceFlow(data) {
-  const url = `${env.api_url}/Spending`;
+  const url = `${env.api_url}/api/spending`;
   return dispatch => {
     return fetch(url, {
       method: 'POST', headers: {
@@ -50,7 +50,6 @@ const getFinanceFlowToSend = (data) => {
 
 export function getFinanceFlow() {
   return (dispatch, getState) => {
-
     const userId = getState().user.id;
     const selectedDate = getState().financeFlow.selectedDate;
     return dispatch(fetchFinanceFlow(userId, selectedDate));
