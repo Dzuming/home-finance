@@ -1,13 +1,14 @@
 import * as types from './actionTypes';
 import { getUser } from './userActions';
 import env from '../../environments/config';
+import { setAuthToken } from '../helpers/LocalStorage';
 
 function requestLogin () {
   return {type: types.REQUEST_LOGIN};
 }
 
 function successLogin (accessToken) {
-  setStorageToken(accessToken);
+  setAuthToken(accessToken);
   return {type: types.SUCCESS_LOGIN};
 }
 
@@ -45,10 +46,6 @@ function authenticateUser (credentials) {
       dispatch(getUser(user.email, accessToken));
     }).catch((error => dispatch(loginError(error))));
   };
-}
-
-function setStorageToken (token) {
-  localStorage.setItem('token', token);
 }
 
 export function login (data) {
