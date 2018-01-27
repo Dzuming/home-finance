@@ -5,7 +5,7 @@ import SaveIcon from 'material-ui-icons/Save';
 import CancelIcon from 'material-ui-icons/Cancel';
 import DeleteIcon from 'material-ui-icons/Delete';
 import NoteAddIcon from 'material-ui-icons/NoteAdd';
-
+/* eslint-disable */
 const CommandTemplate = {
   add: ({onExecute}) => (
     <IconButton onClick={onExecute} title="Add row">
