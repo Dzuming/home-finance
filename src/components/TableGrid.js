@@ -28,12 +28,12 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
       <FilteringState defaultFilters={[]}/>
       <IntegratedFiltering/>
       <PagingState defaultCurrentPage={0} pageSize={10}/>
+      <IntegratedPaging/>
       <SortingState defaultSorting={sorting}/>
       <IntegratedSorting/>
       <EditingState onCommitChanges={commitChanges}/>
       <Table/>
       <TableHeaderRow showSortingControls/>
-
       <TableFilterRow filterCellTemplate={filterCellTemplate}/>
       <TableEditRow editCellTemplate={editCellTemplate}/>
       <TableEditColumn
@@ -51,7 +51,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
           }
         }
       />
-      {/*<PagingPanel/>*/}
+      <PagingPanel/>
       <DataTypeProvider
         for={['dateCreated']}
         type="date"
