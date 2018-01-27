@@ -1,33 +1,34 @@
 import React from 'react';
-import {IconButton} from 'material-ui';
+import { IconButton } from 'material-ui';
 import EditIcon from 'material-ui-icons/Edit';
 import SaveIcon from 'material-ui-icons/Save';
 import CancelIcon from 'material-ui-icons/Cancel';
 import DeleteIcon from 'material-ui-icons/Delete';
 import NoteAddIcon from 'material-ui-icons/NoteAdd';
+
 const CommandTemplate = {
-  add: onClick => (
-    <IconButton onClick={onClick} title="Add row">
+  add: ({onExecute}) => (
+    <IconButton onClick={onExecute} title="Add row">
       <NoteAddIcon/>
     </IconButton>
   ),
-  edit: onClick => (
-    <IconButton onClick={onClick} title="Edit row">
+  edit: ({onExecute}) => (
+    <IconButton onClick={onExecute} title="Edit row">
       <EditIcon/>
     </IconButton>
   ),
-  delete: onClick => (
-    <IconButton onClick={onClick} title="Delete row">
+  delete: ({onExecute}) => (
+    <IconButton onClick={onExecute} title="Delete row">
       <DeleteIcon/>
     </IconButton>
   ),
-  commit: onClick => (
-    <IconButton onClick={onClick} title="Save changes">
+  commit: ({onExecute}) => (
+    <IconButton onClick={onExecute} title="Save changes">
       <SaveIcon/>
     </IconButton>
   ),
-  cancel: onClick => (
-    <IconButton color="accent" onClick={onClick} title="Cancel changes">
+  cancel: ({onExecute}) => (
+    <IconButton color="accent" onClick={onExecute} title="Cancel changes">
       <CancelIcon/>
     </IconButton>
   )

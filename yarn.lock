@@ -62,34 +62,34 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@devexpress/dx-core@1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-1.0.0-alpha.10.tgz#b16ab9cb569d6bdeecbd4e32d38cdfd677bbd017"
+"@devexpress/dx-core@1.0.0-rc.2":
+  version "1.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-1.0.0-rc.2.tgz#e2ca6923c3fb4b4d86703ae9d1dc3d86491f2521"
 
-"@devexpress/dx-grid-core@1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-grid-core/-/dx-grid-core-1.0.0-alpha.10.tgz#393c507aaa8c186122fd288a9143e8fe38904a08"
+"@devexpress/dx-grid-core@1.0.0-rc.2":
+  version "1.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-grid-core/-/dx-grid-core-1.0.0-rc.2.tgz#e36cf1bf5fe838045dea384d95c0dec0c473e18a"
 
-"@devexpress/dx-react-core@^1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-core/-/dx-react-core-1.0.0-alpha.10.tgz#f33532ce7e10f98206cb24cce472928e6e00e597"
+"@devexpress/dx-react-core@^1.0.0-rc.2":
+  version "1.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-core/-/dx-react-core-1.0.0-rc.2.tgz#61861aa82884b3ff3fe042887d8ae7807d586459"
   dependencies:
-    "@devexpress/dx-core" "1.0.0-alpha.10"
-    prop-types "^15.5.10"
+    "@devexpress/dx-core" "1.0.0-rc.2"
+    prop-types "^15.6.0"
 
-"@devexpress/dx-react-grid-material-ui@^1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid-material-ui/-/dx-react-grid-material-ui-1.0.0-alpha.10.tgz#f43abec3621d60e318e17e96e3708e2c621e53dd"
+"@devexpress/dx-react-grid-material-ui@^1.0.0-rc.2":
+  version "1.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid-material-ui/-/dx-react-grid-material-ui-1.0.0-rc.2.tgz#cac3ce150b6946a728a68774b53a031096269141"
   dependencies:
     classnames "^2.2.5"
-    prop-types "^15.5.10"
+    prop-types "^15.6.0"
 
-"@devexpress/dx-react-grid@^1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid/-/dx-react-grid-1.0.0-alpha.10.tgz#6f2bca619b53011308502d6c1a7a02247ffe9230"
+"@devexpress/dx-react-grid@^1.0.0-rc.2":
+  version "1.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid/-/dx-react-grid-1.0.0-rc.2.tgz#0b49c3e2b867e5a84718acc887f66165d3ec4ae4"
   dependencies:
-    "@devexpress/dx-grid-core" "1.0.0-alpha.10"
-    prop-types "^15.5.10"
+    "@devexpress/dx-grid-core" "1.0.0-rc.2"
+    prop-types "^15.6.0"
 
 "@types/node@*":
   version "8.0.53"

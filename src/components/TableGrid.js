@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   SortingState,
-  LocalSorting,
   PagingState,
-  LocalPaging,
+  IntegratedPaging,
   FilteringState,
-  LocalFiltering,
   EditingState,
   DataTypeProvider
 } from '@devexpress/dx-react-grid';
 import {
   Grid,
-  TableView,
+  Table,
   TableHeaderRow,
   PagingPanel,
   TableFilterRow,
@@ -21,39 +19,39 @@ import {
 } from '@devexpress/dx-react-grid-material-ui';
 import CommandTemplate from '../helpers/CommandTemplates';
 import TextField from 'material-ui/TextField';
-const TableGrid = ({ rows, columns, sorting, commitChanges, editCellTemplate, filterCellTemplate }) => {
+
+const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, filterCellTemplate}) => {
   return (
     <Grid rows={rows} columns={columns} getRowId={row => row.id}>
-      <FilteringState defaultFilters={[]} />
-      <PagingState defaultCurrentPage={0} pageSize={10} />
-      <SortingState sorting={sorting} />
-      <EditingState onCommitChanges={commitChanges} />
-      <LocalFiltering />
-      <LocalPaging />
-      <LocalSorting />
-      <TableView />
-      <TableHeaderRow allowSorting />
-      <TableFilterRow filterCellTemplate={filterCellTemplate} />
-      <TableEditRow editCellTemplate={editCellTemplate} />
+      <FilteringState defaultFilters={[]}/>
+      <PagingState defaultCurrentPage={0} pageSize={10}/>
+      <IntegratedPaging/>
+      <SortingState sorting={sorting}/>
+      <EditingState onCommitChanges={commitChanges}/>
+      <Table/>
+      <TableHeaderRow allowSorting/>
+      <TableFilterRow filterCellTemplate={filterCellTemplate}/>
+      <TableEditRow editCellTemplate={editCellTemplate}/>
       <TableEditColumn
-        allowAdding
-        allowEditing
-        allowDeleting
-        commandTemplate={({ executeCommand, id }) => {
-          const template = CommandTemplate[id];
-          if (template) {
-            const onClick = (e) => {
-              executeCommand();
-              e.stopPropagation();
-            };
-            return template(onClick, );
+        showAddCommand
+        showEditCommand
+        showDeleteCommand
+        commandComponent={
+          ({id, onExecute}) => {
+            const CommandButton = CommandTemplate[id];
+            return (
+              <CommandButton
+                onExecute={onExecute}
+              />
+            );
           }
-          return undefined;
-        }} />
-      <PagingPanel />
+        }
+      />
+      {/*<PagingPanel />*/}
       <DataTypeProvider
+        for={['dateCreated']}
         type="date"
-        editorTemplate={({ onValueChange }) => (
+        editorTemplate={({onValueChange}) => (
           <TextField
             id="date"
             label="data created"
@@ -66,8 +64,9 @@ const TableGrid = ({ rows, columns, sorting, commitChanges, editCellTemplate, fi
         )}
       />
       <DataTypeProvider
+        for={['spending']}
         type="number"
-        editorTemplate={({ onValueChange }) => (
+        editorTemplate={({onValueChange}) => (
           <TextField
             id="number"
             label="spending"

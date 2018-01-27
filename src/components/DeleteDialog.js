@@ -9,7 +9,7 @@ import {
   DialogContentText,
   DialogTitle
 } from 'material-ui';
-import {Grid, TableView, TableHeaderRow} from '@devexpress/dx-react-grid-material-ui';
+import {Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-material-ui';
 const styles = theme => ({
   commandButton: {
     minWidth: '40px'
@@ -48,7 +48,7 @@ const DeleteDialog = ({
         <Grid
           rows={rows.filter(row => deletingRows.indexOf(row.id) > -1)}
           columns={columns}>
-          <TableView/>
+          <Table/>
           <TableHeaderRow/>
         </Grid>
       </DialogContent>
