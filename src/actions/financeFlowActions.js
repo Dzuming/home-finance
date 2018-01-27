@@ -1,14 +1,20 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
+import { getAuthToken } from '../helpers/LocalStorage';
 
-function successFinanceFlow(data) {
-  return { type: types.SUCCESS_FINANCE_FLOW, data };
+function successFinanceFlow (data) {
+  return {type: types.SUCCESS_FINANCE_FLOW, data};
 }
 
-function fetchFinanceFlow(userId, selectedDate) {
+function fetchFinanceFlow (userId, selectedDate) {
   const url = `${env.api_url}/api/spending/${userId}/${selectedDate}`;
   return dispatch => {
-    return fetch(url, { method: 'GET' }).then(response => {
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${getAuthToken()}`,
+      },
+    }).then(response => {
       if (!response.ok) {
         throw Error(response.statusText);
       }
@@ -19,7 +25,7 @@ function fetchFinanceFlow(userId, selectedDate) {
   };
 }
 
-function postFinanceFlow(data) {
+function postFinanceFlow (data) {
   const url = `${env.api_url}/api/spending`;
   return dispatch => {
     return fetch(url, {
@@ -45,10 +51,10 @@ const getFinanceFlowToSend = (data) => {
     spending: data.spending,
     description: data.description,
     dateCreated: data.dateCreated
-  }
-}
+  };
+};
 
-export function getFinanceFlow() {
+export function getFinanceFlow () {
   return (dispatch, getState) => {
     const userId = getState().user.id;
     const selectedDate = getState().financeFlow.selectedDate;
@@ -56,11 +62,12 @@ export function getFinanceFlow() {
   };
 }
 
-export function setFinanceFlow(data) {
+export function setFinanceFlow (data) {
   return (dispatch) => {
     return dispatch(postFinanceFlow(data));
   };
 }
-export function setDate(date) {
-  return { type: types.SET_DATE, date };
+
+export function setDate (date) {
+  return {type: types.SET_DATE, date};
 }

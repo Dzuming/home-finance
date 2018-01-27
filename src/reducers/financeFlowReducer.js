@@ -4,16 +4,15 @@ export default function financeFlowReducer(state = [], action) {
     case types.REQUEST_FINANCE_FLOW:
       return Object.assign({}, state, {isFetching: true});
     case types.SUCCESS_FINANCE_FLOW:
-    
       return Object.assign({}, state, {
         isFetching: false,
-        spending: action.data.map((value)=> {
+        spending: action.data.map((financeFlow)=> {
           return {
-            id: value._id,
-            description: value.Description, 
-            spending: value.Spending,
-            category: value.Category ? value.Category.name : '',
-            dateCreated: value.DateCreated.split('T')[0] 
+            id: financeFlow.id,
+            description: financeFlow.description,
+            spending: financeFlow.value,
+            category: financeFlow.category.name,
+            dateCreated: financeFlow.created_at.split('T')[0]
           };
         })
       });
