@@ -5,6 +5,7 @@ import {
   PagingState,
   IntegratedPaging,
   IntegratedSorting,
+  IntegratedFiltering,
   FilteringState,
   EditingState,
   DataTypeProvider
@@ -25,6 +26,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
   return (
     <Grid rows={rows} columns={columns} getRowId={row => row.id}>
       <FilteringState defaultFilters={[]}/>
+      <IntegratedFiltering/>
       <PagingState defaultCurrentPage={0} pageSize={10}/>
       <SortingState defaultSorting={sorting}/>
       <IntegratedSorting/>
@@ -53,7 +55,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
       <DataTypeProvider
         for={['dateCreated']}
         type="date"
-        editorTemplate={({onValueChange}) => (
+        editorComponent={({onValueChange}) => (
           <TextField
             id="date"
             label="data created"
@@ -68,7 +70,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
       <DataTypeProvider
         for={['spending']}
         type="number"
-        editorTemplate={({onValueChange}) => (
+        editorComponent={({onValueChange}) => (
           <TextField
             id="number"
             label="spending"
