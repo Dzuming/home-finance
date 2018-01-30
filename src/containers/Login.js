@@ -47,7 +47,7 @@ class Login extends Component {
         <Grid
           container
           className={classes.container}
-          align='center'
+          alignItems='center'
           direction='row'
           justify='center'>
           <form noValidate autoComplete="off">
