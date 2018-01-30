@@ -68,7 +68,7 @@ class Login extends Component {
             <RaisedButton
               clickMethod={this.sendCredentials}
               text={'Login'}
-              color={'contrast'}/>
+              color={'default'}/>
           </form>
         </Grid>
       </div>
