@@ -16,22 +16,26 @@ describe('login actions', () => {
   });
 
   it('creates SUCCESS_LOGIN when authentication has been done', () => {
+    const credentials = {
+      email: 'test@test.com',
+      password: 'secret'
+    };
     fetchMock
       .postOnce(`${env.api_url}/oauth/token`, {
-        body: {token: '12345', user: 'John Doe'},
+        body: {token: '12345'},
+        headers: {'content-type': 'application/json'}
+      })
+    fetchMock
+      .getOnce(`${env.api_url}/api/user/${credentials.email}`, {
+        body: {id: '12345', name: 'John Doe'},
         headers: {'content-type': 'application/json'}
       });
     const expectedActions = [
       {type: types.REQUEST_LOGIN},
       {type: types.SUCCESS_LOGIN},
-      {type: types.AUTH_USER},
-      {type: types.SET_USER, user: 'John Doe'},
+      {type: types.AUTH_USER}
     ];
     const store = mockStore({token: '', user: []});
-    const credentials = {
-      email: 'test@test.com',
-      password: 'secret'
-    };
     return store.dispatch(actions.login(credentials)).then(() => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);

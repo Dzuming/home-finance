@@ -3,7 +3,7 @@
 exports[`<Login /> should match snapshot 1`] = `
 <div>
   <div
-    className="MuiGrid-typeContainer-2 MuiGrid-spacing-xs-16-17 MuiGrid-align-xs-center-8 MuiGrid-justify-xs-center-12 Connect-Login--container-1"
+    className="MuiGrid-typeContainer-2 MuiGrid-spacing-xs-16-24 MuiGrid-align-items-xs-center-10 MuiGrid-justify-xs-center-19 Connect-Login--container-1"
   >
     <form
       autoComplete="off"
@@ -11,27 +11,30 @@ exports[`<Login /> should match snapshot 1`] = `
     >
       <div>
         <div
-          className="MuiFormControl-root-87 InputText-textField-86"
+          aria-describedby={undefined}
+          className="MuiFormControl-root-94 InputText-textField-93"
           onBlur={[Function]}
-          onChange={[Function]}
           onFocus={[Function]}
           required={false}
         >
           <label
-            className="MuiFormLabel-root-97 MuiInputLabel-root-91 MuiInputLabel-formControl-92 MuiInputLabel-animated-95"
+            className="MuiFormLabel-root-104 MuiInputLabel-root-98 MuiInputLabel-formControl-99 MuiInputLabel-animated-102"
+            data-shrink={false}
             htmlFor={undefined}
           >
             Login
           </label>
           <div
-            className="MuiInput-root-101 MuiInput-formControl-102 MuiInput-inkbar-103 MuiInput-underline-109"
+            className="MuiInput-root-108 MuiInput-formControl-109 MuiInput-inkbar-110 MuiInput-underline-114"
             onBlur={[Function]}
             onFocus={[Function]}
           >
             <input
+              aria-invalid={false}
+              aria-required={false}
               autoComplete={undefined}
               autoFocus={undefined}
-              className="MuiInput-input-105 MuiInput-inputSingleline-112"
+              className="MuiInput-input-117 MuiInput-inputSingleline-120"
               defaultValue={undefined}
               disabled={false}
               id={undefined}
@@ -51,27 +54,30 @@ exports[`<Login /> should match snapshot 1`] = `
       </div>
       <div>
         <div
-          className="MuiFormControl-root-87 InputText-textField-86"
+          aria-describedby={undefined}
+          className="MuiFormControl-root-94 InputText-textField-93"
           onBlur={[Function]}
-          onChange={[Function]}
           onFocus={[Function]}
           required={false}
         >
           <label
-            className="MuiFormLabel-root-97 MuiInputLabel-root-91 MuiInputLabel-formControl-92 MuiInputLabel-animated-95"
+            className="MuiFormLabel-root-104 MuiInputLabel-root-98 MuiInputLabel-formControl-99 MuiInputLabel-animated-102"
+            data-shrink={false}
             htmlFor={undefined}
           >
             Password
           </label>
           <div
-            className="MuiInput-root-101 MuiInput-formControl-102 MuiInput-inkbar-103 MuiInput-underline-109"
+            className="MuiInput-root-108 MuiInput-formControl-109 MuiInput-inkbar-110 MuiInput-underline-114"
             onBlur={[Function]}
             onFocus={[Function]}
           >
             <input
+              aria-invalid={false}
+              aria-required={false}
               autoComplete={undefined}
               autoFocus={undefined}
-              className="MuiInput-input-105 MuiInput-inputSingleline-112"
+              className="MuiInput-input-117 MuiInput-inputSingleline-120"
               defaultValue={undefined}
               disabled={false}
               id={undefined}
@@ -90,7 +96,7 @@ exports[`<Login /> should match snapshot 1`] = `
         </div>
       </div>
       <button
-        className="MuiButtonBase-root-132 MuiButton-root-118 MuiButton-raised-125 MuiButton-raisedContrast-129 RaisedButton-button-116"
+        className="MuiButtonBase-root-139 MuiButton-root-125 MuiButton-raised-131 RaisedButton-button-123"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -101,18 +107,19 @@ exports[`<Login /> should match snapshot 1`] = `
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
         onTouchEnd={[Function]}
+        onTouchMove={[Function]}
         onTouchStart={[Function]}
-        role="button"
+        role={undefined}
         tabIndex={0}
         type="button"
       >
         <span
-          className="MuiButton-label-120"
+          className="MuiButton-label-127"
         >
           Login
         </span>
         <span
-          className="MuiTouchRipple-root-134"
+          className="MuiTouchRipple-root-141"
         />
       </button>
     </form>

@@ -19,11 +19,11 @@ describe('user actions', () => {
     const email = 'test@test.com';
     fetchMock
       .getOnce(`${env.api_url}/api/user/${email}`, {
-        body: {user: 'John Doe'},
+        body: {id: '123',name: 'John Doe'},
         headers: {'content-type': 'application/json'}
       });
     const expectedActions = [
-      {type: types.GET_USER, user: 'John Doe'},
+      {type: types.GET_USER, newUser: {id: '123', name: 'John Doe'}},
     ];
     const store = mockStore({user: '[]'});
     return store.dispatch(actions.getUser(email)).then(() => {
