@@ -1,4 +1,4 @@
-import { setAuthToken, getAuthToken, setUser, getUser } from './LocalStorage';
+import { setAuthToken, getAuthToken, setStorageUser, getStorageUser } from './LocalStorage';
 
 describe('localStorage methods', () => {
   it('should get token from localStorage', () => {
@@ -11,7 +11,7 @@ describe('localStorage methods', () => {
       id: 1,
       name: 'test',
     };
-    setUser(user);
-    expect(getUser()).toEqual(user);
+    setStorageUser(user);
+    expect(getStorageUser()).toEqual(user);
   });
 });
