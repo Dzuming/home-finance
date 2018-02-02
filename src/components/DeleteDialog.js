@@ -54,7 +54,7 @@ const DeleteDialog = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={cancelDelete} color="primary">Cancel</Button>
-        <Button onClick={deleteRows} color="accent">Delete</Button>
+        <Button onClick={deleteRows} color="secondary">Delete</Button>
       </DialogActions>
     </Dialog>
   );
