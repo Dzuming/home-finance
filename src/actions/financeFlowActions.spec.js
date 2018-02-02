@@ -24,7 +24,7 @@ describe('login actions', () => {
         headers: {'content-type': 'application/json'}
       });
     const expectedActions = [
-      {type: "SUCCESS_FINANCE_FLOW", data: {description: '12345', value: 'John Doe', category: {id: 1}}},
+      {type: 'SUCCESS_FINANCE_FLOW', data: {description: '12345', value: 'John Doe', category: {id: 1}}},
     ];
     const store = mockStore({user: {id: 1}, financeFlow: {selectedDate: '2018-01'}});
     return store.dispatch(actions.getFinanceFlow()).then(() => {
