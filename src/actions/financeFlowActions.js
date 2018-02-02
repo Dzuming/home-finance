@@ -1,27 +1,17 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
-import { getAuthToken } from '../helpers/LocalStorage';
+import { fetchFinanceSpendingFromServer } from '../restApi/financeFlow';
 
 function successFinanceFlow (data) {
   return {type: types.SUCCESS_FINANCE_FLOW, data};
 }
 
 function fetchFinanceFlow (userId, selectedDate) {
-  const url = `${env.api_url}/api/spending/${userId}/${selectedDate}`;
   return dispatch => {
-    return fetch(url, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${getAuthToken()}`,
-      },
-    }).then(response => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response.json();
-    }).then((data) => {
-      dispatch(successFinanceFlow(data));
-    }).catch((error => error));
+    return fetchFinanceSpendingFromServer(userId, selectedDate)
+      .then((data) => {
+        dispatch(successFinanceFlow(data));
+      }).catch((error => error));
   };
 }
 

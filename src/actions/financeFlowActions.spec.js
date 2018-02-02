@@ -1,7 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as actions from './financeFlowActions';
-import * as types from './actionTypes';
 import fetchMock from 'fetch-mock';
 import expect from 'expect';
 import env from '../../environments/config';

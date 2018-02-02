@@ -1,4 +1,4 @@
-import { fetchFinanceFlow } from '../src/restApi/fetchFinance';
+import { fetchFinanceFlow } from '../src/restApi/financeFlow';
 import fetchMock from 'fetch-mock';
 import env from '../environments/config';
 
