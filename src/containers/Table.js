@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
 
 class Table extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       availableValues: ['Jedzenie', 'Ubrania'],
@@ -32,10 +32,10 @@ class Table extends Component {
       ],
       rows: [],
       deletingRows: [],
-      sorting: [{ columnName: 'dateCreated', direction: 'desc' }],
+      sorting: [{columnName: 'dateCreated', direction: 'desc'}],
     };
 
-    this.commitChanges = ({ added, changed, deleted }) => {
+    this.commitChanges = ({added, changed, deleted}) => {
       let rows = this.state.rows;
       if (added) {
         const startingAddedId = (rows.length - 1) > 0
@@ -51,7 +51,7 @@ class Table extends Component {
         this.props.actions.setFinanceFlow(...added);
       }
 
-      this.cancelDelete = () => this.setState({ deletingRows: [] });
+      this.cancelDelete = () => this.setState({deletingRows: []});
       if (changed) {
         rows = rows.map(row => (changed[row.id]
           ? {
@@ -75,7 +75,7 @@ class Table extends Component {
       }
       return undefined;
     };
-    this.editCellTemplate = ({ column, value, onValueChange }) => {
+    this.editCellTemplate = ({column, value, onValueChange}) => {
       const editMethod = () => {
         return (
           <LookupEditCell
@@ -89,13 +89,13 @@ class Table extends Component {
       return this.baseCellTemplate(column, editMethod);
 
     };
-    this.filterCellTemplate = ({ column, filter, setFilter }) => {
+    this.filterCellTemplate = ({column, filter, setFilter}) => {
       const filterMethod = () => {
         return (
           <LookupEditCell
             column={column}
             value={filter ? filter.value : ''}
-            onValueChange={e => setFilter(e ? { value: e } : null)}
+            onValueChange={e => setFilter(e ? {value: e} : null)}
             availableValues={this.state.availableValues}
           />
         );
@@ -126,12 +126,12 @@ class Table extends Component {
             rows.splice(index, 1);
           }
         });
-      this.setState({ rows, deletingRows: [] });
+      this.setState({rows, deletingRows: []});
     };
-    this.cancelDelete = () => this.setState({ deletingRows: [] });
+    this.cancelDelete = () => this.setState({deletingRows: []});
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.actions.getFinanceFlow().then(() => {
       this.setState({
         rows: this.props.spending
@@ -139,31 +139,36 @@ class Table extends Component {
     });
   }
 
-  render() {
-    const { rows, columns, sorting, deletingRows } = this.state;
+  render () {
+    const {rows, columns, sorting, deletingRows} = this.state;
     return (
       <div>
-        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} sorting={sorting} editCellTemplate={this.editCellTemplate} filterCellTemplate={this.filterCellTemplate} />
+        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} sorting={sorting}
+                   editCellTemplate={this.editCellTemplate} filterCellTemplate={this.filterCellTemplate}/>
         <DeleteDialog
           rows={rows}
           columns={columns}
           deletingRows={deletingRows}
           deleteRows={this.deleteRows}
-          cancelDelete={this.cancelDelete} />
+          cancelDelete={this.cancelDelete}/>
       </div>
     );
   }
 }
+
 Table.propTypes = {
   actions: PropTypes.object,
   spending: PropTypes.array
 };
-function mapStateToProps(state) {
-  return { spending: state.financeFlow.spending };
+
+function mapStateToProps (state) {
+  return {spending: state.financeFlow.spending};
 }
-function mapDispatchToProps(dispatch) {
+
+function mapDispatchToProps (dispatch) {
   return {
     actions: bindActionCreators(financeFlowActions, dispatch)
   };
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
