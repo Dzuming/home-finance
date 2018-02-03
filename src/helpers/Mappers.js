@@ -1,11 +1,11 @@
 import { getStorageUser} from './LocalStorage';
 
-export const getFinanceFlowToSend = (data) => {
+export const financeFlowSpendingMapper = (data) => {
   return {
-    categoryId: '59f0efc7407b78332878b47a',
-    userId: getStorageUser().id,
-    spending: data.spending,
+    category_id: 1,
+    user_id: getStorageUser().id,
+    value: data.spending,
     description: data.description,
-    dateCreated: data.dateCreated
+    created_at: data.dateCreated
   };
 };
