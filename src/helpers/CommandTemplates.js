@@ -28,7 +28,7 @@ const CommandTemplate = {
     </IconButton>
   ),
   cancel: ({onExecute}) => (
-    <IconButton color="accent" onClick={onExecute} title="Cancel changes">
+    <IconButton color="secondary" onClick={onExecute} title="Cancel changes">
       <CancelIcon/>
     </IconButton>
   )
