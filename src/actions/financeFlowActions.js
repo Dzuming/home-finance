@@ -6,7 +6,7 @@ function successFinanceFlow (data) {
 }
 
 function createFinanceFlow (data) {
-  return {type: types.CREATE_FINANCE_FLOW, data}
+  return {type: types.CREATE_FINANCE_FLOW, data};
 }
 
 function fetchFinanceFlow (userId, selectedDate) {

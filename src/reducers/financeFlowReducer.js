@@ -1,12 +1,13 @@
 import * as types from '../actions/actionTypes';
-export default function financeFlowReducer(state = [], action) {
+
+export default function financeFlowReducer (state = [], action) {
   switch (action.type) {
     case types.REQUEST_FINANCE_FLOW:
       return Object.assign({}, state, {isFetching: true});
     case types.SUCCESS_FINANCE_FLOW:
       return Object.assign({}, state, {
         isFetching: false,
-        spending: action.data.map((financeFlow)=> {
+        spending: action.data.map((financeFlow) => {
           return {
             id: financeFlow.id,
             description: financeFlow.description,
@@ -19,7 +20,8 @@ export default function financeFlowReducer(state = [], action) {
     case types.CREATE_FINANCE_FLOW:
       return Object.assign({}, state, {
         isFetching: false,
-        message: action.data
+        spending: [...state.spending, action.data.spending],
+        message: action.data.message
       });
     case types.AUTH_USER:
       return Object.assign({}, state, {isAuthenticated: true});
