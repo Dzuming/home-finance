@@ -13,7 +13,6 @@ export default function financeFlowReducer (state = [], action) {
         })
       });
     case types.CREATE_FINANCE_FLOW:
-      debugger;
       return Object.assign({}, state, {
         isFetching: false,
         spending: [...state.spending, financeFlowSpendingToTableMapper(action.data.spending)],
