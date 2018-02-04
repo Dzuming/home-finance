@@ -5,6 +5,10 @@ function successFinanceFlow (data) {
   return {type: types.SUCCESS_FINANCE_FLOW, data};
 }
 
+function createFinanceFlow (data) {
+  return {type: types.CREATE_FINANCE_FLOW, data}
+}
+
 function fetchFinanceFlow (userId, selectedDate) {
   return dispatch => {
     return fetchFinanceSpendingFromServer(userId, selectedDate)
@@ -17,7 +21,7 @@ function fetchFinanceFlow (userId, selectedDate) {
 function postFinanceFlow (data) {
   return dispatch => {
     return postFinanceSpendingToServer(data).then((response) => {
-      dispatch(successFinanceFlow(response));
+      dispatch(createFinanceFlow(response));
     }).catch((error => error));
   };
 }

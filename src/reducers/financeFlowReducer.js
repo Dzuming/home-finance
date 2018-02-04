@@ -16,6 +16,11 @@ export default function financeFlowReducer(state = [], action) {
           };
         })
       });
+    case types.CREATE_FINANCE_FLOW:
+      return Object.assign({}, state, {
+        isFetching: false,
+        message: action.data
+      });
     case types.AUTH_USER:
       return Object.assign({}, state, {isAuthenticated: true});
     case types.SET_DATE:
