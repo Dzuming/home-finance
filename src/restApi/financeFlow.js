@@ -1,6 +1,6 @@
 import env from '../../environments/config';
 import { getAuthToken } from '../helpers/LocalStorage';
-import { financeFlowSpendingMapper } from '../helpers/Mappers';
+import { financeFlowSpendingToServerMapper } from '../helpers/Mappers';
 
 export function fetchFinanceSpendingFromServer (userId, selectedDate) {
   const url = `${env.api_url}/api/spending/${userId}/${selectedDate}`;
@@ -23,11 +23,11 @@ export function postFinanceSpendingToServer (data) {
     method: 'POST',
     headers: {
       'Accept': '*',
-      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${getAuthToken()}`,
     },
-    body: JSON.stringify(financeFlowSpendingMapper(data))
+    body: JSON.stringify(financeFlowSpendingToServerMapper(data))
   }).then(response => {
     if (!response.ok) {
       throw Error(response.statusText);

@@ -1,4 +1,5 @@
 import * as types from '../actions/actionTypes';
+import { financeFlowSpendingToTableMapper } from '../helpers/Mappers';
 
 export default function financeFlowReducer (state = [], action) {
   switch (action.type) {
@@ -8,19 +9,14 @@ export default function financeFlowReducer (state = [], action) {
       return Object.assign({}, state, {
         isFetching: false,
         spending: action.data.map((financeFlow) => {
-          return {
-            id: financeFlow.id,
-            description: financeFlow.description,
-            spending: financeFlow.value,
-            category: financeFlow.category.name,
-            dateCreated: financeFlow.created_at.split('T')[0]
-          };
+          return financeFlowSpendingToTableMapper(financeFlow);
         })
       });
     case types.CREATE_FINANCE_FLOW:
+      debugger;
       return Object.assign({}, state, {
         isFetching: false,
-        spending: [...state.spending, action.data.spending],
+        spending: [...state.spending, financeFlowSpendingToTableMapper(action.data.spending)],
         message: action.data.message
       });
     case types.AUTH_USER:

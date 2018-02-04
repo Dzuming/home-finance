@@ -39,19 +39,8 @@ class Table extends Component {
     this.commitChanges = ({added, changed, deleted}) => {
       let rows = this.state.rows;
       if (added) {
-        const startingAddedId = (rows.length - 1) > 0
-          ? rows[rows.length - 1].id + 1
-          : 0;
-        rows = [
-          ...rows,
-          ...added.map((row, index) => ({
-            id: startingAddedId + index,
-            ...row
-          }))
-        ];
         this.props.actions.setFinanceFlow(...added);
       }
-
       this.cancelDelete = () => this.setState({deletingRows: []});
       if (changed) {
         rows = rows.map(row => (changed[row.id]
@@ -114,19 +103,13 @@ class Table extends Component {
       return addSelectToColumn;
     };
     this.deleteRows = () => {
-      const rows = this
-        .state
-        .rows
-        .slice();
-      this
-        .state
-        .deletingRows
-        .forEach((rowId) => {
-          const index = rows.findIndex(row => row.id === rowId);
-          if (index > -1) {
-            rows.splice(index, 1);
-          }
-        });
+      const rows = this.state.rows.slice();
+      this.state.deletingRows.forEach((rowId) => {
+        const index = rows.findIndex(row => row.id === rowId);
+        if (index > -1) {
+          rows.splice(index, 1);
+        }
+      });
       this.setState({rows, deletingRows: []});
     };
     this.cancelDelete = () => this.setState({deletingRows: []});
@@ -142,6 +125,13 @@ class Table extends Component {
     getCategories().then((response) => {
       this.setState({categories: response});
     });
+  }
+
+  componentWillReceiveProps (nextProps) {
+    debugger;
+    if (nextProps.spending !== this.props.spending) {
+      this.setState({rows: nextProps.spending});
+    }
   }
 
   render () {
