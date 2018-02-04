@@ -128,7 +128,6 @@ class Table extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    debugger;
     if (nextProps.spending !== this.props.spending) {
       this.setState({rows: nextProps.spending});
     }
