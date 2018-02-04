@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
+import { getCategories } from '../restApi/category';
 
 class Table extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      availableValues: ['Jedzenie', 'Ubrania'],
+      categories: [],
       columns: [
         {
           name: 'description',
@@ -137,14 +138,24 @@ class Table extends Component {
         rows: this.props.spending
       });
     });
+
+    getCategories().then((response) => {
+      this.setState({categories: response});
+    });
   }
 
   render () {
-    const {rows, columns, sorting, deletingRows} = this.state;
+    const {rows, columns, sorting, deletingRows, categories} = this.state;
     return (
       <div>
-        <TableGrid rows={rows} columns={columns} commitChanges={this.commitChanges} sorting={sorting}
-                   editCellTemplate={this.editCellTemplate} filterCellTemplate={this.filterCellTemplate}/>
+        <TableGrid
+          rows={rows}
+          columns={columns}
+          commitChanges={this.commitChanges}
+          sorting={sorting}
+          editCellTemplate={this.editCellTemplate}
+          categories={categories}
+          filterCellTemplate={this.filterCellTemplate}/>
         <DeleteDialog
           rows={rows}
           columns={columns}

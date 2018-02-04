@@ -1,8 +1,8 @@
-import { getStorageUser} from './LocalStorage';
+import { getStorageUser } from './LocalStorage';
 
 export const financeFlowSpendingMapper = (data) => {
   return {
-    category_id: 1,
+    category_id: data.category,
     user_id: getStorageUser().id,
     value: data.spending,
     description: data.description,
