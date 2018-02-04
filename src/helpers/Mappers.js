@@ -15,6 +15,6 @@ export const financeFlowSpendingToTableMapper = data => {
     description: data.description,
     spending: data.value,
     category: data.category.name,
-    dateCreated: data.created_at.split('T')[0]
+    dateCreated: data.created_at.split(' ')[0]
   };
 };
