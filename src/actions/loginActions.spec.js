@@ -24,7 +24,7 @@ describe('login actions', () => {
       .postOnce(`${env.api_url}/oauth/token`, {
         body: {token: '12345'},
         headers: {'content-type': 'application/json'}
-      })
+      });
     fetchMock
       .getOnce(`${env.api_url}/api/user/${credentials.email}`, {
         body: {id: '12345', name: 'John Doe'},

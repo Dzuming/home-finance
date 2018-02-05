@@ -11,7 +11,7 @@ const LookupEditCell = (({value, onValueChange, availableValues}) => (
     <Select
       value={value}
       onChange={event => onValueChange(event.target.value)}>{availableValues.map(item => (
-      <MenuItem key={item} value={item}>{item}</MenuItem>))}
+        <MenuItem key={item} value={item}>{item}</MenuItem>))}
     </Select>
   </TableCell>
 ));

@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
-import {setStorageUser} from '../helpers/LocalStorage'
+import { setStorageUser } from '../helpers/LocalStorage';
 
 export function getUser (email, accessToken) {
   const url = `${env.api_url}/api/user/${email}`;
