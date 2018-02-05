@@ -56,6 +56,21 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
       />
       <PagingPanel/>
       <DataTypeProvider
+        for={['description']}
+        type="text"
+        editorComponent={({onValueChange}) => (
+          <TextField
+            id="description"
+            label="Description"
+            type="text"
+            onChange={e => onValueChange(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        )}
+      />
+      <DataTypeProvider
         for={['dateCreated']}
         type="date"
         editorComponent={({onValueChange}) => (
