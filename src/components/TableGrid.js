@@ -21,6 +21,9 @@ import {
 } from '@devexpress/dx-react-grid-material-ui';
 import CommandTemplate from '../helpers/CommandTemplates';
 import TextField from 'material-ui/TextField';
+import Select from 'material-ui/Select';
+import { FormControl } from 'material-ui/Form';
+import Input, { InputLabel } from 'material-ui/Input';
 
 const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, filterCellTemplate, categories}) => {
     return (
@@ -86,9 +89,17 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
           for={['category']}
           type="select"
           editorComponent={({onValueChange}) => (
-            <select onChange={e => onValueChange(e.target.value)}>
-              {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-            </select>
+            <FormControl>
+              <InputLabel htmlFor="category">Kategoria</InputLabel>
+              <Select
+                native
+                onChange={e => onValueChange(e.target.value)}
+                input={<Input name="category" id="category"/>}
+              >
+                <option>--Wybierz kategorię--</option>
+                {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+              </Select>
+            </FormControl>
           )}
         />
       </Grid>
@@ -102,6 +113,6 @@ TableGrid.propTypes = {
   editCellTemplate: PropTypes.func.isRequired,
   filterCellTemplate: PropTypes.func.isRequired,
   sorting: PropTypes.array.isRequired,
-  categories: PropTypes.array.isRequired
+  categories: PropTypes.array.isRequired,
 };
 export default TableGrid;
