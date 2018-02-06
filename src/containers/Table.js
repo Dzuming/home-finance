@@ -39,7 +39,9 @@ class Table extends Component {
     this.commitChanges = ({added, changed, deleted}) => {
       let rows = this.state.rows;
       if (added) {
-        this.props.actions.setFinanceFlow(...added);
+        const {id} =  this.state.categories.find(category => category.name === Object.assign({}, ...added)['category'])
+        const spending = Object.assign({}, ...added, { category: id })
+        this.props.actions.setFinanceFlow(spending);
       }
       this.cancelDelete = () => this.setState({deletingRows: []});
       if (changed) {

@@ -108,15 +108,12 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
             <InputLabel htmlFor="category">Kategoria</InputLabel>
             <Select
               native
-              onChange={e => {
-                const {name} = categories.find((category) => category.id === +e.target.value
-                );
-                onValueChange(name);
-              }}
+              onChange={e => onValueChange(e.target.value)}
               input={<Input name="category" id="category"/>}
             >
-              <option disabled selected hidden>--Wybierz kategorię--</option>
-              {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+              <option hidden>--Wybierz kategorię--</option>
+              <option value={''}>Wszystkie</option>
+              {categories.map(category => <option key={category.id} value={category.name}>{category.name}</option>)}
             </Select>
           </FormControl>
         )}
