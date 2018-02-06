@@ -115,7 +115,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
               }}
               input={<Input name="category" id="category"/>}
             >
-              <option>--Wybierz kategorię--</option>
+              <option disabled selected hidden>--Wybierz kategorię--</option>
               {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
             </Select>
           </FormControl>
