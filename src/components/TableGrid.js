@@ -108,7 +108,11 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
             <InputLabel htmlFor="category">Kategoria</InputLabel>
             <Select
               native
-              onChange={e => onValueChange(e.target.value)}
+              onChange={e => {
+                const {name} = categories.find((category) => category.id === +e.target.value
+                );
+                onValueChange(name);
+              }}
               input={<Input name="category" id="category"/>}
             >
               <option>--Wybierz kategorię--</option>
@@ -119,8 +123,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
       />
     </Grid>
   );
-}
-;
+};
 TableGrid.propTypes = {
   rows: PropTypes.array.isRequired,
   columns: PropTypes.array.isRequired,
