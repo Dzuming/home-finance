@@ -18,6 +18,12 @@ export default function financeFlowReducer (state = [], action) {
         spending: [...state.spending, financeFlowSpendingToTableMapper(action.data.spending)],
         message: action.data.message
       });
+    case types.REMOVE_FINANCE_FLOW:
+      return Object.assign({}, state, {
+        isFetching: false,
+        spending: state.spending.filter(element => element.id !== action.data.id),
+        message: action.data.message
+      });
     case types.AUTH_USER:
       return Object.assign({}, state, {isAuthenticated: true});
     case types.SET_DATE:

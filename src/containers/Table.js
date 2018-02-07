@@ -105,14 +105,10 @@ class Table extends Component {
       return addSelectToColumn;
     };
     this.deleteRows = () => {
-      const rows = this.state.rows.slice();
       this.state.deletingRows.forEach((rowId) => {
-        const index = rows.findIndex(row => row.id === rowId);
-        if (index > -1) {
-          rows.splice(index, 1);
-        }
+        this.props.actions.deleteFinanceFlowById(rowId);
       });
-      this.setState({rows, deletingRows: []});
+      this.setState({deletingRows: []});
     };
     this.cancelDelete = () => this.setState({deletingRows: []});
   }

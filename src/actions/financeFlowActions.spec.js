@@ -55,4 +55,23 @@ describe('login actions', () => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
+
+  it('creates REMOVE_FINANCE_FLOW when removeFinanceFlow has been done', () => {
+    const id = 1;
+    fetchMock
+      .deleteOnce(`${env.api_url}/api/spending/${id}`, {
+        body: {message: 'test'},
+        headers: {'content-type': 'application/json'}
+      });
+    const expectedActions = [
+      {type: 'REMOVE_FINANCE_FLOW', data: {"id": 1, message: 'test'}},
+    ];
+    const store = mockStore({user: {id: 1}, financeFlow: {selectedDate: '2018-01'}});
+
+    return store.dispatch(actions.deleteFinanceFlowById(id)).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
 });
