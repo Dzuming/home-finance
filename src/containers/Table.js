@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
-import { getCategories } from '../restApi/category';
 
 class Table extends Component {
   constructor (props) {
@@ -157,8 +156,16 @@ class Table extends Component {
 }
 
 Table.propTypes = {
-  actions: PropTypes.object,
-  spending: PropTypes.array
+  actions: PropTypes.shape({
+    editFinanceFlowById: PropTypes.Func,
+    fetchCategories: PropTypes.Func,
+    getFinanceFlow: PropTypes.Func,
+    deleteFinanceFlowById: PropTypes.Func,
+    setFinanceFlow: PropTypes.Func
+
+  }),
+  spending: PropTypes.array,
+  categories: PropTypes.array
 };
 
 function mapStateToProps (state) {
