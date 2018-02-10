@@ -2,6 +2,7 @@ import {createStore, applyMiddleware} from 'redux';
 import rootReducer from '../reducers';
 import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
+import {apiMiddleware} from '../middlewares/apiMiddleware';
 
 const currentYearAndMonth = () => {
   const Today = new Date();
@@ -19,9 +20,10 @@ const initialState = {
     ? JSON.parse(localStorage.getItem('user'))
     : {},
   financeFlow: {
-    selectedDate: currentYearAndMonth()
+    selectedDate: currentYearAndMonth(),
+    categories: []
   }
 };
 export default function configureStore() {
-  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware, apiMiddleware)));
 }

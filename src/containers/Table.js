@@ -39,18 +39,22 @@ class Table extends Component {
     this.commitChanges = ({added, changed, deleted}) => {
       let rows = this.state.rows;
       if (added) {
-        const {id} =  this.state.categories.find(category => category.name === Object.assign({}, ...added)['category'])
-        const spending = Object.assign({}, ...added, { category: id })
+        const {id} = this.state.categories.find(category => category.name === Object.assign({}, ...added)['category']);
+        const spending = Object.assign({}, ...added, {category: id});
         this.props.actions.setFinanceFlow(spending);
       }
       this.cancelDelete = () => this.setState({deletingRows: []});
       if (changed) {
-        rows = rows.map(row => (changed[row.id]
-          ? {
-            ...row,
-            ...changed[row.id]
-          }
-          : row));
+        let spending = changed;
+        if (Object.values(spending)[0]['category']) {
+          const {id} = this.state.categories.find(category => category.name === Object.values(spending)[0]['category']);
+          spending = Object.assign({}, {
+            id: Object.keys(spending)[0],
+            category: Object.values(spending)[0]['category'],
+            items: {category: id}
+          });
+        }
+        this.props.actions.editFinanceFlowById(spending);
       }
 
       this.setState({
@@ -119,10 +123,7 @@ class Table extends Component {
         rows: this.props.spending
       });
     });
-
-    getCategories().then((response) => {
-      this.setState({categories: response});
-    });
+    this.props.actions.fetchCategories();
   }
 
   componentWillReceiveProps (nextProps) {
@@ -132,7 +133,8 @@ class Table extends Component {
   }
 
   render () {
-    const {rows, columns, sorting, deletingRows, categories} = this.state;
+    const {rows, columns, sorting, deletingRows} = this.state;
+    const {categories} = this.props;
     return (
       <div>
         <TableGrid
@@ -160,7 +162,10 @@ Table.propTypes = {
 };
 
 function mapStateToProps (state) {
-  return {spending: state.financeFlow.spending};
+  return {
+    spending: state.financeFlow.spending,
+    categories: state.financeFlow.categories
+  };
 }
 
 function mapDispatchToProps (dispatch) {

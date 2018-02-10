@@ -64,7 +64,7 @@ describe('login actions', () => {
         headers: {'content-type': 'application/json'}
       });
     const expectedActions = [
-      {type: 'REMOVE_FINANCE_FLOW', data: {"id": 1, message: 'test'}},
+      {type: 'REMOVE_FINANCE_FLOW', data: {'id': 1, message: 'test'}},
     ];
     const store = mockStore({user: {id: 1}, financeFlow: {selectedDate: '2018-01'}});
 
@@ -74,4 +74,25 @@ describe('login actions', () => {
     });
   });
 
+  it('creates EDIT_FINANCE_FLOW when editFinanceFlow has been done', () => {
+    const id = 1;
+    fetchMock
+      .putOnce(`${env.api_url}/api/spending/${id}`, {
+        body: {message: 'test'},
+        headers: {'content-type': 'application/json'}
+      });
+    const expectedActions = [
+      {type: 'EDIT_FINANCE_FLOW', data: {'id': 1, message: 'test'}},
+    ];
+    const store = mockStore({user: {id: 1}, financeFlow: {selectedDate: '2018-01'}});
+
+    return store.dispatch(actions.editFinanceFlowById(id)).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it('should create SET_CATEGORIES action with snapshot', () => {
+    expect(actions.setCategories({id: 1, name: 'jedzenie'})).toMatchSnapshot();
+  });
 });
