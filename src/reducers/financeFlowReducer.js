@@ -15,7 +15,6 @@ export default function financeFlowReducer (state = [], action) {
         categories: [...action.payload]
       });
     case types.SET_SPENDING:
-      debugger;
       return Object.assign({}, state, {
         isFetching: false,
         spending: action.payload.map((financeFlow) => {

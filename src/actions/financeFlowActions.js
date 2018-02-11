@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
 import {
-  fetchFinanceSpendingFromServer,
   postFinanceSpendingToServer,
   deleteFinanceSpendingFromServer,
   editFinanceSpendingFromServer
@@ -40,14 +39,6 @@ function editFinanceFlow (editedValue) {
     return editFinanceSpendingFromServer(editedValue).then((response) => {
       dispatch(putFinanceFlow({message: response.message, editedValue}));
     }).catch((error => error));
-  };
-}
-
-export function getFinanceFlow () {
-  return (dispatch, getState) => {
-    const userId = getState().user.id;
-    const selectedDate = getState().financeFlow.selectedDate;
-    return dispatch(fetchFinanceFlow(userId, selectedDate));
   };
 }
 
