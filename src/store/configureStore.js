@@ -21,7 +21,8 @@ const initialState = {
     : {},
   financeFlow: {
     selectedDate: currentYearAndMonth(),
-    categories: []
+    categories: [],
+    spending: []
   }
 };
 export default function configureStore() {

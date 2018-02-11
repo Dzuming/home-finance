@@ -7,10 +7,6 @@ import {
 } from '../restApi/financeFlow';
 import env from '../../environments/config';
 
-function successFinanceFlow (data) {
-  return {type: types.SUCCESS_FINANCE_FLOW, data};
-}
-
 function createFinanceFlow (data) {
   return {type: types.CREATE_FINANCE_FLOW, data};
 }
@@ -21,15 +17,6 @@ function deleteFinanceFlow (data) {
 
 function putFinanceFlow (data) {
   return {type: types.EDIT_FINANCE_FLOW, data};
-}
-
-function fetchFinanceFlow (userId, selectedDate) {
-  return dispatch => {
-    return fetchFinanceSpendingFromServer(userId, selectedDate)
-      .then((data) => {
-        dispatch(successFinanceFlow(data));
-      }).catch((error => error));
-  };
 }
 
 function postFinanceFlow (data) {
@@ -95,6 +82,25 @@ export const setCategories = (data) => ({
   type: types.SET_CATEGORIES,
   payload: data
 });
+
+export const fetchSpending = () => (dispatch, getState) => {
+  const {id} = getState().user;
+  const {selectedDate} = getState().financeFlow;
+  return dispatch({
+    type: types.API_REQUEST,
+    payload:
+      {
+        url: `${env.api_url}/api/spending/${id}/${selectedDate}`,
+        success: setSpending
+      }
+  });
+};
+
+export const setSpending = (data) => ({
+  type: types.SET_SPENDING,
+  payload: data
+});
+
 export function setDate (date) {
   return {type: types.SET_DATE, date};
 }

@@ -30,7 +30,6 @@ class Table extends Component {
           dataType: 'date'
         },
       ],
-      rows: [],
       deletingRows: [],
       sorting: [{columnName: 'dateCreated', direction: 'desc'}],
     };
@@ -117,11 +116,7 @@ class Table extends Component {
   }
 
   componentDidMount () {
-    this.props.actions.getFinanceFlow().then(() => {
-      this.setState({
-        rows: this.props.spending
-      });
-    });
+    this.props.actions.fetchSpending();
     this.props.actions.fetchCategories();
   }
 
@@ -132,12 +127,12 @@ class Table extends Component {
   }
 
   render () {
-    const {rows, columns, sorting, deletingRows} = this.state;
-    const {categories} = this.props;
+    const {columns, sorting, deletingRows} = this.state;
+    const {categories, spending} = this.props;
     return (
       <div>
         <TableGrid
-          rows={rows}
+          rows={spending}
           columns={columns}
           commitChanges={this.commitChanges}
           sorting={sorting}
@@ -145,7 +140,7 @@ class Table extends Component {
           categories={categories}
           filterCellTemplate={this.filterCellTemplate}/>
         <DeleteDialog
-          rows={rows}
+          rows={spending}
           columns={columns}
           deletingRows={deletingRows}
           deleteRows={this.deleteRows}
@@ -159,7 +154,7 @@ Table.propTypes = {
   actions: PropTypes.shape({
     editFinanceFlowById: PropTypes.Func,
     fetchCategories: PropTypes.Func,
-    getFinanceFlow: PropTypes.Func,
+    fetchSpending: PropTypes.Func,
     deleteFinanceFlowById: PropTypes.Func,
     setFinanceFlow: PropTypes.Func
 

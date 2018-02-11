@@ -1,11 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`login actions should create SET_CATEGORIES action with snapshot 1`] = `
+exports[`finance flow actions should create SET_CATEGORIES action with snapshot 1`] = `
 Object {
   "payload": Object {
     "id": 1,
     "name": "jedzenie",
   },
   "type": "SET_CATEGORIES",
+}
+`;
+
+exports[`finance flow actions should create SET_SPENDING action with snapshot 1`] = `
+Object {
+  "payload": Array [
+    Object {
+      "category": Object {
+        "id": 1,
+        "name": "jedzenie",
+      },
+      "created_at": "2018-01-01 12:12:12",
+      "id": 1,
+      "name": "Zakupy",
+      "user_id": 1,
+      "value": 300,
+    },
+  ],
+  "type": "SET_SPENDING",
 }
 `;

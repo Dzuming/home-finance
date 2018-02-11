@@ -3,15 +3,6 @@ import { financeFlowSpendingToTableMapper } from '../helpers/Mappers';
 
 export default function financeFlowReducer (state = [], action) {
   switch (action.type) {
-    case types.REQUEST_FINANCE_FLOW:
-      return Object.assign({}, state, {isFetching: true});
-    case types.SUCCESS_FINANCE_FLOW:
-      return Object.assign({}, state, {
-        isFetching: false,
-        spending: action.data.map((financeFlow) => {
-          return financeFlowSpendingToTableMapper(financeFlow);
-        })
-      });
     case types.CREATE_FINANCE_FLOW:
       return Object.assign({}, state, {
         isFetching: false,
@@ -22,6 +13,14 @@ export default function financeFlowReducer (state = [], action) {
       return Object.assign({}, state, {
         isFetching: false,
         categories: [...action.payload]
+      });
+    case types.SET_SPENDING:
+      debugger;
+      return Object.assign({}, state, {
+        isFetching: false,
+        spending: action.payload.map((financeFlow) => {
+          return financeFlowSpendingToTableMapper(financeFlow);
+        })
       });
     case types.REMOVE_FINANCE_FLOW:
       return Object.assign({}, state, {

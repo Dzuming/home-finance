@@ -8,28 +8,10 @@ import env from '../../environments/config';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('login actions', () => {
+describe('finance flow actions', () => {
   afterEach(() => {
     fetchMock.reset();
     fetchMock.restore();
-  });
-
-  it('creates SUCCESS_FINANCE_FLOW when fetchFinanceFlow has been done', () => {
-    const userId = 1;
-    const selectedDate = '2018-01';
-    fetchMock
-      .getOnce(`${env.api_url}/api/spending/${userId}/${selectedDate}`, {
-        body: {description: '12345', value: 'John Doe', category: {id: 1}},
-        headers: {'content-type': 'application/json'}
-      });
-    const expectedActions = [
-      {type: 'SUCCESS_FINANCE_FLOW', data: {description: '12345', value: 'John Doe', category: {id: 1}}},
-    ];
-    const store = mockStore({user: {id: 1}, financeFlow: {selectedDate: '2018-01'}});
-    return store.dispatch(actions.getFinanceFlow()).then(() => {
-      // return of async actions
-      expect(store.getActions()).toEqual(expectedActions);
-    });
   });
 
   it('creates CREATE_FINANCE_FLOW when postFinanceFlow has been done', () => {
@@ -94,5 +76,15 @@ describe('login actions', () => {
 
   it('should create SET_CATEGORIES action with snapshot', () => {
     expect(actions.setCategories({id: 1, name: 'jedzenie'})).toMatchSnapshot();
+  });
+  it('should create SET_SPENDING action with snapshot', () => {
+    expect(actions.setSpending([{
+      id: 1,
+      name: 'Zakupy',
+      value: 300,
+      user_id: 1,
+      created_at: '2018-01-01 12:12:12',
+      category: {id: 1, name: 'jedzenie'}
+    }])).toMatchSnapshot();
   });
 });
