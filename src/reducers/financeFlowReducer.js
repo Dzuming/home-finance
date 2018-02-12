@@ -3,11 +3,11 @@ import { financeFlowSpendingToTableMapper } from '../helpers/Mappers';
 
 export default function financeFlowReducer (state = [], action) {
   switch (action.type) {
-    case types.CREATE_FINANCE_FLOW:
+    case types.ADD_SPENDING:
       return Object.assign({}, state, {
         isFetching: false,
-        spending: [...state.spending, financeFlowSpendingToTableMapper(action.data.spending)],
-        message: action.data.message
+        spending: state.spending.concat(financeFlowSpendingToTableMapper(action.payload.spending)),
+        message: action.payload.message
       });
     case types.SET_CATEGORIES:
       return Object.assign({}, state, {

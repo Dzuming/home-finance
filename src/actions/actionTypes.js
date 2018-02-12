@@ -15,3 +15,5 @@ export const SET_DATE = 'SET_DATE';
 export const API_REQUEST = 'API_REQUEST';
 export const SET_CATEGORIES = 'SET_CATEGORIES';
 export const SET_SPENDING = 'SET_SPENDING';
+export const API_REQUEST_POST = 'API_REQUEST_POST';
+export const ADD_SPENDING = 'ADD_SPENDING';

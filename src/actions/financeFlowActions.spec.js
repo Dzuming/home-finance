@@ -77,8 +77,19 @@ describe('finance flow actions', () => {
   it('should create SET_CATEGORIES action with snapshot', () => {
     expect(actions.setCategories({id: 1, name: 'jedzenie'})).toMatchSnapshot();
   });
-  it('should create SET_SPENDING action with snapshot', () => {
+  it('should create setSpending action with snapshot', () => {
     expect(actions.setSpending([{
+      id: 1,
+      name: 'Zakupy',
+      value: 300,
+      user_id: 1,
+      created_at: '2018-01-01 12:12:12',
+      category: {id: 1, name: 'jedzenie'}
+    }])).toMatchSnapshot();
+  });
+
+  it('should create addSpending action with snapshot', () => {
+    expect(actions.addSpending([{
       id: 1,
       name: 'Zakupy',
       value: 300,

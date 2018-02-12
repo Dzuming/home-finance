@@ -10,7 +10,17 @@ Object {
 }
 `;
 
-exports[`finance flow actions should create SET_SPENDING action with snapshot 1`] = `
+exports[`finance flow actions should create addSpending action with snapshot 1`] = `
+Object {
+  "payload": Object {
+    "message": undefined,
+    "spending": undefined,
+  },
+  "type": "ADD_SPENDING",
+}
+`;
+
+exports[`finance flow actions should create setSpending action with snapshot 1`] = `
 Object {
   "payload": Array [
     Object {

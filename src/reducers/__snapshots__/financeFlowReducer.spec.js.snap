@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`add action should add recipe to a non-empty list 1`] = `
+Object {
+  "isFetching": false,
+  "message": "test",
+  "spending": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 1,
+      "spending": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 1,
+      "spending": 300,
+    },
+  ],
+}
+`;
+
+exports[`add action should add recipe to empty list 1`] = `
+Object {
+  "isFetching": false,
+  "message": "test",
+  "spending": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 1,
+      "spending": 300,
+    },
+  ],
+}
+`;
+
 exports[`finance flow reducer get finance flow action should get spending 1`] = `
 Object {
   "isFetching": false,

@@ -35,11 +35,10 @@ class Table extends Component {
     };
 
     this.commitChanges = ({added, changed, deleted}) => {
-      let rows = this.state.rows;
       if (added) {
-        const {id} = this.state.categories.find(category => category.name === Object.assign({}, ...added)['category']);
-        const spending = Object.assign({}, ...added, {category: id});
-        this.props.actions.setFinanceFlow(spending);
+        const {id} = this.props.categories.find(category => category.name === Object.assign({}, ...added)['category']);
+        const data = Object.assign({}, ...added, {category: id});
+        this.props.actions.createSpending(data);
       }
       this.cancelDelete = () => this.setState({deletingRows: []});
       if (changed) {
@@ -56,7 +55,6 @@ class Table extends Component {
       }
 
       this.setState({
-        rows,
         deletingRows: deleted || this.state.deletingRows
       });
     };
@@ -120,12 +118,6 @@ class Table extends Component {
     this.props.actions.fetchCategories();
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.spending !== this.props.spending) {
-      this.setState({rows: nextProps.spending});
-    }
-  }
-
   render () {
     const {columns, sorting, deletingRows} = this.state;
     const {categories, spending} = this.props;
@@ -156,7 +148,7 @@ Table.propTypes = {
     fetchCategories: PropTypes.Func,
     fetchSpending: PropTypes.Func,
     deleteFinanceFlowById: PropTypes.Func,
-    setFinanceFlow: PropTypes.Func
+    createSpending: PropTypes.Func
 
   }),
   spending: PropTypes.array,
