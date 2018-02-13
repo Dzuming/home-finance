@@ -14,48 +14,6 @@ describe('finance flow actions', () => {
     fetchMock.restore();
   });
 
-  it('creates CREATE_FINANCE_FLOW when postFinanceFlow has been done', () => {
-    const user = {
-      id: 1,
-      name: 'test',
-    };
-    localStorage.setItem('user', JSON.stringify(user));
-    fetchMock
-      .postOnce(`${env.api_url}/api/spending`, {
-        body: {message: 'test'},
-        headers: {'content-type': 'application/json'}
-      });
-    const expectedActions = [
-      {type: 'CREATE_FINANCE_FLOW', data: {message: 'test'}},
-    ];
-    const store = mockStore({user: {id: 1}, financeFlow: {selectedDate: '2018-01'}});
-    const data = {
-      id: 1
-    };
-    return store.dispatch(actions.setFinanceFlow(data)).then(() => {
-      // return of async actions
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
-
-  it('creates REMOVE_FINANCE_FLOW when removeFinanceFlow has been done', () => {
-    const id = 1;
-    fetchMock
-      .deleteOnce(`${env.api_url}/api/spending/${id}`, {
-        body: {message: 'test'},
-        headers: {'content-type': 'application/json'}
-      });
-    const expectedActions = [
-      {type: 'REMOVE_FINANCE_FLOW', data: {'id': 1, message: 'test'}},
-    ];
-    const store = mockStore({user: {id: 1}, financeFlow: {selectedDate: '2018-01'}});
-
-    return store.dispatch(actions.deleteFinanceFlowById(id)).then(() => {
-      // return of async actions
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
-
   it('creates EDIT_FINANCE_FLOW when editFinanceFlow has been done', () => {
     const id = 1;
     fetchMock
@@ -96,6 +54,12 @@ describe('finance flow actions', () => {
       user_id: 1,
       created_at: '2018-01-01 12:12:12',
       category: {id: 1, name: 'jedzenie'}
+    }])).toMatchSnapshot();
+  });
+
+  it('should create removeSpending action with snapshot', () => {
+    expect(actions.removeSpending([{
+      id: 1,
     }])).toMatchSnapshot();
   });
 });

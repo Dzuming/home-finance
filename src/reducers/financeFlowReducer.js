@@ -21,11 +21,12 @@ export default function financeFlowReducer (state = [], action) {
           return financeFlowSpendingToTableMapper(financeFlow);
         })
       });
-    case types.REMOVE_FINANCE_FLOW:
+    case types.REMOVE_SPENDING:
+      debugger
       return Object.assign({}, state, {
         isFetching: false,
-        spending: state.spending.filter(element => element.id !== action.data.id),
-        message: action.data.message
+        spending: state.spending.filter(spending => spending.id !== action.payload.id),
+        message: action.payload.message || {}
       });
     case types.EDIT_FINANCE_FLOW:
       return Object.assign({}, state, {

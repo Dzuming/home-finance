@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`add action should add recipe to a non-empty list 1`] = `
+exports[`spending reducer add action should add recipe to a non-empty list 1`] = `
 Object {
   "isFetching": false,
   "message": "test",
@@ -23,7 +23,7 @@ Object {
 }
 `;
 
-exports[`add action should add recipe to empty list 1`] = `
+exports[`spending reducer add action should add recipe to empty list 1`] = `
 Object {
   "isFetching": false,
   "message": "test",
@@ -39,7 +39,71 @@ Object {
 }
 `;
 
-exports[`finance flow reducer get finance flow action should get spending 1`] = `
+exports[`spending reducer delete action should delete spending when exists 1`] = `
+Object {
+  "isFetching": false,
+  "message": Object {
+    "id": 1,
+  },
+  "spending": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 1,
+      "spending": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 2,
+      "spending": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 3,
+      "spending": 300,
+    },
+  ],
+}
+`;
+
+exports[`spending reducer delete action should not delete spending when it doesn't exist 1`] = `
+Object {
+  "isFetching": false,
+  "message": Object {
+    "id": 4,
+  },
+  "spending": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 1,
+      "spending": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 2,
+      "spending": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 3,
+      "spending": 300,
+    },
+  ],
+}
+`;
+
+exports[`spending reducer get action should get spending 1`] = `
 Object {
   "isFetching": false,
   "spending": Array [

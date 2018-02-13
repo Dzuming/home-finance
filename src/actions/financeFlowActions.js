@@ -1,24 +1,11 @@
 import * as types from './actionTypes';
 import {
-  deleteFinanceSpendingFromServer,
   editFinanceSpendingFromServer
 } from '../restApi/financeFlow';
 import env from '../../environments/config';
 
-function deleteFinanceFlow (data) {
-  return {type: types.REMOVE_FINANCE_FLOW, data};
-}
-
 function putFinanceFlow (data) {
   return {type: types.EDIT_FINANCE_FLOW, data};
-}
-
-function removeFinanceFlow (id) {
-  return dispatch => {
-    return deleteFinanceSpendingFromServer(id).then((response) => {
-      dispatch(deleteFinanceFlow({message: response.message, id}));
-    }).catch((error => error));
-  };
 }
 
 function editFinanceFlow (editedValue) {
@@ -26,12 +13,6 @@ function editFinanceFlow (editedValue) {
     return editFinanceSpendingFromServer(editedValue).then((response) => {
       dispatch(putFinanceFlow({message: response.message, editedValue}));
     }).catch((error => error));
-  };
-}
-
-export function deleteFinanceFlowById (id) {
-  return (dispatch) => {
-    return dispatch(removeFinanceFlow(id));
   };
 }
 
@@ -82,11 +63,30 @@ export const createSpending = (data) => ({
       data
     }
 });
+
 export const addSpending = ({spending, message}) => ({
   type: types.ADD_SPENDING,
   payload: {
     spending,
     message
+  }
+});
+
+export const deleteSpending = (id) => ({
+  type: types.API_REQUEST_DELETE,
+  payload:
+    {
+      url: `${env.api_url}/api/spending/${id}`,
+      success: removeSpending,
+      id
+    }
+});
+
+export const removeSpending = (message, id) => ({
+  type: types.REMOVE_SPENDING,
+  payload: {
+    message,
+    id
   }
 });
 

@@ -1,6 +1,6 @@
 import reducer from './financeFlowReducer';
 import deepFreeze from 'deep-freeze';
-import { setSpending, addSpending } from '../actions/financeFlowActions';
+import { setSpending, addSpending, removeSpending } from '../actions/financeFlowActions';
 
 const initialState = deepFreeze(reducer({spending: []}, {type: 'INIT'}));
 const spending = {
@@ -12,25 +12,42 @@ const spending = {
   category: {id: 1, name: 'jedzenie'}
 };
 const message = 'test';
-describe('finance flow reducer', () => {
+describe('spending reducer', () => {
   it('should handle unknown actions', () => {
     expect(reducer(initialState, {type: 'FAKE'})).toBe(initialState);
   });
 
-  describe('get finance flow action', () => {
+  describe('get action', () => {
     it('should get spending', () => {
       expect(reducer(initialState, setSpending([spending]))).toMatchSnapshot();
     });
   });
-});
-describe('add action', () => {
-  it('should add recipe to empty list', () => {
-    expect(reducer(initialState, addSpending({spending, message}))).toMatchSnapshot();
+
+  describe('add action', () => {
+    it('should add recipe to empty list', () => {
+      expect(reducer(initialState, addSpending({spending, message}))).toMatchSnapshot();
+    });
+
+    it('should add recipe to a non-empty list', () => {
+      const nonEmptyState = deepFreeze(reducer(initialState, addSpending({spending, message})));
+
+      expect(reducer(nonEmptyState, addSpending({spending, message}))).toMatchSnapshot();
+    });
   });
 
-  it('should add recipe to a non-empty list', () => {
-    const nonEmptyState = deepFreeze(reducer(initialState, addSpending({spending, message})));
+  describe('delete action', () => {
+    const baseState = deepFreeze(
+      [{spending: {...spending, id: 1} }, {spending: {...spending, id: 2}}, {spending: {...spending, id: 3}}]
+        .reduce((state, spending) => reducer(state, addSpending(spending)), initialState)
+    );
 
-    expect(reducer(nonEmptyState, addSpending({spending, message}))).toMatchSnapshot();
+    it('should delete spending when exists', () => {
+      expect(reducer(baseState, removeSpending({id: 1}))).toMatchSnapshot();
+    });
+
+    it('should not delete spending when it doesn\'t exist', () => {
+      expect(reducer(baseState, removeSpending({id: 4}))).toMatchSnapshot();
+    });
   });
 });
+

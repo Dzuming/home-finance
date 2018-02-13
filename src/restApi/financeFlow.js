@@ -2,23 +2,6 @@ import env from '../../environments/config';
 import { getAuthToken } from '../helpers/LocalStorage';
 import { financeFlowSpendingToServerMapper } from '../helpers/Mappers';
 
-export function deleteFinanceSpendingFromServer (id) {
-  const url = `${env.api_url}/api/spending/${id}`;
-  return fetch(url, {
-    method: 'DELETE',
-    headers: {
-      'Accept': '*',
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${getAuthToken()}`,
-    }
-  }).then(response => {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    return response.json();
-  });
-}
 
 export function editFinanceSpendingFromServer (payload) {
   const url = `${env.api_url}/api/spending/${payload.id}`;

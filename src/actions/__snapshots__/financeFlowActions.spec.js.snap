@@ -20,6 +20,20 @@ Object {
 }
 `;
 
+exports[`finance flow actions should create removeSpending action with snapshot 1`] = `
+Object {
+  "payload": Object {
+    "id": undefined,
+    "message": Array [
+      Object {
+        "id": 1,
+      },
+    ],
+  },
+  "type": "REMOVE_SPENDING",
+}
+`;
+
 exports[`finance flow actions should create setSpending action with snapshot 1`] = `
 Object {
   "payload": Array [

@@ -12,11 +12,11 @@ export const apiMiddleware = ({dispatch}) => (next) => (action) => {
     })
       .then(response => response.json())
       .then(response => {
-        dispatch(success(response))
-      })
+        dispatch(success(response));
+      });
 
     // dispatch({type: action.payload.next.PENDING});
-  } else if(action.type === types.API_REQUEST_POST) {
+  } else if (action.type === types.API_REQUEST_POST) {
     const {url, success, data} = action.payload;
     fetch(url, {
       method: 'POST',
@@ -30,10 +30,24 @@ export const apiMiddleware = ({dispatch}) => (next) => (action) => {
     })
       .then(response => response.json())
       .then(response => {
-        dispatch(success(response))
-      })
+        dispatch(success(response));
+      });
 
     // dispatch({type: action.payload.next.PENDING});
+  } else if (action.type === types.API_REQUEST_DELETE) {
+    const {url, success, id} = action.payload;
+    return fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Accept': '*',
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`,
+      }
+    }).then(response => response.json())
+      .then(response => {
+        dispatch(success(response, id));
+      });
   }
   return next(action);
 };

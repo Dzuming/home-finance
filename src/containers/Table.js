@@ -106,7 +106,7 @@ class Table extends Component {
     };
     this.deleteRows = () => {
       this.state.deletingRows.forEach((rowId) => {
-        this.props.actions.deleteFinanceFlowById(rowId);
+        this.props.actions.deleteSpending(rowId);
       });
       this.setState({deletingRows: []});
     };
@@ -147,7 +147,7 @@ Table.propTypes = {
     editFinanceFlowById: PropTypes.Func,
     fetchCategories: PropTypes.Func,
     fetchSpending: PropTypes.Func,
-    deleteFinanceFlowById: PropTypes.Func,
+    deleteSpending: PropTypes.Func,
     createSpending: PropTypes.Func
 
   }),
