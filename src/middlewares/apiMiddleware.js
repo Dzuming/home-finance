@@ -3,7 +3,7 @@ import { getAuthToken } from '../helpers/LocalStorage';
 import { financeFlowSpendingToServerMapper } from '../helpers/Mappers';
 
 export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
-  if (action.type === types.API_REQUEST) {
+  if (action.type === types.API_REQUEST_GET) {
     const {url, success} = action.payload;
     fetch(url, {
       headers: {

@@ -50,8 +50,6 @@ class Table extends Component {
             items: {...spending.items, category: id}
           });
         }
-        console.log(spending)
-
         this.props.actions.putSpending(spending);
       }
 

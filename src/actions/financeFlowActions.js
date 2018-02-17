@@ -3,7 +3,7 @@ import env from '../../environments/config';
 import { financeFlowSpendingToServerMapper, financeFlowSpendingToTableMapper } from '../helpers/Mappers';
 
 export const fetchCategories = () => ({
-  type: types.API_REQUEST,
+  type: types.API_REQUEST_GET,
   payload:
     {
       url: `${env.api_url}/api/categories`,
@@ -20,7 +20,7 @@ export const fetchSpending = () => (dispatch, getState) => {
   const {id} = getState().user;
   const {selectedDate} = getState().financeFlow;
   return dispatch({
-    type: types.API_REQUEST,
+    type: types.API_REQUEST_GET,
     payload:
       {
         url: `${env.api_url}/api/spending/${id}/${selectedDate}`,
