@@ -1,26 +1,6 @@
 import * as types from './actionTypes';
-import {
-  editFinanceSpendingFromServer
-} from '../restApi/financeFlow';
 import env from '../../environments/config';
-
-function putFinanceFlow (data) {
-  return {type: types.EDIT_FINANCE_FLOW, data};
-}
-
-function editFinanceFlow (editedValue) {
-  return dispatch => {
-    return editFinanceSpendingFromServer(editedValue).then((response) => {
-      dispatch(putFinanceFlow({message: response.message, editedValue}));
-    }).catch((error => error));
-  };
-}
-
-export function editFinanceFlowById (editedValue) {
-  return (dispatch) => {
-    return dispatch(editFinanceFlow(editedValue));
-  };
-}
+import { financeFlowSpendingToServerMapper, financeFlowSpendingToTableMapper } from '../helpers/Mappers';
 
 export const fetchCategories = () => ({
   type: types.API_REQUEST,
@@ -90,6 +70,26 @@ export const removeSpending = (message, id) => ({
   }
 });
 
-export function setDate (date) {
-  return {type: types.SET_DATE, date};
-}
+export const putSpending = (data) => ({
+  type: types.API_REQUEST_PUT,
+  payload:
+    {
+      url: `${env.api_url}/api/spending/${data.id}`,
+      success: editSpending,
+      id: data.id,
+      items: financeFlowSpendingToServerMapper(data.items)
+    }
+});
+
+export const editSpending = (message, id, items) => ({
+  type: types.EDIT_SPENDING,
+  payload: {
+    message,
+    id,
+    items: financeFlowSpendingToTableMapper (items.data)
+  }
+});
+
+// export function setDate (date) {
+//   return {type: types.SET_DATE, date};
+// }

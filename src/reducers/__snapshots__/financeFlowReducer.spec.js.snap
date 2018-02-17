@@ -8,14 +8,14 @@ Object {
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },
@@ -31,7 +31,7 @@ Object {
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },
@@ -49,21 +49,21 @@ Object {
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 2,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 3,
       "spending": 300,
     },
@@ -81,21 +81,51 @@ Object {
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 2,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
+      "id": 3,
+      "spending": 300,
+    },
+  ],
+}
+`;
+
+exports[`spending reducer edit action should edit spending when exists 1`] = `
+Object {
+  "isFetching": false,
+  "message": "test",
+  "spending": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Opłata rachunki",
+      "id": 1,
+      "spending": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 2,
+      "spending": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
       "id": 3,
       "spending": 300,
     },
@@ -110,7 +140,7 @@ Object {
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
-      "description": undefined,
+      "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },

@@ -42,16 +42,17 @@ class Table extends Component {
       }
       this.cancelDelete = () => this.setState({deletingRows: []});
       if (changed) {
-        let spending = changed;
-        if (Object.values(spending)[0]['category']) {
-          const {id} = this.state.categories.find(category => category.name === Object.values(spending)[0]['category']);
+        let spending = {id: Object.keys(changed)[0], items: Object.assign({}, Object.values(changed)[0])};
+        if (spending.items.category) {
+          const {id} = this.props.categories.find(category => category.name === spending.items.category);
           spending = Object.assign({}, {
-            id: Object.keys(spending)[0],
-            category: Object.values(spending)[0]['category'],
-            items: {category: id}
+            ...spending,
+            items: {...spending.items, category: id}
           });
         }
-        this.props.actions.editFinanceFlowById(spending);
+        console.log(spending)
+
+        this.props.actions.putSpending(spending);
       }
 
       this.setState({
@@ -144,7 +145,7 @@ class Table extends Component {
 
 Table.propTypes = {
   actions: PropTypes.shape({
-    editFinanceFlowById: PropTypes.Func,
+    putSpending: PropTypes.Func,
     fetchCategories: PropTypes.Func,
     fetchSpending: PropTypes.Func,
     deleteSpending: PropTypes.Func,

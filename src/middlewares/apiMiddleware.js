@@ -2,7 +2,7 @@ import * as types from '../actions/actionTypes';
 import { getAuthToken } from '../helpers/LocalStorage';
 import { financeFlowSpendingToServerMapper } from '../helpers/Mappers';
 
-export const apiMiddleware = ({dispatch}) => (next) => (action) => {
+export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
   if (action.type === types.API_REQUEST) {
     const {url, success} = action.payload;
     fetch(url, {
@@ -47,6 +47,28 @@ export const apiMiddleware = ({dispatch}) => (next) => (action) => {
     }).then(response => response.json())
       .then(response => {
         dispatch(success(response, id));
+      });
+  } else if (action.type === types.API_REQUEST_PUT) {
+    const {url, success, id, items} = action.payload;
+
+    return fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Accept': '*',
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`,
+      },
+      body: JSON.stringify(items)
+    }).then(response => response.json())
+      .then(response => {
+
+        dispatch(success(response, id, {
+          data: {
+            ...items,
+            category: getState().financeFlow.categories.find(category => items.category_id === category.id)
+          }
+        }));
       });
   }
   return next(action);

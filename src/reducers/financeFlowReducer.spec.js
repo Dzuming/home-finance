@@ -1,11 +1,11 @@
 import reducer from './financeFlowReducer';
 import deepFreeze from 'deep-freeze';
-import { setSpending, addSpending, removeSpending } from '../actions/financeFlowActions';
+import { setSpending, addSpending, removeSpending, editSpending } from '../actions/financeFlowActions';
 
 const initialState = deepFreeze(reducer({spending: []}, {type: 'INIT'}));
 const spending = {
   id: 1,
-  name: 'Zakupy',
+  description: 'Zakupy',
   value: 300,
   user_id: 1,
   created_at: '2018-01-01 12:12:12',
@@ -37,7 +37,7 @@ describe('spending reducer', () => {
 
   describe('delete action', () => {
     const baseState = deepFreeze(
-      [{spending: {...spending, id: 1} }, {spending: {...spending, id: 2}}, {spending: {...spending, id: 3}}]
+      [{spending: {...spending, id: 1}}, {spending: {...spending, id: 2}}, {spending: {...spending, id: 3}}]
         .reduce((state, spending) => reducer(state, addSpending(spending)), initialState)
     );
 
@@ -47,6 +47,21 @@ describe('spending reducer', () => {
 
     it('should not delete spending when it doesn\'t exist', () => {
       expect(reducer(baseState, removeSpending({id: 4}))).toMatchSnapshot();
+    });
+  });
+
+  describe('edit action', () => {
+    const baseState = deepFreeze(
+      [{spending: {...spending, id: 1}}, {spending: {...spending, id: 2}}, {spending: {...spending, id: 3}}]
+        .reduce((state, spending) => reducer(state, addSpending(spending)), initialState)
+    );
+    const user = {
+      id: 1,
+      name: 'test',
+    };
+    localStorage.setItem('user', JSON.stringify(user));
+    it('should edit spending when exists', () => {
+      expect(reducer(baseState, editSpending('test', 1, {data: {description: "Opłata rachunki"}}))).toMatchSnapshot();
     });
   });
 });

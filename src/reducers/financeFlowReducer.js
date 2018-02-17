@@ -22,25 +22,33 @@ export default function financeFlowReducer (state = [], action) {
         })
       });
     case types.REMOVE_SPENDING:
-      debugger
       return Object.assign({}, state, {
         isFetching: false,
         spending: state.spending.filter(spending => spending.id !== action.payload.id),
         message: action.payload.message || {}
       });
-    case types.EDIT_FINANCE_FLOW:
+    case types.EDIT_SPENDING:
       return Object.assign({}, state, {
         isFetching: false,
         spending: state.spending.map(element => {
-          if (element.id !== parseInt(action.data.payload.id)) {
+          if (element.id !== parseInt(action.payload.id)) {
             return element;
           }
+          let items = Object.assign({},
+            ...Object.keys(action.payload.items)
+              .reduce((total, key) => {
+                if (action.payload.items[key] !== undefined) {
+                  total.push({[key]: action.payload.items[key]});
+                }
+                return total;
+              }, [])
+        )
           return {
             ...element,
-            ...action.data.payload.items
+            ...items
           };
         }),
-        message: action.data.message
+        message: action.payload.message || {}
       });
     case types.AUTH_USER:
       return Object.assign({}, state, {isAuthenticated: true});
