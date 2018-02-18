@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`api action should set api request pending 1`] = `
+Object {
+  "loading": NaN,
+}
+`;
+
+exports[`api action should set api request success 1`] = `
+Object {
+  "loading": NaN,
+}
+`;

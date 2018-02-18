@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`api actions should create API_REQUEST_PENDING action with snapshot 1`] = `
+Object {
+  "type": "API_REQUEST_PENDING",
+}
+`;
+
+exports[`api actions should create API_REQUEST_SUCCESS action with snapshot 1`] = `
+Object {
+  "type": "API_REQUEST_SUCCESS",
+}
+`;

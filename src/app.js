@@ -1,8 +1,8 @@
 import React from 'react';
-import {Component} from 'react';
-import {Route} from 'react-router';
-import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
+import { Component } from 'react';
+import { Route } from 'react-router';
+import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Nav from './containers/Navigation';
@@ -12,8 +12,11 @@ import Login from './containers/Login';
 import PrivateRoute from './containers/PrivateRoute';
 import './index.scss';
 import 'normalize.css';
+import withSpinner from './helpers/withSpinner';
+import compose from 'recompose/compose';
+
 class App extends Component {
-  render() {
+  render () {
     const {isAuthenticated} = this.props;
     return (
       <div>
@@ -26,7 +29,7 @@ class App extends Component {
               {isAuthenticated && <List/>}
             </Grid>
             <Grid item xs={12} lg={10}>
-              {isAuthenticated &&< Nav />}
+              {isAuthenticated && < Nav/>}
               <Switch>
                 <PrivateRoute
                   isAuthenticated={isAuthenticated}
@@ -45,10 +48,13 @@ class App extends Component {
     );
   }
 }
+
 App.propTypes = {
   isAuthenticated: PropTypes.bool
 };
-function mapStateToProps(state) {
+
+function mapStateToProps (state) {
   return {isAuthenticated: state.auth.isAuthenticated};
 }
-export default connect(mapStateToProps, null)(App);
+
+export default compose(withSpinner, connect(mapStateToProps, null))(App);

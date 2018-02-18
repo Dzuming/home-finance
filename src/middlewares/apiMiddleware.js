@@ -4,6 +4,7 @@ import { financeFlowSpendingToServerMapper } from '../helpers/Mappers';
 
 export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
   if (action.type === types.API_REQUEST_GET) {
+    dispatch({type: types.API_REQUEST.PENDING});
     const {url, success} = action.payload;
     fetch(url, {
       headers: {
@@ -13,10 +14,11 @@ export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
       .then(response => response.json())
       .then(response => {
         dispatch(success(response));
+      }).then(() => {
+        dispatch({type: types.API_REQUEST.SUCCESS});
       });
-
-    // dispatch({type: action.payload.next.PENDING});
   } else if (action.type === types.API_REQUEST_POST) {
+    dispatch({type: types.API_REQUEST.PENDING});
     const {url, success, data} = action.payload;
     fetch(url, {
       method: 'POST',
@@ -31,10 +33,11 @@ export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
       .then(response => response.json())
       .then(response => {
         dispatch(success(response));
+      }).then(() => {
+        dispatch({type: types.API_REQUEST.SUCCESS});
       });
-
-    // dispatch({type: action.payload.next.PENDING});
   } else if (action.type === types.API_REQUEST_DELETE) {
+    dispatch({type: types.API_REQUEST.PENDING});
     const {url, success, id} = action.payload;
     return fetch(url, {
       method: 'DELETE',
@@ -47,10 +50,12 @@ export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
     }).then(response => response.json())
       .then(response => {
         dispatch(success(response, id));
+      }).then(() => {
+        dispatch({type: types.API_REQUEST.SUCCESS});
       });
   } else if (action.type === types.API_REQUEST_PUT) {
+    dispatch({type: types.API_REQUEST.PENDING});
     const {url, success, id, items} = action.payload;
-
     return fetch(url, {
       method: 'PUT',
       headers: {
@@ -62,13 +67,14 @@ export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
       body: JSON.stringify(items)
     }).then(response => response.json())
       .then(response => {
-
         dispatch(success(response, id, {
           data: {
             ...items,
             category: getState().financeFlow.categories.find(category => items.category_id === category.id)
           }
         }));
+      }).then(() => {
+        dispatch({type: types.API_REQUEST.SUCCESS});
       });
   }
   return next(action);

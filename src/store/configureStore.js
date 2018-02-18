@@ -1,8 +1,8 @@
-import {createStore, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
 import thunkMiddleware from 'redux-thunk';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {apiMiddleware} from '../middlewares/apiMiddleware';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { apiMiddleware } from '../middlewares/apiMiddleware';
 
 const currentYearAndMonth = () => {
   const Today = new Date();
@@ -23,8 +23,11 @@ const initialState = {
     selectedDate: currentYearAndMonth(),
     categories: [],
     spending: []
+  },
+  api: {
+    loading: 0
   }
 };
-export default function configureStore() {
+export default function configureStore () {
   return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware, apiMiddleware)));
 }

@@ -1,3 +1,9 @@
+const asyncActionType = (type) => ({
+  PENDING: `${type}_PENDING`,
+  SUCCESS: `${type}_SUCCESS`,
+  ERROR: `${type}_ERROR`,
+});
+
 export const OPEN_SIDENAV = 'OPEN_SIDENAV';
 export const REQUEST_LOGIN = 'REQUEST_LOGIN';
 export const SUCCESS_LOGIN = 'SUCCESS_LOGIN';
@@ -18,3 +24,4 @@ export const API_REQUEST_POST = 'API_REQUEST_POST';
 export const API_REQUEST_DELETE = 'API_REQUEST_DELETE';
 export const API_REQUEST_PUT = 'API_REQUEST_PUT';
 export const ADD_SPENDING = 'ADD_SPENDING';
+export const API_REQUEST = asyncActionType('API_REQUEST');
