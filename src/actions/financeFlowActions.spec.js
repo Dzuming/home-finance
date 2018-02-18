@@ -1,5 +1,4 @@
 import * as actions from './financeFlowActions';
-import fetchMock from 'fetch-mock';
 import expect from 'expect';
 
 const spending = {
@@ -11,10 +10,6 @@ const spending = {
   category: {id: 1, name: 'jedzenie'}
 };
 describe('finance flow actions', () => {
-  afterEach(() => {
-    fetchMock.reset();
-    fetchMock.restore();
-  });
 
   it('should create SET_CATEGORIES action with snapshot', () => {
     expect(actions.setCategories({id: 1, name: 'jedzenie'})).toMatchSnapshot();
