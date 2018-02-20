@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Nav from './containers/Navigation';
 import List from './containers/List';
-import Table from './containers/Table';
+import Spending from './containers/Spending';
+import Profit from './containers/Profit';
 import Login from './containers/Login';
 import PrivateRoute from './containers/PrivateRoute';
 import './index.scss';
@@ -34,11 +35,11 @@ class App extends Component {
                 <PrivateRoute
                   isAuthenticated={isAuthenticated}
                   path="/Profit"
-                  component={Table}/>
+                  component={Profit}/>
                 <PrivateRoute
                   isAuthenticated={isAuthenticated}
                   path="/Spending"
-                  component={Table}/>
+                  component={Spending}/>
                 <Redirect exact from="/" to="/Login"/>
               </Switch>
             </Grid>

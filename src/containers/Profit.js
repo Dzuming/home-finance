@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
 
-class Table extends Component {
+class Profit extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ class Table extends Component {
           title: 'Description'
         }, {
           name: 'spending',
-          title: 'Spending',
+          title: 'Profit',
           dataType: 'number'
         }, {
           name: 'category',
@@ -141,7 +141,7 @@ class Table extends Component {
   }
 }
 
-Table.propTypes = {
+Profit.propTypes = {
   actions: PropTypes.shape({
     putSpending: PropTypes.Func,
     fetchCategories: PropTypes.Func,
@@ -167,4 +167,4 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Table);
+export default connect(mapStateToProps, mapDispatchToProps)(Profit);
