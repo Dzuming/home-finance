@@ -22,7 +22,8 @@ const initialState = {
   financeFlow: {
     selectedDate: currentYearAndMonth(),
     categories: [],
-    spending: []
+    spending: [],
+    profit: [],
   },
   api: {
     loading: 0

@@ -19,3 +19,13 @@ export const financeFlowSpendingToTableMapper = data => {
     dateCreated: data.created_at? data.created_at.split(' ')[0] : undefined
   };
 };
+
+export const financeFlowProfitToTableMapper = data => {
+  return {
+    id: data.id || undefined,
+    description: data.description || undefined,
+    profit: data.value || undefined,
+    category: data.category && data.category.name ? data.category.name : undefined,
+    dateCreated: data.created_at? data.created_at.split(' ')[0] : undefined
+  };
+};

@@ -51,6 +51,25 @@ Object {
 }
 `;
 
+exports[`finance flow actions should create setProfit action with snapshot 1`] = `
+Object {
+  "payload": Array [
+    Object {
+      "category": Object {
+        "id": 1,
+        "name": "jedzenie",
+      },
+      "created_at": "2018-01-01 12:12:12",
+      "id": 1,
+      "name": "Zakupy",
+      "user_id": 1,
+      "value": 300,
+    },
+  ],
+  "type": "SET_PROFIT",
+}
+`;
+
 exports[`finance flow actions should create setSpending action with snapshot 1`] = `
 Object {
   "payload": Array [

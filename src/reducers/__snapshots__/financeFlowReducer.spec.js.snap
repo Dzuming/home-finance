@@ -4,6 +4,7 @@ exports[`spending reducer add action should add recipe to a non-empty list 1`] =
 Object {
   "isFetching": false,
   "message": "test",
+  "profit": Array [],
   "spending": Array [
     Object {
       "category": "jedzenie",
@@ -27,6 +28,7 @@ exports[`spending reducer add action should add recipe to empty list 1`] = `
 Object {
   "isFetching": false,
   "message": "test",
+  "profit": Array [],
   "spending": Array [
     Object {
       "category": "jedzenie",
@@ -45,6 +47,7 @@ Object {
   "message": Object {
     "id": 1,
   },
+  "profit": Array [],
   "spending": Array [
     Object {
       "category": "jedzenie",
@@ -77,6 +80,7 @@ Object {
   "message": Object {
     "id": 4,
   },
+  "profit": Array [],
   "spending": Array [
     Object {
       "category": "jedzenie",
@@ -107,6 +111,7 @@ exports[`spending reducer edit action should edit spending when exists 1`] = `
 Object {
   "isFetching": false,
   "message": "test",
+  "profit": Array [],
   "spending": Array [
     Object {
       "category": "jedzenie",
@@ -133,9 +138,26 @@ Object {
 }
 `;
 
+exports[`spending reducer get action should get profit 1`] = `
+Object {
+  "isFetching": false,
+  "profit": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+  ],
+  "spending": Array [],
+}
+`;
+
 exports[`spending reducer get action should get spending 1`] = `
 Object {
   "isFetching": false,
+  "profit": Array [],
   "spending": Array [
     Object {
       "category": "jedzenie",

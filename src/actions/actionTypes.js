@@ -20,6 +20,7 @@ export const SET_DATE = 'SET_DATE';
 export const API_REQUEST_GET = 'API_REQUEST_GET';
 export const SET_CATEGORIES = 'SET_CATEGORIES';
 export const SET_SPENDING = 'SET_SPENDING';
+export const SET_PROFIT = 'SET_PROFIT';
 export const API_REQUEST_POST = 'API_REQUEST_POST';
 export const API_REQUEST_DELETE = 'API_REQUEST_DELETE';
 export const API_REQUEST_PUT = 'API_REQUEST_PUT';

@@ -1,9 +1,17 @@
 import reducer from './financeFlowReducer';
 import deepFreeze from 'deep-freeze';
-import { setSpending, addSpending, removeSpending, editSpending } from '../actions/financeFlowActions';
+import { setSpending, setProfit, addSpending, removeSpending, editSpending } from '../actions/financeFlowActions';
 
-const initialState = deepFreeze(reducer({spending: []}, {type: 'INIT'}));
+const initialState = deepFreeze(reducer({spending: [], profit: []}, {type: 'INIT'}));
 const spending = {
+  id: 1,
+  description: 'Zakupy',
+  value: 300,
+  user_id: 1,
+  created_at: '2018-01-01 12:12:12',
+  category: {id: 1, name: 'jedzenie'}
+};
+const profit = {
   id: 1,
   description: 'Zakupy',
   value: 300,
@@ -20,6 +28,9 @@ describe('spending reducer', () => {
   describe('get action', () => {
     it('should get spending', () => {
       expect(reducer(initialState, setSpending([spending]))).toMatchSnapshot();
+    });
+    it('should get profit', () => {
+      expect(reducer(initialState, setProfit([profit]))).toMatchSnapshot();
     });
   });
 
@@ -61,7 +72,7 @@ describe('spending reducer', () => {
     };
     localStorage.setItem('user', JSON.stringify(user));
     it('should edit spending when exists', () => {
-      expect(reducer(baseState, editSpending('test', 1, {data: {description: "Opłata rachunki"}}))).toMatchSnapshot();
+      expect(reducer(baseState, editSpending('test', 1, {data: {description: 'Opłata rachunki'}}))).toMatchSnapshot();
     });
   });
 });

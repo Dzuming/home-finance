@@ -17,7 +17,7 @@ class Profit extends Component {
           name: 'description',
           title: 'Description'
         }, {
-          name: 'spending',
+          name: 'profit',
           title: 'Profit',
           dataType: 'number'
         }, {
@@ -38,19 +38,19 @@ class Profit extends Component {
       if (added) {
         const {id} = this.props.categories.find(category => category.name === Object.assign({}, ...added)['category']);
         const data = Object.assign({}, ...added, {category: id});
-        this.props.actions.createSpending(data);
+        this.props.actions.createProfit(data);
       }
       this.cancelDelete = () => this.setState({deletingRows: []});
       if (changed) {
-        let spending = {id: Object.keys(changed)[0], items: Object.assign({}, Object.values(changed)[0])};
-        if (spending.items.category) {
-          const {id} = this.props.categories.find(category => category.name === spending.items.category);
-          spending = Object.assign({}, {
-            ...spending,
-            items: {...spending.items, category: id}
+        let profit = {id: Object.keys(changed)[0], items: Object.assign({}, Object.values(changed)[0])};
+        if (profit.items.category) {
+          const {id} = this.props.categories.find(category => category.name === profit.items.category);
+          profit = Object.assign({}, {
+            ...profit,
+            items: {...profit.items, category: id}
           });
         }
-        this.props.actions.putSpending(spending);
+        this.props.actions.putProfit(profit);
       }
 
       this.setState({
@@ -105,7 +105,7 @@ class Profit extends Component {
     };
     this.deleteRows = () => {
       this.state.deletingRows.forEach((rowId) => {
-        this.props.actions.deleteSpending(rowId);
+        this.props.actions.deleteProfit(rowId);
       });
       this.setState({deletingRows: []});
     };
@@ -113,17 +113,17 @@ class Profit extends Component {
   }
 
   componentDidMount () {
-    this.props.actions.fetchSpending();
+    this.props.actions.fetchProfit();
     this.props.actions.fetchCategories();
   }
 
   render () {
     const {columns, sorting, deletingRows} = this.state;
-    const {categories, spending} = this.props;
+    const {categories, profit} = this.props;
     return (
       <div>
         <TableGrid
-          rows={spending}
+          rows={profit}
           columns={columns}
           commitChanges={this.commitChanges}
           sorting={sorting}
@@ -131,7 +131,7 @@ class Profit extends Component {
           categories={categories}
           filterCellTemplate={this.filterCellTemplate}/>
         <DeleteDialog
-          rows={spending}
+          rows={profit}
           columns={columns}
           deletingRows={deletingRows}
           deleteRows={this.deleteRows}
@@ -143,20 +143,20 @@ class Profit extends Component {
 
 Profit.propTypes = {
   actions: PropTypes.shape({
-    putSpending: PropTypes.Func,
+    putProfit: PropTypes.Func,
     fetchCategories: PropTypes.Func,
-    fetchSpending: PropTypes.Func,
-    deleteSpending: PropTypes.Func,
-    createSpending: PropTypes.Func
+    fetchProfit: PropTypes.Func,
+    deleteProfit: PropTypes.Func,
+    createProfit: PropTypes.Func
 
   }),
-  spending: PropTypes.array,
+  profit: PropTypes.array,
   categories: PropTypes.array
 };
 
 function mapStateToProps (state) {
   return {
-    spending: state.financeFlow.spending,
+    profit: state.financeFlow.profit,
     categories: state.financeFlow.categories
   };
 }

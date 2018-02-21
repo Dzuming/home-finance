@@ -29,8 +29,26 @@ export const fetchSpending = () => (dispatch, getState) => {
   });
 };
 
+export const fetchProfit = () => (dispatch, getState) => {
+  const {id} = getState().user;
+  const {selectedDate} = getState().financeFlow;
+  return dispatch({
+    type: types.API_REQUEST_GET,
+    payload:
+      {
+        url: `${env.api_url}/api/profit/${id}/${selectedDate}`,
+        success: setProfit
+      }
+  });
+};
+
 export const setSpending = (data) => ({
   type: types.SET_SPENDING,
+  payload: data
+});
+
+export const setProfit = (data) => ({
+  type: types.SET_PROFIT,
   payload: data
 });
 
@@ -86,7 +104,7 @@ export const editSpending = (message, id, items) => ({
   payload: {
     message,
     id,
-    items: financeFlowSpendingToTableMapper (items.data)
+    items: financeFlowSpendingToTableMapper(items.data)
   }
 });
 

@@ -1,5 +1,5 @@
 import * as types from '../actions/actionTypes';
-import { financeFlowSpendingToTableMapper } from '../helpers/Mappers';
+import { financeFlowSpendingToTableMapper, financeFlowProfitToTableMapper } from '../helpers/Mappers';
 
 export default function financeFlowReducer (state = [], action) {
   switch (action.type) {
@@ -19,6 +19,13 @@ export default function financeFlowReducer (state = [], action) {
         isFetching: false,
         spending: action.payload.map((financeFlow) => {
           return financeFlowSpendingToTableMapper(financeFlow);
+        })
+      });
+    case types.SET_PROFIT:
+      return Object.assign({}, state, {
+        isFetching: false,
+        profit: action.payload.map((profit) => {
+          return financeFlowProfitToTableMapper(profit);
         })
       });
     case types.REMOVE_SPENDING:

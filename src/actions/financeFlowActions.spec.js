@@ -9,6 +9,14 @@ const spending = {
   created_at: '2018-01-01 12:12:12',
   category: {id: 1, name: 'jedzenie'}
 };
+const profit = {
+  id: 1,
+  name: 'Zakupy',
+  value: 300,
+  user_id: 1,
+  created_at: '2018-01-01 12:12:12',
+  category: {id: 1, name: 'jedzenie'}
+};
 describe('finance flow actions', () => {
 
   it('should create SET_CATEGORIES action with snapshot', () => {
@@ -16,6 +24,10 @@ describe('finance flow actions', () => {
   });
   it('should create setSpending action with snapshot', () => {
     expect(actions.setSpending([spending])).toMatchSnapshot();
+  });
+
+  it('should create setProfit action with snapshot', () => {
+    expect(actions.setProfit([profit])).toMatchSnapshot();
   });
 
   it('should create addSpending action with snapshot', () => {
