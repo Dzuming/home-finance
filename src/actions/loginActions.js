@@ -24,8 +24,8 @@ function authenticateUser (credentials) {
   const user = credentials;
   let formData = new FormData();
   formData.append('grant_type', 'password');
-  formData.append('client_id', '2');
-  formData.append('client_secret', 'tbvtGeM45Jnk8IFRTVXFiBJrySgtU7pgDehuZoKG');
+  formData.append('client_id', '1');
+  formData.append('client_secret', 'PiYsiEQQDfFvJTRkJKz0cOOZUh68rwLaUQcVQTuj');
   formData.append('username', user.email);
   formData.append('password', user.password);
   formData.append('scope', '*');
