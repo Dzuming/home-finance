@@ -8,6 +8,11 @@ export default function financeFlowReducer (state = [], action) {
         spending: state.spending.concat(financeFlowSpendingToTableMapper(action.payload.spending)),
         message: action.payload.message
       });
+    case types.ADD_PROFIT:
+      return Object.assign({}, state, {
+        profit: state.profit.concat(financeFlowProfitToTableMapper(action.payload.profit)),
+        message: action.payload.message
+      });
     case types.SET_CATEGORIES:
       return Object.assign({}, state, {
         categories: [...action.payload]

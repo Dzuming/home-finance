@@ -34,6 +34,10 @@ describe('finance flow actions', () => {
     expect(actions.addSpending([spending])).toMatchSnapshot();
   });
 
+  it('should create addProfit action with snapshot', () => {
+    expect(actions.addProfit([profit])).toMatchSnapshot();
+  });
+
   it('should create removeSpending action with snapshot', () => {
     expect(actions.removeSpending([{
       id: 1,

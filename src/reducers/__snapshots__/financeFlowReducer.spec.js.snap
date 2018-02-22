@@ -1,6 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`spending reducer add action should add recipe to a non-empty list 1`] = `
+exports[`spending reducer add action should add profit to a non-empty list 1`] = `
+Object {
+  "message": "test",
+  "profit": Array [],
+  "spending": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+  ],
+}
+`;
+
+exports[`spending reducer add action should add profit to empty list 1`] = `
+Object {
+  "message": "test",
+  "profit": Array [],
+  "spending": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+  ],
+}
+`;
+
+exports[`spending reducer add action should add spending to a non-empty list 1`] = `
 Object {
   "message": "test",
   "profit": Array [],
@@ -23,7 +62,7 @@ Object {
 }
 `;
 
-exports[`spending reducer add action should add recipe to empty list 1`] = `
+exports[`spending reducer add action should add spending to empty list 1`] = `
 Object {
   "message": "test",
   "profit": Array [],

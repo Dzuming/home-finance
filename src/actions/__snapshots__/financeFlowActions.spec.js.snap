@@ -10,6 +10,16 @@ Object {
 }
 `;
 
+exports[`finance flow actions should create addProfit action with snapshot 1`] = `
+Object {
+  "payload": Object {
+    "message": undefined,
+    "profit": undefined,
+  },
+  "type": "ADD_PROFIT",
+}
+`;
+
 exports[`finance flow actions should create addSpending action with snapshot 1`] = `
 Object {
   "payload": Object {

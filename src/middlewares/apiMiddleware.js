@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes';
 import { getAuthToken } from '../helpers/LocalStorage';
-import { financeFlowSpendingToServerMapper } from '../helpers/Mappers';
+import { financeFlowProfitToServerMapper, financeFlowSpendingToServerMapper } from '../helpers/Mappers';
 
 export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
   if (action.type === types.API_REQUEST_GET) {
@@ -28,7 +28,7 @@ export const apiMiddleware = ({getState, dispatch}) => (next) => (action) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getAuthToken()}`,
       },
-      body: JSON.stringify(financeFlowSpendingToServerMapper(data))
+      body: JSON.stringify(financeFlowProfitToServerMapper(data))
     })
       .then(response => response.json())
       .then(response => {

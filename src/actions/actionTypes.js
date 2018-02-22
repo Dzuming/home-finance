@@ -25,4 +25,5 @@ export const API_REQUEST_POST = 'API_REQUEST_POST';
 export const API_REQUEST_DELETE = 'API_REQUEST_DELETE';
 export const API_REQUEST_PUT = 'API_REQUEST_PUT';
 export const ADD_SPENDING = 'ADD_SPENDING';
+export const ADD_PROFIT = 'ADD_PROFIT';
 export const API_REQUEST = asyncActionType('API_REQUEST');

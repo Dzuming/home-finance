@@ -62,10 +62,28 @@ export const createSpending = (data) => ({
     }
 });
 
+export const createProfit = (data) => ({
+  type: types.API_REQUEST_POST,
+  payload:
+    {
+      url: `${env.api_url}/api/profit`,
+      success: addProfit,
+      data
+    }
+});
+
 export const addSpending = ({spending, message}) => ({
   type: types.ADD_SPENDING,
   payload: {
     spending,
+    message
+  }
+});
+
+export const addProfit = ({profit, message}) => ({
+  type: types.ADD_PROFIT,
+  payload: {
+    profit,
     message
   }
 });

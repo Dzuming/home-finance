@@ -10,6 +10,17 @@ export const financeFlowSpendingToServerMapper = data => {
     created_at: data.dateCreated
   };
 };
+
+export const financeFlowProfitToServerMapper = data => {
+  return {
+    category_id: data.category,
+    user_id: getStorageUser().id,
+    value: data.profit,
+    description: data.description,
+    created_at: data.dateCreated
+  };
+};
+
 export const financeFlowSpendingToTableMapper = data => {
   return {
     id: data.id || undefined,

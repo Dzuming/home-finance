@@ -1,6 +1,9 @@
 import reducer from './financeFlowReducer';
 import deepFreeze from 'deep-freeze';
-import { setSpending, setProfit, addSpending, removeSpending, editSpending } from '../actions/financeFlowActions';
+import {
+  setSpending, setProfit, addSpending, removeSpending, editSpending,
+  addProfit
+} from '../actions/financeFlowActions';
 
 const initialState = deepFreeze(reducer({spending: [], profit: []}, {type: 'INIT'}));
 const spending = {
@@ -35,14 +38,24 @@ describe('spending reducer', () => {
   });
 
   describe('add action', () => {
-    it('should add recipe to empty list', () => {
+    it('should add spending to empty list', () => {
       expect(reducer(initialState, addSpending({spending, message}))).toMatchSnapshot();
     });
 
-    it('should add recipe to a non-empty list', () => {
+    it('should add spending to a non-empty list', () => {
       const nonEmptyState = deepFreeze(reducer(initialState, addSpending({spending, message})));
 
       expect(reducer(nonEmptyState, addSpending({spending, message}))).toMatchSnapshot();
+    });
+
+    it('should add profit to empty list', () => {
+      expect(reducer(initialState, addProfit({profit, message}))).toMatchSnapshot();
+    });
+
+    it('should add profit to a non-empty list', () => {
+      const nonEmptyState = deepFreeze(reducer(initialState, addProfit({profit, message})));
+
+      expect(reducer(nonEmptyState, addProfit({profit, message}))).toMatchSnapshot();
     });
   });
 
