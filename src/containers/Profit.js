@@ -17,7 +17,7 @@ class Profit extends Component {
           name: 'description',
           title: 'Description'
         }, {
-          name: 'value',
+          name: 'profit',
           title: 'Value',
           dataType: 'number'
         }, {

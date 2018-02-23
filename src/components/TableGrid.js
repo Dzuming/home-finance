@@ -86,7 +86,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
         )}
       />
       <DataTypeProvider
-        for={['value']}
+        for={['profit', 'spending']}
         type="number"
         editorComponent={({onValueChange}) => (
           <TextField

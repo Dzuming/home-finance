@@ -17,7 +17,7 @@ class Spending extends Component {
           name: 'description',
           title: 'Description'
         }, {
-          name: 'value',
+          name: 'spending',
           title: 'Value',
           dataType: 'number'
         }, {
