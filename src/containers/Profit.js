@@ -17,8 +17,8 @@ class Profit extends Component {
           name: 'description',
           title: 'Description'
         }, {
-          name: 'profit',
-          title: 'Profit',
+          name: 'value',
+          title: 'Value',
           dataType: 'number'
         }, {
           name: 'category',
@@ -26,7 +26,7 @@ class Profit extends Component {
         },
         {
           name: 'dateCreated',
-          title: 'Data created',
+          title: 'Create date',
           dataType: 'date'
         },
       ],

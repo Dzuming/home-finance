@@ -17,8 +17,8 @@ class Spending extends Component {
           name: 'description',
           title: 'Description'
         }, {
-          name: 'spending',
-          title: 'Profit',
+          name: 'value',
+          title: 'Value',
           dataType: 'number'
         }, {
           name: 'category',
@@ -26,8 +26,8 @@ class Spending extends Component {
         },
         {
           name: 'dateCreated',
-          title: 'Data created',
-          dataType: 'date'
+          title: 'Create date',
+          dataType: 'Create date'
         },
       ],
       deletingRows: [],

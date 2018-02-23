@@ -76,7 +76,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
         editorComponent={({onValueChange}) => (
           <TextField
             id="date"
-            label="data created"
+            label="Create date"
             type="date"
             onChange={e => onValueChange(e.target.value)}
             InputLabelProps={{
@@ -86,12 +86,12 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
         )}
       />
       <DataTypeProvider
-        for={['spending']}
+        for={['value']}
         type="number"
         editorComponent={({onValueChange}) => (
           <TextField
             id="number"
-            label="spending"
+            label="Value"
             type="number"
             onChange={e => onValueChange(e.target.value)}
             InputLabelProps={{
@@ -105,7 +105,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
         type="select"
         editorComponent={({onValueChange}) => (
           <FormControl>
-            <InputLabel htmlFor="category">Kategoria</InputLabel>
+            <InputLabel htmlFor="category">Category</InputLabel>
             <Select
               native
               onChange={e => onValueChange(e.target.value)}
