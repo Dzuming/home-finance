@@ -11,7 +11,8 @@ const styles = () => ({
     alignItems: 'center',
     justifyContent: 'center',
     background: '#161616',
-    opacity: '0.8'
+    opacity: '0.8',
+    zIndex: '50'
   }
 });
 
