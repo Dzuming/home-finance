@@ -1,6 +1,9 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
-import { financeFlowSpendingToServerMapper, financeFlowSpendingToTableMapper } from '../helpers/Mappers';
+import {
+  financeFlowProfitToServerMapper, financeFlowSpendingToServerMapper,
+  financeFlowSpendingToTableMapper
+} from '../helpers/Mappers';
 
 export const fetchCategories = () => ({
   type: types.API_REQUEST_GET,
@@ -135,8 +138,28 @@ export const putSpending = (data) => ({
     }
 });
 
+export const putProfit = (data) => ({
+  type: types.API_REQUEST_PUT,
+  payload:
+    {
+      url: `${env.api_url}/api/profit/${data.id}`,
+      success: editProfit,
+      id: data.id,
+      items: financeFlowProfitToServerMapper(data.items)
+    }
+});
+
 export const editSpending = (message, id, items) => ({
   type: types.EDIT_SPENDING,
+  payload: {
+    message,
+    id,
+    items: financeFlowSpendingToTableMapper(items.data)
+  }
+});
+
+export const editProfit = (message, id, items) => ({
+  type: types.EDIT_PROFIT,
   payload: {
     message,
     id,

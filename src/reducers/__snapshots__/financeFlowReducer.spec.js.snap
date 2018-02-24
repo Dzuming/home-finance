@@ -147,6 +147,36 @@ Object {
 }
 `;
 
+exports[`profit reducer edit action should edit profit when exists 1`] = `
+Object {
+  "message": "test",
+  "profit": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Pensja",
+      "id": 1,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 2,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 3,
+      "profit": 300,
+    },
+  ],
+  "spending": Array [],
+}
+`;
+
 exports[`profit reducer get action should get profit 1`] = `
 Object {
   "profit": Array [

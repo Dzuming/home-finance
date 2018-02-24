@@ -17,6 +17,7 @@ export const SET_USER = 'SET_USER';
 export const REMOVE_SPENDING = 'REMOVE_SPENDING';
 export const REMOVE_PROFIT = 'REMOVE_PROFIT';
 export const EDIT_SPENDING = 'EDIT_SPENDING';
+export const EDIT_PROFIT = 'EDIT_PROFIT';
 export const SET_DATE = 'SET_DATE';
 export const API_REQUEST_GET = 'API_REQUEST_GET';
 export const SET_CATEGORIES = 'SET_CATEGORIES';

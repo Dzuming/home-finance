@@ -61,6 +61,28 @@ export default function financeFlowReducer (state = [], action) {
         }),
         message: action.payload.message || {}
       });
+    case types.EDIT_PROFIT:
+      return Object.assign({}, state, {
+        profit: state.profit.map(element => {
+          if (element.id !== parseInt(action.payload.id)) {
+            return element;
+          }
+          let items = Object.assign({},
+            ...Object.keys(action.payload.items)
+              .reduce((total, key) => {
+                if (action.payload.items[key] !== undefined) {
+                  total.push({[key]: action.payload.items[key]});
+                }
+                return total;
+              }, [])
+          );
+          return {
+            ...element,
+            ...items
+          };
+        }),
+        message: action.payload.message || {}
+      });
     case types.AUTH_USER:
       return Object.assign({}, state, {isAuthenticated: true});
     case types.SET_DATE:

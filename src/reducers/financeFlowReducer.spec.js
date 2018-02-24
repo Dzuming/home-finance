@@ -2,7 +2,7 @@ import reducer from './financeFlowReducer';
 import deepFreeze from 'deep-freeze';
 import {
   setSpending, setProfit, addSpending, removeSpending, editSpending,
-  addProfit, removeProfit
+  addProfit, removeProfit, editProfit
 } from '../actions/financeFlowActions';
 
 const initialState = deepFreeze(reducer({spending: [], profit: []}, {type: 'INIT'}));
@@ -115,5 +115,17 @@ describe('profit reducer', () => {
   });
 
   describe('edit action', () => {
+    const baseState = deepFreeze(
+      [{profit: {...profit, id: 1}}, {profit: {...spending, id: 2}}, {profit: {...profit, id: 3}}]
+        .reduce((state, profit) => reducer(state, addProfit(profit)), initialState)
+    );
+    const user = {
+      id: 1,
+      name: 'test',
+    };
+    localStorage.setItem('user', JSON.stringify(user));
+    it('should edit profit when exists', () => {
+      expect(reducer(baseState, editProfit('test', 1, {data: {description: 'Pensja'}}))).toMatchSnapshot();
+    });
   });
 });

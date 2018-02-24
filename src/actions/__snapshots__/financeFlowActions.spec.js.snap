@@ -30,6 +30,23 @@ Object {
 }
 `;
 
+exports[`finance flow actions should create editProfit action with snapshot 1`] = `
+Object {
+  "payload": Object {
+    "id": 1,
+    "items": Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": undefined,
+      "id": 1,
+      "spending": 300,
+    },
+    "message": "test",
+  },
+  "type": "EDIT_PROFIT",
+}
+`;
+
 exports[`finance flow actions should create editSpending action with snapshot 1`] = `
 Object {
   "payload": Object {
