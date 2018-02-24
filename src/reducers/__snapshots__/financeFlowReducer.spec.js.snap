@@ -67,29 +67,7 @@ Object {
       "profit": 300,
     },
   ],
-  "spending": Array [
-    Object {
-      "category": "jedzenie",
-      "dateCreated": "2018-01-01",
-      "description": "Zakupy",
-      "id": 1,
-      "profit": 300,
-    },
-    Object {
-      "category": "jedzenie",
-      "dateCreated": "2018-01-01",
-      "description": "Zakupy",
-      "id": 2,
-      "profit": 300,
-    },
-    Object {
-      "category": "jedzenie",
-      "dateCreated": "2018-01-01",
-      "description": "Zakupy",
-      "id": 3,
-      "profit": 300,
-    },
-  ],
+  "spending": Array [],
 }
 `;
 
@@ -121,29 +99,7 @@ Object {
       "profit": 300,
     },
   ],
-  "spending": Array [
-    Object {
-      "category": "jedzenie",
-      "dateCreated": "2018-01-01",
-      "description": "Zakupy",
-      "id": 1,
-      "profit": 300,
-    },
-    Object {
-      "category": "jedzenie",
-      "dateCreated": "2018-01-01",
-      "description": "Zakupy",
-      "id": 2,
-      "profit": 300,
-    },
-    Object {
-      "category": "jedzenie",
-      "dateCreated": "2018-01-01",
-      "description": "Zakupy",
-      "id": 3,
-      "profit": 300,
-    },
-  ],
+  "spending": Array [],
 }
 `;
 

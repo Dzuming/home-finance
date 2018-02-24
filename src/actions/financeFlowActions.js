@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
 import {
-  financeFlowProfitToServerMapper, financeFlowSpendingToServerMapper,
+  financeFlowToServerMapper,
   financeFlowSpendingToTableMapper
 } from '../helpers/Mappers';
 
@@ -46,12 +46,12 @@ export const fetchProfit = () => (dispatch, getState) => {
 };
 
 export const setSpending = (data) => ({
-  type: types.SET_SPENDING,
+  type: types.SPENDING_CRUD.READ,
   payload: data
 });
 
 export const setProfit = (data) => ({
-  type: types.SET_PROFIT,
+  type: types.PROFIT_CRUD.READ,
   payload: data
 });
 
@@ -76,7 +76,7 @@ export const createProfit = (data) => ({
 });
 
 export const addSpending = ({spending, message}) => ({
-  type: types.ADD_SPENDING,
+  type: types.SPENDING_CRUD.CREATE,
   payload: {
     spending,
     message
@@ -84,7 +84,7 @@ export const addSpending = ({spending, message}) => ({
 });
 
 export const addProfit = ({profit, message}) => ({
-  type: types.ADD_PROFIT,
+  type: types.PROFIT_CRUD.CREATE,
   payload: {
     profit,
     message
@@ -112,7 +112,7 @@ export const deleteProfit = (id) => ({
 });
 
 export const removeSpending = (message, id) => ({
-  type: types.REMOVE_SPENDING,
+  type: types.SPENDING_CRUD.DELETE,
   payload: {
     message,
     id
@@ -120,7 +120,7 @@ export const removeSpending = (message, id) => ({
 });
 
 export const removeProfit = (message, id) => ({
-  type: types.REMOVE_PROFIT,
+  type: types.PROFIT_CRUD.DELETE,
   payload: {
     message,
     id
@@ -134,7 +134,7 @@ export const putSpending = (data) => ({
       url: `${env.api_url}/api/spending/${data.id}`,
       success: editSpending,
       id: data.id,
-      items: financeFlowSpendingToServerMapper(data.items)
+      items: financeFlowToServerMapper(data.items)
     }
 });
 
@@ -145,12 +145,12 @@ export const putProfit = (data) => ({
       url: `${env.api_url}/api/profit/${data.id}`,
       success: editProfit,
       id: data.id,
-      items: financeFlowProfitToServerMapper(data.items)
+      items: financeFlowToServerMapper(data.items)
     }
 });
 
 export const editSpending = (message, id, items) => ({
-  type: types.EDIT_SPENDING,
+  type: types.SPENDING_CRUD.UPDATE,
   payload: {
     message,
     id,
@@ -159,7 +159,7 @@ export const editSpending = (message, id, items) => ({
 });
 
 export const editProfit = (message, id, items) => ({
-  type: types.EDIT_PROFIT,
+  type: types.PROFIT_CRUD.UPDATE,
   payload: {
     message,
     id,

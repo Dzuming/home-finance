@@ -27,7 +27,7 @@ class Spending extends Component {
         {
           name: 'dateCreated',
           title: 'Create date',
-          dataType: 'Create date'
+          dataType: 'date'
         },
       ],
       deletingRows: [],
