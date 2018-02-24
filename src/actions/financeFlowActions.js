@@ -98,8 +98,26 @@ export const deleteSpending = (id) => ({
     }
 });
 
+export const deleteProfit = (id) => ({
+  type: types.API_REQUEST_DELETE,
+  payload:
+    {
+      url: `${env.api_url}/api/profit/${id}`,
+      success: removeProfit,
+      id
+    }
+});
+
 export const removeSpending = (message, id) => ({
   type: types.REMOVE_SPENDING,
+  payload: {
+    message,
+    id
+  }
+});
+
+export const removeProfit = (message, id) => ({
+  type: types.REMOVE_PROFIT,
   payload: {
     message,
     id

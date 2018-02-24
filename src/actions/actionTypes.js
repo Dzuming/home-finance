@@ -15,6 +15,7 @@ export const REQUEST_USER = 'SUCCESS_LOGOUT';
 export const GET_USER = 'SET_USER';
 export const SET_USER = 'SET_USER';
 export const REMOVE_SPENDING = 'REMOVE_SPENDING';
+export const REMOVE_PROFIT = 'REMOVE_PROFIT';
 export const EDIT_SPENDING = 'EDIT_SPENDING';
 export const SET_DATE = 'SET_DATE';
 export const API_REQUEST_GET = 'API_REQUEST_GET';

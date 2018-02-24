@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`spending reducer add action should add profit to a non-empty list 1`] = `
+exports[`profit reducer add action should add profit to a non-empty list 1`] = `
 Object {
   "message": "test",
-  "profit": Array [],
-  "spending": Array [
+  "profit": Array [
     Object {
       "category": "jedzenie",
       "dateCreated": "2018-01-01",
@@ -17,16 +16,111 @@ Object {
       "dateCreated": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "profit": 300,
+    },
+  ],
+  "spending": Array [],
+}
+`;
+
+exports[`profit reducer add action should add profit to empty list 1`] = `
+Object {
+  "message": "test",
+  "profit": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+  ],
+  "spending": Array [],
+}
+`;
+
+exports[`profit reducer delete action should delete profit when exists 1`] = `
+Object {
+  "message": Object {
+    "id": 1,
+  },
+  "profit": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 2,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 3,
+      "profit": 300,
+    },
+  ],
+  "spending": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 2,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 3,
       "profit": 300,
     },
   ],
 }
 `;
 
-exports[`spending reducer add action should add profit to empty list 1`] = `
+exports[`profit reducer delete action should not delete profit when it doesn't exist 1`] = `
 Object {
-  "message": "test",
-  "profit": Array [],
+  "message": Object {
+    "id": 4,
+  },
+  "profit": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 2,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 3,
+      "profit": 300,
+    },
+  ],
   "spending": Array [
     Object {
       "category": "jedzenie",
@@ -35,7 +129,36 @@ Object {
       "id": 1,
       "profit": 300,
     },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 2,
+      "profit": 300,
+    },
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 3,
+      "profit": 300,
+    },
   ],
+}
+`;
+
+exports[`profit reducer get action should get profit 1`] = `
+Object {
+  "profit": Array [
+    Object {
+      "category": "jedzenie",
+      "dateCreated": "2018-01-01",
+      "description": "Zakupy",
+      "id": 1,
+      "profit": 300,
+    },
+  ],
+  "spending": Array [],
 }
 `;
 
@@ -169,21 +292,6 @@ Object {
       "spending": 300,
     },
   ],
-}
-`;
-
-exports[`spending reducer get action should get profit 1`] = `
-Object {
-  "profit": Array [
-    Object {
-      "category": "jedzenie",
-      "dateCreated": "2018-01-01",
-      "description": "Zakupy",
-      "id": 1,
-      "profit": 300,
-    },
-  ],
-  "spending": Array [],
 }
 `;
 

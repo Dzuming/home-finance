@@ -2,7 +2,7 @@ import reducer from './financeFlowReducer';
 import deepFreeze from 'deep-freeze';
 import {
   setSpending, setProfit, addSpending, removeSpending, editSpending,
-  addProfit
+  addProfit, removeProfit
 } from '../actions/financeFlowActions';
 
 const initialState = deepFreeze(reducer({spending: [], profit: []}, {type: 'INIT'}));
@@ -32,9 +32,6 @@ describe('spending reducer', () => {
     it('should get spending', () => {
       expect(reducer(initialState, setSpending([spending]))).toMatchSnapshot();
     });
-    it('should get profit', () => {
-      expect(reducer(initialState, setProfit([profit]))).toMatchSnapshot();
-    });
   });
 
   describe('add action', () => {
@@ -47,30 +44,20 @@ describe('spending reducer', () => {
 
       expect(reducer(nonEmptyState, addSpending({spending, message}))).toMatchSnapshot();
     });
-
-    it('should add profit to empty list', () => {
-      expect(reducer(initialState, addProfit({profit, message}))).toMatchSnapshot();
-    });
-
-    it('should add profit to a non-empty list', () => {
-      const nonEmptyState = deepFreeze(reducer(initialState, addProfit({profit, message})));
-
-      expect(reducer(nonEmptyState, addProfit({profit, message}))).toMatchSnapshot();
-    });
   });
 
   describe('delete action', () => {
-    const baseState = deepFreeze(
+    const baseStateSpending = deepFreeze(
       [{spending: {...spending, id: 1}}, {spending: {...spending, id: 2}}, {spending: {...spending, id: 3}}]
         .reduce((state, spending) => reducer(state, addSpending(spending)), initialState)
     );
 
     it('should delete spending when exists', () => {
-      expect(reducer(baseState, removeSpending({id: 1}))).toMatchSnapshot();
+      expect(reducer(baseStateSpending, removeSpending({id: 1}))).toMatchSnapshot();
     });
 
     it('should not delete spending when it doesn\'t exist', () => {
-      expect(reducer(baseState, removeSpending({id: 4}))).toMatchSnapshot();
+      expect(reducer(baseStateSpending, removeSpending({id: 4}))).toMatchSnapshot();
     });
   });
 
@@ -90,3 +77,43 @@ describe('spending reducer', () => {
   });
 });
 
+describe('profit reducer', () => {
+  it('should handle unknown actions', () => {
+    expect(reducer(initialState, {type: 'FAKE'})).toBe(initialState);
+  });
+
+  describe('get action', () => {
+    it('should get profit', () => {
+      expect(reducer(initialState, setProfit([profit]))).toMatchSnapshot();
+    });
+  });
+
+  describe('add action', () => {
+    it('should add profit to empty list', () => {
+      expect(reducer(initialState, addProfit({profit, message}))).toMatchSnapshot();
+    });
+
+    it('should add profit to a non-empty list', () => {
+      const nonEmptyState = deepFreeze(reducer(initialState, addProfit({profit, message})));
+
+      expect(reducer(nonEmptyState, addProfit({profit, message}))).toMatchSnapshot();
+    });
+  });
+
+  describe('delete action', () => {
+    const baseStateProfit = deepFreeze(
+      [{profit: {...profit, id: 1}}, {profit: {...profit, id: 2}}, {profit: {...profit, id: 3}}]
+        .reduce((state, profit) => reducer(state, addProfit(profit)), initialState)
+    );
+    it('should delete profit when exists', () => {
+      expect(reducer(baseStateProfit, removeProfit({id: 1}))).toMatchSnapshot();
+    });
+
+    it('should not delete profit when it doesn\'t exist', () => {
+      expect(reducer(baseStateProfit, removeProfit({id: 4}))).toMatchSnapshot();
+    });
+  });
+
+  describe('edit action', () => {
+  });
+});

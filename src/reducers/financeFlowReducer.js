@@ -34,6 +34,11 @@ export default function financeFlowReducer (state = [], action) {
         spending: state.spending.filter(spending => spending.id !== action.payload.id),
         message: action.payload.message || {}
       });
+    case types.REMOVE_PROFIT:
+      return Object.assign({}, state, {
+        profit: state.profit.filter(profit => profit.id !== action.payload.id),
+        message: action.payload.message || {}
+      });
     case types.EDIT_SPENDING:
       return Object.assign({}, state, {
         spending: state.spending.map(element => {
