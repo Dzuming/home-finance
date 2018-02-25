@@ -3,6 +3,7 @@ import rootReducer from '../reducers';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { apiMiddleware } from '../middlewares/apiMiddleware';
+import { authMiddleware } from '../middlewares/authMiddleware';
 
 const currentYearAndMonth = () => {
   const Today = new Date();
@@ -30,5 +31,5 @@ const initialState = {
   }
 };
 export default function configureStore () {
-  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware, apiMiddleware)));
+  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware, apiMiddleware, authMiddleware)));
 }

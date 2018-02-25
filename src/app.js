@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { Route } from 'react-router';
-import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
+import { Router, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
@@ -15,13 +15,14 @@ import './index.scss';
 import 'normalize.css';
 import withSpinner from './helpers/withSpinner';
 import compose from 'recompose/compose';
+import history from './helpers/history'
 
 class App extends Component {
   render () {
     const {isAuthenticated} = this.props;
     return (
       <div>
-        <Router>
+        <Router history={history}>
           <Grid container spacing={0}>
             <Grid item lg={12}>
               <Route path="/Login" component={Login}/>
