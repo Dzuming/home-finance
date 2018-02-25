@@ -23,16 +23,7 @@ class Login extends Component {
   };
   sendCredentials = () => {
     this
-      .props.actions.login({email: this.state.login, password: this.state.password})
-      // .then(() => {
-      //   if (this.props.isAuthenticated) {
-      //     //TODO: PUSH po stronie reduxa
-      //     this
-      //       .props
-      //       .history
-      //       .push('/Profit');
-      //   }
-      // });
+      .props.actions.login({email: this.state.login, password: this.state.password});
   };
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
