@@ -9,10 +9,7 @@ import DrawerList from '../components/DrawerList';
 class List extends Component {
   state = {}
   closeSideNav = () => {
-    this
-      .props
-      .actions
-      .openSideNav(false);
+    this.props.actions.openSideNav(false);
   }
   render() {
     return (

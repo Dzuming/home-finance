@@ -39,7 +39,7 @@ class ListAside extends Component {
     return (
       <div className={classes.root}>
         <List>
-          <ListSubheader>
+          <ListSubheader disableSticky>
             <Grid container>
               <Grid item xs={10}>
                 <Logo/>
