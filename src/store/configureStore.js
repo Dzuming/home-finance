@@ -12,7 +12,7 @@ const currentYearAndMonth = () => {
   return `${currentYear}-${currentMonth}`;
 };
 const initialState = {
-  auth: {
+  login: {
     isAuthenticated: localStorage.getItem('token')
       ? true
       : false

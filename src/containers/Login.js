@@ -74,7 +74,7 @@ Login.propTypes = {
 };
 
 function mapStateToProps (state) {
-  return {isAuthenticated: state.auth.isAuthenticated};
+  return {isAuthenticated: state.login.isAuthenticated};
 }
 
 function mapDispatchToProps (dispatch) {

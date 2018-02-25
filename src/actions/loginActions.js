@@ -22,4 +22,22 @@ export const login = ({email, password}) => {
 
     }
   };
-};
+}
+
+function requestLogout() {
+  return {type: types.REQUEST_LOGOUT};
+}
+function receiveLogout() {
+  return {type: types.SUCCESS_LOGOUT};
+}
+export function logout() {
+  return (dispatch, getState) => {
+    return new Promise(function (resolve) {
+      dispatch(requestLogout());
+      //TODO: ADD logout to state management
+      localStorage.removeItem('token');
+      dispatch(receiveLogout());
+      resolve(getState());
+    });
+  };
+}

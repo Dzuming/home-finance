@@ -1,16 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from 'material-ui/styles';
-import {Link} from 'react-router-dom';
-import List, {ListItem, ListItemText, ListSubheader} from 'material-ui/List';
+import { withStyles } from 'material-ui/styles';
+import { Link } from 'react-router-dom';
+import List, { ListItem, ListItemText, ListSubheader } from 'material-ui/List';
 import Logo from './Logo';
 import ExitToApp from 'material-ui-icons/ExitToApp';
 import Grid from 'material-ui/Grid';
 import compose from 'recompose/compose';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {withRouter} from 'react-router';
-import * as logoutActions from '../actions/logoutActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
+import * as loginActions from '../actions/loginActions';
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -23,22 +24,17 @@ const styles = theme => ({
 });
 
 class ListAside extends Component {
-  state = {}
+  state = {};
   logout = () => {
-    this
-      .props
-      .actions
-      .logout()
+    this.props.actions.logout()
       .then((data) => {
-        if (!data.auth.isAuthenticated) {
-          this
-            .props
-            .history
-            .push('/login');
+        if (!data.login.isAuthenticated) {
+          this.props.history.push('/login');
         }
       });
   };
-  render() {
+
+  render () {
     const classes = this.props.classes;
     return (
       <div className={classes.root}>
@@ -72,12 +68,15 @@ ListAside.propTypes = {
   history: PropTypes.object,
   actions: PropTypes.object
 };
-function mapStateToProps(state) {
-  return {isAuthenticated: state.auth.isAuthenticated};
+
+function mapStateToProps (state) {
+  return {isAuthenticated: state.login.isAuthenticated};
 }
-function mapDispatchToProps(dispatch) {
+
+function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(logoutActions, dispatch)
+    actions: bindActionCreators(loginActions, dispatch)
   };
 }
+
 export default compose(withStyles(styles), withRouter, connect(mapStateToProps, mapDispatchToProps))(ListAside);
