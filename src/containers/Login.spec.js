@@ -7,7 +7,7 @@ import { create } from "react-test-renderer";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-const store = mockStore({token: '', user: [], auth: {isAuthenticated: true}});
+const store = mockStore({token: '', user: [], login: {isAuthenticated: true}});
 const component = create(
   <Provider store={store}>
     <Login/>

@@ -12,15 +12,6 @@ export const getUser = (email) => ({
     }
 });
 
-// export function setUser (user) {
-//   const newUser = {
-//     id: user.id,
-//     name: user.name,
-//   };
-//   setStorageUser(newUser);
-//   return {type: types.SET_USER, newUser};
-// }
-
 export const setUser = data => {
   const newUser = {
     id: data.id,
