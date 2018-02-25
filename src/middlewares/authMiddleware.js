@@ -15,8 +15,7 @@ export const authMiddleware = ({dispatch}) => (next) => (action) => {
       .then(response => {
         const accessToken = response.access_token;
         setAuthToken(accessToken);
-        //TODO: refaktoryzacja getUser
-        getUser(data.email, accessToken);
+        dispatch(getUser(data.get('username')));
         dispatch(success());
       }).then(() => {
         history.push('Spending');

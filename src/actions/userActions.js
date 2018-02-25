@@ -1,31 +1,36 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
 import { setStorageUser } from '../helpers/LocalStorage';
+import { setProfit } from './financeFlowActions';
+//TODO: Remove user on logout
+export const getUser = (email) => ({
+  type: types.API_REQUEST_GET,
+  payload:
+    {
+      url: `${env.api_url}/api/user/${email}`,
+      success: setUser
+    }
+});
 
-export function getUser (email, accessToken) {
-  const url = `${env.api_url}/api/user/${email}`;
-  return dispatch => {
-    return fetch(url, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-      },
-    }).then(response => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response.json();
-    }).then((data) => {
-      dispatch(setUser(data));
-    }).catch((error => error));
-  };
-}
+// export function setUser (user) {
+//   const newUser = {
+//     id: user.id,
+//     name: user.name,
+//   };
+//   setStorageUser(newUser);
+//   return {type: types.SET_USER, newUser};
+// }
 
-export function setUser (user) {
+export const setUser = data => {
   const newUser = {
-    id: user.id,
-    name: user.name,
+    id: data.id,
+    name: data.name,
   };
   setStorageUser(newUser);
-  return {type: types.SET_USER, newUser};
-}
+  return {
+    type: types.SET_USER,
+    payload: {
+      data
+    }
+  };
+};
