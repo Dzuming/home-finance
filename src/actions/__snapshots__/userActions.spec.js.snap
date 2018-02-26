@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`user actions should create setUser action with snapshot 1`] = `
+Object {
+  "payload": Object {
+    "data": Object {
+      "id": 1,
+      "name": "Dawid",
+    },
+  },
+  "type": "SET_USER",
+}
+`;

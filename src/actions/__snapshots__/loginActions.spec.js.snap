@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login actions should create authenticateUser action with snapshot 1`] = `
+Object {
+  "type": "AUTH_USER",
+}
+`;
