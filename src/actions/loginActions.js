@@ -8,8 +8,8 @@ export const authenticateUser = () => ({
 export const login = ({email, password}) => {
   let formData = new FormData();
   formData.append('grant_type', 'password');
-  formData.append('client_id', '1');
-  formData.append('client_secret', 'PiYsiEQQDfFvJTRkJKz0cOOZUh68rwLaUQcVQTuj');
+  formData.append('client_id', env.client_id);
+  formData.append('client_secret', env.client_secret);
   formData.append('username', email);
   formData.append('password', password);
   formData.append('scope', '*');
