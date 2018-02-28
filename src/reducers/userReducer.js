@@ -1,12 +1,8 @@
 import * as types from '../actions/actionTypes';
+import { handleActions } from 'redux-actions';
 
-export default function userReducer (state = [], action) {
-  switch (action.type) {
-    case types.SET_USER:
-      return Object.assign({}, state, {
-        ...action.payload.data
-      });
-    default:
-      return state;
-  }
-}
+const initialState = [];
+
+export default handleActions({
+  [types.SET_USER]: (state, action) => Object.assign({}, state, {...action.payload.data})
+}, initialState);

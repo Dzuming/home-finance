@@ -1,9 +1,8 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
+import { createAction } from 'redux-actions';
 
-export const authenticateUser = () => ({
-  type: types.AUTH_USER
-});
+export const authenticateUser = createAction(types.AUTH_USER);
 
 export const login = ({email, password}) => {
   let formData = new FormData();
@@ -22,15 +21,13 @@ export const login = ({email, password}) => {
 
     }
   };
-}
+};
 
-function requestLogout() {
-  return {type: types.REQUEST_LOGOUT};
-}
-function receiveLogout() {
-  return {type: types.SUCCESS_LOGOUT};
-}
-export function logout() {
+export const requestLogout = createAction(types.REQUEST_LOGOUT);
+
+export const receiveLogout = createAction(types.SUCCESS_LOGOUT);
+
+export function logout () {
   return (dispatch, getState) => {
     return new Promise(function (resolve) {
       dispatch(requestLogout());

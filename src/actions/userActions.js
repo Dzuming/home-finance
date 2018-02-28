@@ -1,15 +1,15 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
 import { setStorageUser } from '../helpers/LocalStorage';
+import { createAction } from 'redux-actions';
 //TODO: Remove user on logout
-export const getUser = (email) => ({
-  type: types.API_REQUEST_GET,
-  payload:
-    {
-      url: `${env.api_url}/api/user/${email}`,
-      success: setUser
-    }
-});
+
+export const getUser = createAction(
+  types.OPEN_SIDENAV,
+  email => ({
+    url: `${env.api_url}/api/user/${email}`,
+    success: setUser
+  }));
 
 export const setUser = data => {
   const newUser = {

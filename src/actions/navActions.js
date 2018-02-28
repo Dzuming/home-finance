@@ -1,4 +1,6 @@
 import * as types from './actionTypes';
-export function openSideNav(isOpen) {
-  return {type: types.OPEN_SIDENAV, isOpen};
-}
+import { createAction } from 'redux-actions';
+
+export const openSideNav = createAction(types.OPEN_SIDENAV, isOpen => ({isOpen}));
+
+

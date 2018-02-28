@@ -1,20 +1,10 @@
 import * as types from '../actions/actionTypes';
+import { handleActions } from 'redux-actions';
 
-export default function loginReducer (state = [], action) {
-  switch (action.type) {
-    case types.AUTH_USER:
-      return Object.assign({}, state, {isAuthenticated: true});
-    case types.REQUEST_LOGOUT:
-      return Object.assign({}, state, {
-        isFetching: true,
-        isAuthenticated: true
-      });
-    case types.SUCCESS_LOGOUT:
-      return Object.assign({}, state, {
-        isFetching: false,
-        isAuthenticated: false
-      });
-    default:
-      return state;
-  }
-}
+const initialState = [];
+
+export default handleActions({
+  [types.AUTH_USER]: (state) => Object.assign({}, state, {isAuthenticated: true}),
+  [types.REQUEST_LOGOUT]: (state) => Object.assign({}, state, {isAuthenticated: true}),
+  [types.SUCCESS_LOGOUT]: (state) => Object.assign({}, state, {isAuthenticated: false})
+}, initialState);

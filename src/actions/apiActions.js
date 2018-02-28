@@ -1,8 +1,5 @@
 import * as types from './actionTypes';
+import { createAction } from 'redux-actions';
 
-export const apiRequestPending = () => ({
-  type: types.API_REQUEST.PENDING,
-});
-export const apiRequestSuccess = () => ({
-  type: types.API_REQUEST.SUCCESS,
-});
+export const apiRequestPending = createAction(types.SPENDING_CRUD.UPDATE);
+export const apiRequestSuccess = createAction(types.API_REQUEST.SUCCESS);

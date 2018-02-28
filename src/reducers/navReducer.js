@@ -1,9 +1,8 @@
 import * as types from '../actions/actionTypes';
-export default function contentReducer(state = [], action) {
-  switch (action.type) {
-    case types.OPEN_SIDENAV:
-      return Object.assign({}, state, {isOpen: action.isOpen});
-    default:
-      return state;
-  }
-}
+import { handleActions } from 'redux-actions';
+
+const initialState = [];
+
+export default handleActions({
+  [types.OPEN_SIDENAV]: (state, action) => Object.assign({}, state, {isOpen: action.payload.isOpen})
+}, initialState);

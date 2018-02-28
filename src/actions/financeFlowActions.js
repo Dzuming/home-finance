@@ -4,20 +4,19 @@ import {
   financeFlowToServerMapper,
   financeFlowSpendingToTableMapper
 } from '../helpers/Mappers';
+import { createAction } from 'redux-actions';
 
-export const fetchCategories = () => ({
-  type: types.API_REQUEST_GET,
-  payload:
-    {
-      url: `${env.api_url}/api/categories`,
-      success: setCategories
-    }
-});
+export const fetchCategories = createAction(
+  types.API_REQUEST_GET,
+  () => ({
+    url: `${env.api_url}/api/categories`,
+    success: setCategories
+  })
+);
 
-export const setCategories = (data) => ({
-  type: types.SET_CATEGORIES,
-  payload: data
-});
+export const setCategories = createAction(
+  types.SET_CATEGORIES,
+);
 
 export const fetchSpending = () => (dispatch, getState) => {
   const {id} = getState().user;
@@ -45,128 +44,116 @@ export const fetchProfit = () => (dispatch, getState) => {
   });
 };
 
-export const setSpending = (data) => ({
-  type: types.SPENDING_CRUD.READ,
-  payload: data
-});
+export const setSpending = createAction(
+  types.SPENDING_CRUD.READ
+);
 
-export const setProfit = (data) => ({
-  type: types.PROFIT_CRUD.READ,
-  payload: data
-});
+export const setProfit = createAction(
+  types.PROFIT_CRUD.READ
+);
 
-export const createSpending = (data) => ({
-  type: types.API_REQUEST_POST,
-  payload:
-    {
-      url: `${env.api_url}/api/spending`,
-      success: addSpending,
-      data
-    }
-});
+export const createSpending = createAction(
+  types.API_REQUEST_POST,
+  data => ({
+    url: `${env.api_url}/api/spending`,
+    success: addSpending,
+    data
+  })
+);
 
-export const createProfit = (data) => ({
-  type: types.API_REQUEST_POST,
-  payload:
-    {
-      url: `${env.api_url}/api/profit`,
-      success: addProfit,
-      data
-    }
-});
+export const createProfit = createAction(
+  types.API_REQUEST_POST,
+  data => ({
+    url: `${env.api_url}/api/spending`,
+    success: addProfit,
+    data
+  })
+);
 
-export const addSpending = ({spending, message}) => ({
-  type: types.SPENDING_CRUD.CREATE,
-  payload: {
+export const addSpending = createAction(
+  types.SPENDING_CRUD.CREATE,
+  ({spending, message}) => ({
     spending,
     message
-  }
-});
+  })
+);
 
-export const addProfit = ({profit, message}) => ({
-  type: types.PROFIT_CRUD.CREATE,
-  payload: {
+export const addProfit = createAction(
+  types.PROFIT_CRUD.CREATE,
+  ({profit, message}) => ({
     profit,
     message
-  }
-});
+  })
+);
 
-export const deleteSpending = (id) => ({
-  type: types.API_REQUEST_DELETE,
-  payload:
-    {
-      url: `${env.api_url}/api/spending/${id}`,
-      success: removeSpending,
-      id
-    }
-});
+export const deleteSpending = createAction(
+  types.API_REQUEST_DELETE,
+  id => ({
+    url: `${env.api_url}/api/spending/${id}`,
+    success: removeSpending,
+    id
+  })
+);
 
-export const deleteProfit = (id) => ({
-  type: types.API_REQUEST_DELETE,
-  payload:
-    {
-      url: `${env.api_url}/api/profit/${id}`,
-      success: removeProfit,
-      id
-    }
-});
+export const deleteProfit = createAction(
+  types.API_REQUEST_DELETE,
+  id => ({
+    url: `${env.api_url}/api/profit/${id}`,
+    success: removeProfit,
+    id
+  })
+);
 
-export const removeSpending = (message, id) => ({
-  type: types.SPENDING_CRUD.DELETE,
-  payload: {
+export const removeSpending = createAction(
+  types.SPENDING_CRUD.DELETE,
+  (message, id) => ({
     message,
     id
-  }
-});
+  })
+);
 
-export const removeProfit = (message, id) => ({
-  type: types.PROFIT_CRUD.DELETE,
-  payload: {
+export const removeProfit = createAction(
+  types.PROFIT_CRUD.DELETE,
+  (message, id) => ({
     message,
     id
-  }
-});
+  })
+);
 
-export const putSpending = (data) => ({
-  type: types.API_REQUEST_PUT,
-  payload:
-    {
-      url: `${env.api_url}/api/spending/${data.id}`,
-      success: editSpending,
-      id: data.id,
-      items: financeFlowToServerMapper(data.items)
-    }
-});
+export const putSpending = createAction(
+  types.API_REQUEST_PUT,
+  data => ({
+    url: `${env.api_url}/api/spending/${data.id}`,
+    success: editSpending,
+    id: data.id,
+    items: financeFlowToServerMapper(data.items)
+  })
+);
 
-export const putProfit = (data) => ({
-  type: types.API_REQUEST_PUT,
-  payload:
-    {
-      url: `${env.api_url}/api/profit/${data.id}`,
-      success: editProfit,
-      id: data.id,
-      items: financeFlowToServerMapper(data.items)
-    }
-});
+export const putProfit = createAction(
+  types.API_REQUEST_PUT,
+  data => ({
+    url: `${env.api_url}/api/profit/${data.id}`,
+    success: editProfit,
+    id: data.id,
+    items: financeFlowToServerMapper(data.items)
+  })
+);
 
-export const editSpending = (message, id, items) => ({
-  type: types.SPENDING_CRUD.UPDATE,
-  payload: {
+export const editSpending = createAction(
+  types.SPENDING_CRUD.UPDATE,
+  (message, id, items) => ({
     message,
     id,
     items: financeFlowSpendingToTableMapper(items.data)
-  }
-});
+  })
+);
 
-export const editProfit = (message, id, items) => ({
-  type: types.PROFIT_CRUD.UPDATE,
-  payload: {
+export const editProfit = createAction(
+  types.PROFIT_CRUD.UPDATE,
+  (message, id, items) => ({
     message,
     id,
     items: financeFlowSpendingToTableMapper(items.data)
-  }
-});
-
-// export function setDate (date) {
-//   return {type: types.SET_DATE, date};
-// }
+  })
+);
