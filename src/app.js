@@ -15,7 +15,7 @@ import './index.scss';
 import 'normalize.css';
 import withSpinner from './helpers/withSpinner';
 import compose from 'recompose/compose';
-import history from './helpers/history'
+import history from './helpers/history';
 
 class App extends Component {
   render () {
