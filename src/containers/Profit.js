@@ -147,7 +147,8 @@ Profit.propTypes = {
     fetchCategories: PropTypes.Func,
     fetchProfit: PropTypes.Func,
     deleteProfit: PropTypes.Func,
-    createProfit: PropTypes.Func
+    createProfit: PropTypes.Func,
+    fetchBudget: PropTypes.Func,
 
   }),
   profit: PropTypes.array,

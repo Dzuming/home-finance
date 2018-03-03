@@ -64,7 +64,7 @@ export const createSpending = createAction(
 export const createProfit = createAction(
   types.API_REQUEST_POST,
   data => ({
-    url: `${env.api_url}/api/spending`,
+    url: `${env.api_url}/api/profit`,
     success: addProfit,
     data
   })

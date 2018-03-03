@@ -29,3 +29,4 @@ export const API_REQUEST_PUT = 'API_REQUEST_PUT';
 export const API_REQUEST = asyncActionType('API_REQUEST');
 export const SPENDING_CRUD = crudActionType('SPENDING');
 export const PROFIT_CRUD = crudActionType('PROFIT');
+export const BUDGET_CRUD = crudActionType('BUDGET');

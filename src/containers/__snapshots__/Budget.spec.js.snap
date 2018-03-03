@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Budget /> should match snapshot 1`] = `
+<div
+  className="Connect-Budget--budget-1"
+>
+  Budget: 
+  0
+   zł
+</div>
+`;
