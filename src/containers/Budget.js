@@ -8,7 +8,7 @@ import { withStyles } from 'material-ui';
 const styles = {
   budget: {
     fontSize: '1.5rem',
-    paddingRight:'1rem'
+    paddingRight: '1rem'
   }
 };
 
@@ -21,7 +21,7 @@ class Budget extends Component {
   render () {
     const {budget, classes} = this.props;
     return (
-      <div className={classes.budget} >Budget: {budget} zł</div >
+      <div className={classes.budget}>Budget: {budget} zł</div>
     );
   }
 }

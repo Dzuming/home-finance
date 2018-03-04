@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
+import * as budgetActions from '../actions/budgetActions';
 
 class Profit extends Component {
   constructor (props) {
@@ -117,6 +118,13 @@ class Profit extends Component {
     this.props.actions.fetchCategories();
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (this.props.profit !== nextProps.profit) {
+      this.props.actions.fetchBudget();
+
+    }
+  }
+
   render () {
     const {columns, sorting, deletingRows} = this.state;
     const {categories, profit} = this.props;
@@ -164,7 +172,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(financeFlowActions, dispatch)
+    actions: bindActionCreators(Object.assign({}, financeFlowActions, budgetActions), dispatch)
   };
 }
 
