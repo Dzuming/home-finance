@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import env from '../../environments/config';
 import {
   financeFlowToServerMapper,
-  financeFlowSpendingToTableMapper
+  financeFlowSpendingToTableMapper, financeFlowProfitToTableMapper
 } from '../helpers/Mappers';
 import { createAction } from 'redux-actions';
 
@@ -154,6 +154,6 @@ export const editProfit = createAction(
   (message, id, items) => ({
     message,
     id,
-    items: financeFlowSpendingToTableMapper(items.data)
+    items: financeFlowProfitToTableMapper(items.data)
   })
 );
