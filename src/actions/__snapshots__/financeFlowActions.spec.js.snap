@@ -39,7 +39,7 @@ Object {
       "dateCreated": "2018-01-01",
       "description": undefined,
       "id": 1,
-      "spending": 300,
+      "profit": 300,
     },
     "message": "test",
   },
