@@ -1,7 +1,6 @@
 import * as types from '../actions/actionTypes';
 import { setAuthToken } from '../helpers/LocalStorage';
 import { getUser } from '../actions/userActions';
-import history from '../helpers/history';
 
 export const authMiddleware = ({dispatch}) => (next) => (action) => {
 
