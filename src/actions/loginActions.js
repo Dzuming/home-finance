@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
 import { createAction } from 'redux-actions';
+import { removeAuthToken, removeStorageUser } from '../helpers/LocalStorage';
 
 export const authenticateUser = createAction(types.AUTH_USER);
 
@@ -32,7 +33,9 @@ export function logout () {
     return new Promise(function (resolve) {
       dispatch(requestLogout());
       //TODO: ADD logout to state management
-      localStorage.removeItem('token');
+      // TODO: Remove side effects from actions
+      removeAuthToken();
+      removeStorageUser();
       dispatch(receiveLogout());
       resolve(getState());
     });

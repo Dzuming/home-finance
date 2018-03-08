@@ -23,7 +23,7 @@ class Login extends Component {
   };
   sendCredentials = () => {
     this
-      .props.actions.login({email: this.state.login, password: this.state.password});
+      .props.actions.login({email: this.state.login, password: this.state.password})
   };
   handleChange = name => event => {
     this.setState({[name]: event.target.value});

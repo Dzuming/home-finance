@@ -18,7 +18,6 @@ export const authMiddleware = ({dispatch}) => (next) => (action) => {
         dispatch(getUser(data.get('username')));
         dispatch(success());
       }).then(() => {
-        history.push('Spending');
         dispatch({type: types.API_REQUEST.SUCCESS});
       });
 
