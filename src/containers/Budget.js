@@ -21,7 +21,7 @@ class Budget extends Component {
   render () {
     const {budget, classes} = this.props;
     return (
-      <div className={classes.budget}>Budget: {budget} zł</div>
+      <div className={classes.budget}>{budget} zł</div>
     );
   }
 }

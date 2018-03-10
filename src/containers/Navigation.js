@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as navActions from '../actions/navActions';
 import NavBar from '../components/NavBar';
-import Budget from './Budget';
 import { AppBar, Grid } from 'material-ui';
 
 class Navigation extends Component {
@@ -29,7 +28,6 @@ class Navigation extends Component {
             <NavBar openSideNav={this.openSideNav}/>
           </Grid>
           <Grid item xs={3} container justify="flex-end">
-            <Budget/>
           </Grid>
         </Grid>
       </AppBar>
