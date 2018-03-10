@@ -51,6 +51,9 @@ class ListAside extends Component {
               </Grid>
             </Grid>
           </ListSubheader>
+          <ListItem button component={Link} to="/">
+            <ListItemText primary="Homepage"/>
+          </ListItem>
           <ListItem button component={Link} to="Profit">
             <ListItemText primary="Profit"/>
           </ListItem>
