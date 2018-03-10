@@ -1,9 +1,15 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
 import Homepage from './Homepage';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+const store = mockStore({budget: 123, user: [], login: {isAuthenticated: true}});
 const component = create(
-   <Homepage/>
+  <Provider store={store}><Homepage/></Provider>
 );
 
 describe('<Homepage />', () => {
