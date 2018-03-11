@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators, compose } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as budgetActions from '../actions/budgetActions';
-import { withStyles } from 'material-ui';
-
-const styles = {
-  budget: {
-    fontSize: '1.5rem',
-    paddingRight: '1rem'
-  }
-};
 
 class Budget extends Component {
 
@@ -19,9 +11,9 @@ class Budget extends Component {
   }
 
   render () {
-    const {budget, classes} = this.props;
+    const {budget} = this.props;
     return (
-      <div className={classes.budget}>{budget} zł</div>
+      <div>{budget} zł</div>
     );
   }
 }
@@ -31,7 +23,6 @@ Budget.propTypes = {
     fetchBudget: PropTypes.Func,
   }),
   budget: PropTypes.number,
-  classes: PropTypes.object
 };
 const mapStateToProps = state => ({
   budget: state.budget
@@ -41,4 +32,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(budgetActions, dispatch)
 });
 
-export default compose(withStyles(styles), connect(mapStateToProps, mapDispatchToProps))(Budget);
+export default connect(mapStateToProps, mapDispatchToProps)(Budget);

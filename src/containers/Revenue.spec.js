@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
-const store = mockStore({revenue: 55, user: [], login: {isAuthenticated: true}});
+const store = mockStore({revenue: 55, user: [], financeFlow: {selectedDate: '2018-03'}, login: {isAuthenticated: true}});
 const component = create(
   <Provider store={store}><Reveue/></Provider>
 );
