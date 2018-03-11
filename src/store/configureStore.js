@@ -29,7 +29,8 @@ const initialState = {
   api: {
     loading: 0
   },
-  budget: 0
+  budget: 0,
+  revenue: 0,
 };
 export default function configureStore () {
   return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware, apiMiddleware, authMiddleware)));

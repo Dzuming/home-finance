@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`revenue reducer get action should get revenue 1`] = `50000`;
