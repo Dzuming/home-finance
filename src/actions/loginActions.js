@@ -5,24 +5,14 @@ import { removeAuthToken, removeStorageUser } from '../helpers/LocalStorage';
 
 export const authenticateUser = createAction(types.AUTH_USER);
 
-export const login = ({email, password}) => {
-  let formData = new FormData();
-  formData.append('grant_type', 'password');
-  formData.append('client_id', env.client_id);
-  formData.append('client_secret', env.client_secret);
-  formData.append('username', email);
-  formData.append('password', password);
-  formData.append('scope', '*');
-  return {
-    type: types.AUTH_REQUEST,
-    payload: {
-      url: `${env.api_url}/oauth/token`,
-      success: authenticateUser,
-      data: formData
-
-    }
-  };
-};
+export const login = createAction(
+  types.AUTH_REQUEST,
+  data => ({
+    url: `${env.api_url}/api/authenticate`,
+    success: authenticateUser,
+    data
+  })
+);
 
 export const requestLogout = createAction(types.REQUEST_LOGOUT);
 

@@ -1,6 +1,5 @@
 import * as types from '../actions/actionTypes';
 import { setAuthToken } from '../helpers/LocalStorage';
-import { getUser } from '../actions/userActions';
 
 export const authMiddleware = ({dispatch}) => (next) => (action) => {
 
@@ -9,12 +8,15 @@ export const authMiddleware = ({dispatch}) => (next) => (action) => {
     const {url, data, success} = action.payload;
     fetch(url, {
       method: 'POST',
-      body: data
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
     }).then(response => response.json())
       .then(response => {
-        const accessToken = response.access_token;
+        const accessToken = response.token;
         setAuthToken(accessToken);
-        dispatch(getUser(data.get('username')));
         dispatch(success());
       }).then(() => {
         dispatch({type: types.API_REQUEST.SUCCESS});
