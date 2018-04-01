@@ -51,6 +51,7 @@ class Spending extends Component {
             items: {...spending.items, category: id}
           });
         }
+        debugger;
         this.props.actions.putSpending(spending);
       }
 
