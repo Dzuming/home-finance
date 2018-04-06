@@ -26,13 +26,13 @@ class Spending extends Component {
           title: 'Category'
         },
         {
-          name: 'dateCreated',
-          title: 'Create date',
+          name: 'period',
+          title: 'Period',
           dataType: 'date'
         },
       ],
       deletingRows: [],
-      sorting: [{columnName: 'dateCreated', direction: 'desc'}],
+      sorting: [{columnName: 'period', direction: 'desc'}],
     };
 
     this.commitChanges = ({added, changed, deleted}) => {

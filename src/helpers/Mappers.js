@@ -2,11 +2,11 @@ import { getStorageUser } from './LocalStorage';
 
 export const financeFlowToServerMapper = data => {
   return {
-    category_id: data.category,
-    user_id: getStorageUser().id,
+    categoryId: data.category,
+    userId: getStorageUser().id,
     value: data.spending || data.profit,
     description: data.description,
-    created_at: data.dateCreated
+    period: data.period
   };
 };
 
@@ -23,6 +23,6 @@ const financeFlowToTableMapper = data => {
     id: data.id || undefined,
     description: data.description || undefined,
     category: data.category && data.category.name ? data.category.name : undefined,
-    dateCreated: data.created_at ? data.created_at.split(' ')[0] : undefined
+    period: data.period || undefined
   };
 };

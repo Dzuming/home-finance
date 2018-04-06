@@ -6,14 +6,14 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "profit": 300,
@@ -29,7 +29,7 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "profit": 300,
@@ -47,21 +47,21 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
       "profit": 300,
@@ -79,21 +79,21 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
       "profit": 300,
@@ -109,21 +109,21 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Pensja",
       "id": 1,
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
       "profit": 300,
@@ -138,7 +138,7 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "profit": 300,
@@ -155,14 +155,14 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "spending": 300,
@@ -178,7 +178,7 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "spending": 300,
@@ -196,21 +196,21 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
       "spending": 300,
@@ -228,21 +228,21 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
       "spending": 300,
@@ -258,21 +258,21 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Opłata rachunki",
       "id": 1,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
       "spending": 300,
@@ -287,7 +287,7 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "dateCreated": "2018-01-01",
+      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
       "spending": 300,

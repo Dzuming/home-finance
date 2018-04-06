@@ -9,13 +9,12 @@ const currentYearAndMonth = () => {
   const Today = new Date();
   const currentYear = Today.getFullYear();
   const currentMonth = Today.getMonth() + 1;
-  return `${currentYear}-${currentMonth}`;
+  const currentMonthWithLeadingZero = currentMonth < 10 ? `0${currentMonth}` : currentMonth;
+  return `${currentYear}-${currentMonthWithLeadingZero}`;
 };
 const initialState = {
   login: {
-    isAuthenticated: localStorage.getItem('token')
-      ? true
-      : false
+    isAuthenticated: !!localStorage.getItem('token')
   },
   user: localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user'))

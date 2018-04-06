@@ -6,7 +6,7 @@ const spending = {
   name: 'Zakupy',
   value: 300,
   user_id: 1,
-  created_at: '2018-01-01 12:12:12',
+  period: '2018-01-01 12:12:12',
   category: {id: 1, name: 'jedzenie'}
 };
 const profit = {
@@ -14,7 +14,7 @@ const profit = {
   name: 'Zakupy',
   value: 300,
   user_id: 1,
-  created_at: '2018-01-01 12:12:12',
+  period: '2018-01-01 12:12:12',
   category: {id: 1, name: 'jedzenie'}
 };
 describe('finance flow actions', () => {
