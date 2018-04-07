@@ -2,7 +2,12 @@ const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({hot: true, template: './src/index.html', filename: 'index.html', inject: 'false'});
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+  hot: true,
+  template: './src/index.html',
+  filename: 'index.html',
+  inject: 'false'
+});
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -15,23 +20,28 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      }, {
+      },
+      {
         test: /\.jsx$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      }, {
+      },
+      {
         test: /(\.css|\.scss|\.sass)$/,
         loader: ['style-loader', 'css-loader?sourceMap, postcss-loader, sass-loader?sourceMap']
-      }, {
-        test: /\.(png|jpg|jpeg|gif|woff)$/,
-        loader: 'url?limit=8192'
-      }, {
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|woff|woff2)$/,
+        loader: 'url-loader?limit=8192'
+      },
+      {
         test: /\.(otf|eot|ttf)$/,
         loader: 'file?prefix=font/'
-      }, {
+      },
+      {
         test: /\.svg$/,
         loader: 'file'
-      }
+      },
     ]
   },
   devServer: {

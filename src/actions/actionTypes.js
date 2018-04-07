@@ -12,13 +12,10 @@ const crudActionType = (type) => ({
 });
 
 export const OPEN_SIDENAV = 'OPEN_SIDENAV';
-export const REQUEST_LOGIN = 'REQUEST_LOGIN';
-export const SUCCESS_LOGIN = 'SUCCESS_LOGIN';
 export const AUTH_USER = 'AUTH_USER';
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
 export const SUCCESS_LOGOUT = 'SUCCESS_LOGOUT';
-export const GET_USER = 'SET_USER';
 export const SET_USER = 'SET_USER';
 export const SET_DATE = 'SET_DATE';
 export const API_REQUEST_GET = 'API_REQUEST_GET';
@@ -29,3 +26,5 @@ export const API_REQUEST_PUT = 'API_REQUEST_PUT';
 export const API_REQUEST = asyncActionType('API_REQUEST');
 export const SPENDING_CRUD = crudActionType('SPENDING');
 export const PROFIT_CRUD = crudActionType('PROFIT');
+export const BUDGET_CRUD = crudActionType('BUDGET');
+export const REVENUE_CRUD = crudActionType('REVENUE');

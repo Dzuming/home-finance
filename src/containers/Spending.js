@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
+import * as budgetActions from '../actions/budgetActions';
 
 class Spending extends Component {
   constructor (props) {
@@ -25,13 +26,13 @@ class Spending extends Component {
           title: 'Category'
         },
         {
-          name: 'dateCreated',
-          title: 'Create date',
+          name: 'period',
+          title: 'Period',
           dataType: 'date'
         },
       ],
       deletingRows: [],
-      sorting: [{columnName: 'dateCreated', direction: 'desc'}],
+      sorting: [{columnName: 'period', direction: 'desc'}],
     };
 
     this.commitChanges = ({added, changed, deleted}) => {
@@ -117,6 +118,13 @@ class Spending extends Component {
     this.props.actions.fetchCategories();
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (this.props.spending !== nextProps.spending) {
+      this.props.actions.fetchBudget();
+
+    }
+  }
+
   render () {
     const {columns, sorting, deletingRows} = this.state;
     const {categories, spending} = this.props;
@@ -147,7 +155,8 @@ Spending.propTypes = {
     fetchCategories: PropTypes.Func,
     fetchSpending: PropTypes.Func,
     deleteSpending: PropTypes.Func,
-    createSpending: PropTypes.Func
+    createSpending: PropTypes.Func,
+    fetchBudget: PropTypes.Func
 
   }),
   spending: PropTypes.array,
@@ -163,7 +172,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(financeFlowActions, dispatch)
+    actions: bindActionCreators(Object.assign({}, financeFlowActions, budgetActions), dispatch)
   };
 }
 

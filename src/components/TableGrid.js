@@ -71,13 +71,13 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
         )}
       />
       <DataTypeProvider
-        for={['dateCreated']}
-        type="date"
+        for={['period']}
+        type="month"
         editorComponent={({onValueChange}) => (
           <TextField
-            id="date"
-            label="Create date"
-            type="date"
+            id="month"
+            label="Period"
+            type="month"
             onChange={e => onValueChange(e.target.value)}
             InputLabelProps={{
               shrink: true,

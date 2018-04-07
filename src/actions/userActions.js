@@ -1,22 +1,25 @@
 import * as types from './actionTypes';
 import env from '../../environments/config';
-import { setStorageUser } from '../helpers/LocalStorage';
+import { setStorageUserPromise } from '../helpers/LocalStorage';
 import { createAction } from 'redux-actions';
-//TODO: Remove user on logout
+import history from '../helpers/history';
 
 export const getUser = createAction(
-  types.OPEN_SIDENAV,
+  types.API_REQUEST_GET,
   email => ({
     url: `${env.api_url}/api/user/${email}`,
     success: setUser
   }));
 
 export const setUser = data => {
-  const newUser = {
+  const user = {
     id: data.id,
     name: data.name,
   };
-  setStorageUser(newUser);
+  //TODO REMOVE SIDE effect
+  setStorageUserPromise(user).then(() => {
+    history.push('Spending');
+  });
   return {
     type: types.SET_USER,
     payload: {

@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import env from '../../environments/config';
 import {
   financeFlowToServerMapper,
-  financeFlowSpendingToTableMapper
+  financeFlowSpendingToTableMapper, financeFlowProfitToTableMapper
 } from '../helpers/Mappers';
 import { createAction } from 'redux-actions';
 
@@ -64,7 +64,7 @@ export const createSpending = createAction(
 export const createProfit = createAction(
   types.API_REQUEST_POST,
   data => ({
-    url: `${env.api_url}/api/spending`,
+    url: `${env.api_url}/api/profit`,
     success: addProfit,
     data
   })
@@ -154,6 +154,6 @@ export const editProfit = createAction(
   (message, id, items) => ({
     message,
     id,
-    items: financeFlowSpendingToTableMapper(items.data)
+    items: financeFlowProfitToTableMapper(items.data)
   })
 );

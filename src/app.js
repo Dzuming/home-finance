@@ -16,6 +16,8 @@ import 'normalize.css';
 import withSpinner from './helpers/withSpinner';
 import compose from 'recompose/compose';
 import history from './helpers/history';
+import Homepage from './containers/Homepage';
+import 'typeface-roboto';
 
 class App extends Component {
   render () {
@@ -33,6 +35,11 @@ class App extends Component {
             <Grid item xs={12} lg={10}>
               {isAuthenticated && < Nav/>}
               <Switch>
+                <PrivateRoute
+                  exact
+                  isAuthenticated={isAuthenticated}
+                  path="/"
+                  component={Homepage}/>
                 <PrivateRoute
                   isAuthenticated={isAuthenticated}
                   path="/Profit"

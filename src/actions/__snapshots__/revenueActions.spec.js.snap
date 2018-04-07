@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`revenue actions should create API_REQUEST_PENDING action with snapshot 1`] = `
+Object {
+  "payload": Object {
+    "revenue": 50000,
+  },
+  "type": "READ_REVENUE",
+}
+`;
