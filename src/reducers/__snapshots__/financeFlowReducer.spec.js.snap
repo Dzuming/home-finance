@@ -6,16 +6,16 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "profit": 300,
     },
   ],
@@ -29,9 +29,9 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "profit": 300,
     },
   ],
@@ -47,23 +47,23 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
+      "period": "2018-01-01",
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
+      "period": "2018-01-01",
       "profit": 300,
     },
   ],
@@ -79,23 +79,23 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
+      "period": "2018-01-01",
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
+      "period": "2018-01-01",
       "profit": 300,
     },
   ],
@@ -109,23 +109,23 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Pensja",
       "id": 1,
+      "period": "2018-01-01",
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
+      "period": "2018-01-01",
       "profit": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
+      "period": "2018-01-01",
       "profit": 300,
     },
   ],
@@ -138,9 +138,9 @@ Object {
   "profit": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "profit": 300,
     },
   ],
@@ -155,16 +155,16 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "spending": 300,
     },
   ],
@@ -178,9 +178,9 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "spending": 300,
     },
   ],
@@ -196,23 +196,23 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
+      "period": "2018-01-01",
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
+      "period": "2018-01-01",
       "spending": 300,
     },
   ],
@@ -228,23 +228,23 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
+      "period": "2018-01-01",
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
+      "period": "2018-01-01",
       "spending": 300,
     },
   ],
@@ -258,23 +258,23 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Opłata rachunki",
       "id": 1,
+      "period": "2018-01-01",
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 2,
+      "period": "2018-01-01",
       "spending": 300,
     },
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 3,
+      "period": "2018-01-01",
       "spending": 300,
     },
   ],
@@ -287,9 +287,9 @@ Object {
   "spending": Array [
     Object {
       "category": "jedzenie",
-      "period": "2018-01-01",
       "description": "Zakupy",
       "id": 1,
+      "period": "2018-01-01",
       "spending": 300,
     },
   ],
