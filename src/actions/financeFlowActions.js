@@ -20,12 +20,11 @@ export const setCategories = createAction(
 
 export const fetchSpending = () => (dispatch, getState) => {
   const {id} = getState().user;
-  const {selectedDate} = getState().financeFlow;
   return dispatch({
     type: types.API_REQUEST_GET,
     payload:
       {
-        url: `${env.api_url}/api/spending/${id}/${selectedDate}`,
+        url: `${env.api_url}/api/spending/user/${id}`,
         success: setSpending
       }
   });
@@ -33,12 +32,11 @@ export const fetchSpending = () => (dispatch, getState) => {
 
 export const fetchProfit = () => (dispatch, getState) => {
   const {id} = getState().user;
-  const {selectedDate} = getState().financeFlow;
   return dispatch({
     type: types.API_REQUEST_GET,
     payload:
       {
-        url: `${env.api_url}/api/profit/${id}/${selectedDate}`,
+        url: `${env.api_url}/api/profit/user/${id}`,
         success: setProfit
       }
   });

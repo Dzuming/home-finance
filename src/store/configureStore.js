@@ -5,13 +5,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { apiMiddleware } from '../middlewares/apiMiddleware';
 import { authMiddleware } from '../middlewares/authMiddleware';
 
-const currentYearAndMonth = () => {
-  const Today = new Date();
-  const currentYear = Today.getFullYear();
-  const currentMonth = Today.getMonth() + 1;
-  const currentMonthWithLeadingZero = currentMonth < 10 ? `0${currentMonth}` : currentMonth;
-  return `${currentYear}-${currentMonthWithLeadingZero}`;
-};
 const initialState = {
   login: {
     isAuthenticated: !!localStorage.getItem('token')
@@ -20,7 +13,6 @@ const initialState = {
     ? JSON.parse(localStorage.getItem('user'))
     : {},
   financeFlow: {
-    selectedDate: currentYearAndMonth(),
     categories: [],
     spending: [],
     profit: [],
