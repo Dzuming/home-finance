@@ -16,7 +16,7 @@ export const authMiddleware = ({dispatch}) => (next) => (action) => {
       body: JSON.stringify(data)
     }).then(response => response.json())
       .then(response => {
-        const accessToken = console.log(response);
+        const accessToken = response.token;
         setAuthToken(accessToken);
         dispatch(getUser(data.email));
         dispatch(success());
