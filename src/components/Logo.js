@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 const styles = {
   header: {
     marginBottom: '0',
-    lineHeight: '0'
-  }
+    lineHeight: '0',
+  },
 };
-const Logo = (props) => {
+const Logo = props => {
   const classes = props.classes;
   return (
     <div>

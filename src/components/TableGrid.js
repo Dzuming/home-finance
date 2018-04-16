@@ -8,7 +8,7 @@ import {
   IntegratedFiltering,
   FilteringState,
   EditingState,
-  DataTypeProvider
+  DataTypeProvider,
 } from '@devexpress/dx-react-grid';
 import {
   Grid,
@@ -17,7 +17,7 @@ import {
   PagingPanel,
   TableFilterRow,
   TableEditRow,
-  TableEditColumn
+  TableEditColumn,
 } from '@devexpress/dx-react-grid-material-ui';
 import CommandTemplate from '../helpers/CommandTemplates';
 import TextField from 'material-ui/TextField';
@@ -25,40 +25,42 @@ import Select from 'material-ui/Select';
 import { FormControl } from 'material-ui/Form';
 import Input, { InputLabel } from 'material-ui/Input';
 
-const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, filterCellTemplate, categories}) => {
+const TableGrid = ({
+  rows,
+  columns,
+  sorting,
+  commitChanges,
+  editCellTemplate,
+  filterCellTemplate,
+  categories,
+}) => {
   return (
     <Grid rows={rows} columns={columns} getRowId={row => row.id}>
-      <FilteringState defaultFilters={[]}/>
-      <IntegratedFiltering/>
-      <PagingState defaultCurrentPage={0} pageSize={10}/>
-      <IntegratedPaging/>
-      <SortingState defaultSorting={sorting}/>
-      <IntegratedSorting/>
-      <EditingState onCommitChanges={commitChanges}/>
-      <Table/>
-      <TableHeaderRow showSortingControls/>
-      <TableFilterRow filterCellTemplate={filterCellTemplate}/>
-      <TableEditRow editCellTemplate={editCellTemplate}/>
+      <FilteringState defaultFilters={[]} />
+      <IntegratedFiltering />
+      <PagingState defaultCurrentPage={0} pageSize={10} />
+      <IntegratedPaging />
+      <SortingState defaultSorting={sorting} />
+      <IntegratedSorting />
+      <EditingState onCommitChanges={commitChanges} />
+      <Table />
+      <TableHeaderRow showSortingControls />
+      <TableFilterRow filterCellTemplate={filterCellTemplate} />
+      <TableEditRow editCellTemplate={editCellTemplate} />
       <TableEditColumn
         showAddCommand
         showEditCommand
         showDeleteCommand
-        commandComponent={
-          ({id, onExecute}) => {
-            const CommandButton = CommandTemplate[id];
-            return (
-              <CommandButton
-                onExecute={onExecute}
-              />
-            );
-          }
-        }
+        commandComponent={({ id, onExecute }) => {
+          const CommandButton = CommandTemplate[id];
+          return <CommandButton onExecute={onExecute} />;
+        }}
       />
-      <PagingPanel/>
+      <PagingPanel />
       <DataTypeProvider
         for={['description']}
         type="text"
-        editorComponent={({onValueChange}) => (
+        editorComponent={({ onValueChange }) => (
           <TextField
             id="description"
             label="Description"
@@ -73,7 +75,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
       <DataTypeProvider
         for={['period']}
         type="month"
-        editorComponent={({onValueChange}) => (
+        editorComponent={({ onValueChange }) => (
           <TextField
             id="month"
             label="Period"
@@ -88,7 +90,7 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
       <DataTypeProvider
         for={['profit', 'spending']}
         type="number"
-        editorComponent={({onValueChange}) => (
+        editorComponent={({ onValueChange }) => (
           <TextField
             id="number"
             label="Value"
@@ -103,17 +105,21 @@ const TableGrid = ({rows, columns, sorting, commitChanges, editCellTemplate, fil
       <DataTypeProvider
         for={['category']}
         type="select"
-        editorComponent={({onValueChange}) => (
+        editorComponent={({ onValueChange }) => (
           <FormControl>
             <InputLabel htmlFor="category">Category</InputLabel>
             <Select
               native
               onChange={e => onValueChange(e.target.value)}
-              input={<Input name="category" id="category"/>}
+              input={<Input name="category" id="category" />}
             >
               <option hidden>--Wybierz kategorię--</option>
               <option value={''}>Wszystkie</option>
-              {categories.map(category => <option key={category.id} value={category.name}>{category.name}</option>)}
+              {categories.map(category => (
+                <option key={category.id} value={category.name}>
+                  {category.name}
+                </option>
+              ))}
             </Select>
           </FormControl>
         )}

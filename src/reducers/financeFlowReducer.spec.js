@@ -1,18 +1,26 @@
 import reducer from './financeFlowReducer';
 import deepFreeze from 'deep-freeze';
 import {
-  setSpending, setProfit, addSpending, removeSpending, editSpending,
-  addProfit, removeProfit, editProfit
+  setSpending,
+  setProfit,
+  addSpending,
+  removeSpending,
+  editSpending,
+  addProfit,
+  removeProfit,
+  editProfit,
 } from '../actions/financeFlowActions';
 
-const initialState = deepFreeze(reducer({spending: [], profit: []}, {type: 'INIT'}));
+const initialState = deepFreeze(
+  reducer({ spending: [], profit: [] }, { type: 'INIT' }),
+);
 const spending = {
   id: 1,
   description: 'Zakupy',
   value: 300,
   user_id: 1,
   period: '2018-01-01',
-  category: {id: 1, name: 'jedzenie'}
+  category: { id: 1, name: 'jedzenie' },
 };
 const profit = {
   id: 1,
@@ -20,12 +28,12 @@ const profit = {
   value: 300,
   user_id: 1,
   period: '2018-01-01',
-  category: {id: 1, name: 'jedzenie'}
+  category: { id: 1, name: 'jedzenie' },
 };
 const message = 'test';
 describe('spending reducer', () => {
   it('should handle unknown actions', () => {
-    expect(reducer(initialState, {type: 'FAKE'})).toBe(initialState);
+    expect(reducer(initialState, { type: 'FAKE' })).toBe(initialState);
   });
 
   describe('get action', () => {
@@ -36,35 +44,57 @@ describe('spending reducer', () => {
 
   describe('add action', () => {
     it('should add spending to empty list', () => {
-      expect(reducer(initialState, addSpending({spending, message}))).toMatchSnapshot();
+      expect(
+        reducer(initialState, addSpending({ spending, message })),
+      ).toMatchSnapshot();
     });
 
     it('should add spending to a non-empty list', () => {
-      const nonEmptyState = deepFreeze(reducer(initialState, addSpending({spending, message})));
+      const nonEmptyState = deepFreeze(
+        reducer(initialState, addSpending({ spending, message })),
+      );
 
-      expect(reducer(nonEmptyState, addSpending({spending, message}))).toMatchSnapshot();
+      expect(
+        reducer(nonEmptyState, addSpending({ spending, message })),
+      ).toMatchSnapshot();
     });
   });
 
   describe('delete action', () => {
     const baseStateSpending = deepFreeze(
-      [{spending: {...spending, id: 1}}, {spending: {...spending, id: 2}}, {spending: {...spending, id: 3}}]
-        .reduce((state, spending) => reducer(state, addSpending(spending)), initialState)
+      [
+        { spending: { ...spending, id: 1 } },
+        { spending: { ...spending, id: 2 } },
+        { spending: { ...spending, id: 3 } },
+      ].reduce(
+        (state, spending) => reducer(state, addSpending(spending)),
+        initialState,
+      ),
     );
 
     it('should delete spending when exists', () => {
-      expect(reducer(baseStateSpending, removeSpending({id: 1}))).toMatchSnapshot();
+      expect(
+        reducer(baseStateSpending, removeSpending({ id: 1 })),
+      ).toMatchSnapshot();
     });
 
-    it('should not delete spending when it doesn\'t exist', () => {
-      expect(reducer(baseStateSpending, removeSpending({id: 4}))).toMatchSnapshot();
+    it("should not delete spending when it doesn't exist", () => {
+      expect(
+        reducer(baseStateSpending, removeSpending({ id: 4 })),
+      ).toMatchSnapshot();
     });
   });
 
   describe('edit action', () => {
     const baseState = deepFreeze(
-      [{spending: {...spending, id: 1}}, {spending: {...spending, id: 2}}, {spending: {...spending, id: 3}}]
-        .reduce((state, spending) => reducer(state, addSpending(spending)), initialState)
+      [
+        { spending: { ...spending, id: 1 } },
+        { spending: { ...spending, id: 2 } },
+        { spending: { ...spending, id: 3 } },
+      ].reduce(
+        (state, spending) => reducer(state, addSpending(spending)),
+        initialState,
+      ),
     );
     const user = {
       id: 1,
@@ -72,14 +102,19 @@ describe('spending reducer', () => {
     };
     localStorage.setItem('user', JSON.stringify(user));
     it('should edit spending when exists', () => {
-      expect(reducer(baseState, editSpending('test', 1, {data: {description: 'Opłata rachunki'}}))).toMatchSnapshot();
+      expect(
+        reducer(
+          baseState,
+          editSpending('test', 1, { data: { description: 'Opłata rachunki' } }),
+        ),
+      ).toMatchSnapshot();
     });
   });
 });
 
 describe('profit reducer', () => {
   it('should handle unknown actions', () => {
-    expect(reducer(initialState, {type: 'FAKE'})).toBe(initialState);
+    expect(reducer(initialState, { type: 'FAKE' })).toBe(initialState);
   });
 
   describe('get action', () => {
@@ -90,34 +125,56 @@ describe('profit reducer', () => {
 
   describe('add action', () => {
     it('should add profit to empty list', () => {
-      expect(reducer(initialState, addProfit({profit, message}))).toMatchSnapshot();
+      expect(
+        reducer(initialState, addProfit({ profit, message })),
+      ).toMatchSnapshot();
     });
 
     it('should add profit to a non-empty list', () => {
-      const nonEmptyState = deepFreeze(reducer(initialState, addProfit({profit, message})));
+      const nonEmptyState = deepFreeze(
+        reducer(initialState, addProfit({ profit, message })),
+      );
 
-      expect(reducer(nonEmptyState, addProfit({profit, message}))).toMatchSnapshot();
+      expect(
+        reducer(nonEmptyState, addProfit({ profit, message })),
+      ).toMatchSnapshot();
     });
   });
 
   describe('delete action', () => {
     const baseStateProfit = deepFreeze(
-      [{profit: {...profit, id: 1}}, {profit: {...profit, id: 2}}, {profit: {...profit, id: 3}}]
-        .reduce((state, profit) => reducer(state, addProfit(profit)), initialState)
+      [
+        { profit: { ...profit, id: 1 } },
+        { profit: { ...profit, id: 2 } },
+        { profit: { ...profit, id: 3 } },
+      ].reduce(
+        (state, profit) => reducer(state, addProfit(profit)),
+        initialState,
+      ),
     );
     it('should delete profit when exists', () => {
-      expect(reducer(baseStateProfit, removeProfit({id: 1}))).toMatchSnapshot();
+      expect(
+        reducer(baseStateProfit, removeProfit({ id: 1 })),
+      ).toMatchSnapshot();
     });
 
-    it('should not delete profit when it doesn\'t exist', () => {
-      expect(reducer(baseStateProfit, removeProfit({id: 4}))).toMatchSnapshot();
+    it("should not delete profit when it doesn't exist", () => {
+      expect(
+        reducer(baseStateProfit, removeProfit({ id: 4 })),
+      ).toMatchSnapshot();
     });
   });
 
   describe('edit action', () => {
     const baseState = deepFreeze(
-      [{profit: {...profit, id: 1}}, {profit: {...spending, id: 2}}, {profit: {...profit, id: 3}}]
-        .reduce((state, profit) => reducer(state, addProfit(profit)), initialState)
+      [
+        { profit: { ...profit, id: 1 } },
+        { profit: { ...spending, id: 2 } },
+        { profit: { ...profit, id: 3 } },
+      ].reduce(
+        (state, profit) => reducer(state, addProfit(profit)),
+        initialState,
+      ),
     );
     const user = {
       id: 1,
@@ -125,7 +182,12 @@ describe('profit reducer', () => {
     };
     localStorage.setItem('user', JSON.stringify(user));
     it('should edit profit when exists', () => {
-      expect(reducer(baseState, editProfit('test', 1, {data: {description: 'Pensja'}}))).toMatchSnapshot();
+      expect(
+        reducer(
+          baseState,
+          editProfit('test', 1, { data: { description: 'Pensja' } }),
+        ),
+      ).toMatchSnapshot();
     });
   });
 });

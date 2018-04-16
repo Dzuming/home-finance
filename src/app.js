@@ -20,35 +20,38 @@ import Homepage from './containers/Homepage';
 import 'typeface-roboto';
 
 class App extends Component {
-  render () {
-    const {isAuthenticated} = this.props;
+  render() {
+    const { isAuthenticated } = this.props;
     return (
       <div>
         <Router history={history}>
           <Grid container spacing={0}>
             <Grid item lg={12}>
-              <Route path="/Login" component={Login}/>
+              <Route path="/Login" component={Login} />
             </Grid>
             <Grid item xs={12} lg={2}>
-              {isAuthenticated && <List/>}
+              {isAuthenticated && <List />}
             </Grid>
             <Grid item xs={12} lg={10}>
-              {isAuthenticated && < Nav/>}
+              {isAuthenticated && <Nav />}
               <Switch>
                 <PrivateRoute
                   exact
                   isAuthenticated={isAuthenticated}
                   path="/"
-                  component={Homepage}/>
+                  component={Homepage}
+                />
                 <PrivateRoute
                   isAuthenticated={isAuthenticated}
                   path="/Profit"
-                  component={Profit}/>
+                  component={Profit}
+                />
                 <PrivateRoute
                   isAuthenticated={isAuthenticated}
                   path="/Spending"
-                  component={Spending}/>
-                <Redirect exact from="/" to="/Login"/>
+                  component={Spending}
+                />
+                <Redirect exact from="/" to="/Login" />
               </Switch>
             </Grid>
           </Grid>
@@ -59,11 +62,11 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
-function mapStateToProps (state) {
-  return {isAuthenticated: state.login.isAuthenticated};
+function mapStateToProps(state) {
+  return { isAuthenticated: state.login.isAuthenticated };
 }
 
 export default compose(withSpinner, connect(mapStateToProps, null))(App);

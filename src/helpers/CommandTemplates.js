@@ -7,31 +7,31 @@ import DeleteIcon from 'material-ui-icons/Delete';
 import NoteAddIcon from 'material-ui-icons/NoteAdd';
 /* eslint-disable */
 const CommandTemplate = {
-  add: ({onExecute}) => (
+  add: ({ onExecute }) => (
     <IconButton onClick={onExecute} title="Add row">
-      <NoteAddIcon/>
+      <NoteAddIcon />
     </IconButton>
   ),
-  edit: ({onExecute}) => (
+  edit: ({ onExecute }) => (
     <IconButton onClick={onExecute} title="Edit row">
-      <EditIcon/>
+      <EditIcon />
     </IconButton>
   ),
-  delete: ({onExecute}) => (
+  delete: ({ onExecute }) => (
     <IconButton onClick={onExecute} title="Delete row">
-      <DeleteIcon/>
+      <DeleteIcon />
     </IconButton>
   ),
-  commit: ({onExecute}) => (
+  commit: ({ onExecute }) => (
     <IconButton onClick={onExecute} title="Save changes">
-      <SaveIcon/>
+      <SaveIcon />
     </IconButton>
   ),
-  cancel: ({onExecute}) => (
+  cancel: ({ onExecute }) => (
     <IconButton color="secondary" onClick={onExecute} title="Cancel changes">
-      <CancelIcon/>
+      <CancelIcon />
     </IconButton>
-  )
+  ),
 };
 
 export default CommandTemplate;

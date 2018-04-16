@@ -12,57 +12,61 @@ import RaisedButton from '../components/RaisedButton';
 const styles = () => ({
   container: {
     width: '100vw',
-    height: '100vh'
-  }
+    height: '100vh',
+  },
 });
 
 class Login extends Component {
   state = {
     login: '',
-    password: ''
+    password: '',
   };
   sendCredentials = () => {
     const credentials = {
       email: this.state.login,
-      password: this.state.password
-    }
+      password: this.state.password,
+    };
 
     this.props.actions.login(credentials);
   };
   handleChange = name => event => {
-    this.setState({[name]: event.target.value});
+    this.setState({ [name]: event.target.value });
   };
 
-  render () {
+  render() {
     const classes = this.props.classes;
-    const {login, password} = this.state;
+    const { login, password } = this.state;
     return (
       <div>
         <Grid
           container
           className={classes.container}
-          alignItems='center'
-          direction='row'
-          justify='center'>
+          alignItems="center"
+          direction="row"
+          justify="center"
+        >
           <form noValidate autoComplete="off">
             <div>
               <InputText
                 type="email"
                 label="Login"
                 value={login}
-                changeMethod={this.handleChange('login')}/>
+                changeMethod={this.handleChange('login')}
+              />
             </div>
             <div>
               <InputText
                 type="password"
                 label="Password"
                 value={password}
-                changeMethod={this.handleChange('password')}/>
+                changeMethod={this.handleChange('password')}
+              />
             </div>
             <RaisedButton
               clickMethod={this.sendCredentials}
               text={'Login'}
-              color={'default'}/>
+              color={'default'}
+            />
           </form>
         </Grid>
       </div>
@@ -74,17 +78,20 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired,
   actions: PropTypes.object,
   history: PropTypes.object,
-  isAuthenticated: PropTypes.bool.isRequired
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
-function mapStateToProps (state) {
-  return {isAuthenticated: state.login.isAuthenticated};
+function mapStateToProps(state) {
+  return { isAuthenticated: state.login.isAuthenticated };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(loginActions, dispatch)
+    actions: bindActionCreators(loginActions, dispatch),
   };
 }
 
-export default compose(withStyles(styles), connect(mapStateToProps, mapDispatchToProps))(Login);
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps),
+)(Login);

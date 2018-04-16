@@ -16,25 +16,24 @@ const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    background: theme.palette.background.paper
+    background: theme.palette.background.paper,
   },
   logoutIcon: {
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 });
 
 class ListAside extends Component {
   state = {};
   logout = () => {
-    this.props.actions.logout()
-      .then((data) => {
-        if (!data.login.isAuthenticated) {
-          this.props.history.push('/login');
-        }
-      });
+    this.props.actions.logout().then(data => {
+      if (!data.login.isAuthenticated) {
+        this.props.history.push('/login');
+      }
+    });
   };
 
-  render () {
+  render() {
     const classes = this.props.classes;
     return (
       <div className={classes.root}>
@@ -42,23 +41,23 @@ class ListAside extends Component {
           <ListSubheader disableSticky>
             <Grid container>
               <Grid item xs={10}>
-                <Logo/>
+                <Logo />
               </Grid>
               <Grid item xs={2}>
                 <div onClick={this.logout} className={classes.logoutIcon}>
-                  <ExitToApp/>
+                  <ExitToApp />
                 </div>
               </Grid>
             </Grid>
           </ListSubheader>
           <ListItem button component={Link} to="/">
-            <ListItemText primary="Homepage"/>
+            <ListItemText primary="Homepage" />
           </ListItem>
           <ListItem button component={Link} to="Profit">
-            <ListItemText primary="Profit"/>
+            <ListItemText primary="Profit" />
           </ListItem>
           <ListItem button component={Link} to="Spending">
-            <ListItemText primary="Spending"/>
+            <ListItemText primary="Spending" />
           </ListItem>
         </List>
       </div>
@@ -69,17 +68,21 @@ class ListAside extends Component {
 ListAside.propTypes = {
   classes: PropTypes.object.isRequired,
   history: PropTypes.object,
-  actions: PropTypes.object
+  actions: PropTypes.object,
 };
 
-function mapStateToProps (state) {
-  return {isAuthenticated: state.login.isAuthenticated};
+function mapStateToProps(state) {
+  return { isAuthenticated: state.login.isAuthenticated };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(loginActions, dispatch)
+    actions: bindActionCreators(loginActions, dispatch),
   };
 }
 
-export default compose(withStyles(styles), withRouter, connect(mapStateToProps, mapDispatchToProps))(ListAside);
+export default compose(
+  withStyles(styles),
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
+)(ListAside);

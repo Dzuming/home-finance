@@ -1,4 +1,4 @@
-export const setAuthToken = (token) => {
+export const setAuthToken = token => {
   localStorage.setItem('token', token);
 };
 
@@ -9,11 +9,10 @@ export const getAuthToken = () => {
 export const removeAuthToken = () => {
   return localStorage.removeItem('token');
 };
-export const setStorageUserPromise = (user) => (
-  new Promise((resolve) => {
-    resolve(setStorageUser(user)
-    );
-  }));
+export const setStorageUserPromise = user =>
+  new Promise(resolve => {
+    resolve(setStorageUser(user));
+  });
 
 export const setStorageUser = user => {
   localStorage.setItem('user', JSON.stringify(user));
