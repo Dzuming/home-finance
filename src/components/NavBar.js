@@ -21,7 +21,7 @@ function NavBar(props) {
         <Hidden lgUp>
           <IconButton
             className={classes.menuButton}
-            color="contrast"
+            color="inherit"
             aria-label="Menu"
             onClick={props.openSideNav}
           >
