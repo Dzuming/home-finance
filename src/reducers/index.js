@@ -6,6 +6,7 @@ import financeFlow from './financeFlowReducer';
 import api from './apiReducer';
 import budget from './budgetReducer';
 import revenue from './revenueReducer';
+import period from './periodReducer';
 
 const rootReducer = combineReducers({
   nav,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   api,
   budget,
   revenue,
+  period,
 });
 
 export default rootReducer;

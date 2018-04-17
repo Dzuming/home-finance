@@ -22,6 +22,7 @@ const initialState = {
   },
   budget: 0,
   revenue: 0,
+  period: '2018-04',
 };
 export default function configureStore() {
   return createStore(

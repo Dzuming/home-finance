@@ -6,7 +6,7 @@ import * as revenueActions from '../actions/revenueActions';
 
 class Revenue extends Component {
   componentDidMount() {
-    this.props.actions.fetchRevenue(this.props.date);
+    this.props.actions.fetchRevenue();
   }
 
   render() {
@@ -20,11 +20,9 @@ Revenue.propTypes = {
     fetchRevenue: PropTypes.Func,
   }),
   revenue: PropTypes.number,
-  date: PropTypes.string,
 };
 const mapStateToProps = state => ({
   revenue: state.revenue,
-  date: '2018-04',
 });
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(revenueActions, dispatch),
