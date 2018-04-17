@@ -3,26 +3,25 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../components/Spinner';
 
-function withSpinner (WrappedComponent) {
+function withSpinner(WrappedComponent) {
   class SpinnerElement extends React.Component {
-
-    render () {
+    render() {
       return (
         <div>
-          {this.props.loading > 0 && <Spinner/>}
-          <WrappedComponent  {...this.props} />
+          {this.props.loading > 0 && <Spinner />}
+          <WrappedComponent {...this.props} />
         </div>
       );
     }
   }
 
   SpinnerElement.propTypes = {
-    loading: PropTypes.number.isRequired
+    loading: PropTypes.number.isRequired,
   };
 
-  function mapStateToProps (state) {
+  function mapStateToProps(state) {
     return {
-      loading: state.api.loading
+      loading: state.api.loading,
     };
   }
 
@@ -30,5 +29,3 @@ function withSpinner (WrappedComponent) {
 }
 
 export default withSpinner;
-
-

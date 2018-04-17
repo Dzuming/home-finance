@@ -2,7 +2,7 @@ import * as actions from './budgetActions';
 import expect from 'expect';
 
 const budget = {
-  budget: 50000
+  budget: 50000,
 };
 
 describe('budget actions', () => {

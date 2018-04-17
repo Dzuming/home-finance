@@ -9,53 +9,65 @@ import * as financeFlowActions from '../actions/financeFlowActions';
 import * as budgetActions from '../actions/budgetActions';
 
 class Profit extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       categories: [],
       columns: [
         {
           name: 'description',
-          title: 'Description'
-        }, {
+          title: 'Description',
+        },
+        {
           name: 'profit',
           title: 'Value',
-          dataType: 'number'
-        }, {
+          dataType: 'number',
+        },
+        {
           name: 'category',
-          title: 'Category'
+          title: 'Category',
         },
         {
           name: 'period',
           title: 'Period',
-          dataType: 'date'
+          dataType: 'date',
         },
       ],
       deletingRows: [],
-      sorting: [{columnName: 'period', direction: 'desc'}],
+      sorting: [{ columnName: 'period', direction: 'desc' }],
     };
 
-    this.commitChanges = ({added, changed, deleted}) => {
+    this.commitChanges = ({ added, changed, deleted }) => {
       if (added) {
-        const {id} = this.props.categories.find(category => category.name === Object.assign({}, ...added)['category']);
-        const data = Object.assign({}, ...added, {category: id});
+        const { id } = this.props.categories.find(
+          category => category.name === Object.assign({}, ...added)['category'],
+        );
+        const data = Object.assign({}, ...added, { category: id });
         this.props.actions.createProfit(data);
       }
-      this.cancelDelete = () => this.setState({deletingRows: []});
+      this.cancelDelete = () => this.setState({ deletingRows: [] });
       if (changed) {
-        let profit = {id: Object.keys(changed)[0], items: Object.assign({}, Object.values(changed)[0])};
+        let profit = {
+          id: Object.keys(changed)[0],
+          items: Object.assign({}, Object.values(changed)[0]),
+        };
         if (profit.items.category) {
-          const {id} = this.props.categories.find(category => category.name === profit.items.category);
-          profit = Object.assign({}, {
-            ...profit,
-            items: {...profit.items, category: id}
-          });
+          const { id } = this.props.categories.find(
+            category => category.name === profit.items.category,
+          );
+          profit = Object.assign(
+            {},
+            {
+              ...profit,
+              items: { ...profit.items, category: id },
+            },
+          );
         }
         this.props.actions.putProfit(profit);
       }
 
       this.setState({
-        deletingRows: deleted || this.state.deletingRows
+        deletingRows: deleted || this.state.deletingRows,
       });
     };
     this.baseCellTemplate = (column, typeOfOperation) => {
@@ -67,7 +79,7 @@ class Profit extends Component {
       }
       return undefined;
     };
-    this.editCellTemplate = ({column, value, onValueChange}) => {
+    this.editCellTemplate = ({ column, value, onValueChange }) => {
       const editMethod = () => {
         return (
           <LookupEditCell
@@ -79,25 +91,24 @@ class Profit extends Component {
         );
       };
       return this.baseCellTemplate(column, editMethod);
-
     };
-    this.filterCellTemplate = ({column, filter, setFilter}) => {
+    this.filterCellTemplate = ({ column, filter, setFilter }) => {
       const filterMethod = () => {
         return (
           <LookupEditCell
             column={column}
             value={filter ? filter.value : ''}
-            onValueChange={e => setFilter(e ? {value: e} : null)}
+            onValueChange={e => setFilter(e ? { value: e } : null)}
             availableValues={this.state.availableValues}
           />
         );
       };
       return this.baseCellTemplate(column, filterMethod);
     };
-    this.columnToAddSelect = (columnName) => {
+    this.columnToAddSelect = columnName => {
       const columnToAddSelectList = ['category'];
       let addSelectToColumn = false;
-      columnToAddSelectList.map((columnWithSelectName) => {
+      columnToAddSelectList.map(columnWithSelectName => {
         if (columnName === columnWithSelectName) {
           addSelectToColumn = true;
         }
@@ -105,29 +116,28 @@ class Profit extends Component {
       return addSelectToColumn;
     };
     this.deleteRows = () => {
-      this.state.deletingRows.forEach((rowId) => {
+      this.state.deletingRows.forEach(rowId => {
         this.props.actions.deleteProfit(rowId);
       });
-      this.setState({deletingRows: []});
+      this.setState({ deletingRows: [] });
     };
-    this.cancelDelete = () => this.setState({deletingRows: []});
+    this.cancelDelete = () => this.setState({ deletingRows: [] });
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.actions.fetchProfit();
     this.props.actions.fetchCategories();
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.profit !== nextProps.profit) {
       this.props.actions.fetchBudget();
-
     }
   }
 
-  render () {
-    const {columns, sorting, deletingRows} = this.state;
-    const {categories, profit} = this.props;
+  render() {
+    const { columns, sorting, deletingRows } = this.state;
+    const { categories, profit } = this.props;
     return (
       <div>
         <TableGrid
@@ -137,13 +147,15 @@ class Profit extends Component {
           sorting={sorting}
           editCellTemplate={this.editCellTemplate}
           categories={categories}
-          filterCellTemplate={this.filterCellTemplate}/>
+          filterCellTemplate={this.filterCellTemplate}
+        />
         <DeleteDialog
           rows={profit}
           columns={columns}
           deletingRows={deletingRows}
           deleteRows={this.deleteRows}
-          cancelDelete={this.cancelDelete}/>
+          cancelDelete={this.cancelDelete}
+        />
       </div>
     );
   }
@@ -157,22 +169,24 @@ Profit.propTypes = {
     deleteProfit: PropTypes.Func,
     createProfit: PropTypes.Func,
     fetchBudget: PropTypes.Func,
-
   }),
   profit: PropTypes.array,
-  categories: PropTypes.array
+  categories: PropTypes.array,
 };
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     profit: state.financeFlow.profit,
-    categories: state.financeFlow.categories
+    categories: state.financeFlow.categories,
   };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, financeFlowActions, budgetActions), dispatch)
+    actions: bindActionCreators(
+      Object.assign({}, financeFlowActions, budgetActions),
+      dispatch,
+    ),
   };
 }
 

@@ -7,7 +7,7 @@ import { authMiddleware } from '../middlewares/authMiddleware';
 
 const initialState = {
   login: {
-    isAuthenticated: !!localStorage.getItem('token')
+    isAuthenticated: !!localStorage.getItem('token'),
   },
   user: localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user'))
@@ -18,11 +18,17 @@ const initialState = {
     profit: [],
   },
   api: {
-    loading: 0
+    loading: 0,
   },
   budget: 0,
   revenue: 0,
 };
-export default function configureStore () {
-  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware, apiMiddleware, authMiddleware)));
+export default function configureStore() {
+  return createStore(
+    rootReducer,
+    initialState,
+    composeWithDevTools(
+      applyMiddleware(thunkMiddleware, apiMiddleware, authMiddleware),
+    ),
+  );
 }

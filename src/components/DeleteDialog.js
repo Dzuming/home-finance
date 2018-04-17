@@ -1,29 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
 } from 'material-ui';
-import {Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-material-ui';
+import {
+  Grid,
+  Table,
+  TableHeaderRow,
+} from '@devexpress/dx-react-grid-material-ui';
 const styles = theme => ({
   commandButton: {
-    minWidth: '40px'
+    minWidth: '40px',
   },
   lookupEditCell: {
     verticalAlign: 'middle',
     paddingRight: theme.spacing.unit,
     '& ~ $lookupEditCell': {
-      paddingLeft: theme.spacing.unit
-    }
+      paddingLeft: theme.spacing.unit,
+    },
   },
   dialog: {
-    width: 'calc(100% - 16px)'
-  }
+    width: 'calc(100% - 16px)',
+  },
 });
 const DeleteDialog = ({
   rows,
@@ -31,15 +35,16 @@ const DeleteDialog = ({
   deletingRows,
   classes,
   cancelDelete,
-  deleteRows
+  deleteRows,
 }) => {
   return (
     <Dialog
       open={!!deletingRows.length}
       onRequestClose={cancelDelete}
       classes={{
-        paper: classes.dialog
-      }}>
+        paper: classes.dialog,
+      }}
+    >
       <DialogTitle>Delete Row</DialogTitle>
       <DialogContent>
         <DialogContentText>
@@ -47,14 +52,19 @@ const DeleteDialog = ({
         </DialogContentText>
         <Grid
           rows={rows.filter(row => deletingRows.indexOf(row.id) > -1)}
-          columns={columns}>
-          <Table/>
-          <TableHeaderRow/>
+          columns={columns}
+        >
+          <Table />
+          <TableHeaderRow />
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={cancelDelete} color="primary">Cancel</Button>
-        <Button onClick={deleteRows} color="secondary">Delete</Button>
+        <Button onClick={cancelDelete} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={deleteRows} color="secondary">
+          Delete
+        </Button>
       </DialogActions>
     </Dialog>
   );
@@ -65,6 +75,6 @@ DeleteDialog.propTypes = {
   deletingRows: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
   cancelDelete: PropTypes.func.isRequired,
-  deleteRows: PropTypes.func.isRequired
+  deleteRows: PropTypes.func.isRequired,
 };
 export default withStyles(styles)(DeleteDialog);

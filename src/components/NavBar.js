@@ -9,23 +9,23 @@ import MenuIcon from 'material-ui-icons/Menu';
 
 const styles = () => ({
   root: {
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
-function NavBar (props) {
+function NavBar(props) {
   const classes = props.classes;
   return (
     <div className={classes.root}>
-
       <Toolbar>
         <Hidden lgUp>
           <IconButton
             className={classes.menuButton}
             color="contrast"
             aria-label="Menu"
-            onClick={props.openSideNav}>
-            <MenuIcon/>
+            onClick={props.openSideNav}
+          >
+            <MenuIcon />
           </IconButton>
         </Hidden>
         <Typography type="title" color="inherit">
@@ -38,7 +38,7 @@ function NavBar (props) {
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  openSideNav: PropTypes.func
+  openSideNav: PropTypes.func,
 };
 
 export default withStyles(styles)(NavBar);

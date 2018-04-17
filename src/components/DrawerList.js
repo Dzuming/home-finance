@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 //import Button from 'material-ui/Button';
 import ListAside from './ListAside';
 const styles = {
   list: {
     width: 250,
-    flex: 'initial'
-  }
+    flex: 'initial',
+  },
 };
 
 function DrawerList(props) {
@@ -20,8 +20,9 @@ function DrawerList(props) {
           className={classes.list}
           tabIndex={0}
           role="button"
-          onClick={props.closeSideNav}>
-          <ListAside/>
+          onClick={props.closeSideNav}
+        >
+          <ListAside />
         </div>
       </Drawer>
     </div>
@@ -31,7 +32,7 @@ function DrawerList(props) {
 DrawerList.propTypes = {
   classes: PropTypes.object.isRequired,
   closeSideNav: PropTypes.func,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
 };
 
 export default withStyles(styles)(DrawerList);

@@ -1,4 +1,9 @@
-import { setAuthToken, getAuthToken, setStorageUser, getStorageUser } from './LocalStorage';
+import {
+  setAuthToken,
+  getAuthToken,
+  setStorageUser,
+  getStorageUser,
+} from './LocalStorage';
 
 describe('localStorage methods', () => {
   it('should get token from localStorage', () => {

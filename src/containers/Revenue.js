@@ -5,16 +5,13 @@ import PropTypes from 'prop-types';
 import * as revenueActions from '../actions/revenueActions';
 
 class Revenue extends Component {
-
-  componentDidMount () {
+  componentDidMount() {
     this.props.actions.fetchRevenue(this.props.date);
   }
 
-  render () {
-    const {revenue} = this.props;
-    return (
-      <div>{revenue} zł</div>
-    );
+  render() {
+    const { revenue } = this.props;
+    return <div>{revenue} zł</div>;
   }
 }
 
@@ -27,10 +24,10 @@ Revenue.propTypes = {
 };
 const mapStateToProps = state => ({
   revenue: state.revenue,
-  date: state.financeFlow.selectedDate
+  date: '2018-04',
 });
-const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(revenueActions, dispatch)
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(revenueActions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Revenue);

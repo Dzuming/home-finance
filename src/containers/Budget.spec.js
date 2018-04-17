@@ -7,9 +7,15 @@ import thunk from 'redux-thunk';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
-const store = mockStore({budget: 0, user: [], login: {isAuthenticated: true}});
+const store = mockStore({
+  budget: 0,
+  user: [],
+  login: { isAuthenticated: true },
+});
 const component = create(
-  <Provider store={store}><Budget/></Provider>
+  <Provider store={store}>
+    <Budget />
+  </Provider>,
 );
 
 describe('<Budget />', () => {
@@ -18,4 +24,3 @@ describe('<Budget />', () => {
     expect(tree).toMatchSnapshot();
   });
 });
-

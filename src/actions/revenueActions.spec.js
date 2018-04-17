@@ -2,7 +2,7 @@ import * as actions from './revenueActions';
 import expect from 'expect';
 
 const revenue = {
-  revenue: 50000
+  revenue: 50000,
 };
 
 describe('revenue actions', () => {
