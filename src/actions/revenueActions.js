@@ -5,7 +5,6 @@ import env from '../../environments/config';
 export const fetchRevenue = () => (dispatch, getState) => {
   const { id } = getState().user;
   const period = getState().period;
-  console.log(getState());
   return dispatch({
     type: types.API_REQUEST_GET,
     payload: {
