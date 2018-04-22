@@ -59,6 +59,9 @@ class ListAside extends Component {
           <ListItem button component={Link} to="Spending">
             <ListItemText primary="Spending" />
           </ListItem>
+          <ListItem button component={Link} to="Assumption">
+            <ListItemText primary="Assumption" />
+          </ListItem>
         </List>
       </div>
     );

@@ -18,6 +18,7 @@ import compose from 'recompose/compose';
 import history from './helpers/history';
 import Homepage from './containers/Homepage';
 import 'typeface-roboto';
+import Assumption from './containers/Assumption';
 
 class App extends Component {
   render() {
@@ -50,6 +51,11 @@ class App extends Component {
                   isAuthenticated={isAuthenticated}
                   path="/Spending"
                   component={Spending}
+                />
+                <PrivateRoute
+                  isAuthenticated={isAuthenticated}
+                  path="/Assumption"
+                  component={Assumption}
                 />
                 <Redirect exact from="/" to="/Login" />
               </Switch>
