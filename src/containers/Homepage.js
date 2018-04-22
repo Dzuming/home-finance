@@ -21,42 +21,36 @@ class Homepage extends Component {
   render() {
     const { budget, revenue, classes } = this.props;
     return (
-      <div>
-        <Grid container spacing={0}>
-          <Grid item xs={6}>
-            <Card>
-              <CardContent
-                className={this.valueStatus(budget, classes.green, classes.red)}
-              >
-                <Typography type="display3" gutterBottom align="center">
-                  Budget
-                </Typography>
-                <Typography color="inherit" type="display2" align="center">
-                  <Budget />
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={6}>
-            <Card>
-              <CardContent
-                className={this.valueStatus(
-                  revenue,
-                  classes.green,
-                  classes.red,
-                )}
-              >
-                <Typography type="display3" gutterBottom align="center">
-                  Current revenue
-                </Typography>
-                <Typography color="inherit" type="display2" align="center">
-                  <Revenue />
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+      <Grid container spacing={0}>
+        <Grid item xs={6}>
+          <Card>
+            <CardContent
+              className={this.valueStatus(budget, classes.green, classes.red)}
+            >
+              <Typography type="display3" gutterBottom align="center">
+                Budget
+              </Typography>
+              <Typography color="inherit" type="display2" align="center">
+                <Budget />
+              </Typography>
+            </CardContent>
+          </Card>
         </Grid>
-      </div>
+        <Grid item xs={6}>
+          <Card>
+            <CardContent
+              className={this.valueStatus(revenue, classes.green, classes.red)}
+            >
+              <Typography type="display3" gutterBottom align="center">
+                Current revenue
+              </Typography>
+              <Typography color="inherit" type="display2" align="center">
+                <Revenue />
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
     );
   }
 }
