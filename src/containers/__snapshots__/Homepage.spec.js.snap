@@ -1,58 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Homepage /> should match snapshot 1`] = `
-<div>
+<div
+  className="MuiGrid-typeContainer-3"
+>
   <div
-    className="MuiGrid-typeContainer-3"
+    className="MuiGrid-typeItem-4 MuiGrid-grid-xs-6-34"
   >
     <div
-      className="MuiGrid-typeItem-4 MuiGrid-grid-xs-6-34"
+      className="MuiPaper-root-93 MuiPaper-shadow2-97 MuiPaper-rounded-94"
     >
       <div
-        className="MuiPaper-root-93 MuiPaper-shadow2-97 MuiPaper-rounded-94"
+        className="MuiCardContent-root-120 Homepage-green-2"
       >
-        <div
-          className="MuiCardContent-root-120 Homepage-green-2"
+        <h1
+          className="MuiTypography-root-121 MuiTypography-display3-123 MuiTypography-gutterBottom-138 MuiTypography-alignCenter-134"
         >
-          <h1
-            className="MuiTypography-root-121 MuiTypography-display3-123 MuiTypography-gutterBottom-138 MuiTypography-alignCenter-134"
-          >
-            Budget
-          </h1>
-          <h1
-            className="MuiTypography-root-121 MuiTypography-display2-124 MuiTypography-colorInherit-140 MuiTypography-alignCenter-134"
-          >
-            <div>
-              123
-               zł
-            </div>
-          </h1>
-        </div>
+          Budget
+        </h1>
+        <h1
+          className="MuiTypography-root-121 MuiTypography-display2-124 MuiTypography-colorInherit-140 MuiTypography-alignCenter-134"
+        >
+          <div>
+            123
+             zł
+          </div>
+        </h1>
       </div>
     </div>
+  </div>
+  <div
+    className="MuiGrid-typeItem-4 MuiGrid-grid-xs-6-34"
+  >
     <div
-      className="MuiGrid-typeItem-4 MuiGrid-grid-xs-6-34"
+      className="MuiPaper-root-93 MuiPaper-shadow2-97 MuiPaper-rounded-94"
     >
       <div
-        className="MuiPaper-root-93 MuiPaper-shadow2-97 MuiPaper-rounded-94"
+        className="MuiCardContent-root-120 Homepage-green-2"
       >
-        <div
-          className="MuiCardContent-root-120 Homepage-green-2"
+        <h1
+          className="MuiTypography-root-121 MuiTypography-display3-123 MuiTypography-gutterBottom-138 MuiTypography-alignCenter-134"
         >
-          <h1
-            className="MuiTypography-root-121 MuiTypography-display3-123 MuiTypography-gutterBottom-138 MuiTypography-alignCenter-134"
-          >
-            Current revenue
-          </h1>
-          <h1
-            className="MuiTypography-root-121 MuiTypography-display2-124 MuiTypography-colorInherit-140 MuiTypography-alignCenter-134"
-          >
-            <div>
-              44
-               zł
-            </div>
-          </h1>
-        </div>
+          Current revenue
+        </h1>
+        <h1
+          className="MuiTypography-root-121 MuiTypography-display2-124 MuiTypography-colorInherit-140 MuiTypography-alignCenter-134"
+        >
+          <div>
+            44
+             zł
+          </div>
+        </h1>
       </div>
     </div>
   </div>

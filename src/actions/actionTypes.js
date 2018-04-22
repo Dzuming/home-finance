@@ -28,3 +28,4 @@ export const SPENDING_CRUD = crudActionType('SPENDING');
 export const PROFIT_CRUD = crudActionType('PROFIT');
 export const BUDGET_CRUD = crudActionType('BUDGET');
 export const REVENUE_CRUD = crudActionType('REVENUE');
+export const ASSUMPTION_CRUD = crudActionType('ASSUMPTION');
