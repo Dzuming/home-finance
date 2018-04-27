@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { Link } from 'react-router-dom';
+import packageJson from '../../package.json';
 
 const styles = {
   header: {
@@ -16,7 +17,7 @@ const Logo = props => {
       <Link to="/">
         <h2 className={classes.header}>Home Finance</h2>
       </Link>
-      <small>v 0.1.0</small>
+      <small>{packageJson.version}</small>
     </div>
   );
 };
