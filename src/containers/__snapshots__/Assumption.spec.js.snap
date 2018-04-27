@@ -5,7 +5,7 @@ exports[`<Assumption /> should match snapshot 1`] = `
   className="MuiGrid-typeContainer-1"
 >
   <div
-    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-4-30"
+    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
   >
     <div
       className="MuiPaper-root-91 MuiPaper-shadow2-95 MuiPaper-rounded-92"
@@ -22,7 +22,7 @@ exports[`<Assumption /> should match snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-4-30"
+    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
   >
     <div
       className="MuiPaper-root-91 MuiPaper-shadow2-95 MuiPaper-rounded-92"
@@ -39,7 +39,7 @@ exports[`<Assumption /> should match snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-4-30"
+    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
   >
     <div
       className="MuiPaper-root-91 MuiPaper-shadow2-95 MuiPaper-rounded-92"
@@ -51,6 +51,23 @@ exports[`<Assumption /> should match snapshot 1`] = `
           className="MuiTypography-root-119 MuiTypography-body2-127 MuiTypography-gutterBottom-136 MuiTypography-alignCenter-132"
         >
           Value
+        </aside>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+  >
+    <div
+      className="MuiPaper-root-91 MuiPaper-shadow2-95 MuiPaper-rounded-92"
+    >
+      <div
+        className="MuiCardContent-root-118"
+      >
+        <aside
+          className="MuiTypography-root-119 MuiTypography-body2-127 MuiTypography-gutterBottom-136 MuiTypography-alignCenter-132"
+        >
+          Limit
         </aside>
       </div>
     </div>
