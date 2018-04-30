@@ -77,7 +77,7 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
             data: {
               ...items,
               category: getState().financeFlow.categories.find(
-                category => items.category_id === category.id,
+                category => items.categoryId === category.id,
               ),
             },
           }),

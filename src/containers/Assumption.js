@@ -15,7 +15,7 @@ class Assumption extends Component {
     return (
       <React.Fragment>
         <Grid container spacing={0}>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Card>
               <CardContent>
                 <Typography type="body2" gutterBottom align="center">
@@ -24,7 +24,7 @@ class Assumption extends Component {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Card>
               <CardContent>
                 <Typography type="body2" gutterBottom align="center">
@@ -33,7 +33,7 @@ class Assumption extends Component {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Card>
               <CardContent>
                 <Typography type="body2" gutterBottom align="center">
@@ -42,10 +42,19 @@ class Assumption extends Component {
               </CardContent>
             </Card>
           </Grid>
+          <Grid item xs={3}>
+            <Card>
+              <CardContent>
+                <Typography type="body2" gutterBottom align="center">
+                  Limit
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
         {assumptions.map(assumption => (
           <Grid key={assumption.id} container spacing={0}>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Card>
                 <CardContent>
                   <Typography color="inherit" type="body2" align="center">
@@ -54,7 +63,7 @@ class Assumption extends Component {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Card>
                 <CardContent>
                   <Typography color="inherit" type="body2" align="center">
@@ -63,11 +72,20 @@ class Assumption extends Component {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Card>
                 <CardContent>
                   <Typography color="inherit" type="body2" align="center">
                     {assumption.value} zł
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card>
+                <CardContent>
+                  <Typography color="inherit" type="body2" align="center">
+                    {assumption.limit} zł
                   </Typography>
                 </CardContent>
               </Card>
