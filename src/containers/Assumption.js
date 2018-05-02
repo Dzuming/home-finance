@@ -4,6 +4,7 @@ import { Card, CardContent, Grid, Typography, withStyles } from 'material-ui';
 import { bindActionCreators, compose } from 'redux';
 import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
+import { setStatusColor } from '../helpers/Status';
 
 const styles = () => ({
   red: {
@@ -12,8 +13,6 @@ const styles = () => ({
 });
 
 class Assumption extends Component {
-  valueStatus = (value, success, alert) => (value > 0 ? success : alert);
-
   componentDidMount() {
     this.props.actions.fetchAssumptions();
   }
@@ -65,7 +64,7 @@ class Assumption extends Component {
             key={assumption.id}
             container
             spacing={0}
-            className={this.valueStatus(assumption, '', classes.red)}
+            className={setStatusColor(assumption, '', classes.red)}
           >
             <Grid item xs={3}>
               <Card>

@@ -5,6 +5,7 @@ import Revenue from './Revenue';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
+import { setStatusColor } from '../helpers/Status';
 
 const styles = () => ({
   red: {
@@ -16,8 +17,6 @@ const styles = () => ({
 });
 
 class Homepage extends Component {
-  valueStatus = (value, success, alert) => (value > 0 ? success : alert);
-
   render() {
     const { budget, revenue, classes } = this.props;
     return (
@@ -25,7 +24,7 @@ class Homepage extends Component {
         <Grid item xs={6}>
           <Card>
             <CardContent
-              className={this.valueStatus(budget, classes.green, classes.red)}
+              className={setStatusColor(budget, classes.green, classes.red)}
             >
               <Typography type="display3" gutterBottom align="center">
                 Budget
@@ -39,7 +38,7 @@ class Homepage extends Component {
         <Grid item xs={6}>
           <Card>
             <CardContent
-              className={this.valueStatus(revenue, classes.green, classes.red)}
+              className={setStatusColor(revenue, classes.green, classes.red)}
             >
               <Typography type="display3" gutterBottom align="center">
                 Current revenue
