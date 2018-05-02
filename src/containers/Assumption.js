@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardContent, Grid, Typography } from 'material-ui';
-import { bindActionCreators } from 'redux';
+import { Card, CardContent, Grid, Typography, withStyles } from 'material-ui';
+import { bindActionCreators, compose } from 'redux';
 import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
 
+const styles = () => ({
+  red: {
+    color: '#F44336',
+  },
+});
+
 class Assumption extends Component {
+  valueStatus = (value, success, alert) => (value > 0 ? success : alert);
+
   componentDidMount() {
     this.props.actions.fetchAssumptions();
   }
 
   render() {
-    const { assumptions } = this.props;
+    const { assumptions, classes } = this.props;
     return (
       <React.Fragment>
         <Grid container spacing={0}>
@@ -53,7 +61,12 @@ class Assumption extends Component {
           </Grid>
         </Grid>
         {assumptions.map(assumption => (
-          <Grid key={assumption.id} container spacing={0}>
+          <Grid
+            key={assumption.id}
+            container
+            spacing={0}
+            className={this.valueStatus(assumption, '', classes.red)}
+          >
             <Grid item xs={3}>
               <Card>
                 <CardContent>
@@ -99,9 +112,10 @@ class Assumption extends Component {
 
 Assumption.propTypes = {
   actions: PropTypes.shape({
-    fetchAssumptions: PropTypes.Func,
+    fetchAssumptions: PropTypes.func.isRequired,
   }),
-  assumptions: PropTypes.array,
+  assumptions: PropTypes.array.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -112,4 +126,7 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(assumptionActions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Assumption);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles),
+)(Assumption);
