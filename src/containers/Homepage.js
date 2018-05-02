@@ -7,12 +7,12 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { setStatusColor } from '../helpers/Status';
 
-const styles = () => ({
-  red: {
-    color: '#F44336',
+const styles = theme => ({
+  isOverdraw: {
+    color: theme.status.warning,
   },
-  green: {
-    color: '#4CAF50',
+  isProfit: {
+    color: theme.status.success,
   },
 });
 
@@ -24,7 +24,11 @@ class Homepage extends Component {
         <Grid item xs={6}>
           <Card>
             <CardContent
-              className={setStatusColor(budget, classes.green, classes.red)}
+              className={setStatusColor(
+                budget,
+                classes.isProfit,
+                classes.isOverdraw,
+              )}
             >
               <Typography type="display3" gutterBottom align="center">
                 Budget
@@ -38,7 +42,11 @@ class Homepage extends Component {
         <Grid item xs={6}>
           <Card>
             <CardContent
-              className={setStatusColor(revenue, classes.green, classes.red)}
+              className={setStatusColor(
+                revenue,
+                classes.isProfit,
+                classes.isOverdraw,
+              )}
             >
               <Typography type="display3" gutterBottom align="center">
                 Current revenue

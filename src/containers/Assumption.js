@@ -6,9 +6,9 @@ import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
 import { setStatusColor } from '../helpers/Status';
 
-const styles = () => ({
-  red: {
-    color: '#F44336',
+const styles = theme => ({
+  isOverdraw: {
+    color: theme.status.warning,
   },
 });
 
@@ -19,6 +19,7 @@ class Assumption extends Component {
 
   render() {
     const { assumptions, classes } = this.props;
+    console.log(classes);
     return (
       <React.Fragment>
         <Grid container spacing={0}>
@@ -64,7 +65,11 @@ class Assumption extends Component {
             key={assumption.id}
             container
             spacing={0}
-            className={setStatusColor(assumption, '', classes.red)}
+            className={setStatusColor(
+              assumption.limit - assumption.value,
+              '',
+              classes.isOverdraw,
+            )}
           >
             <Grid item xs={3}>
               <Card>
