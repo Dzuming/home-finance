@@ -1,27 +1,65 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardContent, Grid, Typography, withStyles } from 'material-ui';
+import {
+  Card,
+  CardContent,
+  Grid,
+  TextField,
+  Typography,
+  withStyles,
+} from 'material-ui';
 import { bindActionCreators, compose } from 'redux';
 import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
 import { setStatusColor } from '../helpers/Status';
+import moment from 'moment';
 
 const styles = theme => ({
   isOverdraw: {
     color: theme.status.warning,
   },
+  assumptionWrapper: {
+    padding: '15px 0',
+  },
 });
 
 class Assumption extends Component {
+  state = {
+    date: '',
+  };
+
+  changeAssumptionDate = event => {
+    const date = event.target.value;
+    this.setState({ date });
+  };
+
   componentDidMount() {
-    this.props.actions.fetchAssumptions();
+    this.setState({ date: moment().format('YYYY-MM') });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.date !== this.state.date) {
+      this.props.actions.fetchAssumptions(this.state.date);
+    }
   }
 
   render() {
     const { assumptions, classes } = this.props;
-    console.log(classes);
+    const { date } = this.state;
     return (
       <React.Fragment>
+        <Grid container spacing={0} className={classes.assumptionWrapper}>
+          <TextField
+            id="month"
+            label="Assumption date"
+            type="month"
+            value={date}
+            onChange={this.changeAssumptionDate}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3}>
             <Card>
