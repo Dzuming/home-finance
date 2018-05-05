@@ -63,8 +63,8 @@ class Homepage extends Component {
 }
 
 Homepage.propTypes = {
-  budget: PropTypes.number.isRequired,
-  revenue: PropTypes.number.isRequired,
+  budget: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  revenue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   classes: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({

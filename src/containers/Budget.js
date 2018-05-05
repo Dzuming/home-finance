@@ -19,7 +19,7 @@ Budget.propTypes = {
   actions: PropTypes.shape({
     fetchBudget: PropTypes.Func,
   }),
-  budget: PropTypes.number,
+  budget: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 const mapStateToProps = state => ({
   budget: state.budget,

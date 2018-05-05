@@ -19,7 +19,7 @@ Revenue.propTypes = {
   actions: PropTypes.shape({
     fetchRevenue: PropTypes.Func,
   }),
-  revenue: PropTypes.number,
+  revenue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 const mapStateToProps = state => ({
   revenue: state.revenue,
