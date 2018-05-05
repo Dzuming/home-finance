@@ -1,11 +1,15 @@
 import * as types from '../actions/actionTypes';
 import { getAuthToken } from '../helpers/LocalStorage';
 import { financeFlowToServerMapper } from '../helpers/Mappers';
+import { memoizedServerRequest } from '../helpers/memoizedServerRequest';
 
 export const apiMiddleware = ({ getState, dispatch }) => next => action => {
   if (action.type === types.API_REQUEST_GET) {
     dispatch({ type: types.API_REQUEST.PENDING });
     const { url, success } = action.payload;
+    if (memoizedServerRequest(success().type, getState())) {
+      return dispatch({ type: types.API_REQUEST.SUCCESS });
+    }
     fetch(url, {
       headers: {
         Authorization: `Bearer ${getAuthToken()}`,
