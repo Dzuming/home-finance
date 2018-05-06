@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
 import * as budgetActions from '../actions/budgetActions';
+import { makeGetProfit, makeGetCategories } from '../helpers/selectors';
 
 class Profit extends Component {
   constructor(props) {
@@ -176,8 +177,8 @@ Profit.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    profit: state.financeFlow.profit,
-    categories: state.financeFlow.categories,
+    profit: makeGetProfit(state),
+    categories: makeGetCategories(state),
   };
 }
 
