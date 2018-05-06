@@ -18,7 +18,7 @@ import compose from 'recompose/compose';
 import history from './helpers/history';
 import Homepage from './containers/Homepage';
 import 'typeface-roboto';
-import Assumption from './containers/Assumption';
+import Assumption from './assumptions/Assumption';
 
 class App extends Component {
   render() {
