@@ -4,6 +4,8 @@ import Homepage from './Homepage';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+import { theme } from '../style/muiTheme';
+import { MuiThemeProvider } from 'material-ui';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -15,9 +17,11 @@ const store = mockStore({
   login: { isAuthenticated: true },
 });
 const component = create(
-  <Provider store={store}>
-    <Homepage />
-  </Provider>,
+  <MuiThemeProvider theme={theme}>
+    <Provider store={store}>
+      <Homepage />
+    </Provider>
+  </MuiThemeProvider>,
 );
 
 describe('<Homepage />', () => {

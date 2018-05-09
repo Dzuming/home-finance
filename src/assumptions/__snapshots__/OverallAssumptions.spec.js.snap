@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MonthlyAssumption  /> should match snapshot 1`] = `
+<div
+  className="MuiGrid-typeContainer-1"
+>
+  <div
+    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-6-32"
+  >
+    <div
+      className="MuiPaper-root-91 MuiPaper-shadow2-95 MuiPaper-rounded-92"
+    >
+      <div
+        className="MuiCardContent-root-118"
+      >
+        <aside
+          className="MuiTypography-root-119 MuiTypography-body2-127 MuiTypography-gutterBottom-136 MuiTypography-alignCenter-132"
+        >
+          Assumption
+        </aside>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-typeItem-2 MuiGrid-grid-xs-6-32"
+  >
+    <div
+      className="MuiPaper-root-91 MuiPaper-shadow2-95 MuiPaper-rounded-92"
+    >
+      <div
+        className="MuiCardContent-root-118"
+      >
+        <aside
+          className="MuiTypography-root-119 MuiTypography-body2-127 MuiTypography-gutterBottom-136 MuiTypography-alignCenter-132"
+        >
+          Value
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+`;
