@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import {
-  makeGetMonthlyAssumption,
-  makeGetOverallAssumption,
-} from '../helpers/selectors';
+import { makeGetOverallAssumption } from '../helpers/selectors';
 import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
 import { Card, CardContent, Grid, Typography } from 'material-ui';
