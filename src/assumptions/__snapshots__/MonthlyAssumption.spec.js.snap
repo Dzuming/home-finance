@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MonthlyAssumption  /> should match snapshot 1`] = `
+Array [
+  <div
+    className="MuiGrid-typeContainer-3 Connect-MonthlyAssumption--assumptionWrapper-2"
+  >
+    <div
+      aria-describedby={undefined}
+      className="MuiFormControl-root-93"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      required={false}
+    >
+      <label
+        className="MuiFormLabel-root-103 MuiInputLabel-root-97 MuiInputLabel-formControl-98 MuiInputLabel-animated-101 MuiInputLabel-shrink-100"
+        data-shrink={true}
+        htmlFor="month"
+      >
+        Assumption date
+      </label>
+      <div
+        className="MuiInput-root-107 MuiInput-formControl-108 MuiInput-inkbar-109 MuiInput-underline-113"
+        onBlur={[Function]}
+        onFocus={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          aria-required={false}
+          autoComplete={undefined}
+          autoFocus={undefined}
+          className="MuiInput-input-116 MuiInput-inputSingleline-119"
+          defaultValue={undefined}
+          disabled={false}
+          id="month"
+          name={undefined}
+          onChange={[Function]}
+          onKeyDown={undefined}
+          onKeyUp={undefined}
+          placeholder={undefined}
+          readOnly={undefined}
+          required={undefined}
+          rows={undefined}
+          type="month"
+          value="2018-05"
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="MuiGrid-typeContainer-3"
+  >
+    <div
+      className="MuiGrid-typeItem-4 MuiGrid-grid-xs-3-31"
+    >
+      <div
+        className="MuiPaper-root-122 MuiPaper-shadow2-126 MuiPaper-rounded-123"
+      >
+        <div
+          className="MuiCardContent-root-149"
+        >
+          <aside
+            className="MuiTypography-root-150 MuiTypography-body2-158 MuiTypography-gutterBottom-167 MuiTypography-alignCenter-163"
+          >
+            Assumption
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-typeItem-4 MuiGrid-grid-xs-3-31"
+    >
+      <div
+        className="MuiPaper-root-122 MuiPaper-shadow2-126 MuiPaper-rounded-123"
+      >
+        <div
+          className="MuiCardContent-root-149"
+        >
+          <aside
+            className="MuiTypography-root-150 MuiTypography-body2-158 MuiTypography-gutterBottom-167 MuiTypography-alignCenter-163"
+          >
+            percentage
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-typeItem-4 MuiGrid-grid-xs-3-31"
+    >
+      <div
+        className="MuiPaper-root-122 MuiPaper-shadow2-126 MuiPaper-rounded-123"
+      >
+        <div
+          className="MuiCardContent-root-149"
+        >
+          <aside
+            className="MuiTypography-root-150 MuiTypography-body2-158 MuiTypography-gutterBottom-167 MuiTypography-alignCenter-163"
+          >
+            Value
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-typeItem-4 MuiGrid-grid-xs-3-31"
+    >
+      <div
+        className="MuiPaper-root-122 MuiPaper-shadow2-126 MuiPaper-rounded-123"
+      >
+        <div
+          className="MuiCardContent-root-149"
+        >
+          <aside
+            className="MuiTypography-root-150 MuiTypography-body2-158 MuiTypography-gutterBottom-167 MuiTypography-alignCenter-163"
+          >
+            Limit
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
