@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`assumption reducer get assumption should get assumption 1`] = `Object {}`;
+
+exports[`assumption reducer get assumption should get overall assumption 1`] = `Object {}`;

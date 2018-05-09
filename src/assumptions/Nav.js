@@ -5,7 +5,7 @@ import { Tabs, Tab } from 'material-ui';
 const Nav = ({ currentTab, handleTabChange }) => (
   <Tabs value={currentTab} onChange={handleTabChange}>
     <Tab label="Monthly assumption" />
-    <Tab label="Overall assumption" />
+    <Tab label="Overall assumptions" />
     <Tab label="Add assumption" />
   </Tabs>
 );

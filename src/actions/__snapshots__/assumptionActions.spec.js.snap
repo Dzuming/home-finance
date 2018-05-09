@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`budget actions should create setAssumption action with snapshot 1`] = `
+exports[`assumption actions should create setAssumption action with snapshot 1`] = `
 Object {
   "payload": Array [
     Object {
@@ -23,5 +23,25 @@ Object {
     },
   ],
   "type": "READ_ASSUMPTION",
+}
+`;
+
+exports[`assumption actions should create setOverallAssumptiona action with snapshot 1`] = `
+Object {
+  "payload": Array [
+    Object {
+      "name": "Poduszka bezpieczeństwa",
+      "value": 66.6,
+    },
+    Object {
+      "name": "Wakacje",
+      "value": 33.3,
+    },
+    Object {
+      "name": "Wakacje",
+      "value": 695,
+    },
+  ],
+  "type": "READ_OVERALL_ASSUMPTIONS",
 }
 `;

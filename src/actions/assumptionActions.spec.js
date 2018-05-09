@@ -22,8 +22,26 @@ const assumptions = [
   },
 ];
 
-describe('budget actions', () => {
+const overallAssumptions = [
+  {
+    name: 'Poduszka bezpieczeństwa',
+    value: 66.6,
+  },
+  {
+    name: 'Wakacje',
+    value: 33.3,
+  },
+  {
+    name: 'Wakacje',
+    value: 695,
+  },
+];
+
+describe('assumption actions', () => {
   it('should create setAssumption action with snapshot', () => {
     expect(actions.setAssumption(assumptions)).toMatchSnapshot();
+  });
+  it('should create setOverallAssumptiona action with snapshot', () => {
+    expect(actions.setOverallAssumptions(overallAssumptions)).toMatchSnapshot();
   });
 });
