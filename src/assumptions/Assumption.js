@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 import MonthlyAssumption from './MonthlyAssumption';
 import OverallAssumptions from './OverallAssumptions';
+import AddAssumption from './addAssumption';
 
 const TABS = {
   0: () => <MonthlyAssumption />,
   1: () => <OverallAssumptions />,
+  2: () => <AddAssumption />,
 };
 
 class Assumption extends Component {
