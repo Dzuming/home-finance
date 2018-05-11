@@ -3,6 +3,7 @@ import reducer from './budgetReducer';
 import {
   setAssumption,
   setOverallAssumptions,
+  addAssumption,
 } from '../actions/assumptionActions';
 
 const initialState = deepFreeze(reducer({}, { type: 'INIT' }));
@@ -26,7 +27,13 @@ const assumptions = [
     value: 695,
   },
 ];
-
+const assumption = {
+  userId: 1,
+  assumptionTypeId: 1,
+  percentage: 20,
+  isInitialValue: 0,
+  period: '2018-04',
+};
 const overallAssumptions = [
   {
     name: 'Poduszka bezpieczeństwa',
@@ -56,6 +63,11 @@ describe('assumption reducer', () => {
     it('should get overall assumption', () => {
       expect(
         reducer(initialState, setOverallAssumptions(overallAssumptions)),
+      ).toMatchSnapshot();
+    });
+    it('should post assumption', () => {
+      expect(
+        reducer(initialState, addAssumption(assumption)),
       ).toMatchSnapshot();
     });
   });

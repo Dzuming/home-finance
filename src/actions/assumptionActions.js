@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import { createAction } from 'redux-actions';
 import env from '../../environments/config';
+import { addSpending } from './financeFlowActions';
 
 export const fetchAssumptions = date => (dispatch, getState) => {
   const { id } = getState().user;
@@ -28,4 +29,17 @@ export const setAssumption = createAction(types.ASSUMPTION_CRUD.READ);
 
 export const setOverallAssumptions = createAction(
   types.OVERALL_ASSUMPTIONS_CRUD.READ,
+);
+
+export const createAssumption = createAction(types.API_REQUEST_POST, data => ({
+  url: `${env.api_url}/api/assumptions`,
+  success: addAssumption,
+  data,
+}));
+
+export const addAssumption = createAction(
+  types.ASSUMPTION_CRUD.CREATE,
+  assumption => ({
+    assumption,
+  }),
 );

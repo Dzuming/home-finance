@@ -43,13 +43,13 @@ export const setProfit = createAction(types.PROFIT_CRUD.READ);
 export const createSpending = createAction(types.API_REQUEST_POST, data => ({
   url: `${env.api_url}/api/spending`,
   success: addSpending,
-  data,
+  data: financeFlowToServerMapper(data),
 }));
 
 export const createProfit = createAction(types.API_REQUEST_POST, data => ({
   url: `${env.api_url}/api/profit`,
   success: addProfit,
-  data,
+  data: financeFlowToServerMapper(data),
 }));
 
 export const addSpending = createAction(

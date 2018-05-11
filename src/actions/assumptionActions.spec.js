@@ -44,4 +44,14 @@ describe('assumption actions', () => {
   it('should create setOverallAssumptiona action with snapshot', () => {
     expect(actions.setOverallAssumptions(overallAssumptions)).toMatchSnapshot();
   });
+  it('should create addAssumption action with snapshot', () => {
+    const assumption = {
+      userId: 1,
+      assumptionTypeId: 1,
+      percentage: 20,
+      isInitialValue: 0,
+      period: '2018-04',
+    };
+    expect(actions.addAssumption(assumption)).toMatchSnapshot();
+  });
 });

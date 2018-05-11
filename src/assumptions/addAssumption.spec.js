@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import MonthlyAssumption from './MonthlyAssumption';
+import AddAssumption from './addAssumption';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -13,11 +13,11 @@ const store = mockStore({
 });
 const component = create(
   <Provider store={store}>
-    <MonthlyAssumption />
+    <AddAssumption />
   </Provider>,
 );
 
-describe('<MonthlyAssumption  />', () => {
+describe('<AddAssumption  />', () => {
   it('should match snapshot', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

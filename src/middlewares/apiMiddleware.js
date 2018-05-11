@@ -33,7 +33,7 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${getAuthToken()}`,
       },
-      body: JSON.stringify(financeFlowToServerMapper(data)),
+      body: JSON.stringify(data),
     })
       .then(response => response.json())
       .then(response => {
