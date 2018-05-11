@@ -15,6 +15,7 @@ class AddAssumption extends Component {
       period: '2018-04',
     },
   };
+
   createAssumption(assumption) {
     this.props.actions.createAssumption(assumption);
   }
@@ -22,7 +23,11 @@ class AddAssumption extends Component {
   render() {
     const { assumption } = this.state;
     return (
-      <Button onClick={this.createAssumption(assumption)}>
+      <Button
+        onClick={() => {
+          this.createAssumption(assumption);
+        }}
+      >
         Add assumption
       </Button>
     );
