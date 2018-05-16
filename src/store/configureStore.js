@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { apiMiddleware } from '../middlewares/apiMiddleware';
 import { authMiddleware } from '../middlewares/authMiddleware';
+import { yearMonthFormatDate } from '../helpers/format';
 
 const initialState = {
   login: {
@@ -22,7 +23,7 @@ const initialState = {
   },
   budget: 0,
   revenue: 0,
-  period: '2018-04',
+  period: yearMonthFormatDate,
   assumptions: {
     monthly: [],
     overall: [],

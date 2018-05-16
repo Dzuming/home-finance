@@ -9,8 +9,8 @@ import {
   Typography,
   withStyles,
 } from 'material-ui';
-import moment from 'moment/moment';
 import { makeGetMonthlyAssumption } from '../helpers/selectors';
+import { yearMonthFormatDate } from '../helpers/format';
 import { bindActionCreators, compose } from 'redux';
 import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
@@ -34,7 +34,7 @@ class MonthlyAssumption extends Component {
   };
 
   componentDidMount() {
-    this.setState({ date: moment().format('YYYY-MM') });
+    this.setState({ date: yearMonthFormatDate });
   }
 
   componentDidUpdate(prevProps, prevState) {
