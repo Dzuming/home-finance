@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 import MonthlyAssumption from './MonthlyAssumption';
 import OverallAssumptions from './OverallAssumptions';
-import AddAssumption from './addAssumption';
+import AddAssumption from './AddAssumption';
 
 const TABS = {
   0: () => <MonthlyAssumption />,
