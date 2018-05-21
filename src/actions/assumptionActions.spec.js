@@ -55,3 +55,9 @@ describe('assumption actions', () => {
     expect(actions.addAssumption(assumption)).toMatchSnapshot();
   });
 });
+
+describe('assumption types action', () => {
+  it('it should create setAssumptionTypes action with a snapshot', () => {
+    expect(actions.setAssumptionTypes('2018-05')).toMatchSnapshot();
+  });
+});

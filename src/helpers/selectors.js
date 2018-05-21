@@ -4,6 +4,7 @@ const getProfit = state => state.financeFlow.profit;
 const getSpending = state => state.financeFlow.spending;
 const getMonthlyAssumption = state => state.assumptions.monthly;
 const getOverallAssumption = state => state.assumptions.overall;
+const getAssumptionTypes = state => state.assumptions.types;
 const getCategories = state => state.financeFlow.categories;
 
 export const makeGetProfit = createSelector([getProfit], profit => profit);
@@ -26,4 +27,9 @@ export const makeGetMonthlyAssumption = createSelector(
 export const makeGetOverallAssumption = createSelector(
   [getOverallAssumption],
   overallAssumptions => overallAssumptions,
+);
+
+export const makeGetAssumptionTypes = createSelector(
+  [getAssumptionTypes],
+  assumptionTypes => assumptionTypes,
 );

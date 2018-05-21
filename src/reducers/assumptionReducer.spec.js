@@ -4,6 +4,7 @@ import {
   setAssumption,
   setOverallAssumptions,
   addAssumption,
+  setAssumptionTypes,
 } from '../actions/assumptionActions';
 
 const initialState = deepFreeze(reducer({}, { type: 'INIT' }));
@@ -68,6 +69,14 @@ describe('assumption reducer', () => {
     it('should post assumption', () => {
       expect(
         reducer(initialState, addAssumption(assumption)),
+      ).toMatchSnapshot();
+    });
+  });
+
+  describe('get assumption types', () => {
+    it('should get assumption types', () => {
+      expect(
+        reducer(initialState, setAssumptionTypes('2018-05')),
       ).toMatchSnapshot();
     });
   });

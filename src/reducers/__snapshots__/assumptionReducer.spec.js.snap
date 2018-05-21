@@ -5,3 +5,5 @@ exports[`assumption reducer get assumption should get assumption 1`] = `Object {
 exports[`assumption reducer get assumption should get overall assumption 1`] = `Object {}`;
 
 exports[`assumption reducer get assumption should post assumption 1`] = `Object {}`;
+
+exports[`assumption reducer get assumption types should get assumption types 1`] = `Object {}`;

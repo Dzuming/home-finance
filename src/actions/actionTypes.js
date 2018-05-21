@@ -30,3 +30,4 @@ export const BUDGET_CRUD = crudActionType('BUDGET');
 export const REVENUE_CRUD = crudActionType('REVENUE');
 export const ASSUMPTION_CRUD = crudActionType('ASSUMPTION');
 export const OVERALL_ASSUMPTIONS_CRUD = crudActionType('OVERALL_ASSUMPTIONS');
+export const ASSUMPTION_TYPES_CRUD = crudActionType('ASSUMPTION_TYPES');

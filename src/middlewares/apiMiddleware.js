@@ -1,6 +1,5 @@
 import * as types from '../actions/actionTypes';
 import { getAuthToken } from '../helpers/LocalStorage';
-import { financeFlowToServerMapper } from '../helpers/Mappers';
 import { memoizedServerRequest } from '../helpers/memoizedServerRequest';
 
 export const apiMiddleware = ({ getState, dispatch }) => next => action => {
@@ -17,6 +16,7 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
     })
       .then(response => response.json())
       .then(response => {
+        console.log(response);
         dispatch(success(response));
       })
       .then(() => {

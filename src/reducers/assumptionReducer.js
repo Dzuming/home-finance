@@ -15,9 +15,13 @@ export default handleActions(
         overall: [...action.payload],
       }),
     [types.ASSUMPTION_CRUD.CREATE]: (state, action) => {
-      console.log(action);
       return Object.assign({}, state, {
         monthly: state.monthly.concat({ ...action.payload }),
+      });
+    },
+    [types.ASSUMPTION_TYPES_CRUD.READ]: (state, action) => {
+      return Object.assign({}, state, {
+        types: [...action.payload],
       });
     },
   },

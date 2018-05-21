@@ -27,6 +27,7 @@ const initialState = {
   assumptions: {
     monthly: [],
     overall: [],
+    types: [],
   },
 };
 export default function configureStore() {
