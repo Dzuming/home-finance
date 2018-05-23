@@ -2,11 +2,11 @@ import React from 'react';
 import { DragSource } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 
-const DragAssumptionCategory = ({ connectDragSource, isDragging }) => {
+const DragAssumptionTypes = ({ connectDragSource, isDragging, name }) => {
   return (
     <div>
       {connectDragSource(
-        <div style={{ opacity: isDragging ? 0.5 : 1 }}>{'dd'}</div>,
+        <div style={{ opacity: isDragging ? 0.5 : 1 }}>{name}</div>,
       )}
     </div>
   );
@@ -15,7 +15,7 @@ const DragAssumptionCategory = ({ connectDragSource, isDragging }) => {
 const cardSource = {
   beginDrag(props) {
     return {
-      name: 'test',
+      name: 'assumptionTypes',
     };
   },
 
@@ -35,4 +35,4 @@ function collect(connect, monitor) {
   };
 }
 
-export default DragSource(BOARD, cardSource, collect)(DragAssumptionCategory);
+export default DragSource(BOARD, cardSource, collect)(DragAssumptionTypes);
