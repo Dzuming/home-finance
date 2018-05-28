@@ -16,7 +16,6 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
     })
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         dispatch(success(response));
       })
       .then(() => {

@@ -13,9 +13,10 @@ const DragCategories = ({ connectDragSource, isDragging, name }) => {
 };
 
 const cardSource = {
-  beginDrag(props) {
+  beginDrag({ name }) {
     return {
-      name: 'categories',
+      name,
+      type: 'category',
     };
   },
 

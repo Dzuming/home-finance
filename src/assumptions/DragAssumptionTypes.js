@@ -13,9 +13,10 @@ const DragAssumptionTypes = ({ connectDragSource, isDragging, name }) => {
 };
 
 const cardSource = {
-  beginDrag(props) {
+  beginDrag({ name }) {
     return {
-      name: 'assumptionTypes',
+      name,
+      type: 'assumptionType',
     };
   },
 

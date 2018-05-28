@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { setStatusColor } from '../helpers/Status';
-import {
-  Card,
-  CardContent,
-  Grid,
-  TextField,
-  Typography,
-  withStyles,
-} from 'material-ui';
+import { Card, CardContent, Grid, Typography, withStyles } from 'material-ui';
 import { makeGetMonthlyAssumption } from '../helpers/selectors';
 import { yearMonthFormatDate } from '../helpers/format';
 import { bindActionCreators, compose } from 'redux';
 import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
+import DatePicker from '../commons/DatePicker';
 
 const styles = theme => ({
   isOverdraw: {
@@ -28,7 +22,7 @@ class MonthlyAssumption extends Component {
   state = {
     date: '',
   };
-  changeAssumptionDate = event => {
+  handleDateChange = event => {
     const date = event.target.value;
     this.setState({ date });
   };
@@ -49,16 +43,7 @@ class MonthlyAssumption extends Component {
     return (
       <React.Fragment>
         <Grid container spacing={0} className={classes.assumptionWrapper}>
-          <TextField
-            id="month"
-            label="Assumption date"
-            type="month"
-            value={date}
-            onChange={this.changeAssumptionDate}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+          <DatePicker value={date} handleChange={this.handleDateChange} />
         </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3}>

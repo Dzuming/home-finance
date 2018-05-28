@@ -14,24 +14,33 @@ import {
   makeGetAssumptionTypes,
   makeGetCategories,
 } from '../helpers/selectors';
+import DatePicker from '../commons/DatePicker';
 
 class AddAssumption extends Component {
-  state = {
-    assumption: {
-      userId: 1,
-      assumptionTypeId: 1,
-      percentage: 20,
-      isInitialValue: 0,
-      period: '2018-04',
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      assumption: {
+        userId: 1,
+        assumptionTypeId: 1,
+        percentage: 20,
+        isInitialValue: 0,
+        period: '2018-05',
+      },
+    };
+  }
 
   createAssumption(assumption) {
     this.props.actions.createAssumption(assumption);
   }
 
+  handleDateChange = event => {
+    const date = event.target.value;
+    this.setState(state => (state.assumption.period = date));
+  };
+
   componentDidMount() {
-    this.props.actions.fetchAssumptionTypes('2018-05');
+    this.props.actions.fetchAssumptionTypes(this.state.assumption.period);
     this.props.actions.fetchCategories();
   }
 
@@ -39,7 +48,13 @@ class AddAssumption extends Component {
     const { assumption } = this.state;
     const { assumptionTypes, categories } = this.props;
     return (
-      <div>
+      <React.Fragment>
+        <Grid container spacing={0}>
+          <DatePicker
+            value={assumption.period}
+            handleChange={this.handleDateChange}
+          />
+        </Grid>
         <Grid container spacing={24}>
           <Grid item xs={3}>
             {assumptionTypes.map(assumptionType => (
@@ -65,7 +80,7 @@ class AddAssumption extends Component {
         >
           Add assumption
         </Button>
-      </div>
+      </React.Fragment>
     );
   }
 }
