@@ -8,28 +8,25 @@ const cell = {
 };
 
 class DropBoard extends Component {
-  state = {
-    category: '',
-    assumptionType: '',
-  };
-
   componentDidUpdate(prevProps) {
     if (prevProps.isDropped) {
       return {
-        category: () => this.setState({ category: prevProps.item.name }),
-        assumptionType: () =>
-          this.setState({ assumptionType: prevProps.item.name }),
+        [prevProps.item.type]: () =>
+          this.props.handleDraggedElementChange(
+            [prevProps.item.type],
+            prevProps.item.name,
+          ),
       }[prevProps.item.type]();
     }
   }
 
   render() {
-    const { connectDropTarget } = this.props;
-    const { category, assumptionType } = this.state;
+    const { connectDropTarget, assumptionType, category, date } = this.props;
 
     return connectDropTarget(
       <div>
         <div style={cell}>{category}</div>
+        <div style={cell}>{date}</div>
         <div style={cell}>{assumptionType}</div>
       </div>,
     );

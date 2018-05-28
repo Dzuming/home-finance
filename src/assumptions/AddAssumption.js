@@ -27,6 +27,8 @@ class AddAssumption extends Component {
         isInitialValue: 0,
         period: '2018-05',
       },
+      assumptionType: '',
+      category: '',
     };
   }
 
@@ -39,13 +41,15 @@ class AddAssumption extends Component {
     this.setState(state => (state.assumption.period = date));
   };
 
+  handleDraggedElementChange = (key, value) => this.setState({ [key]: value });
+
   componentDidMount() {
     this.props.actions.fetchAssumptionTypes(this.state.assumption.period);
     this.props.actions.fetchCategories();
   }
 
   render() {
-    const { assumption } = this.state;
+    const { assumption, assumptionType, category } = this.state;
     const { assumptionTypes, categories } = this.props;
     return (
       <React.Fragment>
@@ -61,11 +65,17 @@ class AddAssumption extends Component {
               <DragAssumptionTypes
                 key={assumptionType.id}
                 name={assumptionType.name}
+                s
               />
             ))}
           </Grid>
           <Grid item xs={6}>
-            <DropBoard />
+            <DropBoard
+              assumptionType={assumptionType}
+              category={category}
+              date={assumption.period}
+              handleDraggedElementChange={this.handleDraggedElementChange}
+            />
           </Grid>
           <Grid item xs={3}>
             {categories.map(category => (
