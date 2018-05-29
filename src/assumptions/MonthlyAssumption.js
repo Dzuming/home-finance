@@ -7,7 +7,8 @@ import { yearMonthFormatDate } from '../helpers/format';
 import { bindActionCreators, compose } from 'redux';
 import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
-import DatePicker from '../commons/DatePicker';
+import DatePicker from '../components/commons/DatePicker';
+import CardList from '../components/commons/CardList';
 
 const styles = theme => ({
   isOverdraw: {
@@ -46,42 +47,10 @@ class MonthlyAssumption extends Component {
           <DatePicker value={date} handleChange={this.handleDateChange} />
         </Grid>
         <Grid container spacing={0}>
-          <Grid item xs={3}>
-            <Card>
-              <CardContent>
-                <Typography type="body2" gutterBottom align="center">
-                  Assumption
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card>
-              <CardContent>
-                <Typography type="body2" gutterBottom align="center">
-                  percentage
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card>
-              <CardContent>
-                <Typography type="body2" gutterBottom align="center">
-                  Value
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card>
-              <CardContent>
-                <Typography type="body2" gutterBottom align="center">
-                  Limit
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+          <CardList name={'Assumption'} gridSize={3} />
+          <CardList name={'Percentage'} gridSize={3} />
+          <CardList name={'Value'} gridSize={3} />
+          <CardList name={'Limit'} gridSize={3} />
         </Grid>
         {monthlyAssumption.map(assumption => (
           <Grid
@@ -94,42 +63,10 @@ class MonthlyAssumption extends Component {
               classes.isOverdraw,
             )}
           >
-            <Grid item xs={3}>
-              <Card>
-                <CardContent>
-                  <Typography color="inherit" type="body2" align="center">
-                    {assumption.name}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={3}>
-              <Card>
-                <CardContent>
-                  <Typography color="inherit" type="body2" align="center">
-                    {assumption.percentage}%
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={3}>
-              <Card>
-                <CardContent>
-                  <Typography color="inherit" type="body2" align="center">
-                    {assumption.value} zł
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={3}>
-              <Card>
-                <CardContent>
-                  <Typography color="inherit" type="body2" align="center">
-                    {assumption.limit} zł
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+            <CardList name={assumption.name} gridSize={3} />
+            <CardList name={assumption.percentage} gridSize={3} />
+            <CardList name={`${assumption.value} zł`} gridSize={3} />
+            <CardList name={`${assumption.limit} zł`} gridSize={3} />
           </Grid>
         ))}
       </React.Fragment>

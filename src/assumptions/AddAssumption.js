@@ -14,7 +14,7 @@ import {
   makeGetAssumptionTypes,
   makeGetCategories,
 } from '../helpers/selectors';
-import DatePicker from '../commons/DatePicker';
+import DatePicker from '../components/commons/DatePicker';
 
 class AddAssumption extends Component {
   constructor(props) {

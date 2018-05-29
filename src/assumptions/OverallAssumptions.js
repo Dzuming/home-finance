@@ -8,6 +8,7 @@ import {
 import * as assumptionActions from '../actions/assumptionActions';
 import { connect } from 'react-redux';
 import { Card, CardContent, Grid, Typography } from 'material-ui';
+import CardList from '../components/commons/CardList';
 
 class OverallAssumptions extends Component {
   componentDidMount() {
@@ -19,45 +20,13 @@ class OverallAssumptions extends Component {
     return (
       <React.Fragment>
         <Grid container spacing={0}>
-          <Grid item xs={6}>
-            <Card>
-              <CardContent>
-                <Typography type="body2" gutterBottom align="center">
-                  Assumption
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={6}>
-            <Card>
-              <CardContent>
-                <Typography type="body2" gutterBottom align="center">
-                  Value
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+          <CardList name={'Assumption'} gridSize={6} />
+          <CardList name={'Value'} gridSize={6} />
         </Grid>
         {overallAssumptions.map((assumption, index) => (
           <Grid key={index} container spacing={0}>
-            <Grid item xs={6}>
-              <Card>
-                <CardContent>
-                  <Typography color="inherit" type="body2" align="center">
-                    {assumption.name}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={6}>
-              <Card>
-                <CardContent>
-                  <Typography color="inherit" type="body2" align="center">
-                    {assumption.value} zł
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+            <CardList name={assumption.name} gridSize={6} />
+            <CardList name={`${assumption.value} zł`} gridSize={6} />
           </Grid>
         ))}
       </React.Fragment>
