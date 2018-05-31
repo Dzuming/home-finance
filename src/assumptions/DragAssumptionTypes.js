@@ -2,20 +2,27 @@ import React from 'react';
 import { DragSource } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 
-const DragAssumptionTypes = ({ connectDragSource, isDragging, name }) => {
+const DragAssumptionTypes = ({
+  connectDragSource,
+  isDragging,
+  assumptionType,
+}) => {
   return (
     <div>
       {connectDragSource(
-        <div style={{ opacity: isDragging ? 0.5 : 1 }}>{name}</div>,
+        <div style={{ opacity: isDragging ? 0.5 : 1 }}>
+          {assumptionType.name}
+        </div>,
       )}
     </div>
   );
 };
 
 const cardSource = {
-  beginDrag({ name }) {
+  beginDrag({ assumptionType }) {
     return {
-      name,
+      id: assumptionType.id,
+      name: assumptionType.name,
       type: 'assumptionType',
     };
   },

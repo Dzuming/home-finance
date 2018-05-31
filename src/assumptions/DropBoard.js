@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
-
-const cell = {
-  height: '200px',
-  backgroundColor: 'red',
-};
+import CardList from '../components/commons/CardList';
+import { Grid } from 'material-ui';
 
 class DropBoard extends Component {
   componentDidUpdate(prevProps) {
@@ -14,7 +11,7 @@ class DropBoard extends Component {
         [prevProps.item.type]: () =>
           this.props.handleDraggedElementChange(
             [prevProps.item.type],
-            prevProps.item.name,
+            prevProps.item,
           ),
       }[prevProps.item.type]();
     }
@@ -22,12 +19,18 @@ class DropBoard extends Component {
 
   render() {
     const { connectDropTarget, assumptionType, category, date } = this.props;
-
     return connectDropTarget(
       <div>
-        <div style={cell}>{category}</div>
-        <div style={cell}>{date}</div>
-        <div style={cell}>{assumptionType}</div>
+        <Grid container spacing={0}>
+          <CardList name={'Date'} gridSize={4} />
+          <CardList name={'AssumptionType'} gridSize={4} />
+          <CardList name={'Category'} gridSize={4} />
+        </Grid>
+        <Grid container spacing={0}>
+          <CardList name={date} gridSize={4} />
+          <CardList name={assumptionType.name} gridSize={4} />
+          <CardList name={category.name} gridSize={4} />
+        </Grid>
       </div>,
     );
   }

@@ -2,20 +2,21 @@ import React from 'react';
 import { DragSource } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 
-const DragCategories = ({ connectDragSource, isDragging, name }) => {
+const DragCategories = ({ connectDragSource, isDragging, category }) => {
   return (
     <div>
       {connectDragSource(
-        <div style={{ opacity: isDragging ? 0.5 : 1 }}>{name}</div>,
+        <div style={{ opacity: isDragging ? 0.5 : 1 }}>{category.name}</div>,
       )}
     </div>
   );
 };
 
 const cardSource = {
-  beginDrag({ name }) {
+  beginDrag({ category }) {
     return {
-      name,
+      id: category.id,
+      name: category.name,
       type: 'category',
     };
   },

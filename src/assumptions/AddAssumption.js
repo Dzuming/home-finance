@@ -20,15 +20,11 @@ class AddAssumption extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      assumption: {
-        userId: 1,
-        assumptionTypeId: 1,
-        percentage: 20,
-        isInitialValue: 0,
-        period: '2018-05',
-      },
-      assumptionType: '',
-      category: '',
+      assumptionType: {},
+      category: {},
+      isInitialValue: 0,
+      percentage: 20,
+      period: '2018-05',
     };
   }
 
@@ -38,34 +34,37 @@ class AddAssumption extends Component {
 
   handleDateChange = event => {
     const date = event.target.value;
-    this.setState(state => (state.assumption.period = date));
+    this.setState(state => (state.period = date));
   };
 
   handleDraggedElementChange = (key, value) => this.setState({ [key]: value });
 
   componentDidMount() {
-    this.props.actions.fetchAssumptionTypes(this.state.assumption.period);
+    this.props.actions.fetchAssumptionTypes(this.state.period);
     this.props.actions.fetchCategories();
   }
 
   render() {
-    const { assumption, assumptionType, category } = this.state;
+    const {
+      assumptionType,
+      category,
+      isInitialValue,
+      percentage,
+      period,
+    } = this.state;
     const { assumptionTypes, categories } = this.props;
     return (
       <React.Fragment>
         <Grid container spacing={0}>
-          <DatePicker
-            value={assumption.period}
-            handleChange={this.handleDateChange}
-          />
+          <DatePicker value={period} handleChange={this.handleDateChange} />
         </Grid>
         <Grid container spacing={24}>
           <Grid item xs={3}>
+            <div>Assumption type</div>
             {assumptionTypes.map(assumptionType => (
               <DragAssumptionTypes
                 key={assumptionType.id}
-                name={assumptionType.name}
-                s
+                assumptionType={assumptionType}
               />
             ))}
           </Grid>
@@ -73,19 +72,26 @@ class AddAssumption extends Component {
             <DropBoard
               assumptionType={assumptionType}
               category={category}
-              date={assumption.period}
+              date={period}
               handleDraggedElementChange={this.handleDraggedElementChange}
             />
           </Grid>
           <Grid item xs={3}>
+            <div>Categories</div>
             {categories.map(category => (
-              <DragCategories key={category.id} name={category.name} />
+              <DragCategories key={category.id} category={category} />
             ))}
           </Grid>
         </Grid>
         <Button
           onClick={() => {
-            this.createAssumption(assumption);
+            this.createAssumption({
+              userId: 1,
+              assumptionTypeId: assumptionType.id,
+              percentage,
+              isInitialValue,
+              period,
+            });
           }}
         >
           Add assumption
