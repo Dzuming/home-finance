@@ -44,7 +44,11 @@ class MonthlyAssumption extends Component {
     return (
       <React.Fragment>
         <Grid container spacing={0} className={classes.assumptionWrapper}>
-          <DatePicker value={date} handleChange={this.handleDateChange} />
+          <DatePicker
+            value={date}
+            handleChange={this.handleDateChange}
+            label={'assumption date'}
+          />
         </Grid>
         <Grid container spacing={0}>
           <CardList name={'Assumption'} gridSize={3} />

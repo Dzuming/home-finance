@@ -3,6 +3,7 @@ import { DropTarget } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 import CardList from '../components/commons/CardList';
 import { Grid } from 'material-ui';
+import DatePicker from '../components/commons/DatePicker';
 
 class DropBoard extends Component {
   componentDidUpdate(prevProps) {
@@ -18,18 +19,33 @@ class DropBoard extends Component {
   }
 
   render() {
-    const { connectDropTarget, assumptionType, category, date } = this.props;
+    const {
+      connectDropTarget,
+      assumptionType,
+      category,
+      period,
+      handleDateChange,
+    } = this.props;
     return connectDropTarget(
       <div>
         <Grid container spacing={0}>
-          <CardList name={'Date'} gridSize={4} />
-          <CardList name={'AssumptionType'} gridSize={4} />
-          <CardList name={'Category'} gridSize={4} />
+          <CardList name={'Date'} gridSize={3} />
+          <CardList name={'percentage'} gridSize={3} />
+          <CardList name={'AssumptionType'} gridSize={3} />
+          <CardList name={'Category'} gridSize={3} />
         </Grid>
         <Grid container spacing={0}>
-          <CardList name={date} gridSize={4} />
-          <CardList name={assumptionType.name} gridSize={4} />
-          <CardList name={category.name} gridSize={4} />
+          <CardList gridSize={3}>
+            {' '}
+            <DatePicker
+              value={period}
+              handleChange={handleDateChange}
+              fullWidth
+            />
+          </CardList>
+          <CardList gridSize={3}>test</CardList>
+          <CardList name={assumptionType.name} gridSize={3} />
+          <CardList name={category.name} gridSize={3} />
         </Grid>
       </div>,
     );

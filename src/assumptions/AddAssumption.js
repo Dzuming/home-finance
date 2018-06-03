@@ -55,9 +55,6 @@ class AddAssumption extends Component {
     const { assumptionTypes, categories } = this.props;
     return (
       <React.Fragment>
-        <Grid container spacing={0}>
-          <DatePicker value={period} handleChange={this.handleDateChange} />
-        </Grid>
         <Grid container spacing={24}>
           <Grid item xs={3}>
             <div>Assumption type</div>
@@ -71,6 +68,8 @@ class AddAssumption extends Component {
           <Grid item xs={6}>
             <DropBoard
               assumptionType={assumptionType}
+              period={period}
+              handleDateChange={this.handleDateChange}
               category={category}
               date={period}
               handleDraggedElementChange={this.handleDraggedElementChange}
