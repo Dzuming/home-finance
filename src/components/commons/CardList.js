@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardContent, Grid, Typography } from 'material-ui';
+import { withStyles } from 'material-ui/styles/index';
 
-const CardList = ({ name, gridSize }) => {
+const CardList = ({ name, gridSize, classes }) => {
   return (
     <Grid item xs={gridSize}>
-      <Card>
+      <Card
+        classes={{
+          root: classes.card,
+        }}
+      >
         <CardContent>
           <Typography color="inherit" type="body2" align="center">
             {name}
@@ -15,10 +20,18 @@ const CardList = ({ name, gridSize }) => {
     </Grid>
   );
 };
+``;
 
 CardList.propTypes = {
   name: PropTypes.string.isRequired,
   gridSize: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
-export default CardList;
+const styles = {
+  card: {
+    height: '100%',
+  },
+};
+
+export default withStyles(styles)(CardList);
