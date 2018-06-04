@@ -1,6 +1,5 @@
 import * as types from '../actions/actionTypes';
 import { handleActions } from 'redux-actions';
-import { financeFlowSpendingToTableMapper } from '../helpers/Mappers';
 
 const initialState = [];
 
@@ -22,6 +21,13 @@ export default handleActions(
     [types.ASSUMPTION_TYPES_DRAG.READ]: (state, action) => {
       return Object.assign({}, state, {
         types: [...action.payload],
+      });
+    },
+    [types.ASSUMPTION_TYPES_DRAG.REDUCE]: (state, action) => {
+      return Object.assign({}, state, {
+        types: state.types.filter(
+          type => type.name !== action.payload.type.name,
+        ),
       });
     },
   },

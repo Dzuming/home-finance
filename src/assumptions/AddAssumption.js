@@ -39,7 +39,10 @@ class AddAssumption extends Component {
     this.setState(state => (state.period = date));
   };
 
-  handleDraggedElementChange = (key, value) => this.setState({ [key]: value });
+  handleDraggedElementChange = (key, value) =>
+    this.setState({ [key]: value }, () =>
+      this.props.actions.reduceAssumptionTypes(value),
+    );
 
   componentDidMount() {
     this.props.actions.fetchAssumptionTypes();
@@ -120,6 +123,7 @@ AddAssumption.propTypes = {
     createAssumption: PropTypes.Func,
     fetchAssumptionTypes: PropTypes.Func,
     fetchCategories: PropTypes.Func,
+    reduceAssumptionTypes: PropTypes.Func,
   }),
   assumptionTypes: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,

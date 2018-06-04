@@ -61,7 +61,16 @@ Object {
 }
 `;
 
-exports[`assumption types action it should create setAssumptionTypes action with a snapshot 1`] = `
+exports[`drag actions it should create removeAssumptionType action with a snapshot 1`] = `
+Object {
+  "payload": Object {
+    "type": undefined,
+  },
+  "type": "REDUCE_ASSUMPTION_TYPES",
+}
+`;
+
+exports[`drag actions it should create setAssumptionTypes action with a snapshot 1`] = `
 Object {
   "type": "READ_ASSUMPTION_TYPES",
 }
