@@ -1,12 +1,15 @@
 import React from 'react';
 import { DragSource } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
+import DragList from '../components/commons/DragList';
 
 const DragCategories = ({ connectDragSource, isDragging, category }) => {
   return (
     <div>
       {connectDragSource(
-        <div style={{ opacity: isDragging ? 0.5 : 1 }}>{category.name}</div>,
+        <div>
+          <DragList element={category} isDragging={isDragging} />
+        </div>,
       )}
     </div>
   );

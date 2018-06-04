@@ -19,7 +19,7 @@ export default handleActions(
         monthly: state.monthly.concat({ ...action.payload }),
       });
     },
-    [types.ASSUMPTION_TYPES_CRUD.READ]: (state, action) => {
+    [types.ASSUMPTION_TYPES_DRAG.READ]: (state, action) => {
       return Object.assign({}, state, {
         types: [...action.payload],
       });

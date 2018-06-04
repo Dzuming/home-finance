@@ -42,7 +42,7 @@ export const setOverallAssumptions = createAction(
 );
 
 export const setAssumptionTypes = createAction(
-  types.ASSUMPTION_TYPES_CRUD.READ,
+  types.ASSUMPTION_TYPES_DRAG.READ,
 );
 
 export const createAssumption = createAction(types.API_REQUEST_POST, data => ({

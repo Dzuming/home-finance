@@ -1,6 +1,7 @@
 import React from 'react';
 import { DragSource } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
+import DragList from '../components/commons/DragList';
 
 const DragAssumptionTypes = ({
   connectDragSource,
@@ -10,8 +11,8 @@ const DragAssumptionTypes = ({
   return (
     <div>
       {connectDragSource(
-        <div style={{ opacity: isDragging ? 0.5 : 1 }}>
-          {assumptionType.name}
+        <div>
+          <DragList element={assumptionType} isDragging={isDragging} />
         </div>,
       )}
     </div>

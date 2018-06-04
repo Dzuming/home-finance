@@ -11,6 +11,11 @@ const crudActionType = type => ({
   DELETE: `DELETE_${type}`,
 });
 
+const draggedElements = type => ({
+  READ: `READ_${type}`,
+  REDUCE: `REDUCE_${type}`,
+});
+
 export const OPEN_SIDENAV = 'OPEN_SIDENAV';
 export const AUTH_USER = 'AUTH_USER';
 export const AUTH_REQUEST = 'AUTH_REQUEST';
@@ -30,4 +35,4 @@ export const BUDGET_CRUD = crudActionType('BUDGET');
 export const REVENUE_CRUD = crudActionType('REVENUE');
 export const ASSUMPTION_CRUD = crudActionType('ASSUMPTION');
 export const OVERALL_ASSUMPTIONS_CRUD = crudActionType('OVERALL_ASSUMPTIONS');
-export const ASSUMPTION_TYPES_CRUD = crudActionType('ASSUMPTION_TYPES');
+export const ASSUMPTION_TYPES_DRAG = draggedElements('ASSUMPTION_TYPES');

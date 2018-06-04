@@ -27,7 +27,7 @@ class DropBoard extends Component {
       handleDateChange,
     } = this.props;
     return connectDropTarget(
-      <div>
+      <div style={{ marginTop: '10px' }}>
         <Grid container spacing={0}>
           <CardList name={'Date'} gridSize={3} />
           <CardList name={'percentage'} gridSize={3} />
