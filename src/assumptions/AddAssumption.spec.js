@@ -10,6 +10,8 @@ const mockStore = configureMockStore(middleware);
 const store = mockStore({
   user: [],
   login: { isAuthenticated: true },
+  assumptions: { types: [] },
+  financeFlow: { categories: [] },
 });
 const component = create(
   <Provider store={store}>

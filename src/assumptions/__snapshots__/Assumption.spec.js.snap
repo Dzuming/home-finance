@@ -160,7 +160,7 @@ Array [
         data-shrink={true}
         htmlFor="month"
       >
-        Assumption date
+        assumption date
       </label>
       <div
         className="MuiInput-root-142 MuiInput-formControl-143 MuiInput-inkbar-144 MuiInput-underline-148"
@@ -185,7 +185,7 @@ Array [
           required={undefined}
           rows={undefined}
           type="month"
-          value="2018-05"
+          value="2018-06"
         />
       </div>
     </div>
@@ -197,13 +197,13 @@ Array [
       className="MuiGrid-typeItem-39 MuiGrid-grid-xs-3-66"
     >
       <div
-        className="MuiPaper-root-157 MuiPaper-shadow2-161 MuiPaper-rounded-158"
+        className="MuiPaper-root-158 CardList-card-157 MuiPaper-shadow2-162 MuiPaper-rounded-159"
       >
         <div
-          className="MuiCardContent-root-184"
+          className="MuiCardContent-root-185"
         >
           <aside
-            className="MuiTypography-root-185 MuiTypography-body2-193 MuiTypography-gutterBottom-202 MuiTypography-alignCenter-198"
+            className="MuiTypography-root-186 MuiTypography-body2-194 MuiTypography-colorInherit-205 MuiTypography-alignCenter-199"
           >
             Assumption
           </aside>
@@ -214,15 +214,15 @@ Array [
       className="MuiGrid-typeItem-39 MuiGrid-grid-xs-3-66"
     >
       <div
-        className="MuiPaper-root-157 MuiPaper-shadow2-161 MuiPaper-rounded-158"
+        className="MuiPaper-root-158 CardList-card-157 MuiPaper-shadow2-162 MuiPaper-rounded-159"
       >
         <div
-          className="MuiCardContent-root-184"
+          className="MuiCardContent-root-185"
         >
           <aside
-            className="MuiTypography-root-185 MuiTypography-body2-193 MuiTypography-gutterBottom-202 MuiTypography-alignCenter-198"
+            className="MuiTypography-root-186 MuiTypography-body2-194 MuiTypography-colorInherit-205 MuiTypography-alignCenter-199"
           >
-            percentage
+            Percentage
           </aside>
         </div>
       </div>
@@ -231,13 +231,13 @@ Array [
       className="MuiGrid-typeItem-39 MuiGrid-grid-xs-3-66"
     >
       <div
-        className="MuiPaper-root-157 MuiPaper-shadow2-161 MuiPaper-rounded-158"
+        className="MuiPaper-root-158 CardList-card-157 MuiPaper-shadow2-162 MuiPaper-rounded-159"
       >
         <div
-          className="MuiCardContent-root-184"
+          className="MuiCardContent-root-185"
         >
           <aside
-            className="MuiTypography-root-185 MuiTypography-body2-193 MuiTypography-gutterBottom-202 MuiTypography-alignCenter-198"
+            className="MuiTypography-root-186 MuiTypography-body2-194 MuiTypography-colorInherit-205 MuiTypography-alignCenter-199"
           >
             Value
           </aside>
@@ -248,13 +248,13 @@ Array [
       className="MuiGrid-typeItem-39 MuiGrid-grid-xs-3-66"
     >
       <div
-        className="MuiPaper-root-157 MuiPaper-shadow2-161 MuiPaper-rounded-158"
+        className="MuiPaper-root-158 CardList-card-157 MuiPaper-shadow2-162 MuiPaper-rounded-159"
       >
         <div
-          className="MuiCardContent-root-184"
+          className="MuiCardContent-root-185"
         >
           <aside
-            className="MuiTypography-root-185 MuiTypography-body2-193 MuiTypography-gutterBottom-202 MuiTypography-alignCenter-198"
+            className="MuiTypography-root-186 MuiTypography-body2-194 MuiTypography-colorInherit-205 MuiTypography-alignCenter-199"
           >
             Limit
           </aside>

@@ -8,13 +8,13 @@ exports[`<MonthlyAssumption  /> should match snapshot 1`] = `
     className="MuiGrid-typeItem-2 MuiGrid-grid-xs-6-32"
   >
     <div
-      className="MuiPaper-root-91 MuiPaper-shadow2-95 MuiPaper-rounded-92"
+      className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
     >
       <div
-        className="MuiCardContent-root-118"
+        className="MuiCardContent-root-119"
       >
         <aside
-          className="MuiTypography-root-119 MuiTypography-body2-127 MuiTypography-gutterBottom-136 MuiTypography-alignCenter-132"
+          className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
         >
           Assumption
         </aside>
@@ -25,13 +25,13 @@ exports[`<MonthlyAssumption  /> should match snapshot 1`] = `
     className="MuiGrid-typeItem-2 MuiGrid-grid-xs-6-32"
   >
     <div
-      className="MuiPaper-root-91 MuiPaper-shadow2-95 MuiPaper-rounded-92"
+      className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
     >
       <div
-        className="MuiCardContent-root-118"
+        className="MuiCardContent-root-119"
       >
         <aside
-          className="MuiTypography-root-119 MuiTypography-body2-127 MuiTypography-gutterBottom-136 MuiTypography-alignCenter-132"
+          className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
         >
           Value
         </aside>

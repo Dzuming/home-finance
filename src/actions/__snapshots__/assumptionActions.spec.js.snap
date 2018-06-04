@@ -63,7 +63,6 @@ Object {
 
 exports[`assumption types action it should create setAssumptionTypes action with a snapshot 1`] = `
 Object {
-  "payload": "2018-05",
   "type": "READ_ASSUMPTION_TYPES",
 }
 `;
