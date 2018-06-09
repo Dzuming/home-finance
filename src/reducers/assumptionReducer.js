@@ -25,7 +25,7 @@ export default handleActions(
     },
     [types.ASSUMPTION_TYPES_DRAG.REDUCE]: (state, action) => {
       return Object.assign({}, state, {
-        types: state.types.filter(
+        draggedTypes: state.types.filter(
           type => type.name !== action.payload.type.name,
         ),
       });

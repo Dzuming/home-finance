@@ -13,6 +13,7 @@ import DragCategories from './DragCategories';
 import {
   makeGetAssumptionTypes,
   makeGetCategories,
+  makeGetDraggedAssumptionTypes,
 } from '../helpers/selectors';
 
 //TODO: Add remove dragged element from list if selected and return if unselected (check redux undo)
@@ -57,7 +58,8 @@ class AddAssumption extends Component {
       percentage,
       period,
     } = this.state;
-    const { assumptionTypes, categories } = this.props;
+    const { draggedAssumptionTypes, categories, actions } = this.props;
+    console.log(draggedAssumptionTypes);
     return (
       <React.Fragment>
         <Grid container spacing={0}>
@@ -69,7 +71,7 @@ class AddAssumption extends Component {
             alignItems={'center'}
           >
             <div>Assumption type:</div>
-            {assumptionTypes.map(assumptionType => (
+            {draggedAssumptionTypes.map(assumptionType => (
               <DragAssumptionTypes
                 key={assumptionType.id}
                 assumptionType={assumptionType}
@@ -96,6 +98,7 @@ class AddAssumption extends Component {
               category={category}
               date={period}
               handleDraggedElementChange={this.handleDraggedElementChange}
+              undoAssumptionType={actions.undoAssumptionType}
             />
           </Grid>
         </Grid>
@@ -130,7 +133,7 @@ AddAssumption.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  assumptionTypes: makeGetAssumptionTypes(state),
+  draggedAssumptionTypes: makeGetDraggedAssumptionTypes(state),
   categories: makeGetCategories(state),
 });
 
