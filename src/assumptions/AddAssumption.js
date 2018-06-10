@@ -11,14 +11,10 @@ import DropBoard from './DropBoard';
 import DragAssumptionTypes from './DragAssumptionTypes';
 import DragCategories from './DragCategories';
 import {
-  makeGetAssumptionTypes,
-  makeGetCategories,
   makeGetDraggedAssumptionTypes,
+  makeGetDraggedCategories,
 } from '../helpers/selectors';
 
-//TODO: Add remove dragged element from list if selected and return if unselected (check redux undo)
-//TODO: send categories as array
-//TODO: Add validation
 class AddAssumption extends Component {
   constructor(props) {
     super(props);
@@ -40,10 +36,8 @@ class AddAssumption extends Component {
     this.setState(state => (state.period = date));
   };
 
-  handleDraggedElementChange = (key, value) =>
-    this.setState({ [key]: value }, () =>
-      this.props.actions.reduceAssumptionTypes(value),
-    );
+  handleDraggedElementChange = (key, value, callback) =>
+    this.setState({ [key]: value }, callback);
 
   componentDidMount() {
     this.props.actions.fetchAssumptionTypes();
@@ -58,8 +52,7 @@ class AddAssumption extends Component {
       percentage,
       period,
     } = this.state;
-    const { draggedAssumptionTypes, categories, actions } = this.props;
-    console.log(draggedAssumptionTypes);
+    const { draggedAssumptionTypes, draggedCategories, actions } = this.props;
     return (
       <React.Fragment>
         <Grid container spacing={0}>
@@ -86,7 +79,7 @@ class AddAssumption extends Component {
             alignItems={'center'}
           >
             <div>Categories:</div>
-            {categories.map(category => (
+            {draggedCategories.map(category => (
               <DragCategories key={category.id} category={category} />
             ))}
           </Grid>
@@ -98,7 +91,8 @@ class AddAssumption extends Component {
               category={category}
               date={period}
               handleDraggedElementChange={this.handleDraggedElementChange}
-              undoAssumptionType={actions.undoAssumptionType}
+              reduceAssumptionTypes={actions.reduceAssumptionTypes}
+              reduceCategories={actions.reduceCategories}
             />
           </Grid>
         </Grid>
@@ -134,7 +128,7 @@ AddAssumption.propTypes = {
 
 const mapStateToProps = state => ({
   draggedAssumptionTypes: makeGetDraggedAssumptionTypes(state),
-  categories: makeGetCategories(state),
+  draggedCategories: makeGetDraggedCategories(state),
 });
 
 const mapDispatchToProps = dispatch => ({

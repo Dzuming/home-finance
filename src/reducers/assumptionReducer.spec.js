@@ -66,6 +66,21 @@ const assumptionTypesState = deepFreeze({
   types: draggedTypes,
 });
 
+const draggedCategories = deepFreeze([
+  {
+    id: 1,
+    name: 'rachunki',
+  },
+  {
+    id: 2,
+    name: 'jedzenie',
+  },
+]);
+
+const categoriesState = deepFreeze({
+  types: draggedCategories,
+});
+
 describe('assumption reducer', () => {
   it('should handle unknown actions', () => {
     expect(reducer(initialState, { type: 'FAKE' })).toBe(initialState);
@@ -103,6 +118,12 @@ describe('assumption reducer', () => {
         reducer(assumptionTypesState, reduceAssumptionTypes(draggedTypes[0]))
           .draggedTypes,
       ).toEqual([draggedTypes[1]]);
+    });
+    it('should reduce categories', () => {
+      expect(
+        reducer(categoriesState, reduceCategories(draggedCategories[0]))
+          .draggedTypes,
+      ).toEqual([draggedCategories[1]]);
     });
   });
 });

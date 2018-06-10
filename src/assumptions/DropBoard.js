@@ -9,11 +9,20 @@ class DropBoard extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.isDropped) {
       return {
-        [prevProps.item.type]: () =>
+        assumptionType: () => {
           this.props.handleDraggedElementChange(
             [prevProps.item.type],
             prevProps.item,
-          ),
+            () => this.props.reduceAssumptionTypes(prevProps.item),
+          );
+        },
+        category: () => {
+          this.props.handleDraggedElementChange(
+            [prevProps.item.type],
+            prevProps.item,
+            () => this.props.reduceCategories(prevProps.item),
+          );
+        },
       }[prevProps.item.type]();
     }
   }

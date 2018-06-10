@@ -7,7 +7,8 @@ const getOverallAssumption = state => state.assumptions.overall;
 const getDraggedAssumptionTypes = state =>
   state.assumptions.draggedTypes || state.assumptions.types;
 const getCategories = state => state.financeFlow.categories;
-
+const getDraggedCategories = state =>
+  state.financeFlow.draggedCategories || state.financeFlow.categories;
 export const makeGetProfit = createSelector([getProfit], profit => profit);
 
 export const makeGetCategories = createSelector(
@@ -33,4 +34,9 @@ export const makeGetOverallAssumption = createSelector(
 export const makeGetDraggedAssumptionTypes = createSelector(
   [getDraggedAssumptionTypes],
   assumptionTypes => assumptionTypes,
+);
+
+export const makeGetDraggedCategories = createSelector(
+  [getDraggedCategories],
+  categories => categories,
 );

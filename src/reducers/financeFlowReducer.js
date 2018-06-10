@@ -99,6 +99,13 @@ export default handleActions(
       Object.assign({}, state, { isAuthenticated: true }),
     [types.SET_DATE]: (state, action) =>
       Object.assign({}, state, { selectedDate: action.date }),
+    [types.CATEGORIES_DRAG.REDUCE]: (state, action) => {
+      return Object.assign({}, state, {
+        draggedCategories: state.categories.filter(
+          category => category.name !== action.payload.type.name,
+        ),
+      });
+    },
   },
   initialState,
 );
