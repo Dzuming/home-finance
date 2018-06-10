@@ -64,10 +64,3 @@ export const reduceAssumptionTypes = createAction(
     type,
   }),
 );
-
-export const reduceCategories = createAction(
-  types.CATEGORIES_DRAG.REDUCE,
-  type => ({
-    type,
-  }),
-);

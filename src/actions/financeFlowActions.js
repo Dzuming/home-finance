@@ -127,3 +127,10 @@ export const editProfit = createAction(
     items: financeFlowProfitToTableMapper(items.data),
   }),
 );
+
+export const reduceCategories = createAction(
+  types.CATEGORIES_DRAG.REDUCE,
+  type => ({
+    type,
+  }),
+);

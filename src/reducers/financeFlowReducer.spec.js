@@ -9,6 +9,7 @@ import {
   addProfit,
   removeProfit,
   editProfit,
+  reduceCategories,
 } from '../actions/financeFlowActions';
 
 const initialState = deepFreeze(
@@ -31,6 +32,22 @@ const profit = {
   category: { id: 1, name: 'jedzenie' },
 };
 const message = 'test';
+
+const draggedCategories = deepFreeze([
+  {
+    id: 1,
+    name: 'rachunki',
+  },
+  {
+    id: 2,
+    name: 'jedzenie',
+  },
+]);
+
+const categoriesState = deepFreeze({
+  categories: draggedCategories,
+});
+
 describe('spending reducer', () => {
   it('should handle unknown actions', () => {
     expect(reducer(initialState, { type: 'FAKE' })).toBe(initialState);
@@ -189,5 +206,14 @@ describe('profit reducer', () => {
         ),
       ).toMatchSnapshot();
     });
+  });
+});
+
+describe('refresh dragged elements', () => {
+  it('should reduce categories', () => {
+    expect(
+      reducer(categoriesState, reduceCategories(draggedCategories[0]))
+        .draggedCategories,
+    ).toEqual([draggedCategories[1]]);
   });
 });
