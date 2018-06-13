@@ -212,8 +212,12 @@ describe('profit reducer', () => {
 describe('refresh dragged elements', () => {
   it('should reduce categories', () => {
     expect(
-      reducer(categoriesState, reduceCategories(draggedCategories[0]))
+      reducer(categoriesState, reduceCategories([draggedCategories[0]]))
         .draggedCategories,
     ).toEqual([draggedCategories[1]]);
+    expect(
+      reducer(categoriesState, reduceCategories(draggedCategories))
+        .draggedCategories,
+    ).toEqual([]);
   });
 });

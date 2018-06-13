@@ -14,16 +14,17 @@ import {
   makeGetDraggedAssumptionTypes,
   makeGetDraggedCategories,
 } from '../helpers/selectors';
+import { yearMonthFormatDate } from '../helpers/format';
 
 class AddAssumption extends Component {
   constructor(props) {
     super(props);
     this.state = {
       assumptionType: {},
-      category: {},
+      categories: [],
       isInitialValue: 0,
       percentage: 20,
-      period: '2018-05',
+      period: yearMonthFormatDate,
     };
   }
 
@@ -36,8 +37,16 @@ class AddAssumption extends Component {
     this.setState(state => (state.period = date));
   };
 
-  handleDraggedElementChange = (key, value, callback) =>
+  handleAssumptionTypeChange = (key, value, callback) =>
     this.setState({ [key]: value }, callback);
+
+  handleCategoryChange = (value, callback) =>
+    this.setState(
+      {
+        categories: value,
+      },
+      callback,
+    );
 
   componentDidMount() {
     this.props.actions.fetchAssumptionTypes();
@@ -47,7 +56,7 @@ class AddAssumption extends Component {
   render() {
     const {
       assumptionType,
-      category,
+      categories,
       isInitialValue,
       percentage,
       period,
@@ -88,9 +97,10 @@ class AddAssumption extends Component {
               assumptionType={assumptionType}
               period={period}
               handleDateChange={this.handleDateChange}
-              category={category}
+              categories={categories}
               date={period}
-              handleDraggedElementChange={this.handleDraggedElementChange}
+              handleAssumptionTypeChange={this.handleAssumptionTypeChange}
+              handleCategoryChange={this.handleCategoryChange}
               reduceAssumptionTypes={actions.reduceAssumptionTypes}
               reduceCategories={actions.reduceCategories}
             />
@@ -102,6 +112,7 @@ class AddAssumption extends Component {
             this.createAssumption({
               userId: 1,
               assumptionTypeId: assumptionType.id,
+              categoryIds: categories.map(category => category.id),
               percentage,
               isInitialValue,
               period,

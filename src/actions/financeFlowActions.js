@@ -130,7 +130,7 @@ export const editProfit = createAction(
 
 export const reduceCategories = createAction(
   types.CATEGORIES_DRAG.REDUCE,
-  type => ({
-    type,
+  categories => ({
+    categories,
   }),
 );

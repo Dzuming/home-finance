@@ -27,14 +27,6 @@ const cardSource = {
       type: 'assumptionType',
     };
   },
-
-  endDrag(props, monitor) {
-    const item = monitor.getItem();
-    const dropResult = monitor.getDropResult();
-    if (dropResult) {
-      alert(`You dropped ${item.name} into ${dropResult.name}!`); // eslint-disable-line no-alert
-    }
-  },
 };
 
 function collect(connect, monitor) {

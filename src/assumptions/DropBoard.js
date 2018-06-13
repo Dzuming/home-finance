@@ -7,20 +7,26 @@ import DatePicker from '../components/commons/DatePicker';
 
 class DropBoard extends Component {
   componentDidUpdate(prevProps) {
+    const {
+      handleAssumptionTypeChange,
+      handleCategoryChange,
+      reduceAssumptionTypes,
+      reduceCategories,
+      categories,
+    } = this.props;
     if (prevProps.isDropped) {
       return {
         assumptionType: () => {
-          this.props.handleDraggedElementChange(
+          this.props.handleAssumptionTypeChange(
             [prevProps.item.type],
             prevProps.item,
-            () => this.props.reduceAssumptionTypes(prevProps.item),
+            () => reduceAssumptionTypes(prevProps.item),
           );
         },
         category: () => {
-          this.props.handleDraggedElementChange(
-            [prevProps.item.type],
-            prevProps.item,
-            () => this.props.reduceCategories(prevProps.item),
+          const newCategories = [...categories, prevProps.item];
+          handleCategoryChange(newCategories, () =>
+            reduceCategories(newCategories),
           );
         },
       }[prevProps.item.type]();
@@ -31,7 +37,7 @@ class DropBoard extends Component {
     const {
       connectDropTarget,
       assumptionType,
-      category,
+      categories,
       period,
       handleDateChange,
     } = this.props;
@@ -54,7 +60,11 @@ class DropBoard extends Component {
           </CardList>
           <CardList gridSize={3}>test</CardList>
           <CardList name={assumptionType.name} gridSize={3} />
-          <CardList name={category.name} gridSize={3} />
+          <CardList gridSize={3}>
+            {categories.map(category => (
+              <div key={category.id}>{category.name}</div>
+            ))}
+          </CardList>
         </Grid>
       </div>,
     );
