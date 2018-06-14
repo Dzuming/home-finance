@@ -10,6 +10,7 @@ import {
   removeProfit,
   editProfit,
   reduceCategories,
+  resetDraggedCategories,
 } from '../actions/financeFlowActions';
 
 const initialState = deepFreeze(
@@ -209,7 +210,7 @@ describe('profit reducer', () => {
   });
 });
 
-describe('refresh dragged elements', () => {
+describe('dragged elements', () => {
   it('should reduce categories', () => {
     expect(
       reducer(categoriesState, reduceCategories([draggedCategories[0]]))
@@ -219,5 +220,11 @@ describe('refresh dragged elements', () => {
       reducer(categoriesState, reduceCategories(draggedCategories))
         .draggedCategories,
     ).toEqual([]);
+  });
+
+  it('should reset categories', () => {
+    expect(
+      reducer(categoriesState, resetDraggedCategories()).draggedCategories,
+    ).toEqual(draggedCategories);
   });
 });

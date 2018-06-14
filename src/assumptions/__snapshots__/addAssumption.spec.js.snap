@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AddAssumption  /> should match snapshot 1`] = `
-Array [
+<form
+  onSubmit={[Function]}
+>
   <div
     className="MuiGrid-typeContainer-1"
   >
@@ -147,7 +149,7 @@ Array [
                         required={undefined}
                         rows={undefined}
                         type="month"
-                        value="2018-05"
+                        value="2018-06"
                       />
                     </div>
                   </div>
@@ -205,12 +207,11 @@ Array [
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <button
     className="MuiButtonBase-root-177 MuiButton-root-163 MuiButton-fullWidth-176"
     disabled={false}
     onBlur={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
@@ -220,9 +221,9 @@ Array [
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    role={undefined}
+    role="button"
     tabIndex={0}
-    type="button"
+    type="submit"
   >
     <span
       className="MuiButton-label-165"
@@ -232,6 +233,6 @@ Array [
     <span
       className="MuiTouchRipple-root-179"
     />
-  </button>,
-]
+  </button>
+</form>
 `;

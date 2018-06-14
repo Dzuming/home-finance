@@ -30,6 +30,11 @@ export default handleActions(
         ),
       });
     },
+    [types.ASSUMPTION_TYPES_DRAG.RESET]: state => {
+      return Object.assign({}, state, {
+        draggedTypes: state.types,
+      });
+    },
   },
   initialState,
 );

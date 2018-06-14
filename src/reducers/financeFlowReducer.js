@@ -100,11 +100,15 @@ export default handleActions(
     [types.SET_DATE]: (state, action) =>
       Object.assign({}, state, { selectedDate: action.date }),
     [types.CATEGORIES_DRAG.REDUCE]: (state, action) => {
-      console.log(action.payload);
       return Object.assign({}, state, {
         draggedCategories: state.categories.filter(function(category) {
           return this.indexOf(category.id) < 0;
         }, action.payload.categories.map(category => category.id)),
+      });
+    },
+    [types.CATEGORIES_DRAG.RESET]: state => {
+      return Object.assign({}, state, {
+        draggedCategories: state.categories,
       });
     },
   },

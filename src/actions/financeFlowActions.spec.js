@@ -70,4 +70,12 @@ describe('finance flow actions', () => {
       actions.editProfit('test', 1, { data: { ...profit } }),
     ).toMatchSnapshot();
   });
+
+  it('should create reduceCategories action with snapshot', () => {
+    expect(actions.reduceCategories()).toMatchSnapshot();
+  });
+
+  it('should create resetCategories action with snapshot', () => {
+    expect(actions.resetDraggedCategories()).toMatchSnapshot();
+  });
 });

@@ -64,3 +64,7 @@ export const reduceAssumptionTypes = createAction(
     type,
   }),
 );
+
+export const resetDraggedAssumptionTypes = createAction(
+  types.ASSUMPTION_TYPES_DRAG.RESET,
+);

@@ -134,3 +134,10 @@ export const reduceCategories = createAction(
     categories,
   }),
 );
+
+export const resetDraggedCategories = createAction(
+  types.CATEGORIES_DRAG.RESET,
+  categories => ({
+    categories,
+  }),
+);

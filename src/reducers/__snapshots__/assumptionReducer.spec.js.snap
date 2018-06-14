@@ -61,54 +61,9 @@ Object {
 }
 `;
 
-exports[`assumption reducer get assumption should get assumption 1`] = `
-Object {
-  "monthly": Array [
-    Object {
-      "id": 1,
-      "name": "Poduszka bezpieczeństwa",
-      "percentage": 20,
-      "value": 66.6,
-    },
-    Object {
-      "id": 2,
-      "name": "Wakacje",
-      "percentage": 10,
-      "value": 33.3,
-    },
-    Object {
-      "id": 3,
-      "name": "Wakacje",
-      "percentage": 50,
-      "value": 695,
-    },
-  ],
-}
-`;
-
-exports[`assumption reducer get assumption should get overall assumption 1`] = `
-Object {
-  "overall": Array [
-    Object {
-      "name": "Poduszka bezpieczeństwa",
-      "value": 66.6,
-    },
-    Object {
-      "name": "Wakacje",
-      "value": 33.3,
-    },
-    Object {
-      "name": "Wakacje",
-      "value": 695,
-    },
-  ],
-}
-`;
-
-exports[`assumption reducer get assumption should post assumption 1`] = `Object {}`;
-
 exports[`assumption reducer get assumption types should get assumption types 1`] = `
 Object {
+  "monthly": Array [],
   "types": Array [
     "2",
     "0",

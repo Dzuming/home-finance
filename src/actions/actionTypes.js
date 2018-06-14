@@ -14,6 +14,7 @@ const crudActionType = type => ({
 const draggedElements = type => ({
   READ: `READ_${type}`,
   REDUCE: `REDUCE_${type}`,
+  RESET: `RESET_${type}`,
 });
 
 export const OPEN_SIDENAV = 'OPEN_SIDENAV';

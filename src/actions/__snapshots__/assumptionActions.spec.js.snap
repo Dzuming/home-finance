@@ -70,6 +70,12 @@ Object {
 }
 `;
 
+exports[`drag actions it should create resetDraggedAssumptionType action with a snapshot 1`] = `
+Object {
+  "type": "RESET_ASSUMPTION_TYPES",
+}
+`;
+
 exports[`drag actions it should create setAssumptionTypes action with a snapshot 1`] = `
 Object {
   "type": "READ_ASSUMPTION_TYPES",

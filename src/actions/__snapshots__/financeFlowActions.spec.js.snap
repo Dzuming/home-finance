@@ -64,6 +64,15 @@ Object {
 }
 `;
 
+exports[`finance flow actions should create reduceCategories action with snapshot 1`] = `
+Object {
+  "payload": Object {
+    "categories": undefined,
+  },
+  "type": "REDUCE_CATEGORIES",
+}
+`;
+
 exports[`finance flow actions should create removeProfit action with snapshot 1`] = `
 Object {
   "payload": Object {
@@ -89,6 +98,15 @@ Object {
     ],
   },
   "type": "DELETE_SPENDING",
+}
+`;
+
+exports[`finance flow actions should create resetCategories action with snapshot 1`] = `
+Object {
+  "payload": Object {
+    "categories": undefined,
+  },
+  "type": "RESET_CATEGORIES",
 }
 `;
 

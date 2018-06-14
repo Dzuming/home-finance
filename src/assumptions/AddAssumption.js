@@ -19,18 +19,42 @@ import { yearMonthFormatDate } from '../helpers/format';
 class AddAssumption extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      assumptionType: {},
-      categories: [],
-      isInitialValue: 0,
-      percentage: 20,
-      period: yearMonthFormatDate,
-    };
+    this.state = this.initialState();
   }
+  initialState = () => ({
+    assumptionType: {},
+    categories: [],
+    isInitialValue: 0,
+    percentage: 20,
+    period: yearMonthFormatDate,
+  });
+  handleSubmit = event => {
+    event.preventDefault();
+    const {
+      assumptionType,
+      categories,
+      percentage,
+      isInitialValue,
+      period,
+    } = this.state;
 
-  createAssumption(assumption) {
-    this.props.actions.createAssumption(assumption);
-  }
+    new Promise(resolve => {
+      resolve(
+        this.props.actions.createAssumption({
+          userId: 1,
+          assumptionTypeId: assumptionType.id,
+          categoryIds: categories.map(category => category.id),
+          percentage,
+          isInitialValue,
+          period,
+        }),
+      );
+    }).then(() => {
+      this.setState(this.initialState());
+      this.props.actions.resetDraggedAssumptionTypes();
+      this.props.actions.resetDraggedCategories();
+    });
+  };
 
   handleDateChange = event => {
     const date = event.target.value;
@@ -54,16 +78,10 @@ class AddAssumption extends Component {
   }
 
   render() {
-    const {
-      assumptionType,
-      categories,
-      isInitialValue,
-      percentage,
-      period,
-    } = this.state;
+    const { assumptionType, categories, period } = this.state;
     const { draggedAssumptionTypes, draggedCategories, actions } = this.props;
     return (
-      <React.Fragment>
+      <form onSubmit={this.handleSubmit}>
         <Grid container spacing={0}>
           <Grid
             container
@@ -106,22 +124,10 @@ class AddAssumption extends Component {
             />
           </Grid>
         </Grid>
-        <Button
-          fullWidth
-          onClick={() => {
-            this.createAssumption({
-              userId: 1,
-              assumptionTypeId: assumptionType.id,
-              categoryIds: categories.map(category => category.id),
-              percentage,
-              isInitialValue,
-              period,
-            });
-          }}
-        >
+        <Button type={'submit'} fullWidth>
           Add assumption
         </Button>
-      </React.Fragment>
+      </form>
     );
   }
 }
