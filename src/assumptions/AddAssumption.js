@@ -50,9 +50,7 @@ class AddAssumption extends Component {
         }),
       );
     }).then(() => {
-      this.setState(this.initialState());
-      this.props.actions.resetDraggedAssumptionTypes();
-      this.props.actions.resetDraggedCategories();
+      this.resetAddAssumptionForm();
     });
   };
 
@@ -72,9 +70,18 @@ class AddAssumption extends Component {
       callback,
     );
 
+  resetAddAssumptionForm = () => {
+    this.setState(this.initialState());
+    this.props.actions.resetDraggedAssumptionTypes();
+    this.props.actions.resetDraggedCategories();
+  };
   componentDidMount() {
     this.props.actions.fetchAssumptionTypes();
     this.props.actions.fetchCategories();
+  }
+
+  componentWillUnmount() {
+    this.resetAddAssumptionForm();
   }
 
   render() {
