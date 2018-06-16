@@ -89,6 +89,12 @@ class AddAssumption extends Component {
       callback,
     );
 
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
+
   resetAddAssumptionForm = () => {
     this.setState(this.initialState());
     this.props.actions.resetDraggedAssumptionTypes();
@@ -105,7 +111,7 @@ class AddAssumption extends Component {
   }
 
   render() {
-    const { assumptionType, categories, period } = this.state;
+    const { assumptionType, categories, period, percentage } = this.state;
     const { draggedAssumptionTypes, draggedCategories, actions } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
@@ -141,7 +147,8 @@ class AddAssumption extends Component {
             <DropBoard
               assumptionType={assumptionType}
               period={period}
-              handleDateChange={this.handleDateChange}
+              percentage={percentage}
+              handleChange={this.handleChange}
               categories={categories}
               date={period}
               handleAssumptionTypeChange={this.handleAssumptionTypeChange}

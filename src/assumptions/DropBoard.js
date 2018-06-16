@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 import CardList from '../components/commons/CardList';
-import { Grid } from 'material-ui';
+import { Grid, TextField } from 'material-ui';
 import DatePicker from '../components/commons/DatePicker';
 
 class DropBoard extends Component {
@@ -39,7 +39,8 @@ class DropBoard extends Component {
       assumptionType,
       categories,
       period,
-      handleDateChange,
+      percentage,
+      handleChange,
     } = this.props;
     return connectDropTarget(
       <div style={{ marginTop: '10px' }}>
@@ -54,11 +55,21 @@ class DropBoard extends Component {
             {' '}
             <DatePicker
               value={period}
-              handleChange={handleDateChange}
+              handleChange={handleChange('period')}
               fullWidth
             />
           </CardList>
-          <CardList gridSize={3}>test</CardList>
+          <CardList gridSize={3}>
+            <TextField
+              id="number"
+              value={percentage}
+              onChange={handleChange('percentage')}
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </CardList>
           <CardList name={assumptionType.name} gridSize={3} />
           <CardList gridSize={3}>
             {categories.map(category => (
