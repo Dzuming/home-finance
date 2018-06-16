@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as revenueActions from '../actions/revenueActions';
 
-class Revenue extends Component {
+class Revenue extends PureComponent {
   componentDidMount() {
     this.props.actions.fetchRevenue();
   }

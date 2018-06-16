@@ -8,6 +8,11 @@ import { theme } from './style/muiTheme';
 
 const store = configureStore();
 
+// if (process.env.NODE_ENV !== 'production') {
+//   const { whyDidYouUpdate } = require('why-did-you-update');
+//   whyDidYouUpdate(React);
+// }
+
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <Provider store={store}>

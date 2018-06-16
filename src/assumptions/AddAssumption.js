@@ -21,13 +21,15 @@ class AddAssumption extends Component {
     super(props);
     this.state = this.initialState();
   }
+
   initialState = () => ({
     assumptionType: {},
     categories: [],
     isInitialValue: 0,
-    percentage: 20,
+    percentage: 0,
     period: yearMonthFormatDate,
   });
+
   handleSubmit = event => {
     event.preventDefault();
     const {
@@ -37,7 +39,9 @@ class AddAssumption extends Component {
       isInitialValue,
       period,
     } = this.state;
-
+    if (!this.validate()) {
+      return;
+    }
     new Promise(resolve => {
       resolve(
         this.props.actions.createAssumption({
@@ -52,6 +56,21 @@ class AddAssumption extends Component {
     }).then(() => {
       this.resetAddAssumptionForm();
     });
+  };
+
+  validate = () => {
+    let error = [];
+    if (!this.state.percentage > 0) {
+      error.push('Percentage value must be more than 0');
+    }
+    if (Object.getOwnPropertyNames(this.state.assumptionType).length === 0) {
+      error.push('Assumption type value must be filled');
+    }
+    if (error.length > 0) {
+      alert(error.join('\n'));
+      return;
+    }
+    return true;
   };
 
   handleDateChange = event => {
@@ -75,6 +94,7 @@ class AddAssumption extends Component {
     this.props.actions.resetDraggedAssumptionTypes();
     this.props.actions.resetDraggedCategories();
   };
+
   componentDidMount() {
     this.props.actions.fetchAssumptionTypes();
     this.props.actions.fetchCategories();

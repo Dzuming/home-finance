@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Card, CardContent, Grid, Typography, withStyles } from 'material-ui';
 import Budget from './Budget';
 import Revenue from './Revenue';
@@ -16,7 +16,7 @@ const styles = theme => ({
   },
 });
 
-class Homepage extends Component {
+class Homepage extends PureComponent {
   render() {
     const { budget, revenue, classes } = this.props;
     return (
