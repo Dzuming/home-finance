@@ -1,8 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators, compose } from 'redux';
-import * as assumptionActions from '../actions/assumptionActions';
-import * as financeFlowActions from '../actions/financeFlowActions';
+// @flow
+
+import * as React from 'react';
+import {
+  fetchAssumptionTypes,
+  resetDraggedAssumptionTypes,
+  createAssumption,
+  reduceAssumptionTypes
+} from '../actions/assumptionActions';
+import {
+  resetDraggedCategories,
+  fetchCategories,
+  reduceCategories
+} from '../actions/financeFlowActions';
 import { connect } from 'react-redux';
 import { Button, Grid } from 'material-ui';
 import { DragDropContext } from 'react-dnd';
@@ -12,55 +21,105 @@ import DragAssumptionTypes from './DragAssumptionTypes';
 import DragCategories from './DragCategories';
 import {
   makeGetDraggedAssumptionTypes,
-  makeGetDraggedCategories,
+  makeGetDraggedCategories
 } from '../helpers/selectors';
 import { yearMonthFormatDate } from '../helpers/format';
+import type { Dispatch, State as ReduxState} from '../types';
+import { compose } from 'redux';
 
-class AddAssumption extends Component {
-  constructor(props) {
+type Props = {
+  draggedAssumptionTypes: Array<AssumptionType>,
+  draggedCategories: Array<Category>
+} & DispatchProps & ReduxMappedProps;
+
+type ReduxMappedProps = {
+  draggedAssumptionTypes: AssumptionType[],
+  draggedCategories: Category[]
+};
+
+type State = {
+  assumptionType: AssumptionType,
+  categories: Array<Category>,
+  isInitialValue: boolean,
+  percentage: number,
+  period: string
+};
+
+type DispatchProps = {
+  fetchAssumptionTypes: () => void,
+  fetchCategories: () => void,
+  resetDraggedAssumptionTypes: () => void,
+  resetDraggedCategories: () => void,
+  createAssumption: ({
+    userId: string,
+    assumptionTypeId: string,
+    categoryIds: Array<string>,
+    percentage: number,
+    isInitialValue: boolean,
+    period: string
+  }) => void,
+  reduceCategories: () => void,
+  reduceAssumptionTypes: () => void
+};
+
+type AssumptionType = {
+  id: string,
+  name: string
+};
+
+type Category = {
+  id: string,
+  name: string
+};
+
+class AddAssumption extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = this.initialState();
   }
 
-  initialState = () => ({
-    assumptionType: {},
+  initialState = (): State => ({
+    assumptionType: {
+      id: '',
+      name: ''
+    },
     categories: [],
-    isInitialValue: 0,
+    isInitialValue: false,
     percentage: 0,
-    period: yearMonthFormatDate,
+    period: yearMonthFormatDate
   });
 
-  handleSubmit = event => {
+  handleSubmit = (event: Event) => {
     event.preventDefault();
     const {
       assumptionType,
       categories,
       percentage,
       isInitialValue,
-      period,
+      period
     } = this.state;
     if (!this.validate()) {
       return;
     }
-    new Promise(resolve => {
-      resolve(
-        this.props.actions.createAssumption({
-          userId: 1,
-          assumptionTypeId: assumptionType.id,
-          categoryIds: categories.map(category => category.id),
-          percentage,
-          isInitialValue,
-          period,
-        }),
-      );
-    }).then(() => {
+    Promise.resolve(
+      this.props.createAssumption({
+        userId: '1',
+        assumptionTypeId: assumptionType.id,
+        categoryIds: categories.map(
+          (category: Category): string => category.id
+        ),
+        percentage,
+        isInitialValue,
+        period
+      })
+    ).then(() => {
       this.resetAddAssumptionForm();
     });
   };
 
-  validate = () => {
+  validate = (): boolean => {
     let error = [];
-    if (!this.state.percentage > 0) {
+    if (!(this.state.percentage > 0)) {
       error.push('Percentage value must be more than 0');
     }
     if (Object.getOwnPropertyNames(this.state.assumptionType).length === 0) {
@@ -68,51 +127,61 @@ class AddAssumption extends Component {
     }
     if (error.length > 0) {
       alert(error.join('\n'));
-      return;
+      return false;
     }
     return true;
   };
 
-  handleDateChange = event => {
-    const date = event.target.value;
-    this.setState(state => (state.period = date));
-  };
+  handleAssumptionTypeChange = (
+    key: string,
+    value: number,
+    callback: () => void
+  ): void => this.setState({ [key]: value }, callback);
 
-  handleAssumptionTypeChange = (key, value, callback) =>
-    this.setState({ [key]: value }, callback);
-
-  handleCategoryChange = (value, callback) =>
+  handleCategoryChange = (
+    categories: Array<Category>,
+    callback: () => void
+  ): void =>
     this.setState(
       {
-        categories: value,
+        categories
       },
-      callback,
+      callback
     );
 
-  handleChange = name => event => {
+  handleChange = (
+    name: string
+  ): ((event: SyntheticEvent<HTMLButtonElement>) => void) => (
+    event: SyntheticEvent<HTMLButtonElement>
+  ) => {
     this.setState({
-      [name]: event.target.value,
+      [name]: event.currentTarget.value
     });
   };
 
   resetAddAssumptionForm = () => {
     this.setState(this.initialState());
-    this.props.actions.resetDraggedAssumptionTypes();
-    this.props.actions.resetDraggedCategories();
+    this.props.resetDraggedAssumptionTypes();
+    this.props.resetDraggedCategories();
   };
 
   componentDidMount() {
-    this.props.actions.fetchAssumptionTypes();
-    this.props.actions.fetchCategories();
+    this.props.fetchAssumptionTypes();
+    this.props.fetchCategories();
   }
 
   componentWillUnmount() {
     this.resetAddAssumptionForm();
   }
 
-  render() {
+  render(): React.Node {
     const { assumptionType, categories, period, percentage } = this.state;
-    const { draggedAssumptionTypes, draggedCategories, actions } = this.props;
+    const {
+      draggedAssumptionTypes,
+      draggedCategories,
+      reduceAssumptionTypes,
+      reduceCategories
+    } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <Grid container spacing={0}>
@@ -124,12 +193,14 @@ class AddAssumption extends Component {
             alignItems={'center'}
           >
             <div>Assumption type:</div>
-            {draggedAssumptionTypes.map(assumptionType => (
-              <DragAssumptionTypes
-                key={assumptionType.id}
-                assumptionType={assumptionType}
-              />
-            ))}
+            {draggedAssumptionTypes.map(
+              (assumptionType: AssumptionType): React.Node => (
+                <DragAssumptionTypes
+                  key={assumptionType.id}
+                  assumptionType={assumptionType}
+                />
+              )
+            )}
           </Grid>
           <Grid
             container
@@ -139,7 +210,7 @@ class AddAssumption extends Component {
             alignItems={'center'}
           >
             <div>Categories:</div>
-            {draggedCategories.map(category => (
+            {draggedCategories.map((category: Category): React.Node => (
               <DragCategories key={category.id} category={category} />
             ))}
           </Grid>
@@ -153,8 +224,8 @@ class AddAssumption extends Component {
               date={period}
               handleAssumptionTypeChange={this.handleAssumptionTypeChange}
               handleCategoryChange={this.handleCategoryChange}
-              reduceAssumptionTypes={actions.reduceAssumptionTypes}
-              reduceCategories={actions.reduceCategories}
+              reduceAssumptionTypes={reduceAssumptionTypes}
+              reduceCategories={reduceCategories}
             />
           </Grid>
         </Grid>
@@ -166,30 +237,23 @@ class AddAssumption extends Component {
   }
 }
 
-AddAssumption.propTypes = {
-  actions: PropTypes.shape({
-    createAssumption: PropTypes.Func,
-    fetchAssumptionTypes: PropTypes.Func,
-    fetchCategories: PropTypes.Func,
-    reduceAssumptionTypes: PropTypes.Func,
-  }),
-  assumptionTypes: PropTypes.array.isRequired,
-  categories: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
   draggedAssumptionTypes: makeGetDraggedAssumptionTypes(state),
-  draggedCategories: makeGetDraggedCategories(state),
+  draggedCategories: makeGetDraggedCategories(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    Object.assign({}, financeFlowActions, assumptionActions),
-    dispatch,
-  ),
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  fetchAssumptionTypes: (): void => dispatch(fetchAssumptionTypes),
+  fetchCategories: (): void => dispatch(fetchCategories),
+  resetDraggedAssumptionTypes: (): void =>
+    dispatch(resetDraggedAssumptionTypes),
+  resetDraggedCategories: (): void => dispatch(resetDraggedCategories),
+  createAssumption: (): void => dispatch(createAssumption),
+  reduceCategories: (): void => dispatch(reduceCategories),
+  reduceAssumptionTypes: (): void => dispatch(reduceAssumptionTypes)
 });
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  DragDropContext(HTML5Backend),
+  DragDropContext(HTML5Backend)
 )(AddAssumption);

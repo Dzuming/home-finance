@@ -25,6 +25,7 @@ class DropBoard extends Component {
         },
         category: () => {
           const newCategories = [...categories, prevProps.item];
+          console.log(newCategories)
           handleCategoryChange(newCategories, () =>
             reduceCategories(newCategories),
           );
