@@ -1,24 +1,30 @@
-import React, { Component } from 'react';
+// @flow
+import * as React from 'react';
 import Nav from './Nav';
 import MonthlyAssumption from './MonthlyAssumption';
 import OverallAssumptions from './OverallAssumptions';
 import AddAssumption from './AddAssumption';
 
-const TABS = {
-  0: () => <MonthlyAssumption />,
-  1: () => <OverallAssumptions />,
-  2: () => <AddAssumption />,
+type State = {
+  currentTab: number
 };
 
-class Assumption extends Component {
+const TABS = {
+  '0': (): React.Node => <MonthlyAssumption />,
+  '1': (): React.Node => <OverallAssumptions />,
+  '2': (): React.Node => <AddAssumption />
+};
+
+class Assumption extends React.Component<{}, State> {
   state = {
-    currentTab: 0,
+    currentTab: 0
   };
 
-  handleTabChange = (event, value) => this.setState({ currentTab: value });
+  handleTabChange = (value: number): void =>
+    this.setState({ currentTab: value });
 
-  render() {
-    const { currentTab } = this.state;
+  render(): React.Node {
+    const { currentTab }: State = this.state;
     return (
       <React.Fragment>
         <Nav currentTab={currentTab} handleTabChange={this.handleTabChange} />
