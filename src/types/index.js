@@ -12,3 +12,13 @@ export type Action =
   ;
 
 export type Dispatch = (action: Action) => void;
+
+export type AssumptionType = {
+    id: string,
+    name: string
+};
+
+export type Category = {
+    id: string,
+    name: string
+};

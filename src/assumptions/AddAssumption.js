@@ -24,7 +24,7 @@ import {
   makeGetDraggedCategories
 } from '../helpers/selectors';
 import { yearMonthFormatDate } from '../helpers/format';
-import type { Dispatch, State as ReduxState} from '../types';
+import type {AssumptionType, Category, Dispatch, State as ReduxState} from '../types';
 import { compose } from 'redux';
 
 type Props = {
@@ -60,16 +60,6 @@ type DispatchProps = {
   }) => void,
   reduceCategories: () => void,
   reduceAssumptionTypes: () => void
-};
-
-type AssumptionType = {
-  id: string,
-  name: string
-};
-
-type Category = {
-  id: string,
-  name: string
 };
 
 class AddAssumption extends React.Component<Props, State> {
