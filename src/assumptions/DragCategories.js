@@ -1,35 +1,70 @@
-import React from 'react';
-import { DragSource } from 'react-dnd';
+// @flow
+
+import * as React from 'react';
+import {
+  DragSource,
+} from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 import DragList from '../components/commons/DragList';
+import type { Category } from '../types';
+import type {
+  DragSourceConnector,
+  DragSourceMonitor,
+  ConnectDragSource
+} from 'react-dnd';
 
-const DragCategories = ({ connectDragSource, isDragging, category }) => {
+type DndProps = {
+  connectDragSource: ConnectDragSource,
+  isDragging: boolean
+};
+
+type Props = {
+  category: Category
+} & DndProps;
+
+const DragCategories = ({
+  connectDragSource,
+  isDragging,
+  category
+}: Props): React.Node => {
   return (
     <div>
       {connectDragSource(
         <div>
           <DragList element={category} isDragging={isDragging} />
-        </div>,
+        </div>
       )}
     </div>
   );
 };
 
 const cardSource = {
-  beginDrag({ category }) {
+  beginDrag({
+    category
+  }: {
+    category: Category
+  }): {
+    id: string,
+    name: string,
+    type: string
+  } {
     return {
       id: category.id,
       name: category.name,
-      type: 'category',
+      type: 'category'
     };
-  },
+  }
 };
 
-function collect(connect, monitor) {
+function collect(
+  connect: DragSourceConnector,
+  monitor: DragSourceMonitor
+): DndProps {
   return {
     connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
+    isDragging: monitor.isDragging()
   };
 }
 
-export default DragSource(BOARD, cardSource, collect)(DragCategories);
+export default (DragSource(BOARD, cardSource, collect): DragSource<{},
+DndProps>)(DragCategories);
