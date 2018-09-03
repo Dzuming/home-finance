@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 import Nav from './Nav';
 import MonthlyAssumption from './MonthlyAssumption';
@@ -20,8 +19,10 @@ class Assumption extends React.Component<{}, State> {
     currentTab: 0
   };
 
-  handleTabChange = (value: number): void =>
-    this.setState({ currentTab: value });
+  handleTabChange = (
+    event: SyntheticEvent<HTMLButtonElement>,
+    value: number
+  ): void => this.setState({ currentTab: value });
 
   render(): React.Node {
     const { currentTab }: State = this.state;
