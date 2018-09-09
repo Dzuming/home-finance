@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Card, CardContent, Grid, Typography } from 'material-ui';
 import { withStyles } from 'material-ui/styles/index';
 
@@ -21,12 +20,6 @@ const CardList = ({ name, gridSize, classes, children }) => {
   );
 };
 ``;
-
-CardList.propTypes = {
-  name: PropTypes.string.isRequired,
-  gridSize: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired,
-};
 
 const styles = {
   card: {

@@ -24,13 +24,19 @@ import {
   makeGetDraggedCategories
 } from '../helpers/selectors';
 import { yearMonthFormatDate } from '../helpers/format';
-import type {AssumptionType, Category, Dispatch, State as ReduxState} from '../types';
+import type {
+  AssumptionType,
+  Category,
+  Dispatch,
+  State as ReduxState
+} from '../types';
 import { compose } from 'redux';
 
 type Props = {
   draggedAssumptionTypes: Array<AssumptionType>,
   draggedCategories: Array<Category>
-} & DispatchProps & ReduxMappedProps;
+} & DispatchProps &
+  ReduxMappedProps;
 
 type ReduxMappedProps = {
   draggedAssumptionTypes: AssumptionType[],
@@ -79,7 +85,7 @@ class AddAssumption extends React.Component<Props, State> {
     period: yearMonthFormatDate
   });
 
-  handleSubmit = (event: Event) => {
+  handleSubmit = async (event: Event) => {
     event.preventDefault();
     const {
       assumptionType,
@@ -88,31 +94,29 @@ class AddAssumption extends React.Component<Props, State> {
       isInitialValue,
       period
     } = this.state;
+    const { createAssumption } = this.props;
     if (!this.validate()) {
       return;
     }
-    Promise.resolve(
-      this.props.createAssumption({
-        userId: '1',
-        assumptionTypeId: assumptionType.id,
-        categoryIds: categories.map(
-          (category: Category): string => category.id
-        ),
-        percentage,
-        isInitialValue,
-        period
-      })
-    ).then(() => {
-      this.resetAddAssumptionForm();
+
+    await createAssumption({
+      userId: '1',
+      assumptionTypeId: assumptionType.id,
+      categoryIds: categories.map((category: Category): string => category.id),
+      percentage,
+      isInitialValue,
+      period
     });
+    this.resetAddAssumptionForm();
   };
 
   validate = (): boolean => {
+    const { percentage, assumptionType } = this.state;
     let error = [];
-    if (!(this.state.percentage > 0)) {
+    if (!(percentage > 0)) {
       error.push('Percentage value must be more than 0');
     }
-    if (Object.getOwnPropertyNames(this.state.assumptionType).length === 0) {
+    if (Object.getOwnPropertyNames(assumptionType).length === 0) {
       error.push('Assumption type value must be filled');
     }
     if (error.length > 0) {
@@ -150,14 +154,16 @@ class AddAssumption extends React.Component<Props, State> {
   };
 
   resetAddAssumptionForm = () => {
+    const { resetDraggedAssumptionTypes, resetDraggedCategories } = this.state;
     this.setState(this.initialState());
-    this.props.resetDraggedAssumptionTypes();
-    this.props.resetDraggedCategories();
+    resetDraggedAssumptionTypes();
+    resetDraggedCategories();
   };
 
   componentDidMount() {
-    this.props.assumptionTypesFetch();
-    this.props.categoriesFetch();
+    const { assumptionTypesFetch, categoriesFetch } = this.props;
+    assumptionTypesFetch();
+    categoriesFetch();
   }
 
   componentWillUnmount() {
@@ -178,6 +184,7 @@ class AddAssumption extends React.Component<Props, State> {
           <Grid
             container
             spacing={0}
+            item
             xs={12}
             direction={'row'}
             alignItems={'center'}
@@ -195,6 +202,7 @@ class AddAssumption extends React.Component<Props, State> {
           <Grid
             container
             spacing={0}
+            item
             xs={12}
             direction={'row'}
             alignItems={'center'}
@@ -236,11 +244,12 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   assumptionTypesFetch: (): void => dispatch(fetchAssumptionTypes()),
   categoriesFetch: (): void => dispatch(fetchCategories()),
   resetDraggedAssumptionTypes: (): void =>
-    dispatch(resetDraggedAssumptionTypes),
-  resetDraggedCategories: (): void => dispatch(resetDraggedCategories),
-  createAssumption: (): void => dispatch(createAssumption),
-  reduceCategories: (): void => dispatch(reduceCategories),
-  reduceAssumptionTypes: (): void => dispatch(reduceAssumptionTypes)
+    dispatch(resetDraggedAssumptionTypes()),
+  resetDraggedCategories: (): void => dispatch(resetDraggedCategories()),
+  createAssumption: (assumption: Assumption): void =>
+    dispatch(createAssumption(assumption)),
+  reduceCategories: (): void => dispatch(reduceCategories()),
+  reduceAssumptionTypes: (): void => dispatch(reduceAssumptionTypes())
 });
 
 export default compose(
