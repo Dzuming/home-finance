@@ -248,8 +248,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   resetDraggedCategories: (): void => dispatch(resetDraggedCategories()),
   createAssumption: (assumption: Assumption): void =>
     dispatch(createAssumption(assumption)),
-  reduceCategories: (): void => dispatch(reduceCategories()),
-  reduceAssumptionTypes: (): void => dispatch(reduceAssumptionTypes())
+  reduceCategories: (category): void => dispatch(reduceCategories(category)),
+  reduceAssumptionTypes: (assumptionType): void => dispatch(reduceAssumptionTypes(assumptionType))
 });
 
 export default compose(
