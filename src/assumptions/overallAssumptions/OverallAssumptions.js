@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 import {
   makeGetMonthlyAssumption,
   makeGetOverallAssumption,
-} from '../helpers/selectors';
-import * as assumptionActions from '../actions/assumptionActions';
+} from '../../helpers/selectors';
+import * as assumptionActions from '../../actions/assumptionActions';
 import { connect } from 'react-redux';
 import { Card, CardContent, Grid, Typography } from 'material-ui';
-import CardList from '../components/commons/CardList';
+import CardList from '../../components/commons/CardList';
 
 class OverallAssumptions extends Component {
   componentDidMount() {

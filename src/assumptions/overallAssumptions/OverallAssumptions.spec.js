@@ -4,7 +4,7 @@ import OverallAssumptions from './OverallAssumptions';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { theme } from '../style/muiTheme';
+import { theme } from '../../style/muiTheme';
 import { MuiThemeProvider } from 'material-ui';
 
 const middleware = [thunk];

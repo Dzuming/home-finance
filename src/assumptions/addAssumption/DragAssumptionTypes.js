@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { DragSource } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
-import DragList from '../components/commons/DragList';
-import type { AssumptionType } from '../types';
+import DragList from '../../components/commons/DragList';
+import type { AssumptionType } from '../../types/index';
 import type {
   DragSourceConnector,
   DragSourceMonitor,

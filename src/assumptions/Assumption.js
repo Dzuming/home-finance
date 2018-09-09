@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Nav from './Nav';
-import MonthlyAssumption from './MonthlyAssumption';
-import OverallAssumptions from './OverallAssumptions';
-import AddAssumption from './AddAssumption';
+import MonthlyAssumption from './monthlyAssumption/MonthlyAssumption';
+import OverallAssumptions from './overallAssumptions/OverallAssumptions';
+import AddAssumption from './addAssumption/AddAssumption';
 
 type State = {
   currentTab: number

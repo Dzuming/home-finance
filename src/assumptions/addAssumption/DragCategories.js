@@ -5,8 +5,8 @@ import {
   DragSource,
 } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
-import DragList from '../components/commons/DragList';
-import type { Category } from '../types';
+import DragList from '../../components/commons/DragList';
+import type { Category } from '../../types/index';
 import type {
   DragSourceConnector,
   DragSourceMonitor,

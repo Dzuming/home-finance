@@ -6,12 +6,12 @@ import {
   resetDraggedAssumptionTypes,
   createAssumption,
   reduceAssumptionTypes
-} from '../actions/assumptionActions';
+} from '../../actions/assumptionActions';
 import {
   resetDraggedCategories,
   fetchCategories,
   reduceCategories
-} from '../actions/financeFlowActions';
+} from '../../actions/financeFlowActions';
 import { connect } from 'react-redux';
 import { Button, Grid } from 'material-ui';
 import { DragDropContext } from 'react-dnd';
@@ -22,14 +22,14 @@ import DragCategories from './DragCategories';
 import {
   makeGetDraggedAssumptionTypes,
   makeGetDraggedCategories
-} from '../helpers/selectors';
-import { yearMonthFormatDate } from '../helpers/format';
+} from '../../helpers/selectors';
+import { yearMonthFormatDate } from '../../helpers/format';
 import type {
   AssumptionType,
   Category,
   Dispatch,
   State as ReduxState
-} from '../types';
+} from '../../types/index';
 import { compose } from 'redux';
 
 type Props = {
@@ -154,7 +154,7 @@ class AddAssumption extends React.Component<Props, State> {
   };
 
   resetAddAssumptionForm = () => {
-    const { resetDraggedAssumptionTypes, resetDraggedCategories } = this.state;
+    const { resetDraggedAssumptionTypes, resetDraggedCategories } = this.props;
     this.setState(this.initialState());
     resetDraggedAssumptionTypes();
     resetDraggedCategories();

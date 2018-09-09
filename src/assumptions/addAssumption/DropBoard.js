@@ -3,10 +3,10 @@
 import * as React from 'react';
 import { DropTarget } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
-import CardList from '../components/commons/CardList';
+import CardList from '../../components/commons/CardList';
 import { Grid, TextField } from 'material-ui';
-import DatePicker from '../components/commons/DatePicker';
-import type { Category } from '../types';
+import DatePicker from '../../components/commons/DatePicker';
+import type { Category } from '../../types/index';
 
 type Props = {
   handleCategoryChange: () => void,
