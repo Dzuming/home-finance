@@ -11,8 +11,8 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
     }
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${getAuthToken()}`,
-      },
+        Authorization: `Bearer ${getAuthToken()}`
+      }
     })
       .then(response => response.json())
       .then(response => {
@@ -30,9 +30,9 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
         Accept: '*',
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${getAuthToken()}`,
+        Authorization: `Bearer ${getAuthToken()}`
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     })
       .then(response => response.json())
       .then(response => {
@@ -50,8 +50,8 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
         Accept: '*',
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${getAuthToken()}`,
-      },
+        Authorization: `Bearer ${getAuthToken()}`
+      }
     })
       .then(response => response.json())
       .then(response => {
@@ -69,9 +69,9 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
         Accept: '*',
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${getAuthToken()}`,
+        Authorization: `Bearer ${getAuthToken()}`
       },
-      body: JSON.stringify(items),
+      body: JSON.stringify(items)
     })
       .then(response => response.json())
       .then(response => {
@@ -80,10 +80,10 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
             data: {
               ...items,
               category: getState().financeFlow.categories.find(
-                category => items.categoryId === category.id,
-              ),
-            },
-          }),
+                category => items.categoryId === category.id
+              )
+            }
+          })
         );
       })
       .then(() => {

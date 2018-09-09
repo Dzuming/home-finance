@@ -7,7 +7,7 @@ import {
 } from '../helpers/Mappers';
 import { createAction } from 'redux-actions';
 
-export const fetchCategories = createAction(types.API_REQUEST_GET, () => ({
+export const fetchCategories = createAction(types.API_REQUEST_GET, () =>  ({
   url: `${env.api_url}/api/categories`,
   success: setCategories,
 }));

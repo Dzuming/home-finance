@@ -46,8 +46,8 @@ type State = {
 };
 
 type DispatchProps = {
-  fetchAssumptionTypes: () => void,
-  fetchCategories: () => void,
+  assumptionTypesFetch: () => void,
+  categoriesFetch: () => void,
   resetDraggedAssumptionTypes: () => void,
   resetDraggedCategories: () => void,
   createAssumption: ({
@@ -156,8 +156,8 @@ class AddAssumption extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    this.props.fetchAssumptionTypes();
-    this.props.fetchCategories();
+    this.props.assumptionTypesFetch();
+    this.props.categoriesFetch();
   }
 
   componentWillUnmount() {
@@ -233,8 +233,8 @@ const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  fetchAssumptionTypes: (): void => dispatch(fetchAssumptionTypes),
-  fetchCategories: (): void => dispatch(fetchCategories),
+  assumptionTypesFetch: (): void => dispatch(fetchAssumptionTypes()),
+  categoriesFetch: (): void => dispatch(fetchCategories()),
   resetDraggedAssumptionTypes: (): void =>
     dispatch(resetDraggedAssumptionTypes),
   resetDraggedCategories: (): void => dispatch(resetDraggedCategories),

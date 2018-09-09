@@ -1,35 +1,43 @@
-import React, { Component } from 'react';
+// @flow
+
+import * as React from 'react';
 import { DropTarget } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 import CardList from '../components/commons/CardList';
 import { Grid, TextField } from 'material-ui';
 import DatePicker from '../components/commons/DatePicker';
+import type { Category } from '../types';
 
-class DropBoard extends Component {
-  componentDidUpdate(prevProps) {
+type Props = {
+  handleCategoryChange: () => void,
+  reduceAssumptionTypes: () => void,
+  reduceCategories: () => void,
+  categories: Category[]
+};
+
+class DropBoard extends React.Component<Props> {
+  componentDidUpdate(prevProps: Props) {
     const {
-      handleAssumptionTypeChange,
       handleCategoryChange,
       reduceAssumptionTypes,
       reduceCategories,
-      categories,
+      categories
     } = this.props;
     if (prevProps.isDropped) {
       return {
-        assumptionType: () => {
+        assumptionType: () =>  {
           this.props.handleAssumptionTypeChange(
             [prevProps.item.type],
             prevProps.item,
-            () => reduceAssumptionTypes(prevProps.item),
+            () => reduceAssumptionTypes(prevProps.item)
           );
         },
         category: () => {
           const newCategories = [...categories, prevProps.item];
-          console.log(newCategories)
           handleCategoryChange(newCategories, () =>
-            reduceCategories(newCategories),
+            reduceCategories(newCategories)
           );
-        },
+        }
       }[prevProps.item.type]();
     }
   }
@@ -41,7 +49,7 @@ class DropBoard extends Component {
       categories,
       period,
       percentage,
-      handleChange,
+      handleChange
     } = this.props;
     return connectDropTarget(
       <div style={{ marginTop: '10px' }}>
@@ -67,18 +75,18 @@ class DropBoard extends Component {
               onChange={handleChange('percentage')}
               type="number"
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
           </CardList>
           <CardList name={assumptionType.name} gridSize={3} />
           <CardList gridSize={3}>
-            {categories.map(category => (
+            {categories.map((category: Category) => (
               <div key={category.id}>{category.name}</div>
             ))}
           </CardList>
         </Grid>
-      </div>,
+      </div>
     );
   }
 }
@@ -86,7 +94,7 @@ class DropBoard extends Component {
 const boxTarget = {
   drop() {
     return { name: 'BOARD' };
-  },
+  }
 };
 
 const collect = (connect, monitor) => ({
@@ -95,7 +103,7 @@ const collect = (connect, monitor) => ({
   isDropped: monitor.didDrop(),
   getDropResult: monitor.getDropResult(),
   isOver: monitor.isOver(),
-  canDrop: monitor.canDrop(),
+  canDrop: monitor.canDrop()
 });
 
 export default DropTarget(BOARD, boxTarget, collect)(DropBoard);
