@@ -20,7 +20,7 @@ type Props = {
   assumptionType: AssumptionType
 } & DndProps;
 
-const DragAssumptionTypes = ({
+const DraggedAssumptions = ({
   connectDragSource,
   isDragging,
   assumptionType
@@ -65,4 +65,4 @@ function collect(
 }
 
 export default (DragSource(BOARD, cardSource, collect): DragSource<{},
-  DndProps>)(DragAssumptionTypes);
+  DndProps>)(DraggedAssumptions);

@@ -5,7 +5,7 @@ const getSpending = state => state.financeFlow.spending;
 const getMonthlyAssumption = state => state.assumptions.monthly;
 const getOverallAssumption = state => state.assumptions.overall;
 const getDraggedAssumptionTypes = state =>
-  state.assumptions.draggedTypes || state.assumptions.types;
+  state.draggedAssumptions.types || state.assumptions.types;
 const getCategories = state => state.financeFlow.categories;
 const getDraggedCategories = state =>
   state.financeFlow.draggedCategories || state.financeFlow.categories;

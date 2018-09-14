@@ -3,10 +3,12 @@
 import * as React from 'react';
 import {
   fetchAssumptionTypes,
-  resetDraggedAssumptionTypes,
-  createAssumption,
-  reduceAssumptionTypes
+  createAssumption
 } from '../../actions/assumptionActions';
+import {
+  resetDraggedAssumptionTypes,
+  reduceAssumptionTypes
+} from '../../actions/draggedAssumptionTypes';
 import {
   resetDraggedCategories,
   fetchCategories,
@@ -17,7 +19,7 @@ import { Button, Grid } from 'material-ui';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import DropBoard from './DropBoard';
-import DragAssumptionTypes from './DragAssumptionTypes';
+import DragAssumptionTypes from './DraggedAssumptions';
 import DragCategories from './DragCategories';
 import {
   makeGetDraggedAssumptionTypes,

@@ -8,6 +8,7 @@ import budget from './budgetReducer';
 import revenue from './revenueReducer';
 import period from './periodReducer';
 import assumptions from './assumptionReducer';
+import draggedAssumptions from './draggedAssumptionsReducer';
 
 const rootReducer = combineReducers({
   nav,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   revenue,
   period,
   assumptions,
+  draggedAssumptions
 });
 
 export default rootReducer;

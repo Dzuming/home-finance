@@ -9,7 +9,7 @@ export default handleActions(
       Object.assign({}, state, {
         monthly: [...action.payload],
       }),
-    [types.OVERALL_ASSUMPTIONS_CRUD.READ]: (state, action) =>
+    [types.OVERALL_ASSUMPTIONS_CRUD.READ]: (state, action)  =>
       Object.assign({}, state, {
         overall: [...action.payload],
       }),
@@ -21,18 +21,6 @@ export default handleActions(
     [types.ASSUMPTION_TYPES_DRAG.READ]: (state, action) => {
       return Object.assign({}, state, {
         types: [...action.payload],
-      });
-    },
-    [types.ASSUMPTION_TYPES_DRAG.REDUCE]: (state, action) => {
-      return Object.assign({}, state, {
-        draggedTypes: state.types.filter(
-          type => type.name !== action.payload.type.name,
-        ),
-      });
-    },
-    [types.ASSUMPTION_TYPES_DRAG.RESET]: state => {
-      return Object.assign({}, state, {
-        draggedTypes: state.types,
       });
     },
   },

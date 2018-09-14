@@ -4,9 +4,7 @@ import {
   setAssumption,
   setOverallAssumptions,
   addAssumption,
-  setAssumptionTypes,
-  reduceAssumptionTypes,
-  resetDraggedAssumptionTypes,
+  setAssumptionTypes
 } from '../actions/assumptionActions';
 
 const initialState = deepFreeze(reducer({ monthly: [] }, { type: 'INIT' }));
@@ -52,21 +50,6 @@ const overallAssumptions = [
   },
 ];
 
-const draggedTypes = deepFreeze([
-  {
-    id: 1,
-    name: 'rachunki',
-  },
-  {
-    id: 2,
-    name: 'jedzenie',
-  },
-]);
-
-const assumptionTypesState = deepFreeze({
-  types: draggedTypes,
-});
-
 describe('assumption reducer', () => {
   it('should handle unknown actions', () => {
     expect(reducer(initialState, { type: 'FAKE' })).toBe(initialState);
@@ -95,21 +78,6 @@ describe('assumption reducer', () => {
       expect(
         reducer(initialState, setAssumptionTypes('2018-05')),
       ).toMatchSnapshot();
-    });
-  });
-
-  describe(' dragged elements', () => {
-    it('should reduce assumption types', () => {
-      expect(
-        reducer(assumptionTypesState, reduceAssumptionTypes(draggedTypes[0]))
-          .draggedTypes,
-      ).toEqual([draggedTypes[1]]);
-    });
-    it('should reset assumption types', () => {
-      expect(
-        reducer(assumptionTypesState, resetDraggedAssumptionTypes())
-          .draggedTypes,
-      ).toEqual(draggedTypes);
     });
   });
 });
