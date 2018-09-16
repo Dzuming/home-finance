@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddAssumption  /> should match snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiGrid-typeContainer-1"
+  >
+    <div
+      className="MuiGrid-typeContainer-1 MuiGrid-typeItem-2 MuiGrid-align-items-xs-center-9 MuiGrid-grid-xs-12-38"
+    >
+      <div>
+        Assumption type:
+      </div>
+    </div>
+    <div
+      className="MuiGrid-typeContainer-1 MuiGrid-typeItem-2 MuiGrid-align-items-xs-center-9 MuiGrid-grid-xs-12-38"
+    >
+      <div>
+        Categories:
+      </div>
+    </div>
+    <div
+      className="MuiGrid-typeItem-2 MuiGrid-grid-xs-12-38"
+    >
+      <div
+        style={
+          Object {
+            "marginTop": "10px",
+          }
+        }
+      >
+        <div
+          className="MuiGrid-typeContainer-1"
+        >
+          <div
+            className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+          >
+            <div
+              className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
+            >
+              <div
+                className="MuiCardContent-root-119"
+              >
+                <aside
+                  className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
+                >
+                  Date
+                </aside>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+          >
+            <div
+              className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
+            >
+              <div
+                className="MuiCardContent-root-119"
+              >
+                <aside
+                  className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
+                >
+                  percentage
+                </aside>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+          >
+            <div
+              className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
+            >
+              <div
+                className="MuiCardContent-root-119"
+              >
+                <aside
+                  className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
+                >
+                  AssumptionType
+                </aside>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+          >
+            <div
+              className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
+            >
+              <div
+                className="MuiCardContent-root-119"
+              >
+                <aside
+                  className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
+                >
+                  Category
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiGrid-typeContainer-1"
+        >
+          <div
+            className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+          >
+            <div
+              className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
+            >
+              <div
+                className="MuiCardContent-root-119"
+              >
+                <aside
+                  className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
+                >
+                   
+                  <div
+                    aria-describedby={undefined}
+                    className="MuiFormControl-root-144 MuiFormControl-fullWidth-147"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                  >
+                    <div
+                      className="MuiInput-root-148 MuiInput-fullWidth-156 MuiInput-formControl-149 MuiInput-inkbar-150 MuiInput-underline-154"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                    >
+                      <input
+                        aria-invalid={false}
+                        aria-required={false}
+                        autoComplete={undefined}
+                        autoFocus={undefined}
+                        className="MuiInput-input-157 MuiInput-inputSingleline-160"
+                        defaultValue={undefined}
+                        disabled={false}
+                        id="month"
+                        name={undefined}
+                        onChange={[Function]}
+                        onKeyDown={undefined}
+                        onKeyUp={undefined}
+                        placeholder={undefined}
+                        readOnly={undefined}
+                        required={undefined}
+                        rows={undefined}
+                        type="month"
+                        value="2018-09"
+                      />
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+          >
+            <div
+              className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
+            >
+              <div
+                className="MuiCardContent-root-119"
+              >
+                <aside
+                  className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
+                >
+                  <div
+                    aria-describedby={undefined}
+                    className="MuiFormControl-root-144"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                  >
+                    <div
+                      className="MuiInput-root-148 MuiInput-formControl-149 MuiInput-inkbar-150 MuiInput-underline-154"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                    >
+                      <input
+                        aria-invalid={false}
+                        aria-required={false}
+                        autoComplete={undefined}
+                        autoFocus={undefined}
+                        className="MuiInput-input-157 MuiInput-inputSingleline-160"
+                        defaultValue={undefined}
+                        disabled={false}
+                        id="number"
+                        name={undefined}
+                        onChange={[Function]}
+                        onKeyDown={undefined}
+                        onKeyUp={undefined}
+                        placeholder={undefined}
+                        readOnly={undefined}
+                        required={undefined}
+                        rows={undefined}
+                        type="number"
+                        value={0}
+                      />
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+          >
+            <div
+              className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
+            >
+              <div
+                className="MuiCardContent-root-119"
+              >
+                <aside
+                  className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
+                >
+                  
+                </aside>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-typeItem-2 MuiGrid-grid-xs-3-29"
+          >
+            <div
+              className="MuiPaper-root-92 CardList-card-91 MuiPaper-shadow2-96 MuiPaper-rounded-93"
+            >
+              <div
+                className="MuiCardContent-root-119"
+              >
+                <aside
+                  className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    className="MuiButtonBase-root-177 MuiButton-root-163 MuiButton-fullWidth-176"
+    disabled={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    tabIndex={0}
+    type="submit"
+  >
+    <span
+      className="MuiButton-label-165"
+    >
+      Add assumption
+    </span>
+    <span
+      className="MuiTouchRipple-root-179"
+    />
+  </button>
+</form>
+`;
