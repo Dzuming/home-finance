@@ -7,6 +7,7 @@ import CardList from '../../components/commons/CardList';
 import { Grid, TextField } from 'material-ui';
 import DatePicker from '../../components/commons/DatePicker';
 import type { Category } from '../../types/index';
+import DeleteIcon from 'material-ui-icons/Delete';
 
 type Props = {
   handleCategoryChange: () => void,
@@ -25,7 +26,7 @@ class DropBoard extends React.Component<Props> {
     } = this.props;
     if (prevProps.isDropped) {
       return {
-        assumptionType: () =>  {
+        assumptionType: () => {
           this.props.handleAssumptionTypeChange(
             [prevProps.item.type],
             prevProps.item,
@@ -79,7 +80,14 @@ class DropBoard extends React.Component<Props> {
               }}
             />
           </CardList>
-          <CardList name={assumptionType.name} gridSize={3} />
+          <CardList gridSize={3}>
+            {assumptionType.name && (
+              <div>
+                {assumptionType.name}
+                <DeleteIcon style={{ float: 'right', cursor: 'pointer' }} />
+              </div>
+            )}
+          </CardList>
           <CardList gridSize={3}>
             {categories.map((category: Category) => (
               <div key={category.id}>{category.name}</div>
