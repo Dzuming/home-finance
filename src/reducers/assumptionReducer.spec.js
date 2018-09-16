@@ -4,7 +4,7 @@ import {
   setAssumption,
   setOverallAssumptions,
   addAssumption,
-  setAssumptionTypes, selectAssumptionTypes, resetSelectedAssumptionTypes
+  setAssumptionTypes, selectAssumptionTypes, resetSelectedAssumptionTypes, removeSelectedAssumptionType
 } from '../actions/assumptionActions';
 
 const initialState = deepFreeze(reducer({ monthly: [] }, { type: 'INIT' }));
@@ -50,7 +50,7 @@ const overallAssumptions = [
   },
 ];
 
-const draggedTypes = deepFreeze([
+const types = deepFreeze([
   {
     id: 1,
     name: 'rachunki'
@@ -62,7 +62,8 @@ const draggedTypes = deepFreeze([
 ]);
 
 const assumptionTypesState = deepFreeze({
-  types: draggedTypes
+  types: types,
+  selectedTypes: types
 });
 
 describe('assumption reducer', () => {
@@ -97,15 +98,19 @@ describe('assumption reducer', () => {
   });
 
   describe(' dragged assumption types', () => {
-    it('should reduce assumption types', () => {
+    it('should select assumption types', () => {
       expect(
-        reducer(assumptionTypesState, selectAssumptionTypes(draggedTypes[0])).selectedTypes
-      ).toEqual([draggedTypes[0]]);
+        reducer(assumptionTypesState, selectAssumptionTypes(types[0])).selectedTypes
+      ).toEqual([types[0]]);
     });
     it('should reset assumption types', () => {
+      expect(reducer(assumptionTypesState, resetSelectedAssumptionTypes()).types).toEqual(types);
+    });
+    it('should remove assumption types', () => {
+      const assumptionId = 1;
       expect(
-        reducer(assumptionTypesState, resetSelectedAssumptionTypes()).types
-      ).toEqual(draggedTypes);
+        reducer(assumptionTypesState, removeSelectedAssumptionType(assumptionId)).selectedTypes
+      ).toEqual([types[1]]);
     });
   });
 });
