@@ -17,7 +17,7 @@ import { Button, Grid } from 'material-ui';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import DropBoard from './DropBoard';
-import DragAssumptionTypes from './DraggedAssumptions';
+import DragAssumptionTypes from './SelectedAssumption';
 import DragCategories from './DragCategories';
 import {
   makeGetNotSelectedAssumptionTypes,
