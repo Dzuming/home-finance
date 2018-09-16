@@ -23,7 +23,7 @@ export default handleActions(
         types: [...action.payload],
       });
     },
-    [types.ASSUMPTION_TYPES_DRAG.REDUCE]: (state, action) =>  {
+    [types.ASSUMPTION_TYPES_DRAG.SELECT]: (state, action) =>  {
       return Object.assign({}, state, {
         selectedTypes: state.types.filter(
           type => type.name === action.payload.type.name,

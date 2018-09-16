@@ -99,7 +99,7 @@ export default handleActions(
       Object.assign({}, state, { isAuthenticated: true }),
     [types.SET_DATE]: (state, action) =>
       Object.assign({}, state, { selectedDate: action.date }),
-    [types.CATEGORIES_DRAG.REDUCE]: (state, action) => {
+    [types.CATEGORIES_DRAG.SELECT]: (state, action) => {
       return Object.assign({}, state, {
         draggedCategories: state.categories.filter(function(category) {
           return this.indexOf(category.id) < 0;

@@ -59,7 +59,7 @@ export const addAssumption = createAction(
 );
 
 export const selectAssumptionTypes = createAction(
-  types.ASSUMPTION_TYPES_DRAG.REDUCE,
+  types.ASSUMPTION_TYPES_DRAG.SELECT,
   type =>  ({
     type,
   }),

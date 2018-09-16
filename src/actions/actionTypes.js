@@ -13,7 +13,7 @@ const crudActionType = type => ({
 
 const draggedElements = type => ({
   READ: `READ_${type}`,
-  REDUCE: `REDUCE_${type}`,
+  SELECT: `SELECT${type}`,
   RESET: `RESET_${type}`,
 });
 
