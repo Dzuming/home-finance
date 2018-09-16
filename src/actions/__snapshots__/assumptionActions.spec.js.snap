@@ -60,3 +60,18 @@ Object {
   "type": "READ_OVERALL_ASSUMPTIONS",
 }
 `;
+
+exports[`drag actions it should create resetDraggedAssumptionType action with a snapshot 1`] = `
+Object {
+  "type": "RESET_ASSUMPTION_TYPES",
+}
+`;
+
+exports[`drag actions it should create selectAssumptionType action with a snapshot 1`] = `
+Object {
+  "payload": Object {
+    "type": undefined,
+  },
+  "type": "REDUCE_ASSUMPTION_TYPES",
+}
+`;

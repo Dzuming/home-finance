@@ -28,6 +28,7 @@ const initialState = {
     monthly: [],
     overall: [],
     types: [],
+    selectedTypes: [],
   },
 };
 export default function configureStore() {

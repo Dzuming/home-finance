@@ -3,12 +3,10 @@
 import * as React from 'react';
 import {
   fetchAssumptionTypes,
-  createAssumption
-} from '../../actions/assumptionActions';
-import {
+  createAssumption,
   resetDraggedAssumptionTypes,
-  reduceAssumptionTypes
-} from '../../actions/draggedAssumptionTypes';
+  selectAssumptionTypes
+} from '../../actions/assumptionActions';
 import {
   resetDraggedCategories,
   fetchCategories,
@@ -22,8 +20,9 @@ import DropBoard from './DropBoard';
 import DragAssumptionTypes from './DraggedAssumptions';
 import DragCategories from './DragCategories';
 import {
-  makeGetDraggedAssumptionTypes,
-  makeGetDraggedCategories
+  makeGetNotSelectedAssumptionTypes,
+  makeGetDraggedCategories,
+  makeGetAssumptionTypes
 } from '../../helpers/selectors';
 import { yearMonthFormatDate } from '../../helpers/format';
 import type {
@@ -175,11 +174,13 @@ class AddAssumption extends React.Component<Props, State> {
   render(): React.Node {
     const { assumptionType, categories, period, percentage } = this.state;
     const {
-      draggedAssumptionTypes,
+      assumptionTypes,
+      notSelectedAssumptionTypes,
       draggedCategories,
       reduceAssumptionTypes,
       reduceCategories
     } = this.props;
+    console.log({ notSelectedAssumptionTypes });
     return (
       <form onSubmit={this.handleSubmit}>
         <Grid container spacing={0}>
@@ -192,7 +193,7 @@ class AddAssumption extends React.Component<Props, State> {
             alignItems={'center'}
           >
             <div>Assumption type:</div>
-            {draggedAssumptionTypes.map(
+            {notSelectedAssumptionTypes.map(
               (assumptionType: AssumptionType): React.Node => (
                 <DragAssumptionTypes
                   key={assumptionType.id}
@@ -238,7 +239,8 @@ class AddAssumption extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
-  draggedAssumptionTypes: makeGetDraggedAssumptionTypes(state),
+  assumptionTypes: makeGetAssumptionTypes(state),
+  notSelectedAssumptionTypes: makeGetNotSelectedAssumptionTypes(state),
   draggedCategories: makeGetDraggedCategories(state)
 });
 
@@ -251,7 +253,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   createAssumption: (assumption: Assumption): void =>
     dispatch(createAssumption(assumption)),
   reduceCategories: (category): void => dispatch(reduceCategories(category)),
-  reduceAssumptionTypes: (assumptionType): void => dispatch(reduceAssumptionTypes(assumptionType))
+  reduceAssumptionTypes: (assumptionType): void =>
+    dispatch(selectAssumptionTypes(assumptionType))
 });
 
 export default compose(
