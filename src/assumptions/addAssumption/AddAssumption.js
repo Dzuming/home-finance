@@ -180,7 +180,6 @@ class AddAssumption extends React.Component<Props, State> {
       reduceAssumptionTypes,
       reduceCategories
     } = this.props;
-    console.log({ notSelectedAssumptionTypes });
     return (
       <form onSubmit={this.handleSubmit}>
         <Grid container spacing={0}>

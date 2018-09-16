@@ -41,7 +41,6 @@ export const makeGetNotSelectedAssumptionTypes = createSelector(
   (assumptionTypes, selectedAssumptionTypes) =>
     assumptionTypes
       .map(assumptionType => {
-        console.log(assumptionType)
         if (
           selectedAssumptionTypes.find(
             selectedAssumptionType =>
