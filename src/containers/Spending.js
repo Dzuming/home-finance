@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
 import * as budgetActions from '../actions/budgetActions';
-import { makeGetCategories, makeGetSpending } from '../helpers/selectors';
+import {  makeGetSpending } from '../selectors/spendings';
+import { makeGetCategories } from '../selectors/categories';
 
 class Spending extends Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { setStatusColor } from '../../helpers/Status';
 import { Card, CardContent, Grid, Typography, withStyles } from 'material-ui';
-import { makeGetMonthlyAssumption } from '../../helpers/selectors';
+import { makeGetMonthlyAssumption } from '../../selectors/assumptions';
 import { yearMonthFormatDate } from '../../helpers/format';
 import { bindActionCreators, compose } from 'redux';
 import * as assumptionActions from '../../actions/assumptionActions';

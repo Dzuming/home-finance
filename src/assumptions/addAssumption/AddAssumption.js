@@ -21,9 +21,9 @@ import DragAssumptionTypes from './DraggedAssumptions';
 import DragCategories from './DragCategories';
 import {
   makeGetNotSelectedAssumptionTypes,
-  makeGetDraggedCategories,
   makeGetAssumptionTypes
-} from '../../helpers/selectors';
+} from '../../selectors/assumptions';
+import { makeGetDraggedCategories } from '../../selectors/categories';
 import { yearMonthFormatDate } from '../../helpers/format';
 import type {
   AssumptionType,

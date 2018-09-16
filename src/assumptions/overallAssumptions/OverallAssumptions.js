@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import {
-  makeGetMonthlyAssumption,
-  makeGetOverallAssumption,
-} from '../../helpers/selectors';
+import { makeGetOverallAssumption } from '../../selectors/assumptions';
 import * as assumptionActions from '../../actions/assumptionActions';
 import { connect } from 'react-redux';
 import { Card, CardContent, Grid, Typography } from 'material-ui';
@@ -36,17 +33,17 @@ class OverallAssumptions extends Component {
 
 OverallAssumptions.propTypes = {
   actions: PropTypes.shape({
-    fetchOverallAssumptions: PropTypes.Func,
+    fetchOverallAssumptions: PropTypes.Func
   }),
-  overallAssumptions: PropTypes.array.isRequired,
+  overallAssumptions: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  overallAssumptions: makeGetOverallAssumption(state),
+  overallAssumptions: makeGetOverallAssumption(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(assumptionActions, dispatch),
+  actions: bindActionCreators(assumptionActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OverallAssumptions);
