@@ -1,20 +1,21 @@
 const asyncActionType = type => ({
   PENDING: `${type}_PENDING`,
   SUCCESS: `${type}_SUCCESS`,
-  ERROR: `${type}_ERROR`,
+  ERROR: `${type}_ERROR`
 });
 
 const crudActionType = type => ({
   CREATE: `CREATE_${type}`,
   READ: `READ_${type}`,
   UPDATE: `UPDATE_${type}`,
-  DELETE: `DELETE_${type}`,
+  DELETE: `DELETE_${type}`
 });
 
 const draggedElements = type => ({
   READ: `READ_${type}`,
   SELECT: `SELECT${type}`,
   RESET: `RESET_${type}`,
+  REMOVE: `REMOVE_${type}`
 });
 
 export const OPEN_SIDENAV = 'OPEN_SIDENAV';

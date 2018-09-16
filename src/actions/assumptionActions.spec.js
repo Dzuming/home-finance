@@ -61,7 +61,10 @@ describe('drag actions', () => {
     expect(actions.selectAssumptionTypes()).toMatchSnapshot();
   });
 
-  it('it should create resetDraggedAssumptionType action with a snapshot', () => {
+  it('it should create resetSelectedAssumptionType action with a snapshot', () => {
     expect(actions.resetSelectedAssumptionTypes()).toMatchSnapshot();
+  });
+  it('it should create removeSelectedAssumptionType action with a snapshot', () => {
+    expect(actions.removeAssumptionType()).toMatchSnapshot();
   });
 });

@@ -68,3 +68,10 @@ export const selectAssumptionTypes = createAction(
 export const resetSelectedAssumptionTypes = createAction(
   types.ASSUMPTION_TYPES_DRAG.RESET,
 );
+
+export const removeAssumptionType = createAction(
+  types.ASSUMPTION_TYPES_DRAG.REMOVE,
+  assumptionId => ({
+    assumptionId,
+  }),
+);
