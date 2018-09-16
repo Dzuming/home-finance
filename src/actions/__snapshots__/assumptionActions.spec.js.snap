@@ -72,6 +72,6 @@ Object {
   "payload": Object {
     "type": undefined,
   },
-  "type": "REDUCE_ASSUMPTION_TYPES",
+  "type": "SELECTASSUMPTION_TYPES",
 }
 `;

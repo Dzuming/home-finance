@@ -4,7 +4,7 @@ import * as React from 'react';
 import {
   fetchAssumptionTypes,
   createAssumption,
-  resetDraggedAssumptionTypes,
+  resetSelectedAssumptionTypes,
   selectAssumptionTypes
 } from '../../actions/assumptionActions';
 import {
@@ -55,7 +55,7 @@ type State = {
 type DispatchProps = {
   assumptionTypesFetch: () => void,
   categoriesFetch: () => void,
-  resetDraggedAssumptionTypes: () => void,
+  selectedAssumptionTypesReset: () => void,
   resetDraggedCategories: () => void,
   createAssumption: ({
     userId: string,
@@ -155,9 +155,9 @@ class AddAssumption extends React.Component<Props, State> {
   };
 
   resetAddAssumptionForm = () => {
-    const { resetDraggedAssumptionTypes, resetDraggedCategories } = this.props;
+    const { selectedAssumptionTypesReset, resetDraggedCategories } = this.props;
     this.setState(this.initialState());
-    resetDraggedAssumptionTypes();
+    selectedAssumptionTypesReset();
     resetDraggedCategories();
   };
 
@@ -246,8 +246,8 @@ const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   assumptionTypesFetch: (): void => dispatch(fetchAssumptionTypes()),
   categoriesFetch: (): void => dispatch(fetchCategories()),
-  resetDraggedAssumptionTypes: (): void =>
-    dispatch(resetDraggedAssumptionTypes()),
+  selectedAssumptionTypesReset: (): void =>
+    dispatch(resetSelectedAssumptionTypes()),
   resetDraggedCategories: (): void => dispatch(resetDraggedCategories()),
   createAssumption: (assumption: Assumption): void =>
     dispatch(createAssumption(assumption)),
