@@ -4,7 +4,7 @@ import * as React from 'react';
 import { DropTarget } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 import CardList from '../../components/commons/CardList';
-import { Grid, TextField } from 'material-ui';
+import { Grid, TextField} from 'material-ui';
 import DatePicker from '../../components/commons/DatePicker';
 import type { Category } from '../../types/index';
 import DeleteIcon from 'material-ui-icons/Delete';
@@ -84,7 +84,7 @@ class DropBoard extends React.Component<Props> {
             {assumptionType.name && (
               <div>
                 {assumptionType.name}
-                <DeleteIcon style={{ float: 'right', cursor: 'pointer' }} />
+                <DeleteIcon style={{ float: 'right', cursor: 'pointer', color: '#757575' }} />
               </div>
             )}
           </CardList>
