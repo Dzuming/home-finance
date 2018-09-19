@@ -67,7 +67,7 @@ type DispatchProps = {
     period: string
   }) => void,
   reduceCategories: () => void,
-  reduceAssumptionTypes: () => void
+  selectAssumptionTypes: () => void
 };
 
 class AddAssumption extends React.Component<Props, State> {
@@ -177,7 +177,7 @@ class AddAssumption extends React.Component<Props, State> {
     const {
       notSelectedAssumptionTypes,
       draggedCategories,
-      reduceAssumptionTypes,
+      selectAssumptionTypes,
       reduceCategories,
       handleSelectedAssumptionTypeRemove
     } = this.props;
@@ -225,7 +225,7 @@ class AddAssumption extends React.Component<Props, State> {
               date={period}
               handleAssumptionTypeChange={this.handleAssumptionTypeChange}
               handleCategoryChange={this.handleCategoryChange}
-              reduceAssumptionTypes={reduceAssumptionTypes}
+              selectAssumptionTypes={selectAssumptionTypes}
               reduceCategories={reduceCategories}
               handleSelectedAssumptionTypeRemove={this.handleSelectedAssumptionTypeRemove}
             />
@@ -255,7 +255,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   createAssumption: (assumption: Assumption): void =>
     dispatch(createAssumption(assumption)),
   reduceCategories: (category): void => dispatch(reduceCategories(category)),
-  reduceAssumptionTypes: (assumptionType): void =>
+  selectAssumptionTypes: (assumptionType): void =>
     dispatch(selectAssumptionTypes(assumptionType)),
   selectedAssumptionTypeRemove: (assumptionId): void =>
     dispatch(removeSelectedAssumptionType(assumptionId))
