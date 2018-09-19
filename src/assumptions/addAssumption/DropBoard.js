@@ -4,7 +4,7 @@ import * as React from 'react';
 import { DropTarget } from 'react-dnd';
 import { BOARD } from './DragAndDropTypes';
 import CardList from '../../components/commons/CardList';
-import { Grid, TextField} from 'material-ui';
+import { Grid, TextField } from 'material-ui';
 import DatePicker from '../../components/commons/DatePicker';
 import type { Category } from '../../types/index';
 import DeleteIcon from 'material-ui-icons/Delete';
@@ -46,11 +46,12 @@ class DropBoard extends React.Component<Props> {
   render() {
     const {
       connectDropTarget,
-      assumptionType,
+      selectedAssumptionTypes,
       categories,
       period,
       percentage,
-      handleChange
+      handleChange,
+      handleSelectedAssumptionTypeRemove
     } = this.props;
     return connectDropTarget(
       <div style={{ marginTop: '10px' }}>
@@ -81,12 +82,21 @@ class DropBoard extends React.Component<Props> {
             />
           </CardList>
           <CardList gridSize={3}>
-            {assumptionType.name && (
-              <div>
+            {selectedAssumptionTypes.map(assumptionType => (
+              <div key={assumptionType.id}>
                 {assumptionType.name}
-                <DeleteIcon style={{ float: 'right', cursor: 'pointer', color: '#757575' }} />
+                <DeleteIcon
+                  onClick={handleSelectedAssumptionTypeRemove(
+                    assumptionType.id
+                  )}
+                  style={{
+                    float: 'right',
+                    cursor: 'pointer',
+                    color: '#757575'
+                  }}
+                />
               </div>
-            )}
+            ))}
           </CardList>
           <CardList gridSize={3}>
             {categories.map((category: Category) => (

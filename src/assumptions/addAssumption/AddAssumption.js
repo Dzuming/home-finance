@@ -5,7 +5,8 @@ import {
   fetchAssumptionTypes,
   createAssumption,
   resetSelectedAssumptionTypes,
-  selectAssumptionTypes
+  selectAssumptionTypes,
+  removeSelectedAssumptionType
 } from '../../actions/assumptionActions';
 import {
   resetDraggedCategories,
@@ -76,10 +77,6 @@ class AddAssumption extends React.Component<Props, State> {
   }
 
   initialState = (): State => ({
-    assumptionType: {
-      id: '',
-      name: ''
-    },
     categories: [],
     isInitialValue: false,
     percentage: 0,
@@ -89,7 +86,6 @@ class AddAssumption extends React.Component<Props, State> {
   handleSubmit = async (event: Event) => {
     event.preventDefault();
     const {
-      assumptionType,
       categories,
       percentage,
       isInitialValue,
@@ -154,6 +150,10 @@ class AddAssumption extends React.Component<Props, State> {
     });
   };
 
+  handleSelectedAssumptionTypeRemove = (assumptionId) => () => {
+    const { selectedAssumptionTypeRemove } = this.props;
+    selectedAssumptionTypeRemove(assumptionId);
+  };
   resetAddAssumptionForm = () => {
     const { selectedAssumptionTypesReset, resetDraggedCategories } = this.props;
     this.setState(this.initialState());
@@ -172,13 +172,14 @@ class AddAssumption extends React.Component<Props, State> {
   }
 
   render(): React.Node {
-    const { assumptionType, categories, period, percentage } = this.state;
+    const { categories, period, percentage } = this.state;
+    const { selectedAssumptionTypes } = this.props;
     const {
-      assumptionTypes,
       notSelectedAssumptionTypes,
       draggedCategories,
       reduceAssumptionTypes,
-      reduceCategories
+      reduceCategories,
+      handleSelectedAssumptionTypeRemove
     } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
@@ -216,7 +217,7 @@ class AddAssumption extends React.Component<Props, State> {
           </Grid>
           <Grid item xs={12}>
             <DropBoard
-              assumptionType={assumptionType}
+              selectedAssumptionTypes={selectedAssumptionTypes}
               period={period}
               percentage={percentage}
               handleChange={this.handleChange}
@@ -226,6 +227,7 @@ class AddAssumption extends React.Component<Props, State> {
               handleCategoryChange={this.handleCategoryChange}
               reduceAssumptionTypes={reduceAssumptionTypes}
               reduceCategories={reduceCategories}
+              handleSelectedAssumptionTypeRemove={this.handleSelectedAssumptionTypeRemove}
             />
           </Grid>
         </Grid>
@@ -239,6 +241,7 @@ class AddAssumption extends React.Component<Props, State> {
 
 const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
   assumptionTypes: makeGetAssumptionTypes(state),
+  selectedAssumptionTypes: state.assumptions.selectedTypes,
   notSelectedAssumptionTypes: makeGetNotSelectedAssumptionTypes(state),
   draggedCategories: makeGetDraggedCategories(state)
 });
@@ -253,7 +256,9 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     dispatch(createAssumption(assumption)),
   reduceCategories: (category): void => dispatch(reduceCategories(category)),
   reduceAssumptionTypes: (assumptionType): void =>
-    dispatch(selectAssumptionTypes(assumptionType))
+    dispatch(selectAssumptionTypes(assumptionType)),
+  selectedAssumptionTypeRemove: (assumptionId): void =>
+    dispatch(removeSelectedAssumptionType(assumptionId))
 });
 
 export default compose(

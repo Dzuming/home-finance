@@ -218,9 +218,7 @@ exports[`<AddAssumption  /> should match snapshot 1`] = `
               >
                 <aside
                   className="MuiTypography-root-120 MuiTypography-body2-128 MuiTypography-colorInherit-139 MuiTypography-alignCenter-133"
-                >
-                  
-                </aside>
+                />
               </div>
             </div>
           </div>
