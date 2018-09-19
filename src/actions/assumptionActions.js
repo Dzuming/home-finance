@@ -42,7 +42,7 @@ export const setOverallAssumptions = createAction(
 );
 
 export const setAssumptionTypes = createAction(
-  types.ASSUMPTION_TYPES_DRAG.READ,
+  types.ASSUMPTION_TYPES.READ,
 );
 
 export const createAssumption = createAction(types.API_REQUEST_POST, data => ({
@@ -59,18 +59,18 @@ export const addAssumption = createAction(
 );
 
 export const selectAssumptionTypes = createAction(
-  types.ASSUMPTION_TYPES_DRAG.SELECT,
+  types.ASSUMPTION_TYPES.SELECT,
   type =>  ({
     type,
   }),
 );
 
 export const resetSelectedAssumptionTypes = createAction(
-  types.ASSUMPTION_TYPES_DRAG.RESET,
+  types.ASSUMPTION_TYPES.RESET,
 );
 
 export const removeSelectedAssumptionType = createAction(
-  types.ASSUMPTION_TYPES_DRAG.REMOVE,
+  types.ASSUMPTION_TYPES.REMOVE,
   assumptionId => ({
     assumptionId,
   }),

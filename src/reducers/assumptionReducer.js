@@ -18,24 +18,24 @@ export default handleActions(
         monthly: state.monthly.concat({ ...action.payload })
       });
     },
-    [types.ASSUMPTION_TYPES_DRAG.READ]: (state, action) => {
+    [types.ASSUMPTION_TYPES.READ]: (state, action) => {
       return Object.assign({}, state, {
         types: [...action.payload]
       });
     },
-    [types.ASSUMPTION_TYPES_DRAG.SELECT]: (state, action) => {
+    [types.ASSUMPTION_TYPES.SELECT]: (state, action) => {
       return Object.assign({}, state, {
         selectedTypes: state.types.filter(
           type => type.name === action.payload.type.name
         )
       });
     },
-    [types.ASSUMPTION_TYPES_DRAG.RESET]: state => {
+    [types.ASSUMPTION_TYPES.RESET]: state => {
       return Object.assign({}, state, {
         selectedTypes: []
       });
     },
-    [types.ASSUMPTION_TYPES_DRAG.REMOVE]: (state, action) => {
+    [types.ASSUMPTION_TYPES.REMOVE]: (state, action) => {
       return Object.assign({}, state, {
         selectedTypes: state.selectedTypes.filter(
           selectedType => selectedType.id !== action.payload.assumptionId
