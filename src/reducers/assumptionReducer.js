@@ -32,7 +32,7 @@ export default handleActions(
     },
     [types.ASSUMPTION_TYPES_DRAG.RESET]: state => {
       return Object.assign({}, state, {
-        selectedTypes: state.types
+        selectedTypes: []
       });
     },
     [types.ASSUMPTION_TYPES_DRAG.REMOVE]: (state, action) => {
