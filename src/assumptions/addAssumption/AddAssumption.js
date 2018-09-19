@@ -91,14 +91,13 @@ class AddAssumption extends React.Component<Props, State> {
       isInitialValue,
       period
     } = this.state;
-    const { createAssumption } = this.props;
+    const { createAssumption, selectedAssumptionTypes } = this.props;
     if (!this.validate()) {
       return;
     }
-
     await createAssumption({
       userId: '1',
-      assumptionTypeId: assumptionType.id,
+      assumptionTypeId: selectedAssumptionTypes[0].id,
       categoryIds: categories.map((category: Category): string => category.id),
       percentage,
       isInitialValue,
