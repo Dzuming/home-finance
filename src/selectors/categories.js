@@ -1,8 +1,7 @@
 import {createSelector} from "reselect";
 
 const getCategories = state => state.category.types;
-const getDraggedCategories = state =>
-  state.category.draggedCategories || state.category.types;
+const getDraggedCategories = state => state.category.selectedTypes || state.category.types;
 
 export const makeGetCategories = createSelector(
   [getCategories],

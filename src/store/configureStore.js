@@ -8,20 +8,21 @@ import { yearMonthFormatDate } from '../helpers/format';
 
 const initialState = {
   login: {
-    isAuthenticated: !!localStorage.getItem('token'),
+    isAuthenticated: !!localStorage.getItem('token')
   },
   user: localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user'))
     : {},
   financeFlow: {
     spending: [],
-    profit: [],
+    profit: []
   },
   category: {
     types: [],
+    selectedTypes: []
   },
   api: {
-    loading: 0,
+    loading: 0
   },
   budget: 0,
   revenue: 0,
@@ -30,15 +31,15 @@ const initialState = {
     monthly: [],
     overall: [],
     types: [],
-    selectedTypes: [],
-  },
+    selectedTypes: []
+  }
 };
 export default function configureStore() {
   return createStore(
     rootReducer,
     initialState,
     composeWithDevTools(
-      applyMiddleware(thunkMiddleware, apiMiddleware, authMiddleware),
-    ),
+      applyMiddleware(thunkMiddleware, apiMiddleware, authMiddleware)
+    )
   );
 }

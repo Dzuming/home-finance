@@ -9,7 +9,7 @@ import {
   addProfit,
   removeProfit,
   editProfit,
-  reduceCategories,
+  categoryTypeSelect,
   resetDraggedCategories,
 } from '../actions/financeFlowActions';
 

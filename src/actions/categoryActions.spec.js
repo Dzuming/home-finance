@@ -6,8 +6,8 @@ describe('finance flow actions', () => {
       actions.setCategories({ id: 1, name: 'jedzenie' }),
     ).toMatchSnapshot();
   });
-  it('should create reduceCategories action with snapshot', () => {
-    expect(actions.reduceCategories()).toMatchSnapshot();
+  it('should create selectCategoryType action with snapshot', () => {
+    expect(actions.selectCategoryType()).toMatchSnapshot();
   });
 
   it('should create resetCategories action with snapshot', () => {

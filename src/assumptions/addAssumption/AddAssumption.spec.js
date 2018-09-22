@@ -12,6 +12,7 @@ const store = mockStore({
   login: { isAuthenticated: true },
   assumptions: { types: [], selectedTypes: [] },
   financeFlow: { categories: [] },
+  category: { types: [], selectedTypes: [] },
 });
 const component = create(
   <Provider store={store}>

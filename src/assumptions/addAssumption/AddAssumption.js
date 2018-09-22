@@ -11,7 +11,7 @@ import {
 import {
   resetDraggedCategories,
   fetchCategories,
-  reduceCategories
+  selectCategoryType
 } from '../../actions/categoryActions';
 import { connect } from 'react-redux';
 import { Button, Grid } from 'material-ui';
@@ -66,7 +66,7 @@ type DispatchProps = {
     isInitialValue: boolean,
     period: string
   }) => void,
-  reduceCategories: () => void,
+  categoryTypeSelect: () => void,
   selectAssumptionTypes: () => void
 };
 
@@ -175,9 +175,9 @@ class AddAssumption extends React.Component<Props, State> {
     const { selectedAssumptionTypes } = this.props;
     const {
       notSelectedAssumptionTypes,
-      draggedCategories,
+      selectedTypes,
       selectAssumptionTypes,
-      reduceCategories,
+      categoryTypeSelect,
       handleSelectedAssumptionTypeRemove
     } = this.props;
     return (
@@ -210,7 +210,7 @@ class AddAssumption extends React.Component<Props, State> {
             alignItems={'center'}
           >
             <div>Categories:</div>
-            {draggedCategories.map((category: Category): React.Node => (
+            {selectedTypes.map((category: Category): React.Node => (
               <DragCategories key={category.id} category={category} />
             ))}
           </Grid>
@@ -225,7 +225,7 @@ class AddAssumption extends React.Component<Props, State> {
               handleAssumptionTypeChange={this.handleAssumptionTypeChange}
               handleCategoryChange={this.handleCategoryChange}
               selectAssumptionTypes={selectAssumptionTypes}
-              reduceCategories={reduceCategories}
+              categoryTypeSelect={categoryTypeSelect}
               handleSelectedAssumptionTypeRemove={this.handleSelectedAssumptionTypeRemove}
             />
           </Grid>
@@ -242,7 +242,7 @@ const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
   assumptionTypes: makeGetAssumptionTypes(state),
   selectedAssumptionTypes: state.assumptions.selectedTypes,
   notSelectedAssumptionTypes: makeGetNotSelectedAssumptionTypes(state),
-  draggedCategories: makeGetDraggedCategories(state)
+  selectedTypes: makeGetDraggedCategories(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
@@ -253,7 +253,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   resetDraggedCategories: (): void => dispatch(resetDraggedCategories()),
   createAssumption: (assumption: Assumption): void =>
     dispatch(createAssumption(assumption)),
-  reduceCategories: (category): void => dispatch(reduceCategories(category)),
+  categoryTypeSelect: (type): void => dispatch(selectCategoryType(type)),
   selectAssumptionTypes: (assumptionType): void =>
     dispatch(selectAssumptionTypes(assumptionType)),
   selectedAssumptionTypeRemove: (assumptionId): void =>

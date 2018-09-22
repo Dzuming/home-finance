@@ -1,8 +1,8 @@
 import reducer from "./categoryReducer";
-import {reduceCategories, resetDraggedCategories} from "../actions/categoryActions";
+import {selectCategoryType, resetDraggedCategories} from "../actions/categoryActions";
 import deepFreeze from "deep-freeze";
 
-const draggedCategories = deepFreeze([
+const categories = deepFreeze([
   {
     id: 1,
     name: 'rachunki',
@@ -14,24 +14,24 @@ const draggedCategories = deepFreeze([
 ]);
 
 const categoriesState = deepFreeze({
-  categories: draggedCategories,
+  types: categories,
 });
 
 describe('category reducer', () => {
   it('should reduce categories', () => {
     expect(
-      reducer(categoriesState, reduceCategories([draggedCategories[0]]))
-        .draggedCategories,
-    ).toEqual([draggedCategories[1]]);
+      reducer(categoriesState, selectCategoryType([categories[0]]))
+        .selectedTypes,
+    ).toEqual([categories[1]]);
     expect(
-      reducer(categoriesState, reduceCategories(draggedCategories))
-        .draggedCategories,
+      reducer(categoriesState, selectCategoryType(categories))
+        .selectedTypes,
     ).toEqual([]);
   });
 
   it('should reset categories', () => {
     expect(
-      reducer(categoriesState, resetDraggedCategories()).draggedCategories,
-    ).toEqual(draggedCategories);
+      reducer(categoriesState, resetDraggedCategories()).selectedTypes,
+    ).toEqual(categories);
   });
 });

@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`finance flow actions should create SET_CATEGORIES action with snapshot 1`] = `
-Object {
-  "payload": Object {
-    "id": 1,
-    "name": "jedzenie",
-  },
-  "type": "SET_CATEGORIES",
-}
-`;
-
 exports[`finance flow actions should create addProfit action with snapshot 1`] = `
 Object {
   "payload": Object {
@@ -64,15 +54,6 @@ Object {
 }
 `;
 
-exports[`finance flow actions should create reduceCategories action with snapshot 1`] = `
-Object {
-  "payload": Object {
-    "categories": undefined,
-  },
-  "type": "SELECTCATEGORIES",
-}
-`;
-
 exports[`finance flow actions should create removeProfit action with snapshot 1`] = `
 Object {
   "payload": Object {
@@ -98,15 +79,6 @@ Object {
     ],
   },
   "type": "DELETE_SPENDING",
-}
-`;
-
-exports[`finance flow actions should create resetCategories action with snapshot 1`] = `
-Object {
-  "payload": Object {
-    "categories": undefined,
-  },
-  "type": "RESET_CATEGORIES",
 }
 `;
 

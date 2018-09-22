@@ -9,10 +9,10 @@ export const fetchCategories = createAction(types.API_REQUEST_GET, () =>  ({
 
 export const setCategories = createAction(types.SET_CATEGORIES);
 
-export const reduceCategories = createAction(
+export const selectCategoryType = createAction(
   types.CATEGORIES_DRAG.SELECT,
-  categories => ({
-    categories,
+  type => ({
+    type,
   }),
 );
 
