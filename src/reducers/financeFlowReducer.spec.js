@@ -34,21 +34,6 @@ const profit = {
 };
 const message = 'test';
 
-const draggedCategories = deepFreeze([
-  {
-    id: 1,
-    name: 'rachunki',
-  },
-  {
-    id: 2,
-    name: 'jedzenie',
-  },
-]);
-
-const categoriesState = deepFreeze({
-  categories: draggedCategories,
-});
-
 describe('spending reducer', () => {
   it('should handle unknown actions', () => {
     expect(reducer(initialState, { type: 'FAKE' })).toBe(initialState);
@@ -207,24 +192,5 @@ describe('profit reducer', () => {
         ),
       ).toMatchSnapshot();
     });
-  });
-});
-
-describe('dragged elements', () => {
-  it('should reduce categories', () => {
-    expect(
-      reducer(categoriesState, reduceCategories([draggedCategories[0]]))
-        .draggedCategories,
-    ).toEqual([draggedCategories[1]]);
-    expect(
-      reducer(categoriesState, reduceCategories(draggedCategories))
-        .draggedCategories,
-    ).toEqual([]);
-  });
-
-  it('should reset categories', () => {
-    expect(
-      reducer(categoriesState, resetDraggedCategories()).draggedCategories,
-    ).toEqual(draggedCategories);
   });
 });

@@ -18,11 +18,6 @@ const profit = {
   category: { id: 1, name: 'jedzenie' },
 };
 describe('finance flow actions', () => {
-  it('should create SET_CATEGORIES action with snapshot', () => {
-    expect(
-      actions.setCategories({ id: 1, name: 'jedzenie' }),
-    ).toMatchSnapshot();
-  });
   it('should create setSpending action with snapshot', () => {
     expect(actions.setSpending([spending])).toMatchSnapshot();
   });
@@ -69,13 +64,5 @@ describe('finance flow actions', () => {
     expect(
       actions.editProfit('test', 1, { data: { ...profit } }),
     ).toMatchSnapshot();
-  });
-
-  it('should create reduceCategories action with snapshot', () => {
-    expect(actions.reduceCategories()).toMatchSnapshot();
-  });
-
-  it('should create resetCategories action with snapshot', () => {
-    expect(actions.resetDraggedCategories()).toMatchSnapshot();
   });
 });

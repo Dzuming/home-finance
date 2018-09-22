@@ -12,7 +12,7 @@ import {
   resetDraggedCategories,
   fetchCategories,
   reduceCategories
-} from '../../actions/financeFlowActions';
+} from '../../actions/categoryActions';
 import { connect } from 'react-redux';
 import { Button, Grid } from 'material-ui';
 import { DragDropContext } from 'react-dnd';

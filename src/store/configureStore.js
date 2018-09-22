@@ -14,9 +14,11 @@ const initialState = {
     ? JSON.parse(localStorage.getItem('user'))
     : {},
   financeFlow: {
-    categories: [],
     spending: [],
     profit: [],
+  },
+  category: {
+    types: [],
   },
   api: {
     loading: 0,

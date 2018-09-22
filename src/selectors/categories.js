@@ -1,8 +1,8 @@
 import {createSelector} from "reselect";
 
-const getCategories = state => state.financeFlow.categories;
+const getCategories = state => state.category.types;
 const getDraggedCategories = state =>
-  state.financeFlow.draggedCategories || state.financeFlow.categories;
+  state.category.draggedCategories || state.category.types;
 
 export const makeGetCategories = createSelector(
   [getCategories],
