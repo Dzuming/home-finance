@@ -25,7 +25,7 @@ import {
   makeGetAssumptionTypes
 } from '../../selectors/assumptions';
 import {
-  makeGetSelectedCategories,
+  makeGetSelectedCategoryTypes,
   makeGetCategoryTypes,
   makeGetNotSelectedCategoryTypes
 } from '../../selectors/categories';
@@ -230,7 +230,7 @@ const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
   selectedAssumptionTypes: state.assumptions.selectedTypes,
   notSelectedAssumptionTypes: makeGetNotSelectedAssumptionTypes(state),
   notSelectedCategoryTypes: makeGetNotSelectedCategoryTypes(state),
-  selectedCategoryTypes: makeGetSelectedCategories(state)
+  selectedCategoryTypes: makeGetSelectedCategoryTypes(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
