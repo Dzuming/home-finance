@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import * as financeFlowActions from '../actions/financeFlowActions';
 import * as budgetActions from '../actions/budgetActions';
 import {  makeGetSpending } from '../selectors/spendings';
-import { makeGetCategories } from '../selectors/categories';
+import { makeGetCategoryTypes } from '../selectors/categories';
 
 class Spending extends Component {
   constructor(props) {
@@ -179,7 +179,7 @@ Spending.propTypes = {
 function mapStateToProps(state) {
   return {
     spending: makeGetSpending(state),
-    categories: makeGetCategories(state),
+    categories: makeGetCategoryTypes(state),
   };
 }
 

@@ -24,7 +24,7 @@ import {
   makeGetNotSelectedAssumptionTypes,
   makeGetAssumptionTypes
 } from '../../selectors/assumptions';
-import { makeGetDraggedCategories } from '../../selectors/categories';
+import { makeGetDraggedCategories, makeGetCategoryTypes } from '../../selectors/categories';
 import { yearMonthFormatDate } from '../../helpers/format';
 import type {
   AssumptionType,
@@ -172,10 +172,11 @@ class AddAssumption extends React.Component<Props, State> {
 
   render(): React.Node {
     const { categories, period, percentage } = this.state;
-    const { selectedAssumptionTypes } = this.props;
     const {
       notSelectedAssumptionTypes,
-      selectedTypes,
+      selectedAssumptionTypes,
+      selectedCategoryTypes,
+      categoryTypes,
       selectAssumptionTypes,
       categoryTypeSelect,
       handleSelectedAssumptionTypeRemove
@@ -210,7 +211,7 @@ class AddAssumption extends React.Component<Props, State> {
             alignItems={'center'}
           >
             <div>Categories:</div>
-            {selectedTypes.map((category: Category): React.Node => (
+            {selectedCategoryTypes.map((category: Category): React.Node => (
               <DragCategories key={category.id} category={category} />
             ))}
           </Grid>
@@ -240,9 +241,10 @@ class AddAssumption extends React.Component<Props, State> {
 
 const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
   assumptionTypes: makeGetAssumptionTypes(state),
+  categoryTypes: makeGetCategoryTypes(state),
   selectedAssumptionTypes: state.assumptions.selectedTypes,
   notSelectedAssumptionTypes: makeGetNotSelectedAssumptionTypes(state),
-  selectedTypes: makeGetDraggedCategories(state)
+  selectedCategoryTypes: makeGetDraggedCategories(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
