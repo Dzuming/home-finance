@@ -8,10 +8,8 @@ import { Grid, TextField } from 'material-ui';
 import DatePicker from '../../components/commons/DatePicker';
 import type { Category } from '../../types/index';
 import DeleteIcon from 'material-ui-icons/Delete';
-import { selectCategoryType } from '../../actions/categoryActions';
 
 type Props = {
-  handleCategoryChange: () => void,
   selectAssumptionType: () => void,
   categoryTypeSelect: () => void,
   categories: Category[]
@@ -20,7 +18,6 @@ type Props = {
 class DropBoard extends React.Component<Props> {
   componentDidUpdate(prevProps: Props) {
     const {
-      handleCategoryChange,
       selectAssumptionType,
       categoryTypeSelect,
       categories

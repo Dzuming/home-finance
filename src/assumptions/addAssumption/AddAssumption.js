@@ -51,7 +51,6 @@ type ReduxMappedProps = {
 
 type State = {
   assumptionType: AssumptionType,
-  categories: Array<Category>,
   isInitialValue: boolean,
   percentage: number,
   period: string
@@ -81,7 +80,6 @@ class AddAssumption extends React.Component<Props, State> {
   }
 
   initialState = (): State => ({
-    categories: [],
     isInitialValue: false,
     percentage: 0,
     period: yearMonthFormatDate
@@ -90,7 +88,6 @@ class AddAssumption extends React.Component<Props, State> {
   handleSubmit = async (event: Event) => {
     event.preventDefault();
     const {
-      categories,
       percentage,
       isInitialValue,
       period
@@ -125,17 +122,6 @@ class AddAssumption extends React.Component<Props, State> {
     }
     return true;
   };
-
-  handleCategoryChange = (
-    categories: Array<Category>,
-    callback: () => void
-  ): void =>
-    this.setState(
-      {
-        categories
-      },
-      callback
-    );
 
   handleChange = (
     name: string
@@ -223,7 +209,6 @@ class AddAssumption extends React.Component<Props, State> {
               handleChange={this.handleChange}
               categories={categories}
               date={period}
-              handleCategoryChange={this.handleCategoryChange}
               selectAssumptionType={selectAssumptionType}
               selectCategoryType={selectCategoryType}
               categoryTypeSelect={categoryTypeSelect}
