@@ -126,12 +126,6 @@ class AddAssumption extends React.Component<Props, State> {
     return true;
   };
 
-  handleAssumptionTypeChange = (
-    key: string,
-    value: number,
-    callback: () => void
-  ): void => this.setState({ [key]: value }, callback);
-
   handleCategoryChange = (
     categories: Array<Category>,
     callback: () => void
@@ -229,7 +223,6 @@ class AddAssumption extends React.Component<Props, State> {
               handleChange={this.handleChange}
               categories={categories}
               date={period}
-              handleAssumptionTypeChange={this.handleAssumptionTypeChange}
               handleCategoryChange={this.handleCategoryChange}
               selectAssumptionType={selectAssumptionType}
               selectCategoryType={selectCategoryType}

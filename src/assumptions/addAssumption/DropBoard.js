@@ -27,13 +27,7 @@ class DropBoard extends React.Component<Props> {
     } = this.props;
     if (prevProps.isDropped) {
       return {
-        assumptionType: () => {
-          this.props.handleAssumptionTypeChange(
-            [prevProps.item.type],
-            prevProps.item,
-            () => selectAssumptionType(prevProps.item)
-          );
-        },
+        assumptionType: () => selectAssumptionType(prevProps.item),
         category: () => categoryTypeSelect(prevProps.item)
       }[prevProps.item.type]();
     }
