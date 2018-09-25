@@ -15,6 +15,7 @@ const categories = deepFreeze([
 
 const categoriesState = deepFreeze({
   types: categories,
+  selectedTypes: [],
 });
 
 describe('category reducer', () => {
@@ -22,11 +23,11 @@ describe('category reducer', () => {
     expect(
       reducer(categoriesState, selectCategoryType([categories[0]]))
         .selectedTypes,
-    ).toEqual([categories[1]]);
+    ).toEqual([categories[0]]);
     expect(
-      reducer(categoriesState, selectCategoryType(categories))
+      reducer(categoriesState, selectCategoryType(categories[1]))
         .selectedTypes,
-    ).toEqual([]);
+    ).toEqual([categories[1]]);
   });
 
   it('should reset categories', () => {

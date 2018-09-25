@@ -9,11 +9,9 @@ export default handleActions(
       Object.assign({}, state, {
         types: [...action.payload]
       }),
-    [types.CATEGORIES_DRAG.SELECT]: (state, action) => {
+    [types.CATEGORIES_DRAG.SELECT]: (state, action) =>  {
       return Object.assign({}, state, {
-        selectedTypes: state.types.filter(function(type) {
-          return this.indexOf(type.id) < 0;
-        }, action.payload.type.map(type => type.id))
+        selectedTypes: state.selectedTypes.concat(action.payload.type)
       });
     },
     [types.CATEGORIES_DRAG.RESET]: state => {

@@ -24,7 +24,11 @@ import {
   makeGetNotSelectedAssumptionTypes,
   makeGetAssumptionTypes
 } from '../../selectors/assumptions';
-import { makeGetSelectedCategories, makeGetCategoryTypes } from '../../selectors/categories';
+import {
+  makeGetSelectedCategories,
+  makeGetCategoryTypes,
+  makeGetNotSelectedCategoryTypes
+} from '../../selectors/categories';
 import { yearMonthFormatDate } from '../../helpers/format';
 import type {
   AssumptionType,
@@ -179,7 +183,8 @@ class AddAssumption extends React.Component<Props, State> {
       categoryTypes,
       selectAssumptionType,
       categoryTypeSelect,
-      handleSelectedAssumptionTypeRemove
+      handleSelectedAssumptionTypeRemove,
+      notSelectedCategoryTypes
     } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
@@ -211,13 +216,14 @@ class AddAssumption extends React.Component<Props, State> {
             alignItems={'center'}
           >
             <div>Categories:</div>
-            {selectedCategoryTypes.map((category: Category): React.Node => (
+            {notSelectedCategoryTypes.map((category: Category): React.Node => (
               <DragCategories key={category.id} category={category} />
             ))}
           </Grid>
           <Grid item xs={12}>
             <DropBoard
               selectedAssumptionTypes={selectedAssumptionTypes}
+              selectedCategoryTypes={selectedCategoryTypes}
               period={period}
               percentage={percentage}
               handleChange={this.handleChange}
@@ -226,6 +232,7 @@ class AddAssumption extends React.Component<Props, State> {
               handleAssumptionTypeChange={this.handleAssumptionTypeChange}
               handleCategoryChange={this.handleCategoryChange}
               selectAssumptionType={selectAssumptionType}
+              selectCategoryType={selectCategoryType}
               categoryTypeSelect={categoryTypeSelect}
               handleSelectedAssumptionTypeRemove={this.handleSelectedAssumptionTypeRemove}
             />
@@ -244,6 +251,7 @@ const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
   categoryTypes: makeGetCategoryTypes(state),
   selectedAssumptionTypes: state.assumptions.selectedTypes,
   notSelectedAssumptionTypes: makeGetNotSelectedAssumptionTypes(state),
+  notSelectedCategoryTypes: makeGetNotSelectedCategoryTypes(state),
   selectedCategoryTypes: makeGetSelectedCategories(state)
 });
 
@@ -255,9 +263,10 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   resetDraggedCategories: (): void => dispatch(resetDraggedCategories()),
   createAssumption: (assumption: Assumption): void =>
     dispatch(createAssumption(assumption)),
-  categoryTypeSelect: (type): void => dispatch(selectCategoryType(type)),
   selectAssumptionType: (assumptionType): void =>
     dispatch(selectAssumptionType(assumptionType)),
+  categoryTypeSelect: (categoryType): void =>
+    dispatch(selectCategoryType(categoryType)),
   selectedAssumptionTypeRemove: (assumptionId): void =>
     dispatch(removeSelectedAssumptionType(assumptionId))
 });

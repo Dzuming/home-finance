@@ -8,6 +8,7 @@ import { Grid, TextField } from 'material-ui';
 import DatePicker from '../../components/commons/DatePicker';
 import type { Category } from '../../types/index';
 import DeleteIcon from 'material-ui-icons/Delete';
+import { selectCategoryType } from '../../actions/categoryActions';
 
 type Props = {
   handleCategoryChange: () => void,
@@ -33,12 +34,7 @@ class DropBoard extends React.Component<Props> {
             () => selectAssumptionType(prevProps.item)
           );
         },
-        category: () => {
-          const newCategories = [...categories, prevProps.item];
-          handleCategoryChange(newCategories, () =>
-            categoryTypeSelect(newCategories)
-          );
-        }
+        category: () => categoryTypeSelect(prevProps.item)
       }[prevProps.item.type]();
     }
   }
@@ -47,6 +43,7 @@ class DropBoard extends React.Component<Props> {
     const {
       connectDropTarget,
       selectedAssumptionTypes,
+      selectedCategoryTypes,
       categories,
       period,
       percentage,
@@ -99,8 +96,8 @@ class DropBoard extends React.Component<Props> {
             ))}
           </CardList>
           <CardList gridSize={3}>
-            {categories.map((category: Category) => (
-              <div key={category.id}>{category.name}</div>
+            {selectedCategoryTypes.map((categoryType: Category) => (
+              <div key={categoryType.id}>{categoryType.name}</div>
             ))}
           </CardList>
         </Grid>
