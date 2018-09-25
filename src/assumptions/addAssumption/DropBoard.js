@@ -11,7 +11,7 @@ import DeleteIcon from 'material-ui-icons/Delete';
 
 type Props = {
   handleCategoryChange: () => void,
-  selectAssumptionTypes: () => void,
+  selectAssumptionType: () => void,
   categoryTypeSelect: () => void,
   categories: Category[]
 };
@@ -20,7 +20,7 @@ class DropBoard extends React.Component<Props> {
   componentDidUpdate(prevProps: Props) {
     const {
       handleCategoryChange,
-      selectAssumptionTypes,
+      selectAssumptionType,
       categoryTypeSelect,
       categories
     } = this.props;
@@ -30,7 +30,7 @@ class DropBoard extends React.Component<Props> {
           this.props.handleAssumptionTypeChange(
             [prevProps.item.type],
             prevProps.item,
-            () => selectAssumptionTypes(prevProps.item)
+            () => selectAssumptionType(prevProps.item)
           );
         },
         category: () => {

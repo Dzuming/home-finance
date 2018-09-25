@@ -5,7 +5,7 @@ import {
   fetchAssumptionTypes,
   createAssumption,
   resetSelectedAssumptionTypes,
-  selectAssumptionTypes,
+  selectAssumptionType,
   removeSelectedAssumptionType
 } from '../../actions/assumptionActions';
 import {
@@ -24,7 +24,7 @@ import {
   makeGetNotSelectedAssumptionTypes,
   makeGetAssumptionTypes
 } from '../../selectors/assumptions';
-import { makeGetDraggedCategories, makeGetCategoryTypes } from '../../selectors/categories';
+import { makeGetSelectedCategories, makeGetCategoryTypes } from '../../selectors/categories';
 import { yearMonthFormatDate } from '../../helpers/format';
 import type {
   AssumptionType,
@@ -67,7 +67,7 @@ type DispatchProps = {
     period: string
   }) => void,
   categoryTypeSelect: () => void,
-  selectAssumptionTypes: () => void
+  selectAssumptionType: () => void
 };
 
 class AddAssumption extends React.Component<Props, State> {
@@ -177,7 +177,7 @@ class AddAssumption extends React.Component<Props, State> {
       selectedAssumptionTypes,
       selectedCategoryTypes,
       categoryTypes,
-      selectAssumptionTypes,
+      selectAssumptionType,
       categoryTypeSelect,
       handleSelectedAssumptionTypeRemove
     } = this.props;
@@ -225,7 +225,7 @@ class AddAssumption extends React.Component<Props, State> {
               date={period}
               handleAssumptionTypeChange={this.handleAssumptionTypeChange}
               handleCategoryChange={this.handleCategoryChange}
-              selectAssumptionTypes={selectAssumptionTypes}
+              selectAssumptionType={selectAssumptionType}
               categoryTypeSelect={categoryTypeSelect}
               handleSelectedAssumptionTypeRemove={this.handleSelectedAssumptionTypeRemove}
             />
@@ -244,7 +244,7 @@ const mapStateToProps = (state: ReduxState): ReduxMappedProps => ({
   categoryTypes: makeGetCategoryTypes(state),
   selectedAssumptionTypes: state.assumptions.selectedTypes,
   notSelectedAssumptionTypes: makeGetNotSelectedAssumptionTypes(state),
-  selectedCategoryTypes: makeGetDraggedCategories(state)
+  selectedCategoryTypes: makeGetSelectedCategories(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
@@ -256,8 +256,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   createAssumption: (assumption: Assumption): void =>
     dispatch(createAssumption(assumption)),
   categoryTypeSelect: (type): void => dispatch(selectCategoryType(type)),
-  selectAssumptionTypes: (assumptionType): void =>
-    dispatch(selectAssumptionTypes(assumptionType)),
+  selectAssumptionType: (assumptionType): void =>
+    dispatch(selectAssumptionType(assumptionType)),
   selectedAssumptionTypeRemove: (assumptionId): void =>
     dispatch(removeSelectedAssumptionType(assumptionId))
 });

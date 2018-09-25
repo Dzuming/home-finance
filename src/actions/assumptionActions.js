@@ -58,7 +58,7 @@ export const addAssumption = createAction(
   }),
 );
 
-export const selectAssumptionTypes = createAction(
+export const selectAssumptionType = createAction(
   types.ASSUMPTION_TYPES.SELECT,
   type =>  ({
     type,

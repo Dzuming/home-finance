@@ -58,7 +58,7 @@ describe('assumption actions', () => {
 
 describe('drag actions', () => {
   it('it should create selectAssumptionType action with a snapshot', () => {
-    expect(actions.selectAssumptionTypes()).toMatchSnapshot();
+    expect(actions.selectAssumptionType()).toMatchSnapshot();
   });
 
   it('it should create resetSelectedAssumptionType action with a snapshot', () => {
