@@ -166,19 +166,6 @@ class Profit extends Component {
   }
 }
 
-Profit.propTypes = {
-  actions: PropTypes.shape({
-    putProfit: PropTypes.Func,
-    fetchCategories: PropTypes.Func,
-    fetchProfit: PropTypes.Func,
-    deleteProfit: PropTypes.Func,
-    createProfit: PropTypes.Func,
-    fetchBudget: PropTypes.Func,
-  }),
-  profit: PropTypes.array,
-  categories: PropTypes.array,
-};
-
 const mapStateToProps = (state) => {
   return {
     profit: makeGetProfit(state),
