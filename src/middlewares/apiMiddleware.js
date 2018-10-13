@@ -79,7 +79,7 @@ export const apiMiddleware = ({ getState, dispatch }) => next => action => {
           success(response, id, {
             data: {
               ...items,
-              category: getState().financeFlow.categories.find(
+              category: getState().category.types.find(
                 category => items.categoryId === category.id
               )
             }

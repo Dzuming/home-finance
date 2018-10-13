@@ -4,11 +4,11 @@ import DeleteDialog from '../components/DeleteDialog';
 import LookupEditCell from '../components/LookupEditCell';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as financeFlowActions from '../actions/financeFlowActions';
-import * as budgetActions from '../actions/budgetActions';
 import { makeGetProfit } from '../selectors/profits';
 import { makeGetCategoryTypes } from '../selectors/categories';
+import {createProfit, fetchProfit, putProfit} from "../actions/financeFlowActions";
+import {fetchCategories} from "../actions/categoryActions";
+import {fetchBudget} from "../actions/budgetActions";
 
 class Profit extends Component {
   constructor(props) {
@@ -40,12 +40,13 @@ class Profit extends Component {
     };
 
     this.commitChanges = ({ added, changed, deleted }) => {
+      const {createProfit, categories, putProfit} = this.props;
       if (added) {
-        const { id } = this.props.categories.find(
+        const { id } = categories.find(
           category => category.name === Object.assign({}, ...added)['category'],
         );
         const data = Object.assign({}, ...added, { category: id });
-        this.props.actions.createProfit(data);
+        createProfit(data);
       }
       this.cancelDelete = () => this.setState({ deletingRows: [] });
       if (changed) {
@@ -54,7 +55,7 @@ class Profit extends Component {
           items: Object.assign({}, Object.values(changed)[0]),
         };
         if (profit.items.category) {
-          const { id } = this.props.categories.find(
+          const { id } = categories.find(
             category => category.name === profit.items.category,
           );
           profit = Object.assign(
@@ -65,7 +66,7 @@ class Profit extends Component {
             },
           );
         }
-        this.props.actions.putProfit(profit);
+        putProfit(profit);
       }
 
       this.setState({
@@ -127,13 +128,15 @@ class Profit extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchProfit();
-    this.props.actions.fetchCategories();
+    const {fetchProfit, fetchCategories} = this.props
+    fetchProfit();
+    fetchCategories();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.profit !== nextProps.profit) {
-      this.props.actions.fetchBudget();
+    const {profit, fetchBudget} = this.props
+    if (profit !== nextProps.profit) {
+      fetchBudget();
     }
   }
 
@@ -176,20 +179,15 @@ Profit.propTypes = {
   categories: PropTypes.array,
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     profit: makeGetProfit(state),
     categories: makeGetCategoryTypes(state),
   };
-}
+};
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(
-      Object.assign({}, financeFlowActions, budgetActions),
-      dispatch,
-    ),
-  };
-}
+const mapDispatchToProps = ({
+  createProfit, putProfit, fetchProfit, fetchCategories, fetchBudget
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profit);
